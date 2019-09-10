@@ -3,7 +3,16 @@
 ## Python env
 
 To make sure that notebooks run fluently use either [repo2docker](https://github.com/jupyter/repo2docker) or install [conda](https://anaconda.org/) and launch `conda env create -f environment.yml`.
-Then launch: `conda activate ai_primer` and you are set to go.
+
+Windows steps:
+- Install git
+- Install Anaconda
+- Opend Anaconda Prompt
+- cd to your Desktop
+- git clone https://github.com/trokas/ai_primer.git
+- cd ai_primer
+- jupyter notebook
+
 
 ## Accompanying slides
 
