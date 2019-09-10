@@ -1,10 +1,9 @@
 # AI primer
 
-MIF course
-
 ## Python env
 
 To make sure that notebooks run fluently use either [repo2docker](https://github.com/jupyter/repo2docker) or install [conda](https://anaconda.org/) and launch `conda env create -f environment.yml`.
+Then launch: `conda activate ai_primer` and you are set to go.
 
 ## Accompanying slides
 
