@@ -24,35 +24,10 @@ Installation steps:
 - Linear Algebra, SVD and Regression [slides](https://paper.dropbox.com/published/1.-Linear-Algebra-Intro--AjuKtJovFYXzhwQL1NoTiNu_Bw-MQ26SBHzU2W5mOzYyOHW1o8).
 - Simulations in statistics or mathematical rigor vs simulations [slides](https://paper.dropbox.com/published/1.-Statistics-Intro-Shuffling-Bootstrapping-and-CV--AkHAAbu7iXjFjjbMJAdIC_KMBg-BftDdpAMoOQaXXs2N7wPZ8Y).
 
+## Varia
 
-## How to make bokeh plots
+I highly recommend to start listening/watching following resources:
+- [Data Skeptic podcast](https://dataskeptic.com/podcast?limit=10&offset=0)
+- [Artificial Intelligence podcast](https://lexfridman.com/ai/)
+- [Two Minute Papers youtube channel](https://www.youtube.com/user/keeroyz)
 
-```python
-%matplotlib inline
-
-from pyproj import Proj, transform
-from bokeh.io import output_notebook
-from bokeh.plotting import show, figure
-from bokeh.tile_providers import get_provider, Vendors
-from bokeh.models import ColumnDataSource
-from sklearn.datasets import load_boston
-from sklearn.linear_model import LinearRegression
-from itertools import product
-from pandas.plotting import scatter_matrix
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
-
-# Bokeh init
-output_notebook()
-tile_provider = get_provider(Vendors.CARTODBPOSITRON)
-
-X, Y = transform(Proj(init='epsg:4326'), Proj(init='epsg:3857'),
-                 housing['longitude'].values, housing['latitude'].values)
-p = figure(x_range=(min(X), max(X)), y_range=(min(Y), max(Y)),
-           x_axis_type="mercator", y_axis_type="mercator")
-p.add_tile(tile_provider)
-source = ColumnDataSource(data=dict(latitude=X, longitude=Y))
-p.circle(x="latitude", y="longitude", size=1, color="blue", alpha=0.8, source=source)
-show(p)
-```
