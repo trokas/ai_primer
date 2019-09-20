@@ -23,6 +23,8 @@ Installation steps:
 
 - Linear Algebra, SVD and Regression [slides](https://paper.dropbox.com/published/1.-Linear-Algebra-Intro--AjuKtJovFYXzhwQL1NoTiNu_Bw-MQ26SBHzU2W5mOzYyOHW1o8).
 - Simulations in statistics or mathematical rigor vs simulations [slides](https://paper.dropbox.com/published/1.-Statistics-Intro-Shuffling-Bootstrapping-and-CV--AkHAAbu7iXjFjjbMJAdIC_KMBg-BftDdpAMoOQaXXs2N7wPZ8Y).
+- (optional) Bayesian statistics [slides](https://paper.dropbox.com/published/2.-Side-note-Frequentists-vs.-Bayesians--AlLBeA1RnxwQRpMpUhvY9O9~Bg-C0bCEfPTJcW1sy02aNEHcut)
+- Entropy and Logistic equation [slides](https://paper.dropbox.com/published/3.-Entropy-and-logistic-regression--AlLU7kssRppqEbQ3TJCe9~OsBg-jq5J05rJc7Mm1WPkN7KukDO)
 
 ## Varia
 
