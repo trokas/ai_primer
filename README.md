@@ -1,5 +1,9 @@
 # AI primer
 
+This is a concept map of the things we plan to cover in this course. For sure there is a lot more to learn, but this should give you a good starting point.
+
+![Concept map](https://docs.google.com/drawings/d/e/2PACX-1vQ5YhgwD7qi6xn8qGEFDeRLFvxgGMWOCf2W7H31vxiIuCvSlxMLuX5qLfooi2DqD7LPNMbN7KE4dK4S/pub?w=1179&h=323)
+
 - (2019.09.03) - get to know and introduction to Linear Algebra and Singular Value Decomposition and couple of it's use cases. 
 - (2019.09.10) - set up conda enviroment and try to play with provided Jupyter Notebooks. Your focus should go to get better understanding of tools (git, anaconda and jupyter) and packages (numpy, pandas and matplotlib).
 - (2019.09.17) - go through *Boston dataset (simple end-to-end).ipynb* and complete exercises. We will talk about Linear Regression and Generalized Linear Models (like Lasso).
