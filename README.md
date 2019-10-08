@@ -8,6 +8,8 @@ This is a concept map of the things we plan to cover in this course. For sure th
 - (2019.09.10) - set up conda enviroment and try to play with provided Jupyter Notebooks. Your focus should go to get better understanding of tools (git, anaconda and jupyter) and packages (numpy, pandas and matplotlib).
 - (2019.09.17) - go through *Boston dataset (simple end-to-end).ipynb* and complete exercises. We will talk about Linear Regression and Generalized Linear Models (like Lasso).
 - (2019.09.24) - go through *Bootstrapping.ipynb* notebook. After the lecture I have cleaned up the slides and left only most relevant subject - Bootsrapping and Gradient Descent. For now focus on grasping how Bootstrapping works.
+- (2019.10.08) - go through *Logistic regression.ipynb* and *Trees.ipynb* notebooks and focus on understanding how models for classification are trained using Entropy. Make sure that understand how RF works.
+
 
 ## Installation instructions
 
@@ -26,10 +28,13 @@ Installation steps:
 
 ## Accompanying slides
 
-- Linear Algebra, SVD and Regression [slides](https://paper.dropbox.com/published/1.-Linear-Algebra-Intro--AjuKtJovFYXzhwQL1NoTiNu_Bw-MQ26SBHzU2W5mOzYyOHW1o8). See *1. Singular value decomposition.ipynb*.
-- Bootsrapping and Gradient Descent [slides](https://paper.dropbox.com/published/1.-Statistics-Intro-Shuffling-Bootstrapping-and-CV--AkHAAbu7iXjFjjbMJAdIC_KMBg-BftDdpAMoOQaXXs2N7wPZ8Y). See *3. Bootsrapping.ipynb* and *3. Gradient Descent.ipynb*.
-- (optional) Bayesian statistics [slides](https://paper.dropbox.com/published/2.-Side-note-Frequentists-vs.-Bayesians--AlLBeA1RnxwQRpMpUhvY9O9~Bg-C0bCEfPTJcW1sy02aNEHcut). See *3. (optional) Bayesian statistics.ipynb*.
-- Entropy and Logistic equation [slides](https://paper.dropbox.com/published/3.-Entropy-and-logistic-regression--AlLU7kssRppqEbQ3TJCe9~OsBg-jq5J05rJc7Mm1WPkN7KukDO). See *4. Logistic regression.ipynb*.
+- Linear Algebra, SVD and Regression [slides](https://paper.dropbox.com/published/1.-Linear-Algebra-Intro--AjuKtJovFYXzhwQL1NoTiNu_Bw-MQ26SBHzU2W5mOzYyOHW1o8). See *Singular value decomposition.ipynb*.
+- Bootsrapping and Gradient Descent [slides](https://paper.dropbox.com/published/1.-Statistics-Intro-Shuffling-Bootstrapping-and-CV--AkHAAbu7iXjFjjbMJAdIC_KMBg-BftDdpAMoOQaXXs2N7wPZ8Y). See *Bootsrapping.ipynb* and *Gradient Descent.ipynb*.
+- (optional) Bayesian statistics [slides](https://paper.dropbox.com/published/2.-Side-note-Frequentists-vs.-Bayesians--AlLBeA1RnxwQRpMpUhvY9O9~Bg-C0bCEfPTJcW1sy02aNEHcut). See *(optional) Bayesian statistics.ipynb*.
+- Entropy and Logistic equation [slides](https://paper.dropbox.com/published/3.-Entropy-and-logistic-regression--AlLU7kssRppqEbQ3TJCe9~OsBg-jq5J05rJc7Mm1WPkN7KukDO). See *Logistic regression.ipynb*.
+- Entropy and Logistic equation [slides](https://paper.dropbox.com/published/3.-Entropy-and-logistic-regression--AlLU7kssRppqEbQ3TJCe9~OsBg-jq5J05rJc7Mm1WPkN7KukDO). See *Logistic regression.ipynb*.
+- Decision trees and ensambgles [slides](https://paper.dropbox.com/published/4.-Decision-trees-and-ensembles--AmROk3pWLkGrgJVvjbMlS0NBBg-8xd7b2mcMq8hKoYYoQGfW7C). See *Trees.ipynb*.
+
 
 ## Varia
 
