@@ -78,7 +78,7 @@ Installation steps:
 - Entropy and Logistic equation [slides](https://paper.dropbox.com/published/3.-Entropy-and-logistic-regression--AlLU7kssRppqEbQ3TJCe9~OsBg-jq5J05rJc7Mm1WPkN7KukDO). See *Logistic regression.ipynb*.
 - Entropy and Logistic equation [slides](https://paper.dropbox.com/published/3.-Entropy-and-logistic-regression--AlLU7kssRppqEbQ3TJCe9~OsBg-jq5J05rJc7Mm1WPkN7KukDO). See *Logistic regression.ipynb*.
 - Decision trees and ensambgles [slides](https://paper.dropbox.com/published/4.-Decision-trees-and-ensembles--AmROk3pWLkGrgJVvjbMlS0NBBg-8xd7b2mcMq8hKoYYoQGfW7C). See *Trees.ipynb*.
-
+- From Perceptron to Neural Network [slides](https://paper.dropbox.com/published/5.-From-Perceptron-to-Neural-Network--Am2u67ezyxvWKRzE8U9m1VdFBg-U1O0l0um1RDMNP7t88dWe4y). See *NN from scratch.ipynb*.
 
 ## Varia
 
