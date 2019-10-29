@@ -13,6 +13,7 @@ This is a concept map of the things we plan to cover in this course. For sure th
 - (2019.10.22) - intro to Perceptron and FCN's. Try to apply them for fashion MNIST.
 - (2019.10.29) - into to CNN's. Try to apply them for fashion MNIST. Final deadline for project dataset selection, make sure that you understand what needs to be accomplished.
 - There will be no lectures on 2019.11.05, 2019.11.12, 2019.11.19 and 2019.11.26. Work on you project on those weeks, contact me any time if you get stuck!
+- Till **2019.12.03** you must send **initial version of ipynb** with analysis and first models. Final presentation can be prepared later after corrections.
 
 ## Project guidelines
 
