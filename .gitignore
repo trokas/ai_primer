@@ -1,4 +1,5 @@
 .ipynb_checkpoints
+.DS_Store
 books
 dokumentai
 ml-latest-small
