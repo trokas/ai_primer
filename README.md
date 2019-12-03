@@ -10,6 +10,10 @@ This is a concept map of the things we plan to cover in this course. For sure th
 - (2019.09.24) - go through *Bootstrapping.ipynb* notebook. After the lecture I have cleaned up the slides and left only most relevant subject - Bootsrapping and Gradient Descent. For now focus on grasping how Bootstrapping works.
 - (2019.10.08) - go through *Logistic regression.ipynb* and *Trees.ipynb* notebooks and focus on understanding how models for classification are trained using Entropy. Make sure that understand how RF works.
 - (2019.10.15) - go through the rest of *Trees.ipynb* notebook and *Clustering.ipynb*. Choose your project (see below).
+- (2019.10.22) - intro to Perceptron and FCN's. Try to apply them for fashion MNIST.
+- (2019.10.29) - into to CNN's. Try to apply them for fashion MNIST. Final deadline for project dataset selection, make sure that you understand what needs to be accomplished.
+- There will be no lectures on 2019.11.05, 2019.11.12, 2019.11.19 and 2019.11.26. Work on you project on those weeks, contact me any time if you get stuck!
+- Till **2019.12.03** you must send **initial version of ipynb** with analysis and first models. Final presentation can be prepared later after corrections.
 
 ## Project guidelines
 
@@ -76,9 +80,9 @@ Installation steps:
 - Bootsrapping and Gradient Descent [slides](https://paper.dropbox.com/published/1.-Statistics-Intro-Shuffling-Bootstrapping-and-CV--AkHAAbu7iXjFjjbMJAdIC_KMBg-BftDdpAMoOQaXXs2N7wPZ8Y). See *Bootsrapping.ipynb* and *Gradient Descent.ipynb*.
 - (optional) Bayesian statistics [slides](https://paper.dropbox.com/published/2.-Side-note-Frequentists-vs.-Bayesians--AlLBeA1RnxwQRpMpUhvY9O9~Bg-C0bCEfPTJcW1sy02aNEHcut). See *(optional) Bayesian statistics.ipynb*.
 - Entropy and Logistic equation [slides](https://paper.dropbox.com/published/3.-Entropy-and-logistic-regression--AlLU7kssRppqEbQ3TJCe9~OsBg-jq5J05rJc7Mm1WPkN7KukDO). See *Logistic regression.ipynb*.
-- Entropy and Logistic equation [slides](https://paper.dropbox.com/published/3.-Entropy-and-logistic-regression--AlLU7kssRppqEbQ3TJCe9~OsBg-jq5J05rJc7Mm1WPkN7KukDO). See *Logistic regression.ipynb*.
-- Decision trees and ensambgles [slides](https://paper.dropbox.com/published/4.-Decision-trees-and-ensembles--AmROk3pWLkGrgJVvjbMlS0NBBg-8xd7b2mcMq8hKoYYoQGfW7C). See *Trees.ipynb*.
+- Decision trees and ensambles [slides](https://paper.dropbox.com/published/4.-Decision-trees-and-ensembles--AmROk3pWLkGrgJVvjbMlS0NBBg-8xd7b2mcMq8hKoYYoQGfW7C). See *Trees.ipynb*.
 - From Perceptron to Neural Network [slides](https://paper.dropbox.com/published/5.-From-Perceptron-to-Neural-Network--Am2u67ezyxvWKRzE8U9m1VdFBg-U1O0l0um1RDMNP7t88dWe4y). See *NN from scratch.ipynb*.
+- Good into to CNN's can be found [here](https://deeplizard.com/learn/video/YRhxdVk_sIs)
 
 ## Varia
 
