@@ -12,8 +12,10 @@ This is a concept map of the things we plan to cover in this course. For sure th
 - (2019.10.15) - go through the rest of *Trees.ipynb* notebook and *Clustering.ipynb*. Choose your project (see below).
 - (2019.10.22) - intro to Perceptron and FCN's. Try to apply them for fashion MNIST.
 - (2019.10.29) - into to CNN's. Try to apply them for fashion MNIST. Final deadline for project dataset selection, make sure that you understand what needs to be accomplished.
-- There will be no lectures on 2019.11.05, 2019.11.12, 2019.11.19 and 2019.11.26. Work on you project on those weeks, contact me any time if you get stuck!
-- Till **2019.12.03** you must send **initial version of ipynb** with analysis and first models. Final presentation can be prepared later after corrections.
+- Till 2019.12.03 you must send initial version of ipynb with analysis and first models. Final presentation can be prepared later after corrections.
+- (2019.12.03) - review of what we have covered. First review of initial projects. 
+- (2019.12.10) - how convolutions can be used to predict time series *Using CNN's for sequences.ipynb*. Overview of NN use cases and current research.
+- (2019.12.17) - **PRESENTATION DAY**
 
 ## Project guidelines
 
