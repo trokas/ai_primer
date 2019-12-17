@@ -1,5 +1,7 @@
 # AI primer
 
+[KURSO VERTINIMO FORMA](https://docs.google.com/forms/d/e/1FAIpQLScUT1KcP4joQdsZqjETLRHinb_GBS3I4WKC7EPthZ01rETPpQ/viewform?usp=sf_link)
+
 This is a concept map of the things we plan to cover in this course. For sure there is a lot more to learn, but this should give you a good starting point.
 
 ![Concept map](https://docs.google.com/drawings/d/e/2PACX-1vQ5YhgwD7qi6xn8qGEFDeRLFvxgGMWOCf2W7H31vxiIuCvSlxMLuX5qLfooi2DqD7LPNMbN7KE4dK4S/pub?w=1179&h=323)
