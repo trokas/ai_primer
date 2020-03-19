@@ -1,23 +1,8 @@
 # AI primer
 
-[KURSO VERTINIMO FORMA](https://docs.google.com/forms/d/e/1FAIpQLScUT1KcP4joQdsZqjETLRHinb_GBS3I4WKC7EPthZ01rETPpQ/viewform?usp=sf_link)
-
-This is a concept map of the things we plan to cover in this course. For sure there is a lot more to learn, but this should give you a good starting point.
+DEPRECATED (will be updated for 2020 course) - This is a concept map of the things we plan to cover in this course. For sure there is a lot more to learn, but this should give you a good starting point.
 
 ![Concept map](https://docs.google.com/drawings/d/e/2PACX-1vQ5YhgwD7qi6xn8qGEFDeRLFvxgGMWOCf2W7H31vxiIuCvSlxMLuX5qLfooi2DqD7LPNMbN7KE4dK4S/pub?w=1179&h=323)
-
-- (2019.09.03) - get to know and introduction to Linear Algebra and Singular Value Decomposition and couple of it's use cases. 
-- (2019.09.10) - set up conda enviroment and try to play with provided Jupyter Notebooks. Your focus should go to get better understanding of tools (git, anaconda and jupyter) and packages (numpy, pandas and matplotlib).
-- (2019.09.17) - go through *Boston dataset (simple end-to-end).ipynb* and complete exercises. We will talk about Linear Regression and Generalized Linear Models (like Lasso).
-- (2019.09.24) - go through *Bootstrapping.ipynb* notebook. After the lecture I have cleaned up the slides and left only most relevant subject - Bootsrapping and Gradient Descent. For now focus on grasping how Bootstrapping works.
-- (2019.10.08) - go through *Logistic regression.ipynb* and *Trees.ipynb* notebooks and focus on understanding how models for classification are trained using Entropy. Make sure that understand how RF works.
-- (2019.10.15) - go through the rest of *Trees.ipynb* notebook and *Clustering.ipynb*. Choose your project (see below).
-- (2019.10.22) - intro to Perceptron and FCN's. Try to apply them for fashion MNIST.
-- (2019.10.29) - into to CNN's. Try to apply them for fashion MNIST. Final deadline for project dataset selection, make sure that you understand what needs to be accomplished.
-- Till 2019.12.03 you must send initial version of ipynb with analysis and first models. Final presentation can be prepared later after corrections.
-- (2019.12.03) - review of what we have covered. First review of initial projects. 
-- (2019.12.10) - how convolutions can be used to predict time series *Using CNN's for sequences.ipynb*. Overview of NN use cases and current research.
-- (2019.12.17) - **PRESENTATION DAY**
 
 ## Project guidelines
 
@@ -78,7 +63,7 @@ Installation steps:
 - conda activate ai_primer
 - jupyter notebook
 
-## Accompanying slides
+## Accompanying slides (DEPRECATED - will be updated for 2020 course)
 
 - Linear Algebra, SVD and Regression [slides](https://paper.dropbox.com/published/1.-Linear-Algebra-Intro--AjuKtJovFYXzhwQL1NoTiNu_Bw-MQ26SBHzU2W5mOzYyOHW1o8). See *Singular value decomposition.ipynb*.
 - Bootsrapping and Gradient Descent [slides](https://paper.dropbox.com/published/1.-Statistics-Intro-Shuffling-Bootstrapping-and-CV--AkHAAbu7iXjFjjbMJAdIC_KMBg-BftDdpAMoOQaXXs2N7wPZ8Y). See *Bootsrapping.ipynb* and *Gradient Descent.ipynb*.
