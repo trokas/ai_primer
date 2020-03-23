@@ -1,6 +1,0 @@
-- file: intro
-- file: content
-  pages:
-    - file: markdown
-    - file: notebooks
-- file: syntax
