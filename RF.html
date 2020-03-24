@@ -1,0 +1,936 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Decision tree for iris dataset &#8212; My Jupyter Book  documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="_static/jupyterbook.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <link href="_static/css/index.css" rel="stylesheet">
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide_output div.cell_output, .tag_hide_cell.cell';</script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Perceptron for 2 class case" href="FCN.html" />
+    <link rel="prev" title="Using SVD to compress images" href="SVD.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    
+<div class='top'>
+<button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation">
+    <i class="fas fa-bars"></i>
+    <i class="fas fa-arrow-left"></i>
+    <i class="fas fa-arrow-up"></i>
+</button>
+</div>
+
+    <div class="container-fluid">
+      <div class="row">
+          
+<div class="col-12 col-md-3 col-xl-3 bd-sidebar show" id="site-navigation">
+<div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book  documentation</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="SVD.html">Using SVD to compress images</a>
+  </li>
+  <li class="active">
+    <a href="">Decision tree for iris dataset</a>
+  </li>
+  <li class="">
+    <a href="FCN.html">Perceptron for 2 class case</a>
+  </li>
+  <li class="">
+    <a href="CNN.html">Filters</a>
+  </li>
+  <li class="">
+    <a href="syntax.html">Jupyter Book markdown syntax</a>
+  </li>
+</ul>
+</nav>
+<p class="sidebar_footer">Powered by <a href='https://jupyterbook.org'>Jupyter Book</a></p>
+</div>
+
+          
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+</div>
+
+
+          
+<main class="col py-md-3 pl-md-5 pr-0 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar sticky-top">
+    <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation">
+        <i class="fas fa-bars"></i>
+        <i class="fas fa-arrow-left"></i>
+    </button>
+    <a class="download-buttons" href="_sources/RF.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn"><i class="fas fa-download"></i>.ipynb</button></a>
+    
+</div>
+    <div class="row">
+        <div class="col-12 ">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">export_graphviz</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingClassifier</span>
+<span class="kn">from</span> <span class="nn">graphviz</span> <span class="kn">import</span> <span class="n">Source</span>   <span class="c1"># Install it using: conda install -c conda-forge python-graphviz</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">SVG</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="section" id="decision-tree-for-iris-dataset">
+<h1>Decision tree for iris dataset<a class="headerlink" href="#decision-tree-for-iris-dataset" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load dataset</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">]</span>
+
+<span class="c1"># Train/test mask</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">0.7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>Let’s fit entropy based tree on iris dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">max_depth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">70</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Tree for max_dept = </span><span class="si">{0}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">max_depth</span><span class="p">))</span>
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">)</span>
+    <span class="c1"># Fit on train data</span>
+    <span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Make prediction and evaluate performance</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correctly identified on train set - </span><span class="si">{0:.02%}</span><span class="s1">, on test set - </span><span class="si">{1:.02%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>        <span class="c1"># train set</span>
+        <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>     <span class="c1"># test set</span>
+
+    <span class="c1"># Make a nice plot</span>
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filled</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                                   <span class="n">feature_names</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+                                   <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0 - setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;1 - versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;2 - virginica&#39;</span><span class="p">]))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;svg&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
+Tree for max_dept = 1
+
+Correctly identified on train set - 70.48%, on test set - 57.78%
+</pre></div>
+</div>
+<img alt="_images/RF_4_1.svg" src="_images/RF_4_1.svg" /><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
+Tree for max_dept = 2
+
+Correctly identified on train set - 96.19%, on test set - 95.56%
+</pre></div>
+</div>
+<img alt="_images/RF_4_3.svg" src="_images/RF_4_3.svg" /><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
+Tree for max_dept = 3
+
+Correctly identified on train set - 97.14%, on test set - 97.78%
+</pre></div>
+</div>
+<img alt="_images/RF_4_5.svg" src="_images/RF_4_5.svg" /></div>
+</div>
+<p>As we can see simple decision tree works quite good for iris dataset.</p>
+</div>
+<div class="section" id="larger-dataset-and-overfit-example">
+<h1>Larger dataset and overfit example<a class="headerlink" href="#larger-dataset-and-overfit-example" title="Permalink to this headline">¶</a></h1>
+<p>Let’s load another legendary dataset containing classification problem. If you are interested in dataset details see <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29">UCI</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
+
+<span class="c1"># Load dataset</span>
+<span class="n">cancer</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cancer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">cancer</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cancer</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">cancer</span><span class="o">.</span><span class="n">target</span><span class="p">]</span>
+
+<span class="c1"># Train/test mask</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">0.8</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean radius</th>
+      <th>mean texture</th>
+      <th>mean perimeter</th>
+      <th>mean area</th>
+      <th>mean smoothness</th>
+      <th>mean compactness</th>
+      <th>mean concavity</th>
+      <th>mean concave points</th>
+      <th>mean symmetry</th>
+      <th>mean fractal dimension</th>
+      <th>...</th>
+      <th>worst radius</th>
+      <th>worst texture</th>
+      <th>worst perimeter</th>
+      <th>worst area</th>
+      <th>worst smoothness</th>
+      <th>worst compactness</th>
+      <th>worst concavity</th>
+      <th>worst concave points</th>
+      <th>worst symmetry</th>
+      <th>worst fractal dimension</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>count</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>...</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+      <td>569.000000</td>
+    </tr>
+    <tr>
+      <td>mean</td>
+      <td>14.127292</td>
+      <td>19.289649</td>
+      <td>91.969033</td>
+      <td>654.889104</td>
+      <td>0.096360</td>
+      <td>0.104341</td>
+      <td>0.088799</td>
+      <td>0.048919</td>
+      <td>0.181162</td>
+      <td>0.062798</td>
+      <td>...</td>
+      <td>16.269190</td>
+      <td>25.677223</td>
+      <td>107.261213</td>
+      <td>880.583128</td>
+      <td>0.132369</td>
+      <td>0.254265</td>
+      <td>0.272188</td>
+      <td>0.114606</td>
+      <td>0.290076</td>
+      <td>0.083946</td>
+    </tr>
+    <tr>
+      <td>std</td>
+      <td>3.524049</td>
+      <td>4.301036</td>
+      <td>24.298981</td>
+      <td>351.914129</td>
+      <td>0.014064</td>
+      <td>0.052813</td>
+      <td>0.079720</td>
+      <td>0.038803</td>
+      <td>0.027414</td>
+      <td>0.007060</td>
+      <td>...</td>
+      <td>4.833242</td>
+      <td>6.146258</td>
+      <td>33.602542</td>
+      <td>569.356993</td>
+      <td>0.022832</td>
+      <td>0.157336</td>
+      <td>0.208624</td>
+      <td>0.065732</td>
+      <td>0.061867</td>
+      <td>0.018061</td>
+    </tr>
+    <tr>
+      <td>min</td>
+      <td>6.981000</td>
+      <td>9.710000</td>
+      <td>43.790000</td>
+      <td>143.500000</td>
+      <td>0.052630</td>
+      <td>0.019380</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.106000</td>
+      <td>0.049960</td>
+      <td>...</td>
+      <td>7.930000</td>
+      <td>12.020000</td>
+      <td>50.410000</td>
+      <td>185.200000</td>
+      <td>0.071170</td>
+      <td>0.027290</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.156500</td>
+      <td>0.055040</td>
+    </tr>
+    <tr>
+      <td>25%</td>
+      <td>11.700000</td>
+      <td>16.170000</td>
+      <td>75.170000</td>
+      <td>420.300000</td>
+      <td>0.086370</td>
+      <td>0.064920</td>
+      <td>0.029560</td>
+      <td>0.020310</td>
+      <td>0.161900</td>
+      <td>0.057700</td>
+      <td>...</td>
+      <td>13.010000</td>
+      <td>21.080000</td>
+      <td>84.110000</td>
+      <td>515.300000</td>
+      <td>0.116600</td>
+      <td>0.147200</td>
+      <td>0.114500</td>
+      <td>0.064930</td>
+      <td>0.250400</td>
+      <td>0.071460</td>
+    </tr>
+    <tr>
+      <td>50%</td>
+      <td>13.370000</td>
+      <td>18.840000</td>
+      <td>86.240000</td>
+      <td>551.100000</td>
+      <td>0.095870</td>
+      <td>0.092630</td>
+      <td>0.061540</td>
+      <td>0.033500</td>
+      <td>0.179200</td>
+      <td>0.061540</td>
+      <td>...</td>
+      <td>14.970000</td>
+      <td>25.410000</td>
+      <td>97.660000</td>
+      <td>686.500000</td>
+      <td>0.131300</td>
+      <td>0.211900</td>
+      <td>0.226700</td>
+      <td>0.099930</td>
+      <td>0.282200</td>
+      <td>0.080040</td>
+    </tr>
+    <tr>
+      <td>75%</td>
+      <td>15.780000</td>
+      <td>21.800000</td>
+      <td>104.100000</td>
+      <td>782.700000</td>
+      <td>0.105300</td>
+      <td>0.130400</td>
+      <td>0.130700</td>
+      <td>0.074000</td>
+      <td>0.195700</td>
+      <td>0.066120</td>
+      <td>...</td>
+      <td>18.790000</td>
+      <td>29.720000</td>
+      <td>125.400000</td>
+      <td>1084.000000</td>
+      <td>0.146000</td>
+      <td>0.339100</td>
+      <td>0.382900</td>
+      <td>0.161400</td>
+      <td>0.317900</td>
+      <td>0.092080</td>
+    </tr>
+    <tr>
+      <td>max</td>
+      <td>28.110000</td>
+      <td>39.280000</td>
+      <td>188.500000</td>
+      <td>2501.000000</td>
+      <td>0.163400</td>
+      <td>0.345400</td>
+      <td>0.426800</td>
+      <td>0.201200</td>
+      <td>0.304000</td>
+      <td>0.097440</td>
+      <td>...</td>
+      <td>36.040000</td>
+      <td>49.540000</td>
+      <td>251.200000</td>
+      <td>4254.000000</td>
+      <td>0.222600</td>
+      <td>1.058000</td>
+      <td>1.252000</td>
+      <td>0.291000</td>
+      <td>0.663800</td>
+      <td>0.207500</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 30 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>class
+benign       357
+malignant    212
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>As before we will fit multiple trees with different max_depth’s. This time let’s plot performance on train and test sets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">max_depth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="c1"># Fit on train data</span>
+    <span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Make prediction and evaluate performance</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">([(</span><span class="n">pred</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>        <span class="c1"># train set</span>
+              <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()])</span>     <span class="c1"># test set</span>
+    
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Accuracy for different max_depth values&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8c232900b8&gt;
+</pre></div>
+</div>
+<img alt="_images/RF_10_1.png" src="_images/RF_10_1.png" />
+</div>
+</div>
+<p>This is a good illustration of overfitting case. How can we prevent it in this case?</p>
+</div>
+<div class="section" id="random-forests">
+<h1>Random forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defining the base estimator</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">splitter</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span>
+                    <span class="n">max_features</span><span class="o">=</span><span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create Random Forest </span>
+<span class="n">ensemble</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">base</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+                             <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+
+<span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correctly identified on train set - </span><span class="si">{0:.02%}</span><span class="s1">, on test set - </span><span class="si">{1:.02%}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>        <span class="c1"># train set</span>
+    <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>     <span class="c1"># test set</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 100.00%, on test set - 93.70%
+
+CPU times: user 907 ms, sys: 3.23 ms, total: 910 ms
+Wall time: 910 ms
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="extratrees">
+<h1>ExtraTrees<a class="headerlink" href="#extratrees" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defining the base estimator</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">splitter</span><span class="o">=</span><span class="s1">&#39;random&#39;</span><span class="p">,</span>
+                    <span class="n">max_features</span><span class="o">=</span><span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create Random Forest </span>
+<span class="n">ensemble</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">base</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+                             <span class="n">bootstrap</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+
+<span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correctly identified on train set - </span><span class="si">{0:.02%}</span><span class="s1">, on test set - </span><span class="si">{1:.02%}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>        <span class="c1"># train set</span>
+    <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>     <span class="c1"># test set</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 100.00%, on test set - 93.70%
+
+CPU times: user 541 ms, sys: 0 ns, total: 541 ms
+Wall time: 541 ms
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="task">
+<h2>Task<a class="headerlink" href="#task" title="Permalink to this headline">¶</a></h2>
+<p>Try to use RF on iris dataset. Use sklearn implementation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load dataset</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">]</span>
+
+<span class="c1"># Train/test mask</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">0.7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal length (cm)&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal width (cm)&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal length (cm)&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal width (cm)&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>RandomForestClassifier(bootstrap=True, class_weight=None, criterion=&#39;gini&#39;,
+                       max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=100,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pred</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pred</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy </span><span class="si">{acc:.02%}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Accuracy 95.56%
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="confusion-matrix">
+<h1>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">],</span> <span class="n">pred</span><span class="p">),</span>
+             <span class="n">columns</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>setosa</th>
+      <th>versicolor</th>
+      <th>virginica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>setosa</td>
+      <td>11</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>versicolor</td>
+      <td>0</td>
+      <td>18</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>virginica</td>
+      <td>0</td>
+      <td>1</td>
+      <td>14</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="feature-importance">
+<h1>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span>
+             <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>sepal length (cm)</td>
+      <td>0.092149</td>
+    </tr>
+    <tr>
+      <td>sepal width (cm)</td>
+      <td>0.033990</td>
+    </tr>
+    <tr>
+      <td>petal length (cm)</td>
+      <td>0.231749</td>
+    </tr>
+    <tr>
+      <td>petal width (cm)</td>
+      <td>0.275963</td>
+    </tr>
+    <tr>
+      <td>sepal area</td>
+      <td>0.032594</td>
+    </tr>
+    <tr>
+      <td>petal area</td>
+      <td>0.333554</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="xgboost">
+<h1>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># conda install -c conda-forge xgboost</span>
+<span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="nn">xgb</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">class_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;setosa&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;versicolor&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;virginica&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="n">class_map_inv</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;setosa&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;versicolor&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;virginica&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_data</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">class_map</span><span class="p">))</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">class_map</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bst</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">train</span><span class="p">({</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="n">train_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pred</span> <span class="o">=</span> <span class="n">bst</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">class_map_inv</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pred</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">],</span> <span class="n">pred</span><span class="p">),</span>
+             <span class="n">columns</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>setosa</th>
+      <th>versicolor</th>
+      <th>virginica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>setosa</td>
+      <td>11</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>versicolor</td>
+      <td>0</td>
+      <td>18</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>virginica</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="SVD.html" title="previous page">Using SVD to compress images</a>
+    <a class='right-next' id="next-link" href="FCN.html" title="next page">Perceptron for 2 class case</a>
+
+    </div>
+    <footer class="footer">
+  <div class="container">
+    <p>
+          &copy; Copyright 2020.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
+    </p>
+  </div>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
