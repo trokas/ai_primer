@@ -1,6 +1,6 @@
 # Book settings
-title: Jupyter Book
-author: The Jupyter Book Community
+title: AI primer
+author: trokas
 html_logo: ''
 
 use_binder_button: true

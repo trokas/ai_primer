@@ -1,6 +1,7 @@
 - file: intro
-- file: content
   pages:
-    - file: markdown
-    - file: notebooks
+    - file: SVD.ipynb
+    - file: RF.ipynb
+    - file: FCN.ipynb
+    - file: CNN.ipynb
 - file: syntax
