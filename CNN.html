@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Filters &#8212; My Jupyter Book  documentation</title>
+    <title>CNN &#8212; My Jupyter Book  documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link rel="stylesheet" href="_static/jupyterbook.css" type="text/css" />
@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Jupyter Book markdown syntax" href="syntax.html" />
-    <link rel="prev" title="Perceptron for 2 class case" href="FCN.html" />
+    <link rel="prev" title="FCN" href="FCN.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -68,16 +68,16 @@
   
   <ul class="nav sidenav_l1">
   <li class="">
-    <a href="SVD.html">Using SVD to compress images</a>
+    <a href="SVD.html">SVD</a>
   </li>
   <li class="">
-    <a href="RF.html">Decision tree for iris dataset</a>
+    <a href="RF.html">RF</a>
   </li>
   <li class="">
-    <a href="FCN.html">Perceptron for 2 class case</a>
+    <a href="FCN.html">FCN</a>
   </li>
   <li class="active">
-    <a href="">Filters</a>
+    <a href="">CNN</a>
   </li>
   <li class="">
     <a href="syntax.html">Jupyter Book markdown syntax</a>
@@ -90,26 +90,8 @@
           
 <div class="d-none d-xl-block col-xl-2 bd-toc">
 
-
-<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#simple-box-blur" class="nav-link">Simple box blur</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#line-detection" class="nav-link">Line detection</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#edge-detection" class="nav-link">Edge detection</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#the-sobel-edge-operator" class="nav-link">The Sobel Edge Operator</a>
-        </li>
     
     </ul>
 </nav>
@@ -132,7 +114,9 @@
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="cnn">
+<h1>CNN<a class="headerlink" href="#cnn" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
@@ -187,7 +171,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_2_0.png" src="_images/CNN_2_0.png" />
+<img alt="_images/CNN_3_0.png" src="_images/CNN_3_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="filters">
@@ -202,7 +187,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_4_0.png" src="_images/CNN_4_0.png" />
+<img alt="_images/CNN_5_0.png" src="_images/CNN_5_0.png" />
 </div>
 </div>
 </div>
@@ -218,7 +203,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_6_0.png" src="_images/CNN_6_0.png" />
+<img alt="_images/CNN_7_0.png" src="_images/CNN_7_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -231,7 +216,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_7_0.png" src="_images/CNN_7_0.png" />
+<img alt="_images/CNN_8_0.png" src="_images/CNN_8_0.png" />
 </div>
 </div>
 </div>
@@ -247,7 +232,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_9_0.png" src="_images/CNN_9_0.png" />
+<img alt="_images/CNN_10_0.png" src="_images/CNN_10_0.png" />
 </div>
 </div>
 </div>
@@ -266,13 +251,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_11_0.png" src="_images/CNN_11_0.png" />
+<img alt="_images/CNN_12_0.png" src="_images/CNN_12_0.png" />
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="cnn">
-<h1>CNN<a class="headerlink" href="#cnn" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h1>CNN<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>Following video contains a neat visualization of CNN.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -383,7 +368,7 @@ Epoch 10/10
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fdf2b363390&gt;
 </pre></div>
 </div>
-<img alt="_images/CNN_18_1.png" src="_images/CNN_18_1.png" />
+<img alt="_images/CNN_19_1.png" src="_images/CNN_19_1.png" />
 </div>
 </div>
 <p>Using FCN we had 96.36% on test set.</p>
@@ -627,7 +612,7 @@ Epoch 10/10
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="FCN.html" title="previous page">Perceptron for 2 class case</a>
+    <a class='left-prev' id="prev-link" href="FCN.html" title="previous page">FCN</a>
     <a class='right-next' id="next-link" href="syntax.html" title="next page">Jupyter Book markdown syntax</a>
 
     </div>

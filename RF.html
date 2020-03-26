@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Decision tree for iris dataset &#8212; My Jupyter Book  documentation</title>
+    <title>RF &#8212; My Jupyter Book  documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link rel="stylesheet" href="_static/jupyterbook.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Perceptron for 2 class case" href="FCN.html" />
-    <link rel="prev" title="Using SVD to compress images" href="SVD.html" />
+    <link rel="next" title="FCN" href="FCN.html" />
+    <link rel="prev" title="SVD" href="SVD.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -68,16 +68,16 @@
   
   <ul class="nav sidenav_l1">
   <li class="">
-    <a href="SVD.html">Using SVD to compress images</a>
+    <a href="SVD.html">SVD</a>
   </li>
   <li class="active">
-    <a href="">Decision tree for iris dataset</a>
+    <a href="">RF</a>
   </li>
   <li class="">
-    <a href="FCN.html">Perceptron for 2 class case</a>
+    <a href="FCN.html">FCN</a>
   </li>
   <li class="">
-    <a href="CNN.html">Filters</a>
+    <a href="CNN.html">CNN</a>
   </li>
   <li class="">
     <a href="syntax.html">Jupyter Book markdown syntax</a>
@@ -90,8 +90,18 @@
           
 <div class="d-none d-xl-block col-xl-2 bd-toc">
 
+
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#decision-tree-for-iris-dataset" class="nav-link">Decision tree for iris dataset</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#larger-dataset-and-overfit-example" class="nav-link">Larger dataset and overfit example</a>
+        </li>
     
     </ul>
 </nav>
@@ -114,7 +124,9 @@
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="rf">
+<h1>RF<a class="headerlink" href="#rf" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
@@ -133,7 +145,7 @@
 </div>
 </div>
 <div class="section" id="decision-tree-for-iris-dataset">
-<h1>Decision tree for iris dataset<a class="headerlink" href="#decision-tree-for-iris-dataset" title="Permalink to this headline">¶</a></h1>
+<h2>Decision tree for iris dataset<a class="headerlink" href="#decision-tree-for-iris-dataset" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load dataset</span>
@@ -180,24 +192,24 @@ Tree for max_dept = 1
 Correctly identified on train set - 70.48%, on test set - 57.78%
 </pre></div>
 </div>
-<img alt="_images/RF_4_1.svg" src="_images/RF_4_1.svg" /><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
+<img alt="_images/RF_5_1.svg" src="_images/RF_5_1.svg" /><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
 Tree for max_dept = 2
 
 Correctly identified on train set - 96.19%, on test set - 95.56%
 </pre></div>
 </div>
-<img alt="_images/RF_4_3.svg" src="_images/RF_4_3.svg" /><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
+<img alt="_images/RF_5_3.svg" src="_images/RF_5_3.svg" /><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
 Tree for max_dept = 3
 
 Correctly identified on train set - 97.14%, on test set - 97.78%
 </pre></div>
 </div>
-<img alt="_images/RF_4_5.svg" src="_images/RF_4_5.svg" /></div>
+<img alt="_images/RF_5_5.svg" src="_images/RF_5_5.svg" /></div>
 </div>
 <p>As we can see simple decision tree works quite good for iris dataset.</p>
 </div>
 <div class="section" id="larger-dataset-and-overfit-example">
-<h1>Larger dataset and overfit example<a class="headerlink" href="#larger-dataset-and-overfit-example" title="Permalink to this headline">¶</a></h1>
+<h2>Larger dataset and overfit example<a class="headerlink" href="#larger-dataset-and-overfit-example" title="Permalink to this headline">¶</a></h2>
 <p>Let’s load another legendary dataset containing classification problem. If you are interested in dataset details see <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29">UCI</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -494,10 +506,11 @@ dtype: int64
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8c232900b8&gt;
 </pre></div>
 </div>
-<img alt="_images/RF_10_1.png" src="_images/RF_10_1.png" />
+<img alt="_images/RF_11_1.png" src="_images/RF_11_1.png" />
 </div>
 </div>
 <p>This is a good illustration of overfitting case. How can we prevent it in this case?</p>
+</div>
 </div>
 <div class="section" id="random-forests">
 <h1>Random forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">¶</a></h1>
@@ -912,8 +925,8 @@ Wall time: 541 ms
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="SVD.html" title="previous page">Using SVD to compress images</a>
-    <a class='right-next' id="next-link" href="FCN.html" title="next page">Perceptron for 2 class case</a>
+    <a class='left-prev' id="prev-link" href="SVD.html" title="previous page">SVD</a>
+    <a class='right-next' id="next-link" href="FCN.html" title="next page">FCN</a>
 
     </div>
     <footer class="footer">

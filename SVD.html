@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Using SVD to compress images &#8212; My Jupyter Book  documentation</title>
+    <title>SVD &#8212; My Jupyter Book  documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link rel="stylesheet" href="_static/jupyterbook.css" type="text/css" />
@@ -28,7 +28,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Decision tree for iris dataset" href="RF.html" />
+    <link rel="next" title="RF" href="RF.html" />
     <link rel="prev" title="Welcome to AI primer course" href="intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,16 +68,16 @@
   
   <ul class="nav sidenav_l1">
   <li class="active">
-    <a href="">Using SVD to compress images</a>
+    <a href="">SVD</a>
   </li>
   <li class="">
-    <a href="RF.html">Decision tree for iris dataset</a>
+    <a href="RF.html">RF</a>
   </li>
   <li class="">
-    <a href="FCN.html">Perceptron for 2 class case</a>
+    <a href="FCN.html">FCN</a>
   </li>
   <li class="">
-    <a href="CNN.html">Filters</a>
+    <a href="CNN.html">CNN</a>
   </li>
   <li class="">
     <a href="syntax.html">Jupyter Book markdown syntax</a>
@@ -114,7 +114,9 @@
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="svd">
+<h1>SVD<a class="headerlink" href="#svd" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
@@ -128,6 +130,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
+</div>
 </div>
 </div>
 <div class="section" id="using-svd-to-compress-images">
@@ -157,7 +160,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_3_0.png" src="_images/SVD_3_0.png" />
+<img alt="_images/SVD_4_0.png" src="_images/SVD_4_0.png" />
 </div>
 </div>
 <p>First, let’s use all singular values.</p>
@@ -178,7 +181,7 @@ S shape - (503,)
 V shape - (800, 800)
 </pre></div>
 </div>
-<img alt="_images/SVD_5_1.png" src="_images/SVD_5_1.png" />
+<img alt="_images/SVD_6_1.png" src="_images/SVD_6_1.png" />
 </div>
 </div>
 <p>Let’s try to use only top singular values thus compressing image even more.</p>
@@ -214,7 +217,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_10_0.png" src="_images/SVD_10_0.png" />
+<img alt="_images/SVD_11_0.png" src="_images/SVD_11_0.png" />
 </div>
 </div>
 </div>
@@ -3438,7 +3441,7 @@ dtype: float64
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Welcome to AI primer course</a>
-    <a class='right-next' id="next-link" href="RF.html" title="next page">Decision tree for iris dataset</a>
+    <a class='right-next' id="next-link" href="RF.html" title="next page">RF</a>
 
     </div>
     <footer class="footer">

@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Perceptron for 2 class case &#8212; My Jupyter Book  documentation</title>
+    <title>FCN &#8212; My Jupyter Book  documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link rel="stylesheet" href="_static/jupyterbook.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Filters" href="CNN.html" />
-    <link rel="prev" title="Decision tree for iris dataset" href="RF.html" />
+    <link rel="next" title="CNN" href="CNN.html" />
+    <link rel="prev" title="RF" href="RF.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -68,16 +68,16 @@
   
   <ul class="nav sidenav_l1">
   <li class="">
-    <a href="SVD.html">Using SVD to compress images</a>
+    <a href="SVD.html">SVD</a>
   </li>
   <li class="">
-    <a href="RF.html">Decision tree for iris dataset</a>
+    <a href="RF.html">RF</a>
   </li>
   <li class="active">
-    <a href="">Perceptron for 2 class case</a>
+    <a href="">FCN</a>
   </li>
   <li class="">
-    <a href="CNN.html">Filters</a>
+    <a href="CNN.html">CNN</a>
   </li>
   <li class="">
     <a href="syntax.html">Jupyter Book markdown syntax</a>
@@ -114,7 +114,9 @@
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="fcn">
+<h1>FCN<a class="headerlink" href="#fcn" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
@@ -193,6 +195,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
+</div>
 </div>
 </div>
 <div class="section" id="perceptron-for-2-class-case">
@@ -536,7 +539,7 @@ Epoch 100/100
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7ff192e40c88&gt;
 </pre></div>
 </div>
-<img alt="_images/FCN_15_1.png" src="_images/FCN_15_1.png" />
+<img alt="_images/FCN_16_1.png" src="_images/FCN_16_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -582,7 +585,7 @@ Epoch 100/100
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FCN_20_0.png" src="_images/FCN_20_0.png" />
+<img alt="_images/FCN_21_0.png" src="_images/FCN_21_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -681,7 +684,7 @@ Epoch 20/20
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f57405e4128&gt;
 </pre></div>
 </div>
-<img alt="_images/FCN_23_1.png" src="_images/FCN_23_1.png" />
+<img alt="_images/FCN_24_1.png" src="_images/FCN_24_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -710,7 +713,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FCN_25_0.png" src="_images/FCN_25_0.png" />
+<img alt="_images/FCN_26_0.png" src="_images/FCN_26_0.png" />
 </div>
 </div>
 <p>Let’s look only at misclassifiesd cases</p>
@@ -729,7 +732,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FCN_27_0.png" src="_images/FCN_27_0.png" />
+<img alt="_images/FCN_28_0.png" src="_images/FCN_28_0.png" />
 </div>
 </div>
 </div>
@@ -746,7 +749,7 @@ Epoch 20/20
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f39b36a75c0&gt;
 </pre></div>
 </div>
-<img alt="_images/FCN_30_1.png" src="_images/FCN_30_1.png" />
+<img alt="_images/FCN_31_1.png" src="_images/FCN_31_1.png" />
 </div>
 </div>
 <p>Let’s use dropout between dense layers. We will need to train for a bit longer time, but since we are using dropout longer training time will not lead to overfitting.</p>
@@ -863,7 +866,7 @@ Epoch 30/30
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f39b3ee2710&gt;
 </pre></div>
 </div>
-<img alt="_images/FCN_33_1.png" src="_images/FCN_33_1.png" />
+<img alt="_images/FCN_34_1.png" src="_images/FCN_34_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -891,8 +894,8 @@ Epoch 30/30
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="RF.html" title="previous page">Decision tree for iris dataset</a>
-    <a class='right-next' id="next-link" href="CNN.html" title="next page">Filters</a>
+    <a class='left-prev' id="prev-link" href="RF.html" title="previous page">RF</a>
+    <a class='right-next' id="next-link" href="CNN.html" title="next page">CNN</a>
 
     </div>
     <footer class="footer">
