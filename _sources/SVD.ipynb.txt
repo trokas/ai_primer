@@ -4,12 +4,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "SVD\n",
-    "===\n",
-    "\n",
-    "# Main 1\n",
-    "# Main 2\n",
-    "## Sub-main"
+    "# SVD"
    ]
   },
   {
@@ -32,7 +27,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Using SVD to compress images"
+    "## Using SVD to compress images"
    ]
   },
   {
@@ -188,7 +183,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# SVD for linear regression\n",
+    "## SVD for linear regression\n",
     "\n",
     "$$\\hat \\beta = (X^T X)^{-1} X^T y = V S^{-1} U^T y$$"
    ]
@@ -270,7 +265,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Recommender using SVD"
+    "## Recommender using SVD"
    ]
   },
   {
@@ -2177,7 +2172,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## Simplest recommender"
+    "### Simplest recommender"
    ]
   },
   {
@@ -2559,7 +2554,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## MovieLense dataset\n",
+    "### MovieLense dataset\n",
     "\n",
     "You can download dataset from here: https://grouplens.org/datasets/movielens/latest/"
    ]
@@ -3413,7 +3408,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Unstable inverses"
+    "## Unstable inverses"
    ]
   },
   {

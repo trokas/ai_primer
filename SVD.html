@@ -90,8 +90,36 @@
           
 <div class="d-none d-xl-block col-xl-2 bd-toc">
 
+
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#using-svd-to-compress-images" class="nav-link">Using SVD to compress images</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#svd-for-linear-regression" class="nav-link">SVD for linear regression</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#recommender-using-svd" class="nav-link">Recommender using SVD</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#simplest-recommender" class="nav-link">Simplest recommender</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#movielense-dataset" class="nav-link">MovieLense dataset</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#unstable-inverses" class="nav-link">Unstable inverses</a>
+        </li>
     
     </ul>
 </nav>
@@ -116,14 +144,6 @@
                 
   <div class="section" id="svd">
 <h1>SVD<a class="headerlink" href="#svd" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="section" id="main-1">
-<h1>Main 1<a class="headerlink" href="#main-1" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="section" id="main-2">
-<h1>Main 2<a class="headerlink" href="#main-2" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="sub-main">
-<h2>Sub-main<a class="headerlink" href="#sub-main" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
@@ -140,10 +160,8 @@
 <div class="cell_output docutils container">
 </div>
 </div>
-</div>
-</div>
 <div class="section" id="using-svd-to-compress-images">
-<h1>Using SVD to compress images<a class="headerlink" href="#using-svd-to-compress-images" title="Permalink to this headline">¶</a></h1>
+<h2>Using SVD to compress images<a class="headerlink" href="#using-svd-to-compress-images" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -231,7 +249,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="section" id="svd-for-linear-regression">
-<h1>SVD for linear regression<a class="headerlink" href="#svd-for-linear-regression" title="Permalink to this headline">¶</a></h1>
+<h2>SVD for linear regression<a class="headerlink" href="#svd-for-linear-regression" title="Permalink to this headline">¶</a></h2>
 <p><div class="math notranslate nohighlight">
 \[\hat \beta = (X^T X)^{-1} X^T y = V S^{-1} U^T y\]</div>
 </p>
@@ -282,7 +300,7 @@ V shape - (800, 800)
 <p><strong>Note:</strong> sklearn and most other libraries use SVD for regression.</p>
 </div>
 <div class="section" id="recommender-using-svd">
-<h1>Recommender using SVD<a class="headerlink" href="#recommender-using-svd" title="Permalink to this headline">¶</a></h1>
+<h2>Recommender using SVD<a class="headerlink" href="#recommender-using-svd" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -1976,7 +1994,7 @@ V shape - (800, 800)
     </tbody></table></div></div>
 </div>
 <div class="section" id="simplest-recommender">
-<h2>Simplest recommender<a class="headerlink" href="#simplest-recommender" title="Permalink to this headline">¶</a></h2>
+<h3>Simplest recommender<a class="headerlink" href="#simplest-recommender" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
@@ -2326,7 +2344,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="section" id="movielense-dataset">
-<h2>MovieLense dataset<a class="headerlink" href="#movielense-dataset" title="Permalink to this headline">¶</a></h2>
+<h3>MovieLense dataset<a class="headerlink" href="#movielense-dataset" title="Permalink to this headline">¶</a></h3>
 <p>You can download dataset from here: https://grouplens.org/datasets/movielens/latest/</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2936,7 +2954,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="unstable-inverses">
-<h1>Unstable inverses<a class="headerlink" href="#unstable-inverses" title="Permalink to this headline">¶</a></h1>
+<h2>Unstable inverses<a class="headerlink" href="#unstable-inverses" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">hilbert</span>
@@ -3435,6 +3453,7 @@ dtype: float64
         5.54387072e-06,  1.30840285e-03, -1.73837935e-03,  1.03493700e-03,
        -2.45236866e-04,  8.99479606e-06])
 </pre></div>
+</div>
 </div>
 </div>
 </div>
