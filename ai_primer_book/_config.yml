@@ -3,5 +3,4 @@ title: AI primer
 author: trokas
 html_logo: ''
 
-use_binder_button: true
-binderhub_url: "https://mybinder.org"
+use_thebelab_button: true

@@ -1,7 +1,7 @@
 - file: intro
-  pages:
-    - file: SVD.ipynb
-    - file: RF.ipynb
-    - file: FCN.ipynb
-    - file: CNN.ipynb
+- file: SVD
+- file: RF
+- file: FCN
+- file: CNN
+- file: Project
 - file: syntax
