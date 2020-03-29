@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>SVD &#8212; My Jupyter Book  documentation</title>
+    <title>SVD (Singular Value Decomposition) &#8212; My Jupyter Book  documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link rel="stylesheet" href="_static/jupyterbook.css" type="text/css" />
@@ -68,7 +68,7 @@
   
   <ul class="nav sidenav_l1">
   <li class="active">
-    <a href="">SVD</a>
+    <a href="">SVD (Singular Value Decomposition)</a>
   </li>
   <li class="">
     <a href="RF.html">RF</a>
@@ -78,6 +78,9 @@
   </li>
   <li class="">
     <a href="CNN.html">CNN</a>
+  </li>
+  <li class="">
+    <a href="Project.html">Project: Flatland</a>
   </li>
   <li class="">
     <a href="syntax.html">Jupyter Book markdown syntax</a>
@@ -94,6 +97,30 @@
 <div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#increasing-importance-of-linear-algebra" class="nav-link">Increasing importance of linear algebra</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#linear-algebra-missing-pieces" class="nav-link">Linear algebra (missing pieces?)</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#matrix-vector-multiplication" class="nav-link">Matrix-vector multiplication</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#eigenvectors" class="nav-link">Eigenvectors</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#singular-value-decomposition-svd" class="nav-link">Singular Value Decomposition (SVD)</a>
+        </li>
+    
+            </ul>
+        </li>
     
         <li class="nav-item toc-entry toc-h2">
             <a href="#using-svd-to-compress-images" class="nav-link">Using SVD to compress images</a>
@@ -142,31 +169,150 @@
         
               <div>
                 
-  <div class="section" id="svd">
-<h1>SVD<a class="headerlink" href="#svd" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="svd-singular-value-decomposition">
+<h1>SVD (Singular Value Decomposition)<a class="headerlink" href="#svd-singular-value-decomposition" title="Permalink to this headline">¶</a></h1>
+<p>What we will cover in this page:</p>
+<ul class="simple">
+<li><p>Increasing importance of linear algebra</p></li>
+<li><p>Singular Value Decomposition (SVD)</p></li>
+<li><p>Using SVD to compress images</p></li>
+<li><p>Recommender using SVD</p></li>
+<li><p>SVD for linear regression</p></li>
+</ul>
+<div class="section" id="increasing-importance-of-linear-algebra">
+<h2>Increasing importance of linear algebra<a class="headerlink" href="#increasing-importance-of-linear-algebra" title="Permalink to this headline">¶</a></h2>
+<p>In 1844 Hermann Grassmann published his “Theory of Extension” which included foundational new topics of what is today called <strong>linear algebra</strong>. In 1848, James Joseph Sylvester introduced the term <strong>matrix</strong>, which is Latin for womb.
+Linear algebra is the branch of mathematics concerning linear equations such as
+<div class="math notranslate nohighlight">
+\[a_{1}x_{1}+\cdots +a_{n}x_{n}=b\]</div>
+ and linear functions such as <div class="math notranslate nohighlight">
+\[(x_{1},\ldots ,x_{n})\mapsto a_{1}x_{1}+\ldots +a_{n}x_{n}\]</div>
+
+and their representations through <strong>matrices and vector spaces</strong>. Linear algebra is increasing in importance as is core tool in AI field. Nice <a class="reference external" href="https://lexfridman.com/gilbert-strang/">podcast</a> about this increasing importance, Strang even suggests to replace calculus by linear albebra in schools. By the way most calculus operations have discrete analogues in linear algebra.</p>
+<div class="section" id="linear-algebra-missing-pieces">
+<h3>Linear algebra (missing pieces?)<a class="headerlink" href="#linear-algebra-missing-pieces" title="Permalink to this headline">¶</a></h3>
+<p>Since you know linear algebra well I just want to point out some important things which often are left forgotten:</p>
+<ul class="simple">
+<li><p>Algebra has geometric interpretation</p></li>
+<li><p>Usually you can think about algebraic objects and operations in alternative ways and that can open up some doors</p></li>
+</ul>
+<p>Here are couple examples to prove these points and give you some intuition.</p>
+<div class="section" id="matrix-vector-multiplication">
+<h4>Matrix-vector multiplication<a class="headerlink" href="#matrix-vector-multiplication" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Matrix is a collection of vectors</p></li>
+<li><p>A matrix maps one vector to another vector</p></li>
+<li><p>Matrix times vector can be thought of as a weighted sum of matrix columns</p></li>
+</ul>
+<img src="https://eli.thegreenplace.net/images/2015/veccomb.png" alt="Matrix times vector" style="width: 50%"/>
+<img src="https://eli.thegreenplace.net/images/2015/vecrowcomb.png" alt="Vector times matrix" style="width: 50%"/><p>So if we multiply a space by a matrix it enables us to <strong>stretch and rotate</strong> original space.</p>
+<img src="https://i.ytimg.com/vi/XkY2DOUCWMU/maxresdefault.jpg" alt="Space deformation" style="width: 50%"/><p>For example</p>
+<p>\begin{bmatrix}
+\cos(\theta) &amp; -\sin(\theta)\<br />
+\sin(\theta) &amp; \cos(\theta)
+\end{bmatrix}</p>
+<p>works as a simple counter-clockwise rotation, and it’s inverse as clockwise rotation. For more geometric interpretations see <strong>3Blue1Brown</strong> <a class="reference external" href="https://www.youtube.com/watch?v=kjBOesZCoqc&amp;feature=emb_title">linear algebra</a> course.</p>
+</div>
+</div>
+<div class="section" id="eigenvectors">
+<h3>Eigenvectors<a class="headerlink" href="#eigenvectors" title="Permalink to this headline">¶</a></h3>
+<p><strong>Suggested reading:</strong> <a class="reference external" href="https://www.math.arizona.edu/~glickenstein/math443f08/bryanleise.pdf">THE $25,000,000,000 EIGENVECTOR THE LINEAR ALGEBRA BEHIND GOOGLE</a></p>
+<p>So if vector multiplied by a matrix is a stretch and rotation, then axes of rotation can be especially useful. These axes are called eigenvectors and are easy to define, we just formalize the fact that rotation does nothing by <span class="math notranslate nohighlight">\(A u=\lambda u\)</span>, where <span class="math notranslate nohighlight">\(\lambda\)</span> is a scalar (eigenvalue).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">import</span> <span class="nn">imageio</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_boston</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eigenvalues:</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="s1">Eigenvectors:</span><span class="se">\n</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">B</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Eigenvalues:
+[-1. -2.]
+Eigenvectors:
+[[ 1.         -0.70710678]
+ [ 0.          0.70710678]]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>TASK:</strong> play a bit and make sure that it works as expected and you can use basic <em>numpy</em> functions easily (for example <em>np.dot</em>), we will need it a lot in the future.</p>
+<p><strong>TASK:</strong> play with a matrix
+<span class="math notranslate nohighlight">\(\begin{bmatrix}
+3 &amp; 1\\
+1 &amp; 2
+\end{bmatrix}\)</span>,
+can you tell what it doesk to the vectorspace and where eigenvectors are located? Do they have a clear interpretation? Unfortunately what you will observe works only for symmetric matrixes (those which are equal to its own transpose).</p>
+</div>
+<div class="section" id="singular-value-decomposition-svd">
+<h3>Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this headline">¶</a></h3>
+<p>We can decompose matrix any way we like, for example: <span class="math notranslate nohighlight">\(A = B + C\)</span>, <span class="math notranslate nohighlight">\(A = B \cdot C\)</span>, … It turns out that some decompositions are usefull for data compression, numerical calculations and might reveal insights into the data.</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Singular_value_decomposition_visualisation.svg/220px-Singular_value_decomposition_visualisation.svg.png" alt="SVD" style="width: 20%"/><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                 <span class="c1"># pip install numpy</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>    <span class="c1"># pip install matplotlib</span>
+<span class="kn">import</span> <span class="nn">cv2</span>                         <span class="c1"># pip install opencv-python</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Just a little helper function for a nicer plot.&quot;&quot;&quot;</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="mi">255</span> <span class="k">if</span> <span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">1</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;img/flud.jpg&#39;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Image shape </span><span class="si">{img.shape}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Image shape (503, 800)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/SVD_11_0.png" src="_images/SVD_11_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_boston</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="using-svd-to-compress-images">
 <h2>Using SVD to compress images<a class="headerlink" href="#using-svd-to-compress-images" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
     
 <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">u</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -187,7 +333,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_4_0.png" src="_images/SVD_4_0.png" />
+<img alt="_images/SVD_15_0.png" src="_images/SVD_15_0.png" />
 </div>
 </div>
 <p>First, let’s use all singular values.</p>
@@ -208,7 +354,7 @@ S shape - (503,)
 V shape - (800, 800)
 </pre></div>
 </div>
-<img alt="_images/SVD_6_1.png" src="_images/SVD_6_1.png" />
+<img alt="_images/SVD_17_1.png" src="_images/SVD_17_1.png" />
 </div>
 </div>
 <p>Let’s try to use only top singular values thus compressing image even more.</p>
@@ -244,7 +390,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_11_0.png" src="_images/SVD_11_0.png" />
+<img alt="_images/SVD_22_0.png" src="_images/SVD_22_0.png" />
 </div>
 </div>
 </div>
