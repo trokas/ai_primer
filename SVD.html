@@ -116,6 +116,10 @@
         </li>
     
         <li class="nav-item toc-entry toc-h3">
+            <a href="#how-to-calculate-eigenvectors" class="nav-link">How to calculate eigenvectors</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
             <a href="#singular-value-decomposition-svd" class="nav-link">Singular Value Decomposition (SVD)</a><ul class="nav section-nav flex-column">
                 
         <li class="nav-item toc-entry toc-h4">
@@ -133,7 +137,13 @@
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#svd-for-linear-regression" class="nav-link">SVD for linear regression</a>
+            <a href="#svd-for-linear-regression" class="nav-link">SVD for linear regression</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#pca-principal-component-analysis" class="nav-link">PCA (Principal Component analysis)</a>
+        </li>
+    
+            </ul>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
@@ -224,6 +234,7 @@ and their representations through <strong>matrices and vector spaces</strong>. L
 <h3>Eigenvectors<a class="headerlink" href="#eigenvectors" title="Permalink to this headline">¶</a></h3>
 <p><strong>Suggested reading:</strong> <a class="reference external" href="https://www.math.arizona.edu/~glickenstein/math443f08/bryanleise.pdf">THE $25,000,000,000 EIGENVECTOR THE LINEAR ALGEBRA BEHIND GOOGLE</a></p>
 <p>So if vector multiplied by a matrix is a stretch and rotation, then axes of rotation can be especially useful. These axes are called eigenvectors and are easy to define, we just formalize the fact that rotation does nothing by <span class="math notranslate nohighlight">\(A u=\lambda u\)</span>, where <span class="math notranslate nohighlight">\(\lambda\)</span> is a scalar (eigenvalue).</p>
+<p>An eigenvector (eigen means ‘specific’ in German) is a vector whose direction remains unchanged when a linear transformation is applied to it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -231,7 +242,8 @@ and their representations through <strong>matrices and vector spaces</strong>. L
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eigenvalues:</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="s1">Eigenvectors:</span><span class="se">\n</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">B</span><span class="p">)))</span>
+<span class="n">values</span><span class="p">,</span> <span class="n">vectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Eigenvalues:</span><span class="se">\n</span><span class="si">{values}</span><span class="se">\n</span><span class="s1">Eigenvectors:</span><span class="se">\n</span><span class="si">{vectors}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -245,13 +257,61 @@ Eigenvectors:
 </div>
 </div>
 </div>
+<p>Let’s see what’s going on here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">20</span><span class="p">)),</span> <span class="n">vectors</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">20</span><span class="p">)),</span> <span class="n">vectors</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">U_proj</span><span class="p">,</span> <span class="n">V_proj</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">]))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">U_proj</span><span class="p">,</span> <span class="n">V_proj</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/SVD_4_0.png" src="_images/SVD_4_0.png" />
+</div>
+</div>
 <p><strong>TASK:</strong> play a bit and make sure that it works as expected and you can use basic <em>numpy</em> functions easily (for example <em>np.dot</em>), we will need it a lot in the future.</p>
 <p><strong>TASK:</strong> play with a matrix
 <span class="math notranslate nohighlight">\(\begin{bmatrix}
 3 &amp; 1\\
 1 &amp; 2
 \end{bmatrix}\)</span>,
-can you tell what it doesk to the vectorspace and where eigenvectors are located? Do they have a clear interpretation? Unfortunately what you will observe works only for symmetric matrixes (those which are equal to its own transpose).</p>
+can you tell what it does to the vectorspace and where eigenvectors are located? Do they have a clear interpretation?</p>
+<p>Some of the things you might discover will work only for symmetric matrixes (those which are equal to its own transpose). Keep that in mind, later we will intentionally produce symmetric matrixes.</p>
+</div>
+<div class="section" id="how-to-calculate-eigenvectors">
+<h3>How to calculate eigenvectors<a class="headerlink" href="#how-to-calculate-eigenvectors" title="Permalink to this headline">¶</a></h3>
+<p>You might know that already, but let’s run through quick example to get some intuition. Let</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{bmatrix}
+2 &amp; 3\\
+2 &amp; 1
+\end{bmatrix}\end{split}\]</div>
+</p>
+<p>Since we are solving for <span class="math notranslate nohighlight">\(A u=\lambda u\)</span> it is the same as to request that <span class="math notranslate nohighlight">\(A - \lambda I = 0\)</span> or</p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}\det\begin{pmatrix}
+2 - \lambda &amp; 3\\
+2 &amp; 1 - \lambda
+\end{pmatrix} = 0.\end{split}\]</div>
+</p>
+<p>After solving it you end up with two eigenvalues <span class="math notranslate nohighlight">\(\lambda_1 = -1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = 4\)</span>. The eigenvalue specifies the size of the eigenvector, let’s find those now. By solving system of equations defined by <span class="math notranslate nohighlight">\(Au_1 = -u_1\)</span> you should get <span class="math notranslate nohighlight">\(u_1 = \begin{bmatrix}-1\\1\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(Au_2 = 4u_2\)</span> quickly leads to <span class="math notranslate nohighlight">\(u_2 = \begin{bmatrix}3\\2\end{bmatrix}\)</span>.</p>
+<p><strong>TASK:</strong> confirm these calculations using numpy.</p>
 </div>
 <div class="section" id="singular-value-decomposition-svd">
 <h3>Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this headline">¶</a></h3>
@@ -296,59 +356,60 @@ can you tell what it doesk to the vectorspace and where eigenvectors are located
 <div class="math notranslate nohighlight">
 \[\det(X^TX - \lambda I) = (\lambda - 20)(\lambda - 80)\]</div>
 
-we have
-<div class="math notranslate nohighlight">
-\[\begin{split}X^TX - 20 I = 
-\begin{bmatrix}
-6 &amp; 18\\
-18 &amp; 54
-\end{bmatrix}
-\rightarrow
-V_1 = \frac{1}{\sqrt{10}}
-\begin{bmatrix}
--3\\
-1
-\end{bmatrix};\end{split}\]</div>
-
-<div class="math notranslate nohighlight">
+we have</p>
+<p><div class="math notranslate nohighlight">
 \[\begin{split}X^TX - 80 I =
 \begin{bmatrix}
 -54 &amp; 18\\
 18 &amp; -6
 \end{bmatrix}
 \rightarrow
-V_2 = \frac{1}{\sqrt{10}}
+V_1 = \frac{1}{\sqrt{10}}
 \begin{bmatrix}
 1\\
 3
 \end{bmatrix}.\end{split}\]</div>
 </p>
+<p><div class="math notranslate nohighlight">
+\[\begin{split}X^TX - 20 I = 
+\begin{bmatrix}
+6 &amp; 18\\
+18 &amp; 54
+\end{bmatrix}
+\rightarrow
+V_2 = \frac{1}{\sqrt{10}}
+\begin{bmatrix}
+3\\
+-1
+\end{bmatrix};\end{split}\]</div>
+</p>
 <p>Now we have</p>
 <p><div class="math notranslate nohighlight">
 \[\begin{split}V = \frac{1}{\sqrt{10}}
 \begin{bmatrix}
--3 &amp; 1\\
-1 &amp; 3
+1 &amp; 3\\
+3 &amp; -1
 \end{bmatrix},\end{split}\]</div>
 </p>
 <p>thus knowing that <span class="math notranslate nohighlight">\(XV=US\)</span> it is easy to find</p>
 <p><div class="math notranslate nohighlight">
 \[\begin{split}S =
 \begin{bmatrix}
-2\sqrt{5} &amp; 0\\
-0 &amp; 4\sqrt{5}
+4\sqrt{5} &amp; 0\\
+0 &amp; 2\sqrt{5}
 \end{bmatrix};\;
 U = \frac{1}{\sqrt{2}}
 \begin{bmatrix}
 1 &amp; 1\\
--1 &amp; 1
+1 &amp; -1
 \end{bmatrix}.\end{split}\]</div>
 </p>
-<p>TODO: fix axes so that they match with np output.</p>
+<p>Let’s confirm our results using numpy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
               <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span>
+
 <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;U</span><span class="se">\n</span><span class="si">{U}</span><span class="se">\n</span><span class="s1">S</span><span class="se">\n</span><span class="si">{S}</span><span class="se">\n</span><span class="s1">V</span><span class="se">\n</span><span class="si">{V}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
@@ -409,7 +470,7 @@ V
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Image shape (503, 800)
 </pre></div>
 </div>
-<img alt="_images/SVD_9_1.png" src="_images/SVD_9_1.png" />
+<img alt="_images/SVD_13_1.png" src="_images/SVD_13_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -441,7 +502,7 @@ S shape - (503,)
 V shape - (800, 800)
 </pre></div>
 </div>
-<img alt="_images/SVD_12_1.png" src="_images/SVD_12_1.png" />
+<img alt="_images/SVD_16_1.png" src="_images/SVD_16_1.png" />
 </div>
 </div>
 <p><strong>TASK:</strong> check if all values of <code class="docutils literal notranslate"><span class="pre">(U</span> <span class="pre">*</span> <span class="pre">S).dot(V[:len(S)])</span></code> match <code class="docutils literal notranslate"><span class="pre">X</span></code> using numpy.</p>
@@ -462,7 +523,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_15_0.png" src="_images/SVD_15_0.png" />
+<img alt="_images/SVD_19_0.png" src="_images/SVD_19_0.png" />
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
 </pre></div>
 </div>
@@ -478,7 +539,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_17_0.png" src="_images/SVD_17_0.png" />
+<img alt="_images/SVD_21_0.png" src="_images/SVD_21_0.png" />
 </div>
 </div>
 <p><strong>TASK:</strong> play with animation and explore U, S, V, how many numbers do you need to transmit comprehensible image?</p>
@@ -509,7 +570,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_22_0.png" src="_images/SVD_22_0.png" />
+<img alt="_images/SVD_26_0.png" src="_images/SVD_26_0.png" />
 </div>
 </div>
 <p>Further computations might lead to even higher errors, for example we would expect <span class="math notranslate nohighlight">\(X^{-1} X v = v\)</span>.</p>
@@ -597,6 +658,99 @@ V shape - (800, 800)
 </div>
 </div>
 <p><strong>Note:</strong> sklearn and most other libraries use SVD for regression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">()</span><span class="o">.</span><span class="n">data</span>   <span class="c1"># we do not need to add 1&#39;s column now</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RMSE = </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">pred</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>RMSE = 21.894831181729202
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pca-principal-component-analysis">
+<h3>PCA (Principal Component analysis)<a class="headerlink" href="#pca-principal-component-analysis" title="Permalink to this headline">¶</a></h3>
+<p>Similarly as with images SVD can be used to reveal most important components of the given dataset and thus lead to data compression. The process is called Principal Component analysis (PCA) as is executed as follows:</p>
+<ol class="simple">
+<li><p>Make sure that your dataset has samples in rows and variables in columns.</p></li>
+<li><p>Subtract mean and divide by standard deviation to normalize each variable to get <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p>Calculate SVD by computing <span class="math notranslate nohighlight">\(X=USV^T\)</span>.</p></li>
+<li><p>Treat <span class="math notranslate nohighlight">\(V\)</span> are principal directions/axes and <span class="math notranslate nohighlight">\(US\)</span> are principal components/scores.</p></li>
+</ol>
+<p><strong>NOTE:</strong> make shure that you can explain why each step is needed. If you need more explanation, read throuw this <a class="reference external" href="https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pca-how-to-use-svd-to-perform-pca">discussion</a>, it contains some good links too.</p>
+<p>This is a neat trick if we want to apply simple model (for example linear regression) on high dimensional datasets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="n">X</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># this is called Standard Scaling</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">U</span><span class="p">[:,:</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">S</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>    <span class="c1"># principal components</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[-2.09829747,  0.77311275,  0.34294273,  0.89177403],
+       [-1.45725167,  0.59198521, -0.69519931,  0.48745853],
+       [-2.07459756,  0.5996394 ,  0.1671216 ,  0.73920419],
+       ...,
+       [-0.31236047,  1.15524644, -0.40859759,  0.78630409],
+       [-0.27051907,  1.04136158, -0.58545406,  0.67813391],
+       [-0.12580322,  0.76197805, -1.294882  ,  0.2883292 ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Just to confirm that we interpreted SVD correctly this is sklearn implementation of PCA.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[-2.09829747,  0.77311275,  0.34294273, -0.89177403],
+       [-1.45725167,  0.59198521, -0.69519931, -0.48745853],
+       [-2.07459756,  0.5996394 ,  0.1671216 , -0.73920419],
+       ...,
+       [-0.31236047,  1.15524644, -0.40859759, -0.78630409],
+       [-0.27051907,  1.04136158, -0.58545406, -0.67813391],
+       [-0.12580322,  0.76197805, -1.294882  , -0.2883292 ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>For our simple dataset PCA does not help to improve RMSE, but keep this in your toolbox for those case where you have high number of correlated features. Also it can be used to plot high dimensional datasets by projecting them to lower dimension. Let’s take a look.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">X_proj</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_proj</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X_proj</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;First two principal components colored by price&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/SVD_42_0.png" src="_images/SVD_42_0.png" />
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="recommender-using-svd">
 <h2>Recommender using SVD<a class="headerlink" href="#recommender-using-svd" title="Permalink to this headline">¶</a></h2>
@@ -3265,7 +3419,6 @@ dtype: float64
 <li><p><a class="reference external" href="https://hackernoon.com/introduction-to-recommender-system-part-1-collaborative-filtering-singular-value-decomposition-44c9659c5e75">Blog - Introduction to Recommender System. Part 1 (Collaborative Filtering, Singular Value Decomposition)</a></p></li>
 <li><p><a class="reference external" href="http://fourier.eng.hmc.edu/e161/lectures/svdcompression.html">Blog - Image Compression with SVD</a></p></li>
 </ul>
-<p>TODO: should I add vector spave transform viz. How to simplify it?</p>
 </div>
 </div>
 
