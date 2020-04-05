@@ -28,3 +28,11 @@ What to expect from a single lecture?
 - There will be no clear distinction between theory and practice, thus you should have your PC ready for small assignments that you will encounter on the way.
 - Most important material will be listed here, but during lectures you will hear and see a lot of complementary material.
 - Each lecture will end with a list of resources (some of them mandatory). We will start a new lecture with a recap of what was done last time and discussion regarding mentioned resources in the hope to deepen understanding in the subject and inspire you to search for sources and publications yourself.
+
+## (re)Sources
+
+Each chapter will have a list of resources, but for now I highly recommend to start listening/watching following resources on your spare time:
+- [Data Skeptic podcast](https://dataskeptic.com/podcast?limit=10&offset=0)
+- [Artificial Intelligence podcast](https://lexfridman.com/ai/)
+- [Two Minute Papers youtube channel](https://www.youtube.com/user/keeroyz)
+
