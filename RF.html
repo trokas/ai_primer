@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>RF &#8212; My Jupyter Book  documentation</title>
+    <title>RF (Random Forest) &#8212; My Jupyter Book  documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link rel="stylesheet" href="_static/jupyterbook.css" type="text/css" />
@@ -71,7 +71,7 @@
     <a href="SVD.html">SVD (Singular Value Decomposition)</a>
   </li>
   <li class="active">
-    <a href="">RF</a>
+    <a href="">RF (Random Forest)</a>
   </li>
   <li class="">
     <a href="FCN.html">FCN</a>
@@ -99,41 +99,71 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#main-1" class="nav-link">Main 1</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#main-2" class="nav-link">Main 2</a><ul class="nav section-nav flex-column">
+            <a href="#entropy" class="nav-link">Entropy</a><ul class="nav section-nav flex-column">
                 
         <li class="nav-item toc-entry toc-h3">
-            <a href="#sub-main-1" class="nav-link">Sub-main 1</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#id1" class="nav-link">Sub-main 1</a><ul class="nav section-nav flex-column">
-                
-        <li class="nav-item toc-entry toc-h4">
-            <a href="#sub-sub-main" class="nav-link">Sub-sub-main</a><ul class="nav section-nav flex-column">
-                
-        <li class="nav-item toc-entry toc-h5">
-            <a href="#sub-sub-sub-main" class="nav-link">Sub-sub-sub-main</a>
-        </li>
-    
-            </ul>
-        </li>
-    
-            </ul>
+            <a href="#cross-entropy" class="nav-link">Cross-Entropy</a>
         </li>
     
             </ul>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
+            <a href="#decision-trees" class="nav-link">Decision Trees</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
             <a href="#decision-tree-for-iris-dataset" class="nav-link">Decision tree for iris dataset</a>
         </li>
     
-        <li class="nav-item toc-entry toc-h2">
+        <li class="nav-item toc-entry toc-h3">
             <a href="#larger-dataset-and-overfit-example" class="nav-link">Larger dataset and overfit example</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#ensembles" class="nav-link">Ensembles</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#random-forests" class="nav-link">Random forests</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#task" class="nav-link">Task</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#answer" class="nav-link">Answer</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#confusion-matrix" class="nav-link">Confusion matrix</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#feature-importance" class="nav-link">Feature importance</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#a-note-on-decision-boundaries" class="nav-link">A note on decision boundaries</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#mnist" class="nav-link">MNIST</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#whats-next" class="nav-link">Whats next?</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#re-sources" class="nav-link">(Re) Sources:</a>
         </li>
     
     </ul>
@@ -157,22 +187,50 @@
         
               <div>
                 
-  <div class="section" id="rf">
-<h1>RF<a class="headerlink" href="#rf" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="main-1">
-<h2>Main 1<a class="headerlink" href="#main-1" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="main-2">
-<h2>Main 2<a class="headerlink" href="#main-2" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="sub-main-1">
-<h3>Sub-main 1<a class="headerlink" href="#sub-main-1" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="id1">
-<h3>Sub-main 1<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="sub-sub-main">
-<h4>Sub-sub-main<a class="headerlink" href="#sub-sub-main" title="Permalink to this headline">¶</a></h4>
-<div class="section" id="sub-sub-sub-main">
-<h5>Sub-sub-sub-main<a class="headerlink" href="#sub-sub-sub-main" title="Permalink to this headline">¶</a></h5>
+  <div class="section" id="rf-random-forest">
+<h1>RF (Random Forest)<a class="headerlink" href="#rf-random-forest" title="Permalink to this headline">¶</a></h1>
+<p>Before defining random forests we need to explore it’s main building block - entropy.</p>
+<div class="section" id="entropy">
+<h2>Entropy<a class="headerlink" href="#entropy" title="Permalink to this headline">¶</a></h2>
+<p>Coined by Claude Shannon in “A Mathematical Theory of Communication” 1948 (<a class="reference external" href="http://www.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf">link</a>).
+Main question: how much useful information are we transmitting?
+When we transmit one bit of information we reduce recipients uncertainty by the factor of two.</p>
+<p>P.S.: same paper introduced term bit = <strong>bi</strong>nary uni<strong>t</strong>.</p>
+<hr class="docutils" />
+<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568908108119_Screenshot+from+2019-09-19+18-47-43.png" /></p>
+<hr class="docutils" />
+<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568908220168_Screenshot+from+2019-09-19+18-49-26.png" /></p>
+<p>How much information are we getting measured in bits? <div class="math notranslate nohighlight">
+\[- \log_2 (prob) = bits\]</div>
+</p>
+<hr class="docutils" />
+<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568908568165_Screenshot+from+2019-09-19+18-52-14.png" /></p>
+<hr class="docutils" />
+<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568908575679_Screenshot+from+2019-09-19+18-52-32.png" /></p>
+<hr class="docutils" />
+<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568908583110_Screenshot+from+2019-09-19+18-53-46.png" /></p>
+<p>Entropy: <div class="math notranslate nohighlight">
+\[H(p)=-\sum_i p_i \log_2 (p_i)\]</div>
+</p>
+<hr class="docutils" />
+<div class="section" id="cross-entropy">
+<h3>Cross-Entropy<a class="headerlink" href="#cross-entropy" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(p\)</span> - true distribution, <span class="math notranslate nohighlight">\(q\)</span> - predicted distribution, then Cross-entropy is
+<div class="math notranslate nohighlight">
+\[H(p,q) = -\sum_i p_i \log_2(q_i)\]</div>
+
+If predictions are perfect Cross-entropy is equal to entropy, but usually it is greater than entropy.
+Cross-entropy is often used for ML as a cost function (log-loss) comparing <span class="math notranslate nohighlight">\(p\)</span> with <span class="math notranslate nohighlight">\(q\)</span>.</p>
+<hr class="docutils" />
+<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568909269560_Screenshot+from+2019-09-19+19-00-24.png" /></p>
+<hr class="docutils" />
+<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568909276831_Screenshot+from+2019-09-19+19-01-19.png" /></p>
+<hr class="docutils" />
+<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568909283794_Screenshot+from+2019-09-19+19-01-42.png" /></p>
+<hr class="docutils" />
+<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568909289340_Screenshot+from+2019-09-19+19-02-50.png" /></p>
+<hr class="docutils" />
+<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568909296216_Screenshot+from+2019-09-19+19-04-30.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
@@ -182,8 +240,7 @@
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">export_graphviz</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingClassifier</span>
-<span class="kn">from</span> <span class="nn">graphviz</span> <span class="kn">import</span> <span class="n">Source</span>   <span class="c1"># Install it using: conda install -c conda-forge python-graphviz</span>
+<span class="kn">from</span> <span class="nn">graphviz</span> <span class="kn">import</span> <span class="n">Source</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">SVG</span>
 </pre></div>
 </div>
@@ -193,10 +250,19 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+<div class="section" id="decision-trees">
+<h2>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">¶</a></h2>
+<p>Simple decision tree can be constructed using rule: make a split which <strong>reduces entropy</strong> the most. In a well-constructed tree, each question will cut the number of options by approximately half, very quickly narrowing the options even among a large number of classes.</p>
+<p><img alt="" src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569515384629_image.png" /></p>
+<p>Couple facts about decision trees:</p>
+<ul class="simple">
+<li><p>Alternatively you could use Gini impurity as a split criteria, which is defined as <span class="math notranslate nohighlight">\(G_i = 1 - \sum_{k=1}^n p_{i,k}^2\)</span> where <span class="math notranslate nohighlight">\(p_{i,k}\)</span> is the ratio of class k instances among the training instances in the ith node.</p></li>
+<li><p>Finding the optimal tree is known to be an NP-Complete problem <span class="math notranslate nohighlight">\(O(\exp (m))\)</span>.</p></li>
+<li><p>Decision Trees are very sensitive to small variations in the training data.</p></li>
+<li><p>Decision Trees can easily over-fit if there is high number of columns!</p></li>
+</ul>
 <div class="section" id="decision-tree-for-iris-dataset">
-<h2>Decision tree for iris dataset<a class="headerlink" href="#decision-tree-for-iris-dataset" title="Permalink to this headline">¶</a></h2>
+<h3>Decision tree for iris dataset<a class="headerlink" href="#decision-tree-for-iris-dataset" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load dataset</span>
@@ -260,7 +326,7 @@ Correctly identified on train set - 97.14%, on test set - 97.78%
 <p>As we can see simple decision tree works quite good for iris dataset.</p>
 </div>
 <div class="section" id="larger-dataset-and-overfit-example">
-<h2>Larger dataset and overfit example<a class="headerlink" href="#larger-dataset-and-overfit-example" title="Permalink to this headline">¶</a></h2>
+<h3>Larger dataset and overfit example<a class="headerlink" href="#larger-dataset-and-overfit-example" title="Permalink to this headline">¶</a></h3>
 <p>Let’s load another legendary dataset containing classification problem. If you are interested in dataset details see <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29">UCI</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -560,14 +626,28 @@ dtype: int64
 <img alt="_images/RF_11_1.png" src="_images/RF_11_1.png" />
 </div>
 </div>
-<p>This is a good illustration of overfitting case. How can we prevent it in this case?</p>
+<p>Notice that as the depth increases, we tend to get very strangely shaped classification regions. Such overfitting turns out to be a general property of decision trees: it is very easy to go too deep in the tree, and thus to fit details of the particular data rather than the overall properties of the distributions they are drawn from. Another way to see this overfitting is to look at models trained on different subsets of the data.</p>
+<p>How can we prevent it in this case?</p>
 </div>
 </div>
+<div class="section" id="ensembles">
+<h2>Ensembles<a class="headerlink" href="#ensembles" title="Permalink to this headline">¶</a></h2>
+<p>The notion that multiple overfitting estimators can be combined to reduce the effect of overfitting is what underlies an ensemble method called bagging. Bagging makes use of an ensemble (a grab bag, perhaps) of parallel estimators, each of which overfits the data, and averages the results to find a better classification. An ensemble of randomized decision trees is known as a random forest.</p>
+<p><img alt="" src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569583935206_image.png" /></p>
+<p><img alt="" src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569583987571_image.png" /></p>
+<p>Ensemble methods work best when the predictors are as independent from one another as possible. One way to get diverse classifiers is to train them using very different algorithms. This increases the chance that they will make very different types of errors, improving the ensemble’s accuracy.</p>
+<p>Ensemble methods lead to similar bias but a lower variance.</p>
+<p><img alt="" src="http://www.stokastik.in/wp-content/uploads/2016/07/Bias_Variance.jpg" /></p>
 <div class="section" id="random-forests">
-<h1>Random forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">¶</a></h1>
+<h3>Random forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">¶</a></h3>
+<p>You can make multiple trees by choosing sub-sample of features (usually <span class="math notranslate nohighlight">\(\sqrt{m}\)</span>) and taking bootstrapped samples. Then just let trees vote for decision.</p>
+<p><img alt="" src="https://victorzhou.com/media/random-forest-post/random-forest.png" /></p>
+<p>Hard voting averages predictions, soft voting averages predicted probabilities instead.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defining the base estimator</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingClassifier</span>
+
+<span class="c1"># Defining the base estimator</span>
 <span class="n">base</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">splitter</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span>
                     <span class="n">max_features</span><span class="o">=</span><span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">)</span>
 
@@ -602,49 +682,13 @@ Wall time: 910 ms
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="extratrees">
-<h1>ExtraTrees<a class="headerlink" href="#extratrees" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defining the base estimator</span>
-<span class="n">base</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">splitter</span><span class="o">=</span><span class="s1">&#39;random&#39;</span><span class="p">,</span>
-                    <span class="n">max_features</span><span class="o">=</span><span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">)</span>
-
-<span class="c1"># Create Random Forest </span>
-<span class="n">ensemble</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">base</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-                             <span class="n">bootstrap</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
-
-<span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
-<span class="n">pred</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correctly identified on train set - </span><span class="si">{0:.02%}</span><span class="s1">, on test set - </span><span class="si">{1:.02%}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>        <span class="c1"># train set</span>
-    <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>     <span class="c1"># test set</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 100.00%, on test set - 93.70%
-
-CPU times: user 541 ms, sys: 0 ns, total: 541 ms
-Wall time: 541 ms
-</pre></div>
-</div>
+<p>We will note use this implememtation, this is just for illustration! Instead we will use <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> directly.</p>
+<p><strong>Note:</strong> there are other variations of boosted trees, for example ExtraTrees can be constructed by setting splitter to random and bootstrap to False. ExtraTrees are usually faster to train, but Random Forests are more well known, just try them both and see which works better for problem at hand.</p>
 </div>
 </div>
 <div class="section" id="task">
 <h2>Task<a class="headerlink" href="#task" title="Permalink to this headline">¶</a></h2>
-<p>Try to use RF on iris dataset. Use sklearn implementation.</p>
+<p>Try to use <code class="docutils literal notranslate"><span class="pre">sklearn.ensemble.RandomForestClassifier</span></code> for iris dataset. Use sklearn implementation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load dataset</span>
@@ -661,6 +705,8 @@ Wall time: 541 ms
 <div class="cell_output docutils container">
 </div>
 </div>
+<div class="section" id="answer">
+<h3>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
@@ -732,7 +778,8 @@ Wall time: 541 ms
 </div>
 </div>
 <div class="section" id="confusion-matrix">
-<h1>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h1>
+<h2>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Thisis a neat way to see where your model is making mistakes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
@@ -798,7 +845,8 @@ Wall time: 541 ms
 </div>
 </div>
 <div class="section" id="feature-importance">
-<h1>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h1>
+<h2>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h2>
+<p>It is easy to check which features are most important - ones which were used in most trees or/and gave highest information gain overall.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span>
@@ -858,112 +906,586 @@ Wall time: 541 ms
 </div></div></div>
 </div>
 </div>
-<div class="section" id="xgboost">
-<h1>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="a-note-on-decision-boundaries">
+<h2>A note on decision boundaries<a class="headerlink" href="#a-note-on-decision-boundaries" title="Permalink to this headline">¶</a></h2>
+<p>Let’s generate some data blobs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># conda install -c conda-forge xgboost</span>
-<span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="nn">xgb</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">class_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;setosa&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;versicolor&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;virginica&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-<span class="n">class_map_inv</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;setosa&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;versicolor&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;virginica&#39;</span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_data</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-            <span class="n">label</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">class_map</span><span class="p">))</span>
-<span class="n">test_data</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-            <span class="n">label</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">class_map</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bst</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">train</span><span class="p">({</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="n">train_data</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pred</span> <span class="o">=</span> <span class="n">bst</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
-<span class="n">pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">class_map_inv</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pred</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">],</span> <span class="n">pred</span><span class="p">),</span>
-             <span class="n">columns</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                  <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>setosa</th>
-      <th>versicolor</th>
-      <th>virginica</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>setosa</td>
-      <td>11</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>versicolor</td>
-      <td>0</td>
-      <td>18</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>virginica</td>
-      <td>0</td>
-      <td>0</td>
-      <td>15</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None,
+                       criterion=&#39;gini&#39;, max_depth=2, max_features=&#39;auto&#39;,
+                       max_leaf_nodes=None, max_samples=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=500,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Look at overfitting here, make decision boundary plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">100</span><span class="p">),</span>
+                     <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">100</span><span class="p">)])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">mesh</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">mesh</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">mesh</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;inferno&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Simple decision tree&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">mesh</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">mesh</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">mesh</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;inferno&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Random forest&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/RF_35_0.png" src="_images/RF_35_0.png" />
+</div>
+</div>
+<p>By the way, RF with standard param set will not look so nice.</p>
+</div>
+<div class="section" id="mnist">
+<h2>MNIST<a class="headerlink" href="#mnist" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="http://yann.lecun.com/exdb/mnist/">MNIST database</a> contains handwritten digits and has a training set of 60,000 examples, and a test set of 10,000 examples. It is legendary dataset crated by LeCun group in 1999.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+
+<span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="c1"># Normalize</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span> <span class="o">/</span> <span class="mi">255</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span> <span class="o">/</span> <span class="mi">255</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">60000</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">))</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/RF_38_0.png" src="_images/RF_38_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.9698
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style  type="text/css" >
+    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col0 {
+            background-color:  #023858;
+            color:  #f1f1f1;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col1 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col2 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col3 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col4 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col5 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col6 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col7 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col8 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col9 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col0 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col1 {
+            background-color:  #023858;
+            color:  #f1f1f1;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col2 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col3 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col4 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col5 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col6 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col7 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col8 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col9 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col0 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col1 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col2 {
+            background-color:  #023858;
+            color:  #f1f1f1;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col3 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col4 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col5 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col6 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col7 {
+            background-color:  #fef6fa;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col8 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col9 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col0 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col1 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col2 {
+            background-color:  #fdf5fa;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col3 {
+            background-color:  #023858;
+            color:  #f1f1f1;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col4 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col5 {
+            background-color:  #fef6fa;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col6 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col7 {
+            background-color:  #fef6fa;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col8 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col9 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col0 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col1 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col2 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col3 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col4 {
+            background-color:  #023858;
+            color:  #f1f1f1;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col5 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col6 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col7 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col8 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col9 {
+            background-color:  #fdf5fa;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col0 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col1 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col2 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col3 {
+            background-color:  #fdf5fa;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col4 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col5 {
+            background-color:  #023858;
+            color:  #f1f1f1;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col6 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col7 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col8 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col9 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col0 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col1 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col2 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col3 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col4 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col5 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col6 {
+            background-color:  #023858;
+            color:  #f1f1f1;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col7 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col8 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col9 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col0 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col1 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col2 {
+            background-color:  #fdf5fa;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col3 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col4 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col5 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col6 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col7 {
+            background-color:  #023858;
+            color:  #f1f1f1;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col8 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col9 {
+            background-color:  #fef6fa;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col0 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col1 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col2 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col3 {
+            background-color:  #fef6fa;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col4 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col5 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col6 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col7 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col8 {
+            background-color:  #023858;
+            color:  #f1f1f1;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col9 {
+            background-color:  #fef6fa;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col0 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col1 {
+            background-color:  #fef6fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col2 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col3 {
+            background-color:  #fef6fa;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col4 {
+            background-color:  #fef6fa;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col5 {
+            background-color:  #fef6fa;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col6 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col7 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col8 {
+            background-color:  #fff7fb;
+            color:  #000000;
+        }    #T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col9 {
+            background-color:  #023858;
+            color:  #f1f1f1;
+        }</style><table id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >0</th>        <th class="col_heading level0 col1" >1</th>        <th class="col_heading level0 col2" >2</th>        <th class="col_heading level0 col3" >3</th>        <th class="col_heading level0 col4" >4</th>        <th class="col_heading level0 col5" >5</th>        <th class="col_heading level0 col6" >6</th>        <th class="col_heading level0 col7" >7</th>        <th class="col_heading level0 col8" >8</th>        <th class="col_heading level0 col9" >9</th>    </tr></thead><tbody>
+                <tr>
+                        <th id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14level0_row0" class="row_heading level0 row0" >0</th>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col0" class="data row0 col0" >969</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col1" class="data row0 col1" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col2" class="data row0 col2" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col3" class="data row0 col3" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col4" class="data row0 col4" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col5" class="data row0 col5" >3</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col6" class="data row0 col6" >4</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col7" class="data row0 col7" >1</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col8" class="data row0 col8" >3</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row0_col9" class="data row0 col9" >0</td>
+            </tr>
+            <tr>
+                        <th id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14level0_row1" class="row_heading level0 row1" >1</th>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col0" class="data row1 col0" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col1" class="data row1 col1" >1124</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col2" class="data row1 col2" >1</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col3" class="data row1 col3" >4</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col4" class="data row1 col4" >1</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col5" class="data row1 col5" >1</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col6" class="data row1 col6" >2</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col7" class="data row1 col7" >1</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col8" class="data row1 col8" >1</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row1_col9" class="data row1 col9" >0</td>
+            </tr>
+            <tr>
+                        <th id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14level0_row2" class="row_heading level0 row2" >2</th>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col0" class="data row2 col0" >6</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col1" class="data row2 col1" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col2" class="data row2 col2" >1000</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col3" class="data row2 col3" >6</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col4" class="data row2 col4" >3</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col5" class="data row2 col5" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col6" class="data row2 col6" >3</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col7" class="data row2 col7" >8</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col8" class="data row2 col8" >6</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row2_col9" class="data row2 col9" >0</td>
+            </tr>
+            <tr>
+                        <th id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14level0_row3" class="row_heading level0 row3" >3</th>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col0" class="data row3 col0" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col1" class="data row3 col1" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col2" class="data row3 col2" >13</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col3" class="data row3 col3" >967</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col4" class="data row3 col4" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col5" class="data row3 col5" >9</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col6" class="data row3 col6" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col7" class="data row3 col7" >9</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col8" class="data row3 col8" >8</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row3_col9" class="data row3 col9" >4</td>
+            </tr>
+            <tr>
+                        <th id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14level0_row4" class="row_heading level0 row4" >4</th>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col0" class="data row4 col0" >1</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col1" class="data row4 col1" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col2" class="data row4 col2" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col3" class="data row4 col3" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col4" class="data row4 col4" >955</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col5" class="data row4 col5" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col6" class="data row4 col6" >6</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col7" class="data row4 col7" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col8" class="data row4 col8" >3</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row4_col9" class="data row4 col9" >17</td>
+            </tr>
+            <tr>
+                        <th id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14level0_row5" class="row_heading level0 row5" >5</th>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col0" class="data row5 col0" >4</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col1" class="data row5 col1" >1</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col2" class="data row5 col2" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col3" class="data row5 col3" >14</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col4" class="data row5 col4" >1</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col5" class="data row5 col5" >858</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col6" class="data row5 col6" >6</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col7" class="data row5 col7" >1</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col8" class="data row5 col8" >4</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row5_col9" class="data row5 col9" >3</td>
+            </tr>
+            <tr>
+                        <th id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14level0_row6" class="row_heading level0 row6" >6</th>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col0" class="data row6 col0" >5</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col1" class="data row6 col1" >3</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col2" class="data row6 col2" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col3" class="data row6 col3" >1</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col4" class="data row6 col4" >4</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col5" class="data row6 col5" >3</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col6" class="data row6 col6" >940</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col7" class="data row6 col7" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col8" class="data row6 col8" >2</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row6_col9" class="data row6 col9" >0</td>
+            </tr>
+            <tr>
+                        <th id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14level0_row7" class="row_heading level0 row7" >7</th>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col0" class="data row7 col0" >1</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col1" class="data row7 col1" >3</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col2" class="data row7 col2" >18</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col3" class="data row7 col3" >2</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col4" class="data row7 col4" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col5" class="data row7 col5" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col6" class="data row7 col6" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col7" class="data row7 col7" >993</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col8" class="data row7 col8" >1</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row7_col9" class="data row7 col9" >10</td>
+            </tr>
+            <tr>
+                        <th id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14level0_row8" class="row_heading level0 row8" >8</th>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col0" class="data row8 col0" >4</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col1" class="data row8 col1" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col2" class="data row8 col2" >5</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col3" class="data row8 col3" >10</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col4" class="data row8 col4" >2</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col5" class="data row8 col5" >5</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col6" class="data row8 col6" >5</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col7" class="data row8 col7" >4</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col8" class="data row8 col8" >929</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row8_col9" class="data row8 col9" >10</td>
+            </tr>
+            <tr>
+                        <th id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14level0_row9" class="row_heading level0 row9" >9</th>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col0" class="data row9 col0" >6</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col1" class="data row9 col1" >6</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col2" class="data row9 col2" >1</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col3" class="data row9 col3" >9</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col4" class="data row9 col4" >11</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col5" class="data row9 col5" >7</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col6" class="data row9 col6" >0</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col7" class="data row9 col7" >3</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col8" class="data row9 col8" >3</td>
+                        <td id="T_4a2bcba4_773e_11ea_b5ce_8c8590b50e14row9_col9" class="data row9 col9" >963</td>
+            </tr>
+    </tbody></table></div></div>
+</div>
+<p>We will see that using neural networks we can avoid some of these mistakes, but overall accuracy of RF is quite good even for complex task as this one.</p>
+</div>
+<div class="section" id="whats-next">
+<h2>Whats next?<a class="headerlink" href="#whats-next" title="Permalink to this headline">¶</a></h2>
+<p>There are many variations of Random Forests you can explore, to name a few:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees">ExtraTrees</a></p></li>
+<li><p><a class="reference external" href="https://xgboost.readthedocs.io/en/latest/">XGBoost</a></p></li>
+<li><p><a class="reference external" href="https://lightgbm.readthedocs.io/en/latest/">LightGBM</a></p></li>
+</ul>
+<p>Up to the day of writing XGboost is still a leading method for tabular problems, but as we will see deep learning will beat them at unstructured data. Basic idea of XGBoost: fit next decision tree on residual errors made by the previous predictor, thus trying to fix them.</p>
+<ol class="simple">
+<li><p>Fit <span class="math notranslate nohighlight">\(\text{tree}_0\)</span> on <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(y_0=y\)</span> and make predictions <span class="math notranslate nohighlight">\(y_1\)</span>. Set <span class="math notranslate nohighlight">\(i=1\)</span>.</p></li>
+<li><p>Fit <span class="math notranslate nohighlight">\(\text{tree}_i\)</span> to predict residuals <span class="math notranslate nohighlight">\(y_{i-1} - y_i\)</span> given <span class="math notranslate nohighlight">\(X\)</span> and make predictions <span class="math notranslate nohighlight">\(y_{i+1}\)</span>.</p></li>
+<li><p>Increment <span class="math notranslate nohighlight">\(i\)</span> and jump back to step 2.</p></li>
+</ol>
+</div>
+<div class="section" id="re-sources">
+<h2>(Re) Sources:<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Claude Shannon “A Mathematical Theory of Communication” 1948 (<a class="reference external" href="http://www.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf">link</a>).</p></li>
+<li><p>Nice <a class="reference external" href="https://youtu.be/ErfnhcEV1O8">video</a> about Entropy</p></li>
+<li><p>Medium <a class="reference external" href="https://towardsdatascience.com/must-know-information-theory-concepts-in-deep-learning-ai-e54a5da9769d">post</a> about Entropy</p></li>
+<li><p>Logistic regression from scratch (<a class="reference external" href="https://medium.com/&#64;martinpella/logistic-regression-from-scratch-in-python-124c5636b8ac">medium post</a>)</p></li>
+</ul>
 </div>
 </div>
 
