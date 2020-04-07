@@ -1,7 +1,7 @@
 - file: intro
 - file: SVD
 - file: RF
-- file: FCN
+- file: DNN
 - file: CNN
 - file: Project
 - file: syntax
