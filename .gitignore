@@ -1,13 +1,5 @@
 __pycache__
 .ipynb_checkpoints
 .DS_Store
-books
-dokumentai
-ml-latest-small
-NOTES
-planai
-ai_primer_book/_build
 build.sh
-dust/
-2019/
 _build/
