@@ -1,7 +1,7 @@
 Welcome to AI primer course
 ============================
 
-**THIS IS ONLY A SKETCH, COURSE WILL BE HELP ON 2ND SEMESTER OF 2020**
+[INTERACTIVE BOOK LINK](https://trokas.github.io/ai_primer/README.html)
 
 My main aim is to give you enough information so that you can start exploring field of AI on your own and maybe even start searching for DS role.
 In essance we have only 4 main chapters to cover.
