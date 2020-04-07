@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>CNN &#8212; My Jupyter Book  documentation</title>
+    <title>CNN (Convolutional Neural Networks) &#8212; My Jupyter Book  documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link rel="stylesheet" href="_static/jupyterbook.css" type="text/css" />
@@ -77,7 +77,7 @@
     <a href="DNN.html">DNN (Deep Neural Networks)</a>
   </li>
   <li class="active">
-    <a href="">CNN</a>
+    <a href="">CNN (Convolutional Neural Networks)</a>
   </li>
   <li class="">
     <a href="Project.html">Project: Flatland</a>
@@ -93,8 +93,52 @@
           
 <div class="d-none d-xl-block col-xl-2 bd-toc">
 
+
+<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#filters" class="nav-link">Filters</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#simple-box-blur" class="nav-link">Simple box blur</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#line-detection" class="nav-link">Line detection</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#edge-detection" class="nav-link">Edge detection</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#the-sobel-edge-operator" class="nav-link">The Sobel Edge Operator</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#cnn" class="nav-link">CNN</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#what-s-next" class="nav-link">What’s next?</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#standard-cnn-implementation" class="nav-link">Standard CNN implementation</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#so-where-are-we-on-mnist" class="nav-link">So where are we on MNIST?</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#using-cnn-s-for-sequences" class="nav-link">Using CNN’s for sequences</a>
+        </li>
     
     </ul>
 </nav>
@@ -117,8 +161,8 @@
         
               <div>
                 
-  <div class="section" id="cnn">
-<h1>CNN<a class="headerlink" href="#cnn" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="cnn-convolutional-neural-networks">
+<h1>CNN (Convolutional Neural Networks)<a class="headerlink" href="#cnn-convolutional-neural-networks" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
@@ -177,11 +221,11 @@
 <img alt="_images/CNN_3_0.png" src="_images/CNN_3_0.png" />
 </div>
 </div>
-</div>
 <div class="section" id="filters">
-<h1>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h1>
+<h2>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h2>
+<p>It turns out that by sliding simple matrix over an image we can achieve neat things.</p>
 <div class="section" id="simple-box-blur">
-<h2>Simple box blur<a class="headerlink" href="#simple-box-blur" title="Permalink to this headline">¶</a></h2>
+<h3>Simple box blur<a class="headerlink" href="#simple-box-blur" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="o">/</span> <span class="mi">25</span>
@@ -195,7 +239,7 @@
 </div>
 </div>
 <div class="section" id="line-detection">
-<h2>Line detection<a class="headerlink" href="#line-detection" title="Permalink to this headline">¶</a></h2>
+<h3>Line detection<a class="headerlink" href="#line-detection" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
@@ -224,7 +268,7 @@
 </div>
 </div>
 <div class="section" id="edge-detection">
-<h2>Edge detection<a class="headerlink" href="#edge-detection" title="Permalink to this headline">¶</a></h2>
+<h3>Edge detection<a class="headerlink" href="#edge-detection" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
@@ -240,7 +284,7 @@
 </div>
 </div>
 <div class="section" id="the-sobel-edge-operator">
-<h2>The Sobel Edge Operator<a class="headerlink" href="#the-sobel-edge-operator" title="Permalink to this headline">¶</a></h2>
+<h3>The Sobel Edge Operator<a class="headerlink" href="#the-sobel-edge-operator" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F_horizontal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
@@ -259,27 +303,10 @@
 </div>
 </div>
 </div>
-<div class="section" id="id1">
-<h1>CNN<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cnn">
+<h2>CNN<a class="headerlink" href="#cnn" title="Permalink to this headline">¶</a></h2>
 <p>Following video contains a neat visualization of CNN.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;utOv-BKI_vo&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="800"
-    height="600"
-    src="https://www.youtube.com/embed/utOv-BKI_vo"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-</div></div>
-</div>
-<p>Let’s load MNIST dataset.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/utOv-BKI_vo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p>Let’s load MNIST dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
@@ -371,7 +398,7 @@ Epoch 10/10
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fdf2b363390&gt;
 </pre></div>
 </div>
-<img alt="_images/CNN_19_1.png" src="_images/CNN_19_1.png" />
+<img alt="_images/CNN_18_1.png" src="_images/CNN_18_1.png" />
 </div>
 </div>
 <p>Using FCN we had 96.36% on test set.</p>
@@ -390,7 +417,7 @@ Epoch 10/10
 </div>
 </div>
 <div class="section" id="what-s-next">
-<h1>What’s next?<a class="headerlink" href="#what-s-next" title="Permalink to this headline">¶</a></h1>
+<h2>What’s next?<a class="headerlink" href="#what-s-next" title="Permalink to this headline">¶</a></h2>
 <p><strong>NOTE:</strong> LONG TRAINING TIME!</p>
 <p>There are multiple other tricks (Dropout, MaxPooling, …) which can increse performance even more, but general CNN principle is still leading solution in image recognition.</p>
 <p>We will look at these tricks later, but let’s see what they can do.</p>
@@ -489,6 +516,7 @@ Epoch 5/5
 </div>
 </div>
 <p>Usually in blogs and books you will find following implementation which uses dropout between CNN layers, but there is well known <a class="reference external" href="https://www.kdnuggets.com/2018/09/dropout-convolutional-networks.html">critique</a> of this technique.</p>
+</div>
 <div class="section" id="standard-cnn-implementation">
 <h2>Standard CNN implementation<a class="headerlink" href="#standard-cnn-implementation" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -603,7 +631,214 @@ Epoch 10/10
 </div>
 </div>
 </div>
-<p><img alt="" src="http://playagricola.com/Kaggle/KaggleMNISThist3.png" /></p>
+</div>
+<div class="section" id="so-where-are-we-on-mnist">
+<h2>So where are we on MNIST?<a class="headerlink" href="#so-where-are-we-on-mnist" title="Permalink to this headline">¶</a></h2>
+<p>We tried RF, DNN and CNN for MNIST and managed to reproduced some of the key benchmarks out there</p>
+<img src="http://playagricola.com/Kaggle/KaggleMNISThist3.png" style="width: 70%"/></div>
+<div class="section" id="using-cnn-s-for-sequences">
+<h2>Using CNN’s for sequences<a class="headerlink" href="#using-cnn-s-for-sequences" title="Permalink to this headline">¶</a></h2>
+<p>It turns out that same principle can applied for time series prediction. Here is a neat example based on Temporal Convolutional Nets (TCN).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Conv1D</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Lambda</span><span class="p">,</span> <span class="n">concatenate</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.optimizers</span> <span class="kn">import</span> <span class="n">Adam</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_time_series</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">):</span>
+    <span class="n">freq1</span><span class="p">,</span> <span class="n">freq2</span><span class="p">,</span> <span class="n">offsets1</span><span class="p">,</span> <span class="n">offsets2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+    <span class="n">series</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">((</span><span class="n">time</span> <span class="o">-</span> <span class="n">offsets1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">freq1</span> <span class="o">*</span> <span class="mi">30</span> <span class="o">+</span> <span class="mi">30</span><span class="p">))</span>  <span class="c1">#   wave 1</span>
+    <span class="n">series</span> <span class="o">+=</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">((</span><span class="n">time</span> <span class="o">-</span> <span class="n">offsets2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">freq2</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="mi">60</span><span class="p">))</span> <span class="c1"># + wave 2</span>
+    <span class="n">series</span> <span class="o">+=</span> <span class="mf">0.02</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>   <span class="c1"># + noise</span>
+    <span class="k">return</span> <span class="n">series</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">pred_steps</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">series</span> <span class="o">=</span> <span class="n">generate_time_series</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n_steps</span> <span class="o">+</span> <span class="n">pred_steps</span><span class="p">)</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span> <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="mi">7000</span><span class="p">,</span> <span class="p">:</span><span class="n">n_steps</span><span class="p">],</span> <span class="n">series</span><span class="p">[:</span><span class="mi">7000</span><span class="p">,</span> <span class="o">-</span><span class="n">pred_steps</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">X_valid</span><span class="p">,</span> <span class="n">Y_valid</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="mi">7000</span><span class="p">:</span><span class="mi">9000</span><span class="p">,</span> <span class="p">:</span><span class="n">n_steps</span><span class="p">],</span> <span class="n">series</span><span class="p">[</span><span class="mi">7000</span><span class="p">:</span><span class="mi">9000</span><span class="p">,</span> <span class="o">-</span><span class="n">pred_steps</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="mi">9000</span><span class="p">:,</span> <span class="p">:</span><span class="n">n_steps</span><span class="p">],</span> <span class="n">series</span><span class="p">[</span><span class="mi">9000</span><span class="p">:,</span> <span class="o">-</span><span class="n">pred_steps</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>Example of generated sequence</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_steps</span><span class="p">),</span> <span class="n">X_train</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_steps</span><span class="p">,</span> <span class="n">n_steps</span> <span class="o">+</span> <span class="n">pred_steps</span><span class="p">),</span> <span class="n">Y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13c03c0d0&gt;]
+</pre></div>
+</div>
+<img alt="_images/CNN_38_1.png" src="_images/CNN_38_1.png" />
+</div>
+</div>
+<p>Great explanationa of simplified <a class="reference external" href="https://github.com/JEddy92/TimeSeries_Seq2Seq/blob/master/notebooks/TS_Seq2Seq_Conv_Intro.ipynb">TCN</a>.</p>
+<img src="https://github.com/JEddy92/TimeSeries_Seq2Seq/raw/190fe87a9ea48bc5096b6417b7cb769aaa8887cf/notebooks/images/WaveNet_dilatedconv.png" style="width: 70%"/><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n_filters</span> <span class="o">=</span> <span class="mi">32</span> 
+<span class="n">filter_width</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">dilation_rates</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">**</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span> 
+
+<span class="n">history_seq</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">history_seq</span>
+
+<span class="k">for</span> <span class="n">dilation_rate</span> <span class="ow">in</span> <span class="n">dilation_rates</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">Conv1D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="n">n_filters</span><span class="p">,</span>
+               <span class="n">kernel_size</span><span class="o">=</span><span class="n">filter_width</span><span class="p">,</span> 
+               <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;causal&#39;</span><span class="p">,</span>
+               <span class="n">dilation_rate</span><span class="o">=</span><span class="n">dilation_rate</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="o">.</span><span class="mi">2</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># extract the last pred_steps time steps as the training target</span>
+<span class="k">def</span> <span class="nf">slice</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">seq_length</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[:,</span><span class="o">-</span><span class="n">seq_length</span><span class="p">:,:]</span>
+
+<span class="n">pred_seq_train</span> <span class="o">=</span> <span class="n">Lambda</span><span class="p">(</span><span class="nb">slice</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;seq_length&#39;</span><span class="p">:</span><span class="n">pred_steps</span><span class="p">})(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">history_seq</span><span class="p">,</span> <span class="n">pred_seq_train</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_absolute_error&#39;</span><span class="p">)</span>
+
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                    <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">Y_valid</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Model: &quot;model&quot;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         [(None, None, 1)]         0         
+_________________________________________________________________
+conv1d (Conv1D)              (None, None, 32)          96        
+_________________________________________________________________
+conv1d_1 (Conv1D)            (None, None, 32)          2080      
+_________________________________________________________________
+conv1d_2 (Conv1D)            (None, None, 32)          2080      
+_________________________________________________________________
+conv1d_3 (Conv1D)            (None, None, 32)          2080      
+_________________________________________________________________
+conv1d_4 (Conv1D)            (None, None, 32)          2080      
+_________________________________________________________________
+conv1d_5 (Conv1D)            (None, None, 32)          2080      
+_________________________________________________________________
+dense (Dense)                (None, None, 128)         4224      
+_________________________________________________________________
+dropout (Dropout)            (None, None, 128)         0         
+_________________________________________________________________
+dense_1 (Dense)              (None, None, 1)           129       
+_________________________________________________________________
+lambda (Lambda)              (None, None, 1)           0         
+=================================================================
+Total params: 14,849
+Trainable params: 14,849
+Non-trainable params: 0
+_________________________________________________________________
+Train on 7000 samples, validate on 2000 samples
+Epoch 1/20
+7000/7000 [==============================] - 7s 1ms/sample - loss: 0.2177 - val_loss: 0.1456
+Epoch 2/20
+7000/7000 [==============================] - 6s 812us/sample - loss: 0.1572 - val_loss: 0.1356
+Epoch 3/20
+7000/7000 [==============================] - 5s 751us/sample - loss: 0.1500 - val_loss: 0.1329
+Epoch 4/20
+7000/7000 [==============================] - 6s 826us/sample - loss: 0.1457 - val_loss: 0.1286
+Epoch 5/20
+7000/7000 [==============================] - 5s 754us/sample - loss: 0.1435 - val_loss: 0.1293
+Epoch 6/20
+7000/7000 [==============================] - 7s 941us/sample - loss: 0.1415 - val_loss: 0.1356
+Epoch 7/20
+7000/7000 [==============================] - 7s 1ms/sample - loss: 0.1400 - val_loss: 0.1278
+Epoch 8/20
+7000/7000 [==============================] - 6s 875us/sample - loss: 0.1407 - val_loss: 0.1261
+Epoch 9/20
+7000/7000 [==============================] - 7s 930us/sample - loss: 0.1393 - val_loss: 0.1254
+Epoch 10/20
+7000/7000 [==============================] - 5s 736us/sample - loss: 0.1389 - val_loss: 0.1262
+Epoch 11/20
+7000/7000 [==============================] - 6s 899us/sample - loss: 0.1384 - val_loss: 0.1270
+Epoch 12/20
+7000/7000 [==============================] - 5s 693us/sample - loss: 0.1382 - val_loss: 0.1277
+Epoch 13/20
+7000/7000 [==============================] - 5s 738us/sample - loss: 0.1371 - val_loss: 0.1262
+Epoch 14/20
+7000/7000 [==============================] - 5s 693us/sample - loss: 0.1376 - val_loss: 0.1235
+Epoch 15/20
+7000/7000 [==============================] - 5s 736us/sample - loss: 0.1372 - val_loss: 0.1250
+Epoch 16/20
+7000/7000 [==============================] - 5s 708us/sample - loss: 0.1369 - val_loss: 0.1297
+Epoch 17/20
+7000/7000 [==============================] - 5s 720us/sample - loss: 0.1367 - val_loss: 0.1257
+Epoch 18/20
+7000/7000 [==============================] - 5s 751us/sample - loss: 0.1366 - val_loss: 0.1281
+Epoch 19/20
+7000/7000 [==============================] - 5s 724us/sample - loss: 0.1364 - val_loss: 0.1249
+Epoch 20/20
+7000/7000 [==============================] - 6s 868us/sample - loss: 0.1358 - val_loss: 0.1264
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s look at the predictions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_steps</span><span class="p">),</span> <span class="n">X_test</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_steps</span><span class="p">,</span> <span class="n">n_steps</span> <span class="o">+</span> <span class="n">pred_steps</span><span class="p">),</span> <span class="n">Y_test</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;acctual&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_steps</span><span class="p">,</span> <span class="n">n_steps</span> <span class="o">+</span> <span class="n">pred_steps</span><span class="p">),</span> <span class="n">pred</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;prediction&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CNN_43_0.png" src="_images/CNN_43_0.png" />
+<img alt="_images/CNN_43_1.png" src="_images/CNN_43_1.png" />
+<img alt="_images/CNN_43_2.png" src="_images/CNN_43_2.png" />
+<img alt="_images/CNN_43_3.png" src="_images/CNN_43_3.png" />
+<img alt="_images/CNN_43_4.png" src="_images/CNN_43_4.png" />
+<img alt="_images/CNN_43_5.png" src="_images/CNN_43_5.png" />
+<img alt="_images/CNN_43_6.png" src="_images/CNN_43_6.png" />
+<img alt="_images/CNN_43_7.png" src="_images/CNN_43_7.png" />
+<img alt="_images/CNN_43_8.png" src="_images/CNN_43_8.png" />
+<img alt="_images/CNN_43_9.png" src="_images/CNN_43_9.png" />
+</div>
+</div>
+<p>I hope this example prooves universality and usefulness of Convolutional layers. For even crazier example of how filters (convolutionas) can be used look into <a class="reference external" href="https://distill.pub/2020/growing-ca/">Neural Celural Automata</a>.</p>
 </div>
 </div>
 
