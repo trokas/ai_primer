@@ -1,1 +1,6 @@
-theme: jekyll-theme-slate
+# Book settings
+title: AI primer
+author: trokas
+html_logo: ''
+
+use_thebelab_button: true

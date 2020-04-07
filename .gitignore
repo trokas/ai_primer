@@ -10,3 +10,4 @@ ai_primer_book/_build
 build.sh
 dust/
 2019/
+_build/
