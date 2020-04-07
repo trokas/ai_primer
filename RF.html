@@ -28,7 +28,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="FCN" href="FCN.html" />
+    <link rel="next" title="DNN (Deep Neural Networks)" href="DNN.html" />
     <link rel="prev" title="SVD (Singular Value Decomposition)" href="SVD.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,7 +74,7 @@
     <a href="">RF (Random Forest)</a>
   </li>
   <li class="">
-    <a href="FCN.html">FCN</a>
+    <a href="DNN.html">DNN (Deep Neural Networks)</a>
   </li>
   <li class="">
     <a href="CNN.html">CNN</a>
@@ -99,13 +99,7 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#entropy" class="nav-link">Entropy</a><ul class="nav section-nav flex-column">
-                
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#cross-entropy" class="nav-link">Cross-Entropy</a>
-        </li>
-    
-            </ul>
+            <a href="#entropy" class="nav-link">Entropy</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
@@ -202,41 +196,22 @@
 Main question: how much useful information are we transmitting?
 When we transmit one bit of information we reduce recipients uncertainty by the factor of two.</p>
 <p>P.S.: same paper introduced term bit = <strong>bi</strong>nary uni<strong>t</strong>.</p>
-<hr class="docutils" />
-<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568908108119_Screenshot+from+2019-09-19+18-47-43.png" /></p>
-<hr class="docutils" />
-<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568908220168_Screenshot+from+2019-09-19+18-49-26.png" /></p>
-<p>How much information are we getting measured in bits? <div class="math notranslate nohighlight">
+<p>Look at the following video:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ErfnhcEV1O8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p>Some key points:</p>
+<ul class="simple">
+<li><p>How much information are we getting measured in bits? <div class="math notranslate nohighlight">
 \[- \log_2 (prob) = bits\]</div>
-</p>
-<hr class="docutils" />
-<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568908568165_Screenshot+from+2019-09-19+18-52-14.png" /></p>
-<hr class="docutils" />
-<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568908575679_Screenshot+from+2019-09-19+18-52-32.png" /></p>
-<hr class="docutils" />
-<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568908583110_Screenshot+from+2019-09-19+18-53-46.png" /></p>
-<p>Entropy: <div class="math notranslate nohighlight">
+</p></li>
+<li><p>Entropy: <div class="math notranslate nohighlight">
 \[H(p)=-\sum_i p_i \log_2 (p_i)\]</div>
-</p>
-<hr class="docutils" />
-<div class="section" id="cross-entropy">
-<h3>Cross-Entropy<a class="headerlink" href="#cross-entropy" title="Permalink to this headline">¶</a></h3>
-<p>Let <span class="math notranslate nohighlight">\(p\)</span> - true distribution, <span class="math notranslate nohighlight">\(q\)</span> - predicted distribution, then Cross-entropy is
+</p></li>
+<li><p>Cross-Entropy: let <span class="math notranslate nohighlight">\(p\)</span> - true distribution, <span class="math notranslate nohighlight">\(q\)</span> - predicted distribution, then Cross-entropy is
 <div class="math notranslate nohighlight">
 \[H(p,q) = -\sum_i p_i \log_2(q_i)\]</div>
-
-If predictions are perfect Cross-entropy is equal to entropy, but usually it is greater than entropy.
-Cross-entropy is often used for ML as a cost function (log-loss) comparing <span class="math notranslate nohighlight">\(p\)</span> with <span class="math notranslate nohighlight">\(q\)</span>.</p>
-<hr class="docutils" />
-<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568909269560_Screenshot+from+2019-09-19+19-00-24.png" /></p>
-<hr class="docutils" />
-<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568909276831_Screenshot+from+2019-09-19+19-01-19.png" /></p>
-<hr class="docutils" />
-<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568909283794_Screenshot+from+2019-09-19+19-01-42.png" /></p>
-<hr class="docutils" />
-<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568909289340_Screenshot+from+2019-09-19+19-02-50.png" /></p>
-<hr class="docutils" />
-<p><img alt="" src="https://paper-attachments.dropbox.com/s_2941BE57FDEFC63DC92A33C8A153CCCD7EFCF49D20B1544D9F4817E94EBFB0CD_1568909296216_Screenshot+from+2019-09-19+19-04-30.png" /></p>
+</p></li>
+<li><p>If predictions are perfect Cross-entropy is equal to entropy, but usually it is greater than entropy.</p></li>
+<li><p>Cross-entropy is often used for ML as a cost function (log-loss) comparing <span class="math notranslate nohighlight">\(p\)</span> with <span class="math notranslate nohighlight">\(q\)</span>.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
@@ -255,12 +230,10 @@ Cross-entropy is often used for ML as a cost function (log-loss) comparing <span
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="decision-trees">
 <h2>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">¶</a></h2>
 <p>Simple decision tree can be constructed using rule: make a split which <strong>reduces entropy</strong> the most. In a well-constructed tree, each question will cut the number of options by approximately half, very quickly narrowing the options even among a large number of classes.</p>
-<p><img alt="" src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569515384629_image.png" /></p>
-<p>Couple facts about decision trees:</p>
+<img src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569515384629_image.png" alt="Space deformation" style="width: 70%"/><p>Couple facts about decision trees:</p>
 <ul class="simple">
 <li><p>Alternatively you could use Gini impurity as a split criteria, which is defined as <span class="math notranslate nohighlight">\(G_i = 1 - \sum_{k=1}^n p_{i,k}^2\)</span> where <span class="math notranslate nohighlight">\(p_{i,k}\)</span> is the ratio of class k instances among the training instances in the ith node.</p></li>
 <li><p>Finding the optimal tree is known to be an NP-Complete problem <span class="math notranslate nohighlight">\(O(\exp (m))\)</span>.</p></li>
@@ -639,16 +612,12 @@ dtype: int64
 <div class="section" id="ensembles">
 <h2>Ensembles<a class="headerlink" href="#ensembles" title="Permalink to this headline">¶</a></h2>
 <p>The notion that multiple overfitting estimators can be combined to reduce the effect of overfitting is what underlies an ensemble method called bagging. Bagging makes use of an ensemble (a grab bag, perhaps) of parallel estimators, each of which overfits the data, and averages the results to find a better classification. An ensemble of randomized decision trees is known as a random forest.</p>
-<p><img alt="" src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569583935206_image.png" /></p>
-<p><img alt="" src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569583987571_image.png" /></p>
-<p>Ensemble methods work best when the predictors are as independent from one another as possible. One way to get diverse classifiers is to train them using very different algorithms. This increases the chance that they will make very different types of errors, improving the ensemble’s accuracy.</p>
+<img src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569583935206_image.png"  style="width: 50%"/><img src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569583987571_image.png"  style="width: 50%"/><p>Ensemble methods work best when the predictors are as independent from one another as possible. One way to get diverse classifiers is to train them using very different algorithms. This increases the chance that they will make very different types of errors, improving the ensemble’s accuracy.</p>
 <p>Ensemble methods lead to similar bias but a lower variance.</p>
-<p><img alt="" src="http://www.stokastik.in/wp-content/uploads/2016/07/Bias_Variance.jpg" /></p>
-<div class="section" id="random-forests">
+<img src="http://www.stokastik.in/wp-content/uploads/2016/07/Bias_Variance.jpg"  style="width: 50%"/><div class="section" id="random-forests">
 <h3>Random forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">¶</a></h3>
 <p>You can make multiple trees by choosing sub-sample of features (usually <span class="math notranslate nohighlight">\(\sqrt{m}\)</span>) and taking bootstrapped samples. Then just let trees vote for decision.</p>
-<p><img alt="" src="https://victorzhou.com/media/random-forest-post/random-forest.png" /></p>
-<p>Hard voting averages predictions, soft voting averages predicted probabilities instead.</p>
+<img src="https://victorzhou.com/media/random-forest-post/random-forest.png"  style="width: 50%"/><p>Hard voting averages predictions, soft voting averages predicted probabilities instead.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingClassifier</span>
@@ -1512,7 +1481,7 @@ Wall time: 1.77 s
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="SVD.html" title="previous page">SVD (Singular Value Decomposition)</a>
-    <a class='right-next' id="next-link" href="FCN.html" title="next page">FCN</a>
+    <a class='right-next' id="next-link" href="DNN.html" title="next page">DNN (Deep Neural Networks)</a>
 
     </div>
     <footer class="footer">

@@ -10,7 +10,7 @@ In essance we have only 4 main chapters to cover.
     - SVD (Singular Value Decomposition) - it’s a good tool to introduce both technical tools we will be working with aswell as giving us a glympse at unsupervised learning.
     - RF (Random Forests) - one of the first “silver bullets” out there. Our discussion will also cover Shannon’s work on entropy as it’s one of the key ingredients.
 - Deep learning era
-    - FCN (Fully Connected Networks) - we will build our own Perceptron from scratch, thus focusing on gradient descent and backprop on the way. By changing activation fuction logistic regression will be introduced and finally we will explore what a stack of layers (deep NN) can offer.
+    - DNN (Deep Neural Networks) - we will build our own Perceptron from scratch, thus focusing on gradient descent and backprop on the way. By changing activation fuction logistic regression will be introduced and finally we will explore what a stack of layers (deep NN) can offer.
     - CNN (Convolutional Neural Networks) - even though different techniques come and go in deep learning world I strongly believe that CNN’s will be around for quite some time to come. We will use them not only for images, but also for time series prediction.
 
 After these 4 main chapter complementary material regarding new advanves of deep learning will be presented (like LSTM’s and Transformers), but it will not be mandatory.
