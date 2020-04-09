@@ -85,6 +85,10 @@
     "\n",
     "It turns out that by sliding simple matrix over an image we can achieve neat things.\n",
     "\n",
+    "Multiplication by sliding matrix can be thought of as **filter**.\n",
+    "\n",
+    "<img src=\"https://cdn-images-1.medium.com/max/900/1*7S266Kq-UCExS25iX_I_AQ.png\" style=\"width: 70%\"/>\n",
+    "\n",
     "### Simple box blur"
    ]
   },
@@ -1062,6 +1066,14 @@
    "metadata": {},
    "source": [
     "I hope this example prooves universality and usefulness of Convolutional layers. For even crazier example of how filters (convolutionas) can be used look into [Neural Celural Automata](https://distill.pub/2020/growing-ca/)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## (re)Sources\n",
+    "- https://deeplizard.com/learn/video/YRhxdVk_sIs"
    ]
   }
  ],

@@ -128,6 +128,10 @@
         </li>
     
         <li class="nav-item toc-entry toc-h2">
+            <a href="#a-note-on-gradien-descent" class="nav-link">A note on Gradien Descent</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
             <a href="#a-note-on-dropout" class="nav-link">A note on Dropout</a>
         </li>
     
@@ -931,6 +935,29 @@ Epoch 20/20
 </div>
 <p>Thats good. For examply by using layers 1500, 1000, 500, 10 you can improve accuracy to 98.24%, but training will take quite some time. Acctually you can go even futher with simple data augmentation techniques - https://arxiv.org/pdf/1003.0358.pdf</p>
 </div>
+<div class="section" id="a-note-on-gradien-descent">
+<h2>A note on Gradien Descent<a class="headerlink" href="#a-note-on-gradien-descent" title="Permalink to this headline">¶</a></h2>
+<p>Without noticing on the way we have used gradient descent, let’s see how it works in depth.</p>
+<img src="https://miro.medium.com/max/1005/1*_6TVU8yGpXNYDkkpOfnJ6Q.png" style="width: 50%"/><p>Note, that gradient descent is sensitive to the step size.</p>
+<img src="https://www.researchgate.net/profile/Tom_Duckett/publication/224324276/figure/fig2/AS:359779089305617@1462789427971/Convergence-Conditions-in-Gradient-Descent-Algorithm.png" style="width: 50%"/><p>We will meet some solutions to this problem in the future.</p>
+<p>Also gradient descent is not guaranteed to find global minimum, but when we work with high dimensional data this risk partly wanishes.</p>
+<img src="https://paper-attachments.dropbox.com/s_F57E27FDF0C54777F2844EECCBABB7DF8EEB9597E5F323F9CC73F1690617FCAD_1569311505423_image.png" style="width: 50%"/><p>Let’s implement gradient descent for linear regression as follows</p>
+<img src="https://kousikk.files.wordpress.com/2014/11/screen-shot-2014-11-12-at-11-57-47-am.png" style="width: 50%"/><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>     <span class="c1"># initial values</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>   <span class="c1"># storage for k and b through training</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+    <span class="n">pred_diff_k</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">pred_diff_b</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">k</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pred_diff_k</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">pred</span><span class="p">))</span>
+    <span class="n">b</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pred_diff_b</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">pred</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>TASK:</strong> try that out on your own and add plots on the way, you should get something similar to this</p>
+<img src="https://paper-attachments.dropbox.com/s_F57E27FDF0C54777F2844EECCBABB7DF8EEB9597E5F323F9CC73F1690617FCAD_1567686156887_grad_desc_demo.gif" style="width: 50%"/></div>
 <div class="section" id="a-note-on-dropout">
 <h2>A note on Dropout<a class="headerlink" href="#a-note-on-dropout" title="Permalink to this headline">¶</a></h2>
 <p>There is a nice and popular way to <strong>prevent over-fitting</strong> in Neural Networks - turn off some neurons during training procudure.</p>
