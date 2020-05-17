@@ -6,6 +6,11 @@ If you do not know about Flatland just google it, read, listen or whatch it.
 
 You will have to classify images by 'calculating' number of corners a figure in that image has using deep learning.
 
+Train set has polygons of shapes 3-6 and circles.
+
+![Project train set sample](img/flatland.png)
+
+
 ## Leaderboard
 
 To add some gamification all submissions will end up in a leaderboard. Also passing benchmarks which represent grades will be introduced. 
