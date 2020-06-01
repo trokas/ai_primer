@@ -1,6 +1,7 @@
 /* Whole cell */
 div.container.cell {
   padding-left: 0;
+  margin-bottom: 1em;
 }
 
 /* Removing all background formatting so we can control at the div level */
@@ -34,7 +35,7 @@ div.cell_input > div, div.cell_output div.output > div.highlight {
 .cell_output {
   padding-left: 1em;
   padding-right: 0em;
-  margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 /* Outputs from jupyter_sphinx overrides to remove extra CSS */
@@ -65,6 +66,11 @@ div.section div.jupyter_container {
 
 .cell_output .output.traceback {
   border: 1px solid #ffd6d6;
+}
+
+/* Math align to the left */
+.cell_output .MathJax_Display {
+  text-align: left !important;
 }
 
 /* Pandas tables. Pulled from the Jupyter / nbsphinx CSS */
@@ -106,4 +112,12 @@ div.cell_output table {
 
 span.pasted-text {
   font-weight: bold;
+}
+
+span.pasted-inline img {
+  max-height: 2em;
+}
+
+tbody span.pasted-inline img {
+  max-height: none;
 }

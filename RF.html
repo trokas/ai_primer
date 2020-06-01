@@ -6,16 +6,16 @@
   <head>
     <meta charset="utf-8" />
     <title>RF (Random Forest) &#8212; AI primer</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link rel="stylesheet" href="_static/jupyterbook.css" type="text/css" />
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
-    <link href="_static/css/index.css" rel="stylesheet">
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -23,36 +23,31 @@
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide_output div.cell_output, .tag_hide_cell.cell';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="SVD (Singular Value Decomposition)" href="SVD.html" />
-    <link rel="prev" title="CNN (Convolutional Neural Networks)" href="CNN.html" />
+    <link rel="next" title="DNN (Deep Neural Networks)" href="DNN.html" />
+    <link rel="prev" title="SVD (Singular Value Decomposition)" href="SVD.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-    
-<div class='top'>
-<button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation">
-    <i class="fas fa-bars"></i>
-    <i class="fas fa-arrow-left"></i>
-    <i class="fas fa-arrow-up"></i>
-</button>
-</div>
 
-    <div class="container-fluid">
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 col-xl-3 bd-sidebar show" id="site-navigation">
-<div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="index.html">
   
   
@@ -62,31 +57,100 @@
 </div>
 
 <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form>
 
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   
   <ul class="nav sidenav_l1">
-  <li class="active">
-    <a href="">RF (Random Forest)</a>
+  <li class="">
+    <a href="README.html">Welcome to AI primer course</a>
   </li>
   <li class="">
     <a href="SVD.html">SVD (Singular Value Decomposition)</a>
   </li>
+  <li class="active">
+    <a href="">RF (Random Forest)</a>
+  </li>
   <li class="">
     <a href="DNN.html">DNN (Deep Neural Networks)</a>
   </li>
+  <li class="">
+    <a href="CNN.html">CNN (Convolutional Neural Networks)</a>
+  </li>
+  <li class="">
+    <a href="Project.html">Project: Flatland</a>
+  </li>
 </ul>
 </nav>
-<p class="sidebar_footer">Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a></p>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </div>
 
+</div>
+
+
           
-<div class="d-none d-xl-block col-xl-2 bd-toc">
 
 
-<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/RF.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+            <div class="dropdown-buttons">
+                
+                <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/RF.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip" data-placement="left"><img class="binder-button-logo" src="_static/images/logo_binder.svg" alt="Interact on binder">Binder</button></a>
+                
+                
+                
+            </div>
+        </div>
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
     
@@ -160,22 +224,12 @@
     
     </ul>
 </nav>
-</div>
 
 
-          
-<main class="col py-md-3 pl-md-5 pr-0 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar sticky-top">
-    <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation">
-        <i class="fas fa-bars"></i>
-        <i class="fas fa-arrow-left"></i>
-    </button>
-    <a class="download-buttons" href="_sources/RF.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn"><i class="fas fa-download"></i>.ipynb</button></a>
-    
+    </div>
 </div>
-    <div class="row">
-        <div class="col-12 ">
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
                 
@@ -189,18 +243,13 @@ Main question: how much useful information are we transmitting?
 When we transmit one bit of information we reduce recipients uncertainty by the factor of two.</p>
 <p>P.S.: same paper introduced term bit = <strong>bi</strong>nary uni<strong>t</strong>.</p>
 <p>Look at the following video:</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ErfnhcEV1O8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p>Some key points:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ErfnhcEV1O8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Some key points:</p>
 <ul class="simple">
-<li><p>How much information are we getting measured in bits? <div class="math notranslate nohighlight">
-\[- \log_2 (prob) = bits\]</div>
-</p></li>
-<li><p>Entropy: <div class="math notranslate nohighlight">
-\[H(p)=-\sum_i p_i \log_2 (p_i)\]</div>
-</p></li>
+<li><p>How much information are we getting measured in bits? <span class="math notranslate nohighlight">\($- \log_2 (prob) = bits\)</span>$</p></li>
+<li><p>Entropy: <span class="math notranslate nohighlight">\($H(p)=-\sum_i p_i \log_2 (p_i)\)</span>$</p></li>
 <li><p>Cross-Entropy: let <span class="math notranslate nohighlight">\(p\)</span> - true distribution, <span class="math notranslate nohighlight">\(q\)</span> - predicted distribution, then Cross-entropy is
-<div class="math notranslate nohighlight">
-\[H(p,q) = -\sum_i p_i \log_2(q_i)\]</div>
-</p></li>
+<span class="math notranslate nohighlight">\($H(p,q) = -\sum_i p_i \log_2(q_i)\)</span>$</p></li>
 <li><p>If predictions are perfect Cross-entropy is equal to entropy, but usually it is greater than entropy.</p></li>
 <li><p>Cross-entropy is often used for ML as a cost function (log-loss) comparing <span class="math notranslate nohighlight">\(p\)</span> with <span class="math notranslate nohighlight">\(q\)</span>.</p></li>
 </ul>
@@ -218,14 +267,13 @@ When we transmit one bit of information we reduce recipients uncertainty by the 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-</div>
 </div>
 </div>
 <div class="section" id="decision-trees">
 <h2>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">¶</a></h2>
 <p>Simple decision tree can be constructed using rule: make a split which <strong>reduces entropy</strong> the most. In a well-constructed tree, each question will cut the number of options by approximately half, very quickly narrowing the options even among a large number of classes.</p>
-<img src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569515384629_image.png" alt="Space deformation" style="width: 70%"/><p>Couple facts about decision trees:</p>
+<img src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569515384629_image.png" alt="Space deformation" style="width: 70%"/>
+<p>Couple facts about decision trees:</p>
 <ul class="simple">
 <li><p>Alternatively you could use Gini impurity as a split criteria, which is defined as <span class="math notranslate nohighlight">\(G_i = 1 - \sum_{k=1}^n p_{i,k}^2\)</span> where <span class="math notranslate nohighlight">\(p_{i,k}\)</span> is the ratio of class k instances among the training instances in the ith node.</p></li>
 <li><p>Finding the optimal tree is known to be an NP-Complete problem <span class="math notranslate nohighlight">\(O(\exp (m))\)</span>.</p></li>
@@ -246,8 +294,6 @@ When we transmit one bit of information we reduce recipients uncertainty by the 
 <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">0.7</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 <p>Let’s fit entropy based tree on iris dataset.</p>
@@ -604,12 +650,16 @@ dtype: int64
 <div class="section" id="ensembles">
 <h2>Ensembles<a class="headerlink" href="#ensembles" title="Permalink to this headline">¶</a></h2>
 <p>The notion that multiple overfitting estimators can be combined to reduce the effect of overfitting is what underlies an ensemble method called bagging. Bagging makes use of an ensemble (a grab bag, perhaps) of parallel estimators, each of which overfits the data, and averages the results to find a better classification. An ensemble of randomized decision trees is known as a random forest.</p>
-<img src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569583935206_image.png"  style="width: 50%"/><img src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569583987571_image.png"  style="width: 50%"/><p>Ensemble methods work best when the predictors are as independent from one another as possible. One way to get diverse classifiers is to train them using very different algorithms. This increases the chance that they will make very different types of errors, improving the ensemble’s accuracy.</p>
+<img src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569583935206_image.png"  style="width: 50%"/>
+<img src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569583987571_image.png"  style="width: 50%"/>
+<p>Ensemble methods work best when the predictors are as independent from one another as possible. One way to get diverse classifiers is to train them using very different algorithms. This increases the chance that they will make very different types of errors, improving the ensemble’s accuracy.</p>
 <p>Ensemble methods lead to similar bias but a lower variance.</p>
-<img src="http://www.stokastik.in/wp-content/uploads/2016/07/Bias_Variance.jpg"  style="width: 50%"/><div class="section" id="random-forests">
+<img src="http://www.stokastik.in/wp-content/uploads/2016/07/Bias_Variance.jpg"  style="width: 50%"/>
+<div class="section" id="random-forests">
 <h3>Random forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">¶</a></h3>
 <p>You can make multiple trees by choosing sub-sample of features (usually <span class="math notranslate nohighlight">\(\sqrt{m}\)</span>) and taking bootstrapped samples. Then just let trees vote for decision.</p>
-<img src="https://victorzhou.com/media/random-forest-post/random-forest.png"  style="width: 50%"/><p>Hard voting averages predictions, soft voting averages predicted probabilities instead.</p>
+<img src="https://victorzhou.com/media/random-forest-post/random-forest.png"  style="width: 50%"/>
+<p>Hard voting averages predictions, soft voting averages predicted probabilities instead.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingClassifier</span>
@@ -623,8 +673,6 @@ dtype: int64
                              <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 <div class="cell docutils container">
@@ -668,8 +716,6 @@ Wall time: 1.77 s
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-</div>
 </div>
 <p>I suggest to try it out on your own before looking at the answer given bellow.</p>
 <div class="section" id="answer">
@@ -680,8 +726,6 @@ Wall time: 1.77 s
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -690,16 +734,12 @@ Wall time: 1.77 s
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 <div class="cell docutils container">
@@ -727,13 +767,11 @@ Wall time: 1.77 s
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pred</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy </span><span class="si">{acc:.02%}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s1">.02%</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -756,8 +794,6 @@ Wall time: 1.77 s
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 <div class="cell docutils container">
@@ -972,8 +1008,6 @@ Wall time: 1.77 s
 <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 <div class="cell docutils container">
@@ -1472,18 +1506,20 @@ Wall time: 1.77 s
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="CNN.html" title="previous page">CNN (Convolutional Neural Networks)</a>
-    <a class='right-next' id="next-link" href="SVD.html" title="next page">SVD (Singular Value Decomposition)</a>
+    <a class='left-prev' id="prev-link" href="SVD.html" title="previous page">SVD (Singular Value Decomposition)</a>
+    <a class='right-next' id="next-link" href="DNN.html" title="next page">DNN (Deep Neural Networks)</a>
 
     </div>
-    <footer class="footer">
-  <div class="container">
-    <p>
-          &copy; Copyright MIF, 2020.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
-    </p>
-  </div>
-</footer>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By trokas<br/>
+        
+            &copy; Copyright MIF, 2020.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 

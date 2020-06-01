@@ -6,16 +6,16 @@
   <head>
     <meta charset="utf-8" />
     <title>SVD (Singular Value Decomposition) &#8212; AI primer</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link rel="stylesheet" href="_static/jupyterbook.css" type="text/css" />
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
-    <link href="_static/css/index.css" rel="stylesheet">
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -23,36 +23,31 @@
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide_output div.cell_output, .tag_hide_cell.cell';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="DNN (Deep Neural Networks)" href="DNN.html" />
-    <link rel="prev" title="RF (Random Forest)" href="RF.html" />
+    <link rel="next" title="RF (Random Forest)" href="RF.html" />
+    <link rel="prev" title="Welcome to AI primer course" href="README.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-    
-<div class='top'>
-<button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation">
-    <i class="fas fa-bars"></i>
-    <i class="fas fa-arrow-left"></i>
-    <i class="fas fa-arrow-up"></i>
-</button>
-</div>
 
-    <div class="container-fluid">
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 col-xl-3 bd-sidebar show" id="site-navigation">
-<div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="index.html">
   
   
@@ -62,6 +57,7 @@
 </div>
 
 <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form>
 
@@ -69,24 +65,92 @@
   
   <ul class="nav sidenav_l1">
   <li class="">
-    <a href="RF.html">RF (Random Forest)</a>
+    <a href="README.html">Welcome to AI primer course</a>
   </li>
   <li class="active">
     <a href="">SVD (Singular Value Decomposition)</a>
   </li>
   <li class="">
+    <a href="RF.html">RF (Random Forest)</a>
+  </li>
+  <li class="">
     <a href="DNN.html">DNN (Deep Neural Networks)</a>
+  </li>
+  <li class="">
+    <a href="CNN.html">CNN (Convolutional Neural Networks)</a>
+  </li>
+  <li class="">
+    <a href="Project.html">Project: Flatland</a>
   </li>
 </ul>
 </nav>
-<p class="sidebar_footer">Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a></p>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </div>
 
+</div>
+
+
           
-<div class="d-none d-xl-block col-xl-2 bd-toc">
 
 
-<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/SVD.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+            <div class="dropdown-buttons">
+                
+                <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/SVD.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip" data-placement="left"><img class="binder-button-logo" src="_static/images/logo_binder.svg" alt="Interact on binder">Binder</button></a>
+                
+                
+                
+            </div>
+        </div>
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
     
@@ -158,22 +222,12 @@
     
     </ul>
 </nav>
-</div>
 
 
-          
-<main class="col py-md-3 pl-md-5 pr-0 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar sticky-top">
-    <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation">
-        <i class="fas fa-bars"></i>
-        <i class="fas fa-arrow-left"></i>
-    </button>
-    <a class="download-buttons" href="_sources/SVD.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn"><i class="fas fa-download"></i>.ipynb</button></a>
-    
+    </div>
 </div>
-    <div class="row">
-        <div class="col-12 ">
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
                 
@@ -191,11 +245,7 @@
 <h2>Increasing importance of linear algebra<a class="headerlink" href="#increasing-importance-of-linear-algebra" title="Permalink to this headline">¶</a></h2>
 <p>In 1844 Hermann Grassmann published his “Theory of Extension” which included foundational new topics of what is today called <strong>linear algebra</strong>. In 1848, James Joseph Sylvester introduced the term <strong>matrix</strong>, which is Latin for womb.
 Linear algebra is the branch of mathematics concerning linear equations such as
-<div class="math notranslate nohighlight">
-\[a_{1}x_{1}+\cdots +a_{n}x_{n}=b\]</div>
- and linear functions such as <div class="math notranslate nohighlight">
-\[(x_{1},\ldots ,x_{n})\mapsto a_{1}x_{1}+\ldots +a_{n}x_{n}\]</div>
-
+<span class="math notranslate nohighlight">\($a_{1}x_{1}+\cdots +a_{n}x_{n}=b\)</span>$ and linear functions such as <span class="math notranslate nohighlight">\($(x_{1},\ldots ,x_{n})\mapsto a_{1}x_{1}+\ldots +a_{n}x_{n}\)</span>$
 and their representations through <strong>matrices and vector spaces</strong>. Linear algebra is increasing in importance as is core tool in AI field. Nice <a class="reference external" href="https://lexfridman.com/gilbert-strang/">podcast</a> about this increasing importance, Strang even suggests to replace calculus by linear albebra in schools. By the way most calculus operations have discrete analogues in linear algebra.</p>
 <div class="section" id="linear-algebra-missing-pieces">
 <h3>Linear algebra (missing pieces?)<a class="headerlink" href="#linear-algebra-missing-pieces" title="Permalink to this headline">¶</a></h3>
@@ -213,10 +263,12 @@ and their representations through <strong>matrices and vector spaces</strong>. L
 <li><p>Matrix times vector can be thought of as a weighted sum of matrix columns</p></li>
 </ul>
 <img src="https://eli.thegreenplace.net/images/2015/veccomb.png" alt="Matrix times vector" style="width: 50%"/>
-<img src="https://eli.thegreenplace.net/images/2015/vecrowcomb.png" alt="Vector times matrix" style="width: 50%"/><p>So if we multiply a space by a matrix it enables us to <strong>stretch and rotate</strong> original space.</p>
-<img src="https://i.ytimg.com/vi/XkY2DOUCWMU/maxresdefault.jpg" alt="Space deformation" style="width: 50%"/><p>For example</p>
+<img src="https://eli.thegreenplace.net/images/2015/vecrowcomb.png" alt="Vector times matrix" style="width: 50%"/>
+<p>So if we multiply a space by a matrix it enables us to <strong>stretch and rotate</strong> original space.</p>
+<img src="https://i.ytimg.com/vi/XkY2DOUCWMU/maxresdefault.jpg" alt="Space deformation" style="width: 50%"/>
+<p>For example</p>
 <p>\begin{bmatrix}
-\cos(\theta) &amp; -\sin(\theta)\<br />
+\cos(\theta) &amp; -\sin(\theta)\
 \sin(\theta) &amp; \cos(\theta)
 \end{bmatrix}</p>
 <p>works as a simple counter-clockwise rotation, and it’s inverse as clockwise rotation. For more geometric interpretations see <strong>3Blue1Brown</strong> <a class="reference external" href="https://www.youtube.com/watch?v=kjBOesZCoqc&amp;feature=emb_title">linear algebra</a> course.</p>
@@ -235,7 +287,7 @@ and their representations through <strong>matrices and vector spaces</strong>. L
               <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
 
 <span class="n">values</span><span class="p">,</span> <span class="n">vectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Eigenvalues:</span><span class="se">\n</span><span class="si">{values}</span><span class="se">\n</span><span class="s1">Eigenvectors:</span><span class="se">\n</span><span class="si">{vectors}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Eigenvalues:</span><span class="se">\n</span><span class="si">{</span><span class="n">values</span><span class="si">}</span><span class="se">\n</span><span class="s1">Eigenvectors:</span><span class="se">\n</span><span class="si">{</span><span class="n">vectors</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -289,26 +341,25 @@ can you tell what it does to the vectorspace and where eigenvectors are located?
 <div class="section" id="how-to-calculate-eigenvectors">
 <h3>How to calculate eigenvectors<a class="headerlink" href="#how-to-calculate-eigenvectors" title="Permalink to this headline">¶</a></h3>
 <p>You might know that already, but let’s run through quick example to get some intuition. Let</p>
-<p><div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight">
 \[\begin{split}A = \begin{bmatrix}
 2 &amp; 3\\
 2 &amp; 1
 \end{bmatrix}\end{split}\]</div>
-</p>
 <p>Since we are solving for <span class="math notranslate nohighlight">\(A u=\lambda u\)</span> it is the same as to request that <span class="math notranslate nohighlight">\(A - \lambda I = 0\)</span> or</p>
-<p><div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight">
 \[\begin{split}\det\begin{pmatrix}
 2 - \lambda &amp; 3\\
 2 &amp; 1 - \lambda
 \end{pmatrix} = 0.\end{split}\]</div>
-</p>
 <p>After solving it you end up with two eigenvalues <span class="math notranslate nohighlight">\(\lambda_1 = -1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = 4\)</span>. The eigenvalue specifies the size of the eigenvector, let’s find those now. By solving system of equations defined by <span class="math notranslate nohighlight">\(Au_1 = -u_1\)</span> you should get <span class="math notranslate nohighlight">\(u_1 = \begin{bmatrix}-1\\1\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(Au_2 = 4u_2\)</span> quickly leads to <span class="math notranslate nohighlight">\(u_2 = \begin{bmatrix}3\\2\end{bmatrix}\)</span>.</p>
 <p><strong>TASK:</strong> confirm these calculations using numpy.</p>
 </div>
 <div class="section" id="singular-value-decomposition-svd">
 <h3>Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this headline">¶</a></h3>
 <p>We can decompose matrix any way we like, for example: <span class="math notranslate nohighlight">\(A = B + C\)</span>, <span class="math notranslate nohighlight">\(A = B \cdot C\)</span>, … It turns out that some decompositions are usefull for data compression, numerical calculations and might reveal insights into the data. SVD is defined as:</p>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Singular_value_decomposition_visualisation.svg/220px-Singular_value_decomposition_visualisation.svg.png" alt="SVD" style="width: 20%"/><p>Who invented SVD?</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Singular_value_decomposition_visualisation.svg/220px-Singular_value_decomposition_visualisation.svg.png" alt="SVD" style="width: 20%"/>
+<p>Who invented SVD?</p>
 <ul class="simple">
 <li><p>Eugenio Beltrami (1835-1899)</p></li>
 <li><p>Camille Jordan (1838-1921)</p></li>
@@ -329,27 +380,21 @@ can you tell what it does to the vectorspace and where eigenvectors are located?
 <div class="section" id="how-is-svd-computed">
 <h4>How is SVD computed?<a class="headerlink" href="#how-is-svd-computed" title="Permalink to this headline">¶</a></h4>
 <p>Let’s compute SVD for
-<div class="math notranslate nohighlight">
-\[\begin{split}X=
+<span class="math notranslate nohighlight">\($X=
 \begin{bmatrix}
 5 &amp; 5\\
 -1 &amp; 7
-\end{bmatrix} = USV^T.\end{split}\]</div>
-</p>
+\end{bmatrix} = USV^T.\)</span>$</p>
 <p>We start by producing symmetric matrix (you should have some intuition why we need that by now)
-<div class="math notranslate nohighlight">
-\[\begin{split}X^T X=VS^TSV^T=
+<span class="math notranslate nohighlight">\($X^T X=VS^TSV^T=
 \begin{bmatrix}
 26 &amp; 18\\
 18 &amp; 74
-\end{bmatrix} = USV^T.\end{split}\]</div>
-</p>
+\end{bmatrix} = USV^T.\)</span>$</p>
 <p>Now we can compute eigenvectors usging determinant. Since
-<div class="math notranslate nohighlight">
-\[\det(X^TX - \lambda I) = (\lambda - 20)(\lambda - 80)\]</div>
-
+<span class="math notranslate nohighlight">\($\det(X^TX - \lambda I) = (\lambda - 20)(\lambda - 80)\)</span>$
 we have</p>
-<p><div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight">
 \[\begin{split}X^TX - 80 I =
 \begin{bmatrix}
 -54 &amp; 18\\
@@ -361,8 +406,7 @@ V_1 = \frac{1}{\sqrt{10}}
 1\\
 3
 \end{bmatrix}.\end{split}\]</div>
-</p>
-<p><div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight">
 \[\begin{split}X^TX - 20 I = 
 \begin{bmatrix}
 6 &amp; 18\\
@@ -374,17 +418,15 @@ V_2 = \frac{1}{\sqrt{10}}
 3\\
 -1
 \end{bmatrix};\end{split}\]</div>
-</p>
 <p>Now we have</p>
-<p><div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight">
 \[\begin{split}V = \frac{1}{\sqrt{10}}
 \begin{bmatrix}
 1 &amp; 3\\
 3 &amp; -1
 \end{bmatrix},\end{split}\]</div>
-</p>
 <p>thus knowing that <span class="math notranslate nohighlight">\(XV=US\)</span> it is easy to find</p>
-<p><div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight">
 \[\begin{split}S =
 \begin{bmatrix}
 4\sqrt{5} &amp; 0\\
@@ -395,7 +437,6 @@ U = \frac{1}{\sqrt{2}}
 1 &amp; 1\\
 1 &amp; -1
 \end{bmatrix}.\end{split}\]</div>
-</p>
 <p>Let’s confirm our results using numpy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -403,7 +444,7 @@ U = \frac{1}{\sqrt{2}}
               <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span>
 
 <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;U</span><span class="se">\n</span><span class="si">{U}</span><span class="se">\n</span><span class="s1">S</span><span class="se">\n</span><span class="si">{S}</span><span class="se">\n</span><span class="s1">V</span><span class="se">\n</span><span class="si">{V}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;U</span><span class="se">\n</span><span class="si">{</span><span class="n">U</span><span class="si">}</span><span class="se">\n</span><span class="s1">S</span><span class="se">\n</span><span class="si">{</span><span class="n">S</span><span class="si">}</span><span class="se">\n</span><span class="s1">V</span><span class="se">\n</span><span class="si">{</span><span class="n">V</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -431,7 +472,8 @@ V
 <li><p>Leave only top N factors in S</p></li>
 <li><p>Multiply matrixes to obtaine compressed image</p></li>
 </ul>
-<img src="https://image1.slideserve.com/2598122/svd-and-rank-k-approximations-l.jpg" alt="Rank-k approximation" style="width: 50%"/><p>As we saw this should work, because S captures most relevant eigenvectors.</p>
+<img src="https://image1.slideserve.com/2598122/svd-and-rank-k-approximations-l.jpg" alt="Rank-k approximation" style="width: 50%"/>
+<p>As we saw this should work, because S captures most relevant eigenvectors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>    <span class="c1"># pip install matplotlib</span>
@@ -447,13 +489,11 @@ V
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;img/flud.jpg&#39;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Image shape </span><span class="si">{X.shape}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Image shape </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -472,8 +512,6 @@ V
     <span class="k">return</span> <span class="n">u</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 <p>First, let’s use all singular values. Even then we reach some compression!</p>
@@ -547,8 +585,6 @@ V shape - (800, 800)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-</div>
 </div>
 <p>For sure we expect <span class="math notranslate nohighlight">\((X^{-1})^{-1} = X\)</span>, but</p>
 <div class="cell docutils container">
@@ -582,25 +618,14 @@ V shape - (800, 800)
 </div>
 </div>
 <p>Linear regression works by
-<div class="math notranslate nohighlight">
-\[y=X\hat\beta\]</div>
-
-<div class="math notranslate nohighlight">
-\[X^Ty=X^TX\hat\beta\]</div>
-
-<div class="math notranslate nohighlight">
-\[\hat \beta = (X^T X)^{-1} X^T y\]</div>
-</p>
+<span class="math notranslate nohighlight">\($y=X\hat\beta\)</span>$
+<span class="math notranslate nohighlight">\($X^Ty=X^TX\hat\beta\)</span>$
+<span class="math notranslate nohighlight">\($\hat \beta = (X^T X)^{-1} X^T y\)</span>$</p>
 <p>By the way you can vizualize linear regression as the process of minimizing <span class="math notranslate nohighlight">\(e\)</span> in</p>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQXvIwYtFpyuHEa_0zYoECXKp3JRdf6Q89eo3Prpw9SvJBJoLmC" alt="Linear regression" style="width: 40%"/><p>thus it’s analogue of finding a projection of target vector in a given vector space.</p>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQXvIwYtFpyuHEa_0zYoECXKp3JRdf6Q89eo3Prpw9SvJBJoLmC" alt="Linear regression" style="width: 40%"/>
+<p>thus it’s analogue of finding a projection of target vector in a given vector space.</p>
 <p>Let’s come back to our problem - we saw that inverse is unstable… SVD is one of the solutions to deal with that problem.</p>
-<p>Since <div class="math notranslate nohighlight">
-\[X=USV^T\]</div>
- and <div class="math notranslate nohighlight">
-\[UU^T=I_m;\;VV^T=I_n\]</div>
- it is easy to show that <div class="math notranslate nohighlight">
-\[\hat \beta = (X^T X)^{-1} X^T y = V S^{-1} U^T y.\]</div>
-</p>
+<p>Since <span class="math notranslate nohighlight">\($X=USV^T\)</span>$ and <span class="math notranslate nohighlight">\($UU^T=I_m;\;VV^T=I_n\)</span>$ it is easy to show that <span class="math notranslate nohighlight">\($\hat \beta = (X^T X)^{-1} X^T y = V S^{-1} U^T y.\)</span>$</p>
 <p><strong>Note:</strong> inverse of S is known to be stable.</p>
 <p>Let’s see if this trick realy works on a real dataset.</p>
 <div class="cell docutils container">
@@ -615,8 +640,6 @@ V shape - (800, 800)
 <span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 <p>Calculate beta using direct inverse</p>
@@ -752,8 +775,6 @@ V shape - (800, 800)
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 <div class="cell docutils container">
@@ -935,8 +956,6 @@ V shape - (800, 800)
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 <div class="cell docutils container">
@@ -1861,8 +1880,6 @@ V shape - (800, 800)
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 <div class="cell docutils container">
@@ -2810,8 +2827,6 @@ V shape - (800, 800)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-</div>
 </div>
 <p>Using SVD we will extract movie to concept similarities.</p>
 <div class="cell docutils container">
@@ -3423,18 +3438,20 @@ dtype: float64
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="RF.html" title="previous page">RF (Random Forest)</a>
-    <a class='right-next' id="next-link" href="DNN.html" title="next page">DNN (Deep Neural Networks)</a>
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">Welcome to AI primer course</a>
+    <a class='right-next' id="next-link" href="RF.html" title="next page">RF (Random Forest)</a>
 
     </div>
-    <footer class="footer">
-  <div class="container">
-    <p>
-          &copy; Copyright MIF, 2020.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
-    </p>
-  </div>
-</footer>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By trokas<br/>
+        
+            &copy; Copyright MIF, 2020.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 

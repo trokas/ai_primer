@@ -1,12 +1,11 @@
 
 
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Index &#8212; AI primer</title>
+    <title>Project: Flatland &#8212; AI primer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -29,8 +28,9 @@
     <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="index" title="Index" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="CNN (Convolutional Neural Networks)" href="CNN.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -78,8 +78,8 @@
   <li class="">
     <a href="CNN.html">CNN (Convolutional Neural Networks)</a>
   </li>
-  <li class="">
-    <a href="Project.html">Project: Flatland</a>
+  <li class="active">
+    <a href="">Project: Flatland</a>
   </li>
 </ul>
 </nav>
@@ -114,6 +114,15 @@
             <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
 
             
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/Project.md.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
         </div>
 
         <!-- Edit this page -->
@@ -126,9 +135,16 @@
         
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#leaderboard" class="nav-link">Leaderboard</a>
+        </li>
     
     </ul>
 </nav>
@@ -141,11 +157,17 @@
         
               <div>
                 
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="project-flatland">
+<h1>Project: Flatland<a class="headerlink" href="#project-flatland" title="Permalink to this headline">¶</a></h1>
+<p>If you do not know about Flatland just google it, read, listen or whatch it.</p>
+<p><img alt="Flatland book cover" src="https://images.adsttc.com/media/images/5482/08a4/e58e/cef0/ed00/001f/medium_jpg/flatland500.jpg?1417808033" /></p>
+<p>You will have to classify images by ‘calculating’ number of corners a figure in that image has using deep learning.</p>
+<p>Train set has polygons of shapes 3-6 and circles.</p>
+<p><img alt="Project train set sample" src="_images/flatland.png" /></p>
+<div class="section" id="leaderboard">
+<h2>Leaderboard<a class="headerlink" href="#leaderboard" title="Permalink to this headline">¶</a></h2>
+<p>To add some gamification all submissions will end up in a leaderboard. Also passing benchmarks which represent grades will be introduced.</p>
+</div>
 </div>
 
 
@@ -157,6 +179,7 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="CNN.html" title="previous page">CNN (Convolutional Neural Networks)</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

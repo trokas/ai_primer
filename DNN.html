@@ -6,16 +6,16 @@
   <head>
     <meta charset="utf-8" />
     <title>DNN (Deep Neural Networks) &#8212; AI primer</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link rel="stylesheet" href="_static/jupyterbook.css" type="text/css" />
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
-    <link href="_static/css/index.css" rel="stylesheet">
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -23,35 +23,31 @@
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide_output div.cell_output, .tag_hide_cell.cell';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="SVD (Singular Value Decomposition)" href="SVD.html" />
+    <link rel="next" title="CNN (Convolutional Neural Networks)" href="CNN.html" />
+    <link rel="prev" title="RF (Random Forest)" href="RF.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-    
-<div class='top'>
-<button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation">
-    <i class="fas fa-bars"></i>
-    <i class="fas fa-arrow-left"></i>
-    <i class="fas fa-arrow-up"></i>
-</button>
-</div>
 
-    <div class="container-fluid">
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 col-xl-3 bd-sidebar show" id="site-navigation">
-<div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="index.html">
   
   
@@ -61,6 +57,7 @@
 </div>
 
 <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form>
 
@@ -68,24 +65,92 @@
   
   <ul class="nav sidenav_l1">
   <li class="">
-    <a href="RF.html">RF (Random Forest)</a>
+    <a href="README.html">Welcome to AI primer course</a>
   </li>
   <li class="">
     <a href="SVD.html">SVD (Singular Value Decomposition)</a>
   </li>
+  <li class="">
+    <a href="RF.html">RF (Random Forest)</a>
+  </li>
   <li class="active">
     <a href="">DNN (Deep Neural Networks)</a>
   </li>
+  <li class="">
+    <a href="CNN.html">CNN (Convolutional Neural Networks)</a>
+  </li>
+  <li class="">
+    <a href="Project.html">Project: Flatland</a>
+  </li>
 </ul>
 </nav>
-<p class="sidebar_footer">Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a></p>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </div>
 
+</div>
+
+
           
-<div class="d-none d-xl-block col-xl-2 bd-toc">
 
 
-<div class="tocsection onthispage"><i class="fas fa-list"></i> On this page</div>
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="_sources/DNN.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+            <div class="dropdown-buttons">
+                
+                <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/DNN.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip" data-placement="left"><img class="binder-button-logo" src="_static/images/logo_binder.svg" alt="Interact on binder">Binder</button></a>
+                
+                
+                
+            </div>
+        </div>
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
     
@@ -135,35 +200,31 @@
     
     </ul>
 </nav>
-</div>
 
 
-          
-<main class="col py-md-3 pl-md-5 pr-0 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar sticky-top">
-    <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation">
-        <i class="fas fa-bars"></i>
-        <i class="fas fa-arrow-left"></i>
-    </button>
-    <a class="download-buttons" href="_sources/DNN.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn"><i class="fas fa-download"></i>.ipynb</button></a>
-    
+    </div>
 </div>
-    <div class="row">
-        <div class="col-12 ">
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
                 
   <div class="section" id="dnn-deep-neural-networks">
 <h1>DNN (Deep Neural Networks)<a class="headerlink" href="#dnn-deep-neural-networks" title="Permalink to this headline">¶</a></h1>
-<img src="https://cdn-images-1.medium.com/max/2000/1*Z_DnCyKt18RM0aCCrFzaIQ.png" style="width: 80%"/><p>ANNs have been around for quite a while: they were first introduced back in <strong>1943</strong> by the neurophysiologist Warren <strong>McCulloch</strong> and the mathematician Walter <strong>Pitts</strong> (see “A Logical Calculus of Ideas Immanent in Nervous Activity”).</p>
-<img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117028252_image.png" style="width: 50%"/><img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117050006_image.png" style="width: 50%"/><p>Most of the pictures are taken from the great book “Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 2nd Edition” by Aurélien Géron.</p>
+<img src="https://cdn-images-1.medium.com/max/2000/1*Z_DnCyKt18RM0aCCrFzaIQ.png" style="width: 80%"/>
+<p>ANNs have been around for quite a while: they were first introduced back in <strong>1943</strong> by the neurophysiologist Warren <strong>McCulloch</strong> and the mathematician Walter <strong>Pitts</strong> (see “A Logical Calculus of Ideas Immanent in Nervous Activity”).</p>
+<img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117028252_image.png" style="width: 50%"/>
+<img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117050006_image.png" style="width: 50%"/>
+<p>Most of the pictures are taken from the great book “Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 2nd Edition” by Aurélien Géron.</p>
 <div class="section" id="the-perceptron">
 <h2>The Perceptron<a class="headerlink" href="#the-perceptron" title="Permalink to this headline">¶</a></h2>
 <p>The <em>Perceptron</em> is one of the simplest ANN architectures, invented in <strong>1957</strong> by Frank <strong>Rosenblatt</strong>. It is based on a slightly different artificial neuron called a <em>threshold logic unit</em> (TLU), or sometimes a <em>linear threshold unit</em> (LTU). A Perceptron is simply composed of a single layer of TLUs, with each TLU connected to all the inputs.</p>
-<img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117134137_image.png" alt="Threshold logic unit: an artificial neuron which computes a weighted sum of its inputs then applies a step function" style="width: 50%"/><img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117253013_image.png" alt="Architecture of a Perceptron with two input neurons, one bias neuron, and three output neurons" style="width: 50%"/><p>Lets see how is a Perceptron trained.</p>
+<img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117134137_image.png" alt="Threshold logic unit: an artificial neuron which computes a weighted sum of its inputs then applies a step function" style="width: 50%"/>
+<img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117253013_image.png" alt="Architecture of a Perceptron with two input neurons, one bias neuron, and three output neurons" style="width: 50%"/>
+<p>Lets see how is a Perceptron trained.</p>
 <p>The Perceptron training algorithm proposed by <strong>Rosenblatt</strong> was largely inspired by <em><strong>Hebb’s rule</strong></em>. In his <strong>1949</strong> book <em>The Organization of Behavior</em> (Wiley), Donald Hebb suggested that when a biological neuron triggers another neuron often, the connection between these two neurons grows stronger. Siegrid Löwel later summarized Hebb’s idea in the catchy phrase, “Cells that fire together, wire together”; that is, the connection weight between two neurons tends to increase when they fire simultaneously. This rule later became known as Hebb’s rule (or <em>Hebbian learning</em>).</p>
-<img src="https://pbs.twimg.com/media/DARmL4KXYAAj0td.jpg:large" style="width: 40%"/><p>The decision boundary of each output neuron is linear, so Perceptrons are incapable of learning complex patterns (just like Logistic Regression classifiers). However, if the training instances are linearly separable, <strong>Rosenblatt</strong> demonstrated that this algorithm would converge to a solution. This is called the <strong>Perceptron convergence theorem</strong>.</p>
+<img src="https://pbs.twimg.com/media/DARmL4KXYAAj0td.jpg:large" style="width: 40%"/>
+<p>The decision boundary of each output neuron is linear, so Perceptrons are incapable of learning complex patterns (just like Logistic Regression classifiers). However, if the training instances are linearly separable, <strong>Rosenblatt</strong> demonstrated that this algorithm would converge to a solution. This is called the <strong>Perceptron convergence theorem</strong>.</p>
 <div class="row">
   <div class="column">
     <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117522486_image.png" style="width: 30%"/>
@@ -209,8 +270,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -218,8 +277,6 @@
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pc_1&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pc_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">4</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 <div class="cell docutils container">
@@ -254,8 +311,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-</div>
 </div>
 <div class="section" id="perceptron-for-2-class-case">
 <h3>Perceptron for 2 class case<a class="headerlink" href="#perceptron-for-2-class-case" title="Permalink to this headline">¶</a></h3>
@@ -289,21 +344,26 @@
 </div>
 </div>
 <p>Interestingly Alexey Grigorevich Ivakhnenko in 1965 introduced first deep neural network, but it was forgotten…</p>
-<img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571319956543_image.png" alt="First known deep network" style="width: 50%"/></div>
+<img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571319956543_image.png" alt="First known deep network" style="width: 50%"/>
+</div>
 </div>
 <div class="section" id="beginning-of-first-ai-winter">
 <h2>Beginning of first AI winter<a class="headerlink" href="#beginning-of-first-ai-winter" title="Permalink to this headline">¶</a></h2>
 <p>In their <strong>1969</strong> monograph <em>Perceptrons</em>, Marvin Minsky and Seymour <strong>Papert</strong> highlighted a number of serious weaknesses of Perceptrons—in particular, the fact that they are incapable of solving some trivial problems (e.g., the <em>Exclusive OR</em> (XOR) classification problem.
 It turns out that some of the limitations of Perceptrons can be eliminated by stacking multiple Perceptrons!</p>
-<img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117686838_image.png"  style="width: 50%"/><p>But, we have no idea how to train it yet…</p>
+<img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117686838_image.png"  style="width: 50%"/>
+<p>But, we have no idea how to train it yet…</p>
 <img src="https://miro.medium.com/max/2101/1*mWYZanOv3QUafz0nnhbEWw.png"  style="width: 50%"/></div>
 <div class="section" id="backpropagation">
 <h2>Backpropagation<a class="headerlink" href="#backpropagation" title="Permalink to this headline">¶</a></h2>
 <p>When an ANN contains a deep stack of hidden layers, it is called a <em><strong>deep neural network</strong></em> <strong>(DNN)</strong>.</p>
-<img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117766740_image.png" alt="Architecture of a Multilayer Perceptron" style="width: 50%"/><p>For many years researchers struggled to find a way to train MLPs, without success. But in <strong>1986</strong>, David <strong>Rumelhart</strong>, Geoffrey <strong>Hinton</strong>, and Ronald <strong>Williams</strong> published a groundbreaking paper (“Learning Internal Representations by Error Propagation”) that introduced the <strong>backpropagation</strong> training algorithm, which is still used today.</p>
+<img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117766740_image.png" alt="Architecture of a Multilayer Perceptron" style="width: 50%"/>
+<p>For many years researchers struggled to find a way to train MLPs, without success. But in <strong>1986</strong>, David <strong>Rumelhart</strong>, Geoffrey <strong>Hinton</strong>, and Ronald <strong>Williams</strong> published a groundbreaking paper (“Learning Internal Representations by Error Propagation”) that introduced the <strong>backpropagation</strong> training algorithm, which is still used today.</p>
 <p>Actually backpropagation was known prior to 1986 (Paul Werbos, 1975)</p>
-<img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571320041201_image.png" alt="Paul Werbos, 1975" style="width: 50%"/><p>In short, it is Gradient Descent using an efficient technique for computing the gradients automatically: in just <strong>two passes</strong> through the network (one <strong>forward</strong>, one <strong>backward</strong>), the backpropagation algorithm is able to compute the gradient of the network’s error with regard to every single model parameter.</p>
-<img src="https://miro.medium.com/max/3040/1*q1M7LGiDTirwU-4LcFq7_Q.png" style="width: 50%"/><p>Automatically computing gradients is called <em>automatic differentiation</em>, or <em>autodiff</em>. There are various autodiff techniques, with different pros and cons. The one used by backpropagation is called <em>reverse-mode autodiff</em>.</p>
+<img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571320041201_image.png" alt="Paul Werbos, 1975" style="width: 50%"/>
+<p>In short, it is Gradient Descent using an efficient technique for computing the gradients automatically: in just <strong>two passes</strong> through the network (one <strong>forward</strong>, one <strong>backward</strong>), the backpropagation algorithm is able to compute the gradient of the network’s error with regard to every single model parameter.</p>
+<img src="https://miro.medium.com/max/3040/1*q1M7LGiDTirwU-4LcFq7_Q.png" style="width: 50%"/>
+<p>Automatically computing gradients is called <em>automatic differentiation</em>, or <em>autodiff</em>. There are various autodiff techniques, with different pros and cons. The one used by backpropagation is called <em>reverse-mode autodiff</em>.</p>
 <div class="section" id="two-layer-nn-for-2-class-case">
 <h3>Two layer NN for 2 class case<a class="headerlink" href="#two-layer-nn-for-2-class-case" title="Permalink to this headline">¶</a></h3>
 <img src="https://miro.medium.com/max/1000/1*sX6T0Y4aa3ARh7IBS_sdqw.png" style="width: 40%"/><div class="cell docutils container">
@@ -322,11 +382,10 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-</div>
 </div>
 <p>Following code implements <strong>back propagation</strong> using gradient descent.</p>
-<img src="https://kratzert.github.io/images/bn_backpass/chainrule_example.PNG" style="width: 80%"/><p>For extensive chain rule back propagation explanation see <a class="reference external" href="https://kratzert.github.io/2016/02/12/understanding-the-gradient-flow-through-the-batch-normalization-layer.html">this blog post</a>.</p>
+<img src="https://kratzert.github.io/images/bn_backpass/chainrule_example.PNG" style="width: 80%"/>
+<p>For extensive chain rule back propagation explanation see <a class="reference external" href="https://kratzert.github.io/2016/02/12/understanding-the-gradient-flow-through-the-batch-normalization-layer.html">this blog post</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
@@ -357,7 +416,8 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 <div class="section" id="keras">
 <h2>Keras<a class="headerlink" href="#keras" title="Permalink to this headline">¶</a></h2>
 <p>From now on we will use keras to create our models. We will use relu activation</p>
-<img src="https://miro.medium.com/max/357/1*oePAhrm74RNnNEolprmTaQ.png" style="width: 30%"/><div class="cell docutils container">
+<img src="https://miro.medium.com/max/357/1*oePAhrm74RNnNEolprmTaQ.png" style="width: 30%"/>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow.keras</span> <span class="k">as</span> <span class="nn">keras</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span>
@@ -365,8 +425,6 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 <span class="kn">from</span> <span class="nn">tensorflow.keras.optimizers</span> <span class="kn">import</span> <span class="n">Adam</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 <div class="cell docutils container">
@@ -646,8 +704,6 @@ Epoch 100/100
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span> <span class="o">/</span> <span class="mi">255</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
 </div>
 </div>
 <div class="cell docutils container">
@@ -932,11 +988,15 @@ Epoch 20/20
 <div class="section" id="a-note-on-gradien-descent">
 <h2>A note on Gradien Descent<a class="headerlink" href="#a-note-on-gradien-descent" title="Permalink to this headline">¶</a></h2>
 <p>Without noticing on the way we have used gradient descent, let’s see how it works in depth.</p>
-<img src="https://miro.medium.com/max/1005/1*_6TVU8yGpXNYDkkpOfnJ6Q.png" style="width: 50%"/><p>Note, that gradient descent is sensitive to the step size.</p>
-<img src="https://www.researchgate.net/profile/Tom_Duckett/publication/224324276/figure/fig2/AS:359779089305617@1462789427971/Convergence-Conditions-in-Gradient-Descent-Algorithm.png" style="width: 50%"/><p>We will meet some solutions to this problem in the future.</p>
+<img src="https://miro.medium.com/max/1005/1*_6TVU8yGpXNYDkkpOfnJ6Q.png" style="width: 50%"/>
+<p>Note, that gradient descent is sensitive to the step size.</p>
+<img src="https://www.researchgate.net/profile/Tom_Duckett/publication/224324276/figure/fig2/AS:359779089305617@1462789427971/Convergence-Conditions-in-Gradient-Descent-Algorithm.png" style="width: 50%"/>
+<p>We will meet some solutions to this problem in the future.</p>
 <p>Also gradient descent is not guaranteed to find global minimum, but when we work with high dimensional data this risk partly wanishes.</p>
-<img src="https://paper-attachments.dropbox.com/s_F57E27FDF0C54777F2844EECCBABB7DF8EEB9597E5F323F9CC73F1690617FCAD_1569311505423_image.png" style="width: 50%"/><p>Let’s implement gradient descent for linear regression as follows</p>
-<img src="https://kousikk.files.wordpress.com/2014/11/screen-shot-2014-11-12-at-11-57-47-am.png" style="width: 50%"/><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>     <span class="c1"># initial values</span>
+<img src="https://paper-attachments.dropbox.com/s_F57E27FDF0C54777F2844EECCBABB7DF8EEB9597E5F323F9CC73F1690617FCAD_1569311505423_image.png" style="width: 50%"/>
+<p>Let’s implement gradient descent for linear regression as follows</p>
+<img src="https://kousikk.files.wordpress.com/2014/11/screen-shot-2014-11-12-at-11-57-47-am.png" style="width: 50%"/>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>     <span class="c1"># initial values</span>
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
 
@@ -951,11 +1011,13 @@ Epoch 20/20
 </pre></div>
 </div>
 <p><strong>TASK:</strong> try that out on your own and add plots on the way, you should get something similar to this</p>
-<img src="https://paper-attachments.dropbox.com/s_F57E27FDF0C54777F2844EECCBABB7DF8EEB9597E5F323F9CC73F1690617FCAD_1567686156887_grad_desc_demo.gif" style="width: 50%"/></div>
+<img src="https://paper-attachments.dropbox.com/s_F57E27FDF0C54777F2844EECCBABB7DF8EEB9597E5F323F9CC73F1690617FCAD_1567686156887_grad_desc_demo.gif" style="width: 50%"/>
+</div>
 <div class="section" id="a-note-on-dropout">
 <h2>A note on Dropout<a class="headerlink" href="#a-note-on-dropout" title="Permalink to this headline">¶</a></h2>
 <p>There is a nice and popular way to <strong>prevent over-fitting</strong> in Neural Networks - turn off some neurons during training procudure.</p>
-<img src="https://miro.medium.com/proxy/1*iWQzxhVlvadk6VAJjsgXgg.png" style="width: 50%"/><p>You can try that out by adding Dropout layers between Dense ones as follows:</p>
+<img src="https://miro.medium.com/proxy/1*iWQzxhVlvadk6VAJjsgXgg.png" style="width: 50%"/>
+<p>You can try that out by adding Dropout layers between Dense ones as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">]))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
@@ -969,7 +1031,8 @@ Epoch 20/20
 <div class="section" id="a-note-on-architectures">
 <h2>A note on Architectures<a class="headerlink" href="#a-note-on-architectures" title="Permalink to this headline">¶</a></h2>
 <p>There are a lot of possible architectures, we have only touched the surface. Take a glympse at the variations of Neural Networks <a class="reference external" href="https://towardsdatascience.com/the-mostly-complete-chart-of-neural-networks-explained-3fb6f2367464">here</a>.</p>
-<img src="https://miro.medium.com/max/2000/1*cuTSPlTq0a_327iTPJyD-Q.png" style="width: 80%"/></div>
+<img src="https://miro.medium.com/max/2000/1*cuTSPlTq0a_327iTPJyD-Q.png" style="width: 80%"/>
+</div>
 </div>
 <div class="section" id="re-sources">
 <h1>(re)Sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h1>
@@ -991,17 +1054,20 @@ Epoch 20/20
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="SVD.html" title="previous page">SVD (Singular Value Decomposition)</a>
+    <a class='left-prev' id="prev-link" href="RF.html" title="previous page">RF (Random Forest)</a>
+    <a class='right-next' id="next-link" href="CNN.html" title="next page">CNN (Convolutional Neural Networks)</a>
 
     </div>
-    <footer class="footer">
-  <div class="container">
-    <p>
-          &copy; Copyright MIF, 2020.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
-    </p>
-  </div>
-</footer>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By trokas<br/>
+        
+            &copy; Copyright MIF, 2020.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 
