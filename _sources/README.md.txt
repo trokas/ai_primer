@@ -1,5 +1,4 @@
-Welcome to AI primer course
-============================
+# AI primer
 
 [INTERACTIVE BOOK LINK](https://trokas.github.io/ai_primer/README.html)
 
