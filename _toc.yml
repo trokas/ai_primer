@@ -1,4 +1,5 @@
-- file: README
+file: README
+sections:
 - file: SVD
 - file: RF
 - file: DNN

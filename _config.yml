@@ -1,6 +1,7 @@
-# Book settings
 title: AI primer
 author: trokas
-html_logo: ''
+copyright: "MIF, 2020"
 
-use_thebelab_button: true
+execute:
+  execute_notebooks: 'off'
+
