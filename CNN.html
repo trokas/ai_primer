@@ -177,6 +177,10 @@
         </li>
     
         <li class="nav-item toc-entry toc-h2">
+            <a href="#filters-in-keras" class="nav-link">Filters in Keras</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
             <a href="#cnn" class="nav-link">CNN</a>
         </li>
     
@@ -223,7 +227,8 @@
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">tensorflow.keras</span> <span class="k">as</span> <span class="nn">keras</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">BatchNormalization</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">MaxPooling2D</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">BatchNormalization</span><span class="p">,</span> \
+                                    <span class="n">Activation</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">MaxPooling2D</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.optimizers</span> <span class="kn">import</span> <span class="n">Adam</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.callbacks</span> <span class="kn">import</span> <span class="n">TensorBoard</span>
@@ -351,12 +356,52 @@
 </div>
 </div>
 </div>
+<div class="section" id="filters-in-keras">
+<h2>Filters in Keras<a class="headerlink" href="#filters-in-keras" title="Permalink to this headline">¶</a></h2>
+<p>CNN’s in Keras do exactly the same thing as we did above, for example let’s replicate line detection filter. First let’s inititialize convolutional layer and pass input just to make sure that it works with random weights. Note that we need to add some axes to make it work.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conv</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;VALID&#39;</span><span class="p">)</span>
+<span class="n">conv</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>TensorShape([1, 310, 196, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s manually set weights.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+              <span class="p">[</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+              <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">conv</span><span class="o">.</span><span class="n">set_weights</span><span class="p">([</span><span class="n">F</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">])])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s check if outputs looks as expected.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">conv</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/CNN_18_0.png" src="_images/CNN_18_0.png" />
+</div>
+</div>
+</div>
 <div class="section" id="cnn">
 <h2>CNN<a class="headerlink" href="#cnn" title="Permalink to this headline">¶</a></h2>
-<p>Just as with simple fully connected networks it is beneficial to write logic from scratch before jumping to using Keras or other ML library just to get deeper understanding of what is going on. Folloing implementation is based on <a class="reference external" href="https://towardsdatascience.com/lets-code-convolutional-neural-network-in-plain-numpy-ce48e732f5d5">this great post</a>.</p>
-<hr class="docutils" />
-<p>Following video contains a neat visualization of CNN.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/utOv-BKI_vo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p>Let’s load MNIST dataset.</p>
+<p>Following video contains a neat exolanation of how CNN’s work.</p>
+<iframe width="560" height="315" src="https://youtu.be/YRhxdVk_sIs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Just as with simple fully connected networks you can try to write logic from scratch before jumping to using Keras or other ML library just to get deeper understanding of what is going on, for example see <a class="reference external" href="https://towardsdatascience.com/lets-code-convolutional-neural-network-in-plain-numpy-ce48e732f5d5">this post</a>.</p>
+<p>Let’s load MNIST dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
@@ -446,7 +491,7 @@ Epoch 10/10
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fdf2b363390&gt;
 </pre></div>
 </div>
-<img alt="_images/CNN_18_1.png" src="_images/CNN_18_1.png" />
+<img alt="_images/CNN_24_1.png" src="_images/CNN_24_1.png" />
 </div>
 </div>
 <p>Using FCN we had 96.36% on test set.</p>
@@ -731,7 +776,7 @@ Epoch 10/10
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13c03c0d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/CNN_38_1.png" src="_images/CNN_38_1.png" />
+<img alt="_images/CNN_44_1.png" src="_images/CNN_44_1.png" />
 </div>
 </div>
 <p>Great explanationa of simplified <a class="reference external" href="https://github.com/JEddy92/TimeSeries_Seq2Seq/blob/master/notebooks/TS_Seq2Seq_Conv_Intro.ipynb">TCN</a>.</p>
@@ -866,16 +911,16 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_43_0.png" src="_images/CNN_43_0.png" />
-<img alt="_images/CNN_43_1.png" src="_images/CNN_43_1.png" />
-<img alt="_images/CNN_43_2.png" src="_images/CNN_43_2.png" />
-<img alt="_images/CNN_43_3.png" src="_images/CNN_43_3.png" />
-<img alt="_images/CNN_43_4.png" src="_images/CNN_43_4.png" />
-<img alt="_images/CNN_43_5.png" src="_images/CNN_43_5.png" />
-<img alt="_images/CNN_43_6.png" src="_images/CNN_43_6.png" />
-<img alt="_images/CNN_43_7.png" src="_images/CNN_43_7.png" />
-<img alt="_images/CNN_43_8.png" src="_images/CNN_43_8.png" />
-<img alt="_images/CNN_43_9.png" src="_images/CNN_43_9.png" />
+<img alt="_images/CNN_49_0.png" src="_images/CNN_49_0.png" />
+<img alt="_images/CNN_49_1.png" src="_images/CNN_49_1.png" />
+<img alt="_images/CNN_49_2.png" src="_images/CNN_49_2.png" />
+<img alt="_images/CNN_49_3.png" src="_images/CNN_49_3.png" />
+<img alt="_images/CNN_49_4.png" src="_images/CNN_49_4.png" />
+<img alt="_images/CNN_49_5.png" src="_images/CNN_49_5.png" />
+<img alt="_images/CNN_49_6.png" src="_images/CNN_49_6.png" />
+<img alt="_images/CNN_49_7.png" src="_images/CNN_49_7.png" />
+<img alt="_images/CNN_49_8.png" src="_images/CNN_49_8.png" />
+<img alt="_images/CNN_49_9.png" src="_images/CNN_49_9.png" />
 </div>
 </div>
 <p>I hope this example prooves universality and usefulness of Convolutional layers. For even crazier example of how filters (convolutionas) can be used look into <a class="reference external" href="https://distill.pub/2020/growing-ca/">Neural Celural Automata</a>.</p>
