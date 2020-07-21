@@ -1,1 +1,0 @@
-PCA can be used as anomaly detection simply by looking at the reconstruction error. Try to test this out using Olivetti faces dataset (sklearn.datasets.fetch_olivetti_faces). Just flip one or couple of images upside down so that they would look like anomalies.
