@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Project: Flatland &#8212; AI primer</title>
+    <title>&lt;no title&gt; &#8212; AI primer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -30,7 +30,6 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="CNN (Convolutional Neural Networks)" href="CNN.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -78,8 +77,8 @@
   <li class="">
     <a href="CNN.html">CNN (Convolutional Neural Networks)</a>
   </li>
-  <li class="active">
-    <a href="">Project: Flatland</a>
+  <li class="">
+    <a href="Project.html">Project: Flatland</a>
   </li>
 </ul>
 </nav>
@@ -118,7 +117,7 @@
                 <!-- ipynb file if we had a myst markdown file -->
                 
                 <!-- Download raw file -->
-                <a class="dropdown-buttons" href="_sources/Project.md.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <a class="dropdown-buttons" href="_sources/tasks.md.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
                 <!-- Download PDF via print -->
                 <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
             </div>
@@ -135,16 +134,9 @@
         
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#leaderboard" class="nav-link">Leaderboard</a>
-        </li>
     
     </ul>
 </nav>
@@ -157,61 +149,7 @@
         
               <div>
                 
-  <div class="section" id="project-flatland">
-<h1>Project: Flatland<a class="headerlink" href="#project-flatland" title="Permalink to this headline">¶</a></h1>
-<p>Task is slightly inspired by the book Flatland. You will have to classify images by ‘calculating’ number of corners a figure in that image has using deep learning.</p>
-<img src="https://www.manhattanrarebooks.com/pictures/2038.jpg?v=1516738067" width="350"/>
-<p>Train set contains pictures of the following shapes: circles, triangles, squares, pentagons and hexagons.</p>
-<p><img alt="Project train set sample" src="_images/flatland.png" /></p>
-<p>Tain set is quite big (200 MB) - <a class="reference external" href="https://www.dropbox.com/s/7gq578nj3k7rua6/flatland_train.pickle?dl=0">DOWNLOAD</a>.</p>
-<p>For your submission create a new <a class="reference external" href="https://github.com/">github</a> repo and upload code/notebooks and final model (.h5 file).</p>
-<div class="section" id="leaderboard">
-<h2>Leaderboard<a class="headerlink" href="#leaderboard" title="Permalink to this headline">¶</a></h2>
-<p>To add some gamification all submissions will end up in a leaderboard. Each model will be evaluated on two test sets - one which closely matches train set and slightly more advanced one which nature will be revealed at the end of the course.</p>
-<p>Passing benchmarks:</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Grade</p></th>
-<th class="head"><p>Hints</p></th>
-<th class="head"><p>Test set (simple)</p></th>
-<th class="head"><p>Test set (adv.)</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>5</p></td>
-<td><p>Simple NN</p></td>
-<td><p>&gt;70%</p></td>
-<td><p>any</p></td>
-</tr>
-<tr class="row-odd"><td><p>6</p></td>
-<td><p>Simple NN</p></td>
-<td><p>&gt;75%</p></td>
-<td><p>any</p></td>
-</tr>
-<tr class="row-even"><td><p>7</p></td>
-<td><p>CNN</p></td>
-<td><p>&gt;80%</p></td>
-<td><p>any</p></td>
-</tr>
-<tr class="row-odd"><td><p>8</p></td>
-<td><p>CNN</p></td>
-<td><p>&gt;85%</p></td>
-<td><p>any</p></td>
-</tr>
-<tr class="row-even"><td><p>9</p></td>
-<td><p>CNN</p></td>
-<td><p>&gt;90%</p></td>
-<td><p>any</p></td>
-</tr>
-<tr class="row-odd"><td><p>10</p></td>
-<td><p>Transfer learning</p></td>
-<td><p>&gt;90%</p></td>
-<td><p>&gt;80%</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+  <p>PCA can be used as anomaly detection simply by looking at the reconstruction error. Try to test this out using Olivetti faces dataset (sklearn.datasets.fetch_olivetti_faces). Just flip one or couple of images upside down so that they would look like anomalies.</p>
 
 
               </div>
@@ -222,7 +160,6 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="CNN.html" title="previous page">CNN (Convolutional Neural Networks)</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
