@@ -10,12 +10,12 @@ Train set contains pictures of the following shapes: circles, triangles, squares
 
 Tain set - [DOWNLOAD](https://github.com/trokas/ai_primer/blob/master/flatland_train.data).
 
-For your submission create a new [github](https://github.com/) repo and upload code/notebooks and final model (.h5 file).
+For your submission create a new [github](https://github.com/) repo and upload code/notebooks and final model (.h5 file). Next try to go to the link [flatland evaluation](https://us-central1-aiprimer.cloudfunctions.net/flatland) and you should see message 'Welcome to Flatland!'. This means that evaluation service is running and you can submit your own model by calling `https://us-central1-aiprimer.cloudfunctions.net/flatland?model_link=[PATH TO YOUR .h5]` (be patient, it can take a while).
 
 
 ## Leaderboard
 
-To add some gamification all submissions will end up in a leaderboard. Each model will be evaluated on two test sets - one which closely matches train set and slightly more advanced one which nature will be revealed at the end of the course.
+To add some gamification submissions might end up in a leaderboard (we will agree on that as the course progresses). Each model will be evaluated on two test sets - one which closely matches train set and slightly more advanced one which nature will be revealed at the end of the course.
 
 Passing benchmarks:
 
