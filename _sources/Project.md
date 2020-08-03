@@ -8,7 +8,7 @@ Train set contains pictures of the following shapes: circles, triangles, squares
 
 ![Project train set sample](img/flatland.png)
 
-Tain set is quite big (200 MB) - [DOWNLOAD](https://www.dropbox.com/s/7gq578nj3k7rua6/flatland_train.pickle?dl=0).
+Tain set - [DOWNLOAD](https://github.com/trokas/ai_primer/flatland_train.data).
 
 For your submission create a new [github](https://github.com/) repo and upload code/notebooks and final model (.h5 file).
 
