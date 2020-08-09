@@ -149,12 +149,12 @@
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#decision-trees" class="nav-link">Decision Trees</a><ul class="nav section-nav flex-column">
-                
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#decision-tree-for-iris-dataset" class="nav-link">Decision tree for iris dataset</a>
+            <a href="#iris-dataset" class="nav-link">Iris dataset</a>
         </li>
     
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#decision-trees" class="nav-link">Decision Trees</a><ul class="nav section-nav flex-column">
+                
         <li class="nav-item toc-entry toc-h3">
             <a href="#larger-dataset-and-overfit-example" class="nav-link">Larger dataset and overfit example</a>
         </li>
@@ -225,6 +225,7 @@
                 
   <div class="section" id="rf-random-forest">
 <h1>RF (Random Forest)<a class="headerlink" href="#rf-random-forest" title="Permalink to this headline">¶</a></h1>
+<p>We will break timeline a bit and jump to random forests instead of introducing perceptrons. The general method of random decision forests was first proposed by Ho only in 1995. RF became really popular approach for tabular dataset due to their simplicity and quite robust behaviour. They are still widely used and for some problems can outperform neural nets.</p>
 <p>Before defining random forests we need to explore it’s main building block - entropy.</p>
 <div class="section" id="entropy">
 <h2>Entropy<a class="headerlink" href="#entropy" title="Permalink to this headline">¶</a></h2>
@@ -259,6 +260,20 @@ When we transmit one bit of information we reduce recipients uncertainty by the 
 </div>
 </div>
 </div>
+<div class="section" id="iris-dataset">
+<h2>Iris dataset<a class="headerlink" href="#iris-dataset" title="Permalink to this headline">¶</a></h2>
+<p>Bellow we will work with iris dataset. The idea of the dataset is to find out iris class based on given measurements.</p>
+<img src="https://miro.medium.com/max/1100/0*SHhnoaaIm36pc1bd" alt="Iris dataset" style="width: 60%"/><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load dataset</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="decision-trees">
 <h2>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">¶</a></h2>
 <p>Simple decision tree can be constructed using rule: make a split which <strong>reduces entropy</strong> the most. In a well-constructed tree, each question will cut the number of options by approximately half, very quickly narrowing the options even among a large number of classes.</p>
@@ -270,16 +285,10 @@ When we transmit one bit of information we reduce recipients uncertainty by the 
 <li><p>Decision Trees are very sensitive to small variations in the training data.</p></li>
 <li><p>Decision Trees can easily over-fit if there is high number of columns!</p></li>
 </ul>
-<div class="section" id="decision-tree-for-iris-dataset">
-<h3>Decision tree for iris dataset<a class="headerlink" href="#decision-tree-for-iris-dataset" title="Permalink to this headline">¶</a></h3>
+<p>Let’s try this out on iris dataset. First we will need to make train/test split.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load dataset</span>
-<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">]</span>
-
-<span class="c1"># Train/test mask</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train/test mask</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">0.7</span>
 </pre></div>
@@ -316,22 +325,21 @@ Tree for max_dept = 1
 Correctly identified on train set - 70.48%, on test set - 57.78%
 </pre></div>
 </div>
-<img alt="_images/RF_5_1.svg" src="_images/RF_5_1.svg" /><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
+<img alt="_images/RF_7_1.svg" src="_images/RF_7_1.svg" /><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
 Tree for max_dept = 2
 
 Correctly identified on train set - 96.19%, on test set - 95.56%
 </pre></div>
 </div>
-<img alt="_images/RF_5_3.svg" src="_images/RF_5_3.svg" /><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
+<img alt="_images/RF_7_3.svg" src="_images/RF_7_3.svg" /><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
 Tree for max_dept = 3
 
 Correctly identified on train set - 97.14%, on test set - 97.78%
 </pre></div>
 </div>
-<img alt="_images/RF_5_5.svg" src="_images/RF_5_5.svg" /></div>
+<img alt="_images/RF_7_5.svg" src="_images/RF_7_5.svg" /></div>
 </div>
 <p>As we can see simple decision tree works quite good for iris dataset.</p>
-</div>
 <div class="section" id="larger-dataset-and-overfit-example">
 <h3>Larger dataset and overfit example<a class="headerlink" href="#larger-dataset-and-overfit-example" title="Permalink to this headline">¶</a></h3>
 <p>Let’s load another legendary dataset containing classification problem. If you are interested in dataset details see <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29">UCI</a>.</p>
@@ -630,7 +638,7 @@ dtype: int64
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11e5d3b50&gt;
 </pre></div>
 </div>
-<img alt="_images/RF_11_1.png" src="_images/RF_11_1.png" />
+<img alt="_images/RF_13_1.png" src="_images/RF_13_1.png" />
 </div>
 </div>
 <p>Notice that as the depth increases, we tend to get very strangely shaped classification regions. Such overfitting turns out to be a general property of decision trees: it is very easy to go too deep in the tree, and thus to fit details of the particular data rather than the overall properties of the distributions they are drawn from. Another way to see this overfitting is to look at models trained on different subsets of the data.</p>
@@ -957,7 +965,7 @@ Wall time: 1.77 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/RF_35_0.png" src="_images/RF_35_0.png" />
+<img alt="_images/RF_37_0.png" src="_images/RF_37_0.png" />
 </div>
 </div>
 <p>Make sure that you understand why those decision boundaries look this way.</p>
@@ -988,7 +996,7 @@ Wall time: 1.77 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/RF_38_0.png" src="_images/RF_38_0.png" />
+<img alt="_images/RF_40_0.png" src="_images/RF_40_0.png" />
 </div>
 </div>
 <div class="cell docutils container">

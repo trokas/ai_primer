@@ -159,6 +159,10 @@
             <a href="#perceptron-for-2-class-case" class="nav-link">Perceptron for 2 class case</a>
         </li>
     
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#power-of-perceptron-formulation" class="nav-link">Power of perceptron formulation</a>
+        </li>
+    
             </ul>
         </li>
     
@@ -185,11 +189,11 @@
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#a-note-on-dropout" class="nav-link">A note on Dropout</a>
+            <a href="#dropout" class="nav-link">Dropout</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#a-note-on-architectures" class="nav-link">A note on Architectures</a>
+            <a href="#architectures" class="nav-link">Architectures</a>
         </li>
     
     </ul>
@@ -215,9 +219,9 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
-<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
 </pre></div>
 </div>
 </div>
@@ -288,23 +292,21 @@
 <p>The Perceptron training algorithm proposed by <strong>Rosenblatt</strong> was largely inspired by <em><strong>Hebb’s rule</strong></em>. In his <strong>1949</strong> book <em>The Organization of Behavior</em> (Wiley), Donald Hebb suggested that when a biological neuron triggers another neuron often, the connection between these two neurons grows stronger. Siegrid Löwel later summarized Hebb’s idea in the catchy phrase, “Cells that fire together, wire together”; that is, the connection weight between two neurons tends to increase when they fire simultaneously. This rule later became known as Hebb’s rule (or <em>Hebbian learning</em>).</p>
 <img src="https://pbs.twimg.com/media/DARmL4KXYAAj0td.jpg:large" style="width: 40%"/>
 <p>The decision boundary of each output neuron is linear, so Perceptrons are incapable of learning complex patterns (just like Logistic Regression classifiers). However, if the training instances are linearly separable, <strong>Rosenblatt</strong> demonstrated that this algorithm would converge to a solution. This is called the <strong>Perceptron convergence theorem</strong>.</p>
-<div class="row">
-  <div class="column">
-    <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117522486_image.png" style="width: 30%"/>
-  </div>
-  <div class="column">
-    <img src="https://www.manhattanrarebooks.com/pictures/227.jpg?v=1354507081" style="width: 30%"/>
-  </div>
-</div><div class="cell docutils container">
+<div class="section" id="perceptron-for-2-class-case">
+<h3>Perceptron for 2 class case<a class="headerlink" href="#perceptron-for-2-class-case" title="Permalink to this headline">¶</a></h3>
+<p>We will produce following perceptron from scratch</p>
+<img src="https://miro.medium.com/max/2870/1*n6sJ4yZQzwKL9wnF5wnVNg.png" style="width: 60%"/>
+<p>but first we need some data first. We will work with iris dataset.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load dataset</span>
-<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>We want a way to plot it, but it has 4 dimensions. PCA to the rescue.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -330,10 +332,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_10_0.png" src="_images/DNN_10_0.png" />
+<img alt="_images/DNN_12_0.png" src="_images/DNN_12_0.png" />
 </div>
 </div>
-<p>We will work only with one class for now.</p>
+<p>We will work only with two class case for now, thus let’s change the labels by leaving one class and treating all other points as a second class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CLASS</span> <span class="o">=</span> <span class="s1">&#39;setosa&#39;</span>
@@ -357,10 +359,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="perceptron-for-2-class-case">
-<h3>Perceptron for 2 class case<a class="headerlink" href="#perceptron-for-2-class-case" title="Permalink to this headline">¶</a></h3>
-<p>We will produce following perceptron from scratch</p>
-<img src="https://miro.medium.com/max/2870/1*n6sJ4yZQzwKL9wnF5wnVNg.png" style="width: 60%"/><div class="cell docutils container">
+<p>Now we are ready to try our Perceptron.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
@@ -388,15 +388,21 @@
 </div>
 </div>
 </div>
-<p>Well, clearly it’s easy to sepperate setosa, but what about other classes?</p>
+<p>Well, clearly it’s easy to sepperate setosa from other two classes. Try to change target class to versicolor and virginica.</p>
 </div>
+<div class="section" id="power-of-perceptron-formulation">
+<h3>Power of perceptron formulation<a class="headerlink" href="#power-of-perceptron-formulation" title="Permalink to this headline">¶</a></h3>
+<p>Perceptron definition is quite flexible and modifying loss and activation allows to replicate some whell known algorithms, see picture taken from “Neural Networks and Deep Learning: A Textbook” (book by Charu C. Aggarwal).</p>
+<img src="https://paper-attachments.dropbox.com/s_2E4854D97CFCA11CB3874DE15FA048AD21CE628C357A5C14D6A303FEC847FA36_1596967818835_image.png" style="width: 60%"/>
+<p>All of this flexibility and initial results led people to believe that AI is just behind the corner. This is clearly seen in movies, books, conferences, papers, etc.</p>
+<img src="https://paper-attachments.dropbox.com/s_2E4854D97CFCA11CB3874DE15FA048AD21CE628C357A5C14D6A303FEC847FA36_1596968518047_Screenshot+2020-08-09+at+13.21.56.png" style="width: 60%"/></div>
 </div>
 <div class="section" id="beginning-of-first-ai-winter">
 <h2>Beginning of first AI winter<a class="headerlink" href="#beginning-of-first-ai-winter" title="Permalink to this headline">¶</a></h2>
 <p>In their <strong>1969</strong> monograph <em>Perceptrons</em>, Marvin Minsky and Seymour <strong>Papert</strong> highlighted a number of serious weaknesses of Perceptrons—in particular, the fact that they are incapable of solving some trivial problems (e.g., the <em>Exclusive OR</em> (XOR) classification problem.
-It turns out that some of the limitations of Perceptrons can be eliminated by stacking multiple Perceptrons!</p>
+It turns out that some of the limitations of Perceptrons can be eliminated by stacking multiple Perceptrons (or using ADA activation)!</p>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117686838_image.png"  style="width: 50%"/>
-<p>But, we have no idea how to train it yet…</p>
+<p>But, we have no idea how to train those stacked Perceptorns (DNN - deep neural nets). And also there are no big enough datasets or resources to try this out…</p>
 <img src="https://miro.medium.com/max/2101/1*mWYZanOv3QUafz0nnhbEWw.png"  style="width: 50%"/></div>
 <div class="section" id="backpropagation">
 <h2>Backpropagation<a class="headerlink" href="#backpropagation" title="Permalink to this headline">¶</a></h2>
@@ -480,7 +486,7 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_22_0.png" src="_images/DNN_22_0.png" />
+<img alt="_images/DNN_25_0.png" src="_images/DNN_25_0.png" />
 </div>
 </div>
 <p>Before jumping to Keras let’s see of how this would look like if we try to build it from scratch.</p>
@@ -697,7 +703,7 @@ Epoch 20/20
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x14ff84090&gt;
 </pre></div>
 </div>
-<img alt="_images/DNN_31_1.png" src="_images/DNN_31_1.png" />
+<img alt="_images/DNN_34_1.png" src="_images/DNN_34_1.png" />
 </div>
 </div>
 <p>Structurally this is the same network we had before, thus our error rate is expected to be simmilar.</p>
@@ -728,7 +734,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_35_0.png" src="_images/DNN_35_0.png" />
+<img alt="_images/DNN_38_0.png" src="_images/DNN_38_0.png" />
 </div>
 </div>
 <p>Let’s look only at misclassifiesd cases.</p>
@@ -747,7 +753,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_37_0.png" src="_images/DNN_37_0.png" />
+<img alt="_images/DNN_40_0.png" src="_images/DNN_40_0.png" />
 </div>
 </div>
 <p>As you might remember Random Forest achieved similar accuracy so why do we need NN then? Well, let’s try to increse number of parameters in our network.</p>
@@ -850,13 +856,13 @@ Epoch 20/20
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Accuracy on test set - 97.59%
 </pre></div>
 </div>
-<img alt="_images/DNN_41_1.png" src="_images/DNN_41_1.png" />
+<img alt="_images/DNN_44_1.png" src="_images/DNN_44_1.png" />
 </div>
 </div>
 <p>Thats better! For examply by using layers 1500, 1000, 500, 10 you can improve accuracy to 98.24%, but training will take quite some time. Acctually you can go even futher with simple data augmentation techniques - https://arxiv.org/pdf/1003.0358.pdf</p>
 </div>
-<div class="section" id="a-note-on-dropout">
-<h2>A note on Dropout<a class="headerlink" href="#a-note-on-dropout" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dropout">
+<h2>Dropout<a class="headerlink" href="#dropout" title="Permalink to this headline">¶</a></h2>
 <p>There is a nice and popular way to <strong>prevent over-fitting</strong> in Neural Networks - turn off some neurons during training procudure.</p>
 <img src="https://miro.medium.com/proxy/1*iWQzxhVlvadk6VAJjsgXgg.png" style="width: 50%"/>
 <p>You can try that out by adding Dropout layers between Dense ones as follows:</p>
@@ -871,10 +877,11 @@ Epoch 20/20
 <p>Try that out.</p>
 <p>As we go further we will see that sometime bigger networks simply don’t overfit the data, standard statistics logic starts to break down. This phenomenon is called <a class="reference external" href="https://openai.com/blog/deep-double-descent/">Deep Double Descent</a>.</p>
 </div>
-<div class="section" id="a-note-on-architectures">
-<h2>A note on Architectures<a class="headerlink" href="#a-note-on-architectures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="architectures">
+<h2>Architectures<a class="headerlink" href="#architectures" title="Permalink to this headline">¶</a></h2>
 <p>There are a lot of possible architectures, we have only touched the surface. Take a glympse at the variations of Neural Networks <a class="reference external" href="https://towardsdatascience.com/the-mostly-complete-chart-of-neural-networks-explained-3fb6f2367464">here</a>.</p>
 <img src="https://miro.medium.com/max/2000/1*cuTSPlTq0a_327iTPJyD-Q.png" style="width: 80%"/>
+<p>Interesting fact: using Autoencoders we can easily replicate SVD and PCA! We will try this out in the lecture.</p>
 </div>
 </div>
 <div class="section" id="re-sources">
