@@ -26,7 +26,7 @@
     <script src="_static/copybutton.js"></script>
     <script src="_static/mystnb.js"></script>
     <script src="_static/sphinx-book-theme.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -179,6 +179,11 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#launching-notebooks">
+   Launching notebooks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#re-sources">
    (re)Sources
   </a>
@@ -228,6 +233,17 @@ What to expect from a single lecture?</p>
 <li><p>Most important material will be listed here, but during lectures you will hear and see a lot of complementary material.</p></li>
 <li><p>Each lecture will end with a list of resources (some of them mandatory). We will start a new lecture with a recap of what was done last time and discussion regarding mentioned resources in the hope to deepen understanding in the subject and inspire you to search for sources and publications yourself.</p></li>
 </ul>
+<div class="section" id="launching-notebooks">
+<h2>Launching notebooks<a class="headerlink" href="#launching-notebooks" title="Permalink to this headline">¶</a></h2>
+<p>You can launch notebooks in Binder directly in browser, but when we come to building models that will not work and you will have to use your own PC. To do that just clone this repo, install all packages and run jupyter aas follows:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/trokas/ai_primer.git
+<span class="nb">cd</span> ai_primer
+pip install pipenv
+pipenv install
+pipenv run jupyter-notebook
+</pre></div>
+</div>
+</div>
 <div class="section" id="re-sources">
 <h2>(re)Sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h2>
 <p>Each chapter will have a list of resources, but for now I highly recommend to start listening/watching following resources on your spare time:</p>
