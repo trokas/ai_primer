@@ -5,3 +5,11 @@ copyright: "MIF, 2020"
 execute:
   execute_notebooks: 'off'
 
+launch_buttons:
+  notebook_interface: classic
+  binderhub_url: https://mybinder.org
+
+repository:
+  url: https://github.com/trokas/ai_primer
+  path_to_book: ""
+  branch: master
