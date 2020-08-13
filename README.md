@@ -28,6 +28,18 @@ What to expect from a single lecture?
 - Most important material will be listed here, but during lectures you will hear and see a lot of complementary material.
 - Each lecture will end with a list of resources (some of them mandatory). We will start a new lecture with a recap of what was done last time and discussion regarding mentioned resources in the hope to deepen understanding in the subject and inspire you to search for sources and publications yourself.
 
+## Launching notebooks
+
+You can launch notebooks in Binder directly in browser, but when we come to building models that will not work and you will have to use your own PC. To do that just clone this repo, install all packages and run jupyter aas follows:
+
+```sh
+git clone https://github.com/trokas/ai_primer.git
+cd ai_primer
+pip install pipenv
+pipenv install
+pipenv run jupyter-notebook
+```
+
 ## (re)Sources
 
 Each chapter will have a list of resources, but for now I highly recommend to start listening/watching following resources on your spare time:
