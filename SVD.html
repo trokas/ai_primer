@@ -336,7 +336,7 @@ and their representations through <strong>matrices and vector spaces</strong>. L
 <p>An eigenvector (eigen means ‘specific’ in German) is a vector whose direction remains unchanged when a linear transformation is applied to it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>      <span class="c1"># pip install numpy</span>
 
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
@@ -359,7 +359,9 @@ Eigenvectors:
 <p>Let’s see what’s going on here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>    <span class="c1"># pip install matplotlib</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">22</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span>
 <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">20</span><span class="p">)),</span> <span class="n">vectors</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
 <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">20</span><span class="p">)),</span> <span class="n">vectors</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
@@ -531,8 +533,7 @@ V
 <p>As we saw this should work, because S captures most relevant eigenvectors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>    <span class="c1"># pip install matplotlib</span>
-<span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="kn">import</span> <span class="nn">cv2</span>                         <span class="c1"># pip install opencv-python</span>
 
@@ -557,7 +558,7 @@ V
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Image shape (503, 800)
 </pre></div>
 </div>
-<img alt="_images/SVD_13_1.png" src="_images/SVD_13_1.png" />
+<img alt="_images/SVD_11_1.png" src="_images/SVD_11_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -587,7 +588,7 @@ S shape - (503,)
 V shape - (800, 800)
 </pre></div>
 </div>
-<img alt="_images/SVD_16_1.png" src="_images/SVD_16_1.png" />
+<img alt="_images/SVD_14_1.png" src="_images/SVD_14_1.png" />
 </div>
 </div>
 <p><strong>TASK:</strong> check if all values of <code class="docutils literal notranslate"><span class="pre">(U</span> <span class="pre">*</span> <span class="pre">S).dot(V[:len(S)])</span></code> match <code class="docutils literal notranslate"><span class="pre">X</span></code> using numpy.</p>
@@ -608,7 +609,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_19_0.png" src="_images/SVD_19_0.png" />
+<img alt="_images/SVD_17_0.png" src="_images/SVD_17_0.png" />
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
 </pre></div>
 </div>
@@ -624,7 +625,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_21_0.png" src="_images/SVD_21_0.png" />
+<img alt="_images/SVD_19_0.png" src="_images/SVD_19_0.png" />
 </div>
 </div>
 <p><strong>TASK:</strong> play with animation and explore U, S, V, how many numbers do you need to transmit comprehensible image?</p>
@@ -653,7 +654,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_26_0.png" src="_images/SVD_26_0.png" />
+<img alt="_images/SVD_24_0.png" src="_images/SVD_24_0.png" />
 </div>
 </div>
 <p>Further computations might lead to even higher errors, for example we would expect <span class="math notranslate nohighlight">\(X^{-1} X v = v\)</span>.</p>
@@ -817,7 +818,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_42_0.png" src="_images/SVD_42_0.png" />
+<img alt="_images/SVD_40_0.png" src="_images/SVD_40_0.png" />
 </div>
 </div>
 </div>
@@ -834,7 +835,9 @@ V shape - (800, 800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
                    <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Matrix&#39;</span><span class="p">,</span> <span class="s1">&#39;Alien&#39;</span><span class="p">,</span> <span class="s1">&#39;Serenity&#39;</span><span class="p">,</span> <span class="s1">&#39;Casablanca&#39;</span><span class="p">,</span> <span class="s1">&#39;Amelie&#39;</span><span class="p">])</span>
 <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
