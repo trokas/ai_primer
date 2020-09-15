@@ -13,3 +13,6 @@ repository:
   url: https://github.com/trokas/ai_primer
   path_to_book: ""
   branch: master
+
+parse:
+  myst_extended_syntax: true
