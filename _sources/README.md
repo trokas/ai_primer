@@ -15,11 +15,14 @@ In essance we have only 4 main chapters to cover.
 After these 4 main chapter complementary material regarding new advanves of deep learning will be presented (like LSTM’s and Transformers), but it will not be mandatory.
 Also we will cover following toolset, which hopefully will be useful for your future projects:
 
-- numpy (mainly in SVD and FCN lectures) - will help us store vectors, matrices and perform operations on them.
-- matplotlib (in all lectures) - nice and simple plotting lib.
-- pandas (mainly in RF lecture) - structured way of looking at tabular data.
-- keras (FCN and CNN lectures) - simple deep learning library based on tensorflow.
-- git (final project) - version control tool.
+- [numpy](https://numpy.org/doc/stable/user/quickstart.html) (mainly in SVD and FCN lectures) - will help us store vectors, matrices and perform operations on them.
+- [matplotlib](https://matplotlib.org/tutorials/introductory/pyplot.html) (in all lectures) - nice and simple plotting lib.
+- [scikit-learn](https://scikit-learn.org/stable/tutorial/basic/tutorial.html) - ML library.
+- [pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html) (mainly in RF lecture) - structured way of looking at tabular data.
+- [keras](https://keras.io/examples/vision/mnist_convnet/) (FCN and CNN lectures) - simple deep learning library based on tensorflow.
+- [git](https://rogerdudler.github.io/git-guide/) (final project) - version control tool.
+
+For coding I suggest to use [VSC](https://code.visualstudio.com/) and shell with [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh).
 
 Toolset will be presented only in lectures, thus it’s up to you to learn them on your own if you do not plan to attend. There are a lot of resources, but I highly suggest to read intros in corresponding docs.
 What to expect from a single lecture?
@@ -30,7 +33,7 @@ What to expect from a single lecture?
 
 ## Launching notebooks
 
-You can launch notebooks in Binder directly in browser, but when we come to building models that will not work and you will have to use your own PC. To do that just clone this repo, install all packages and run jupyter aas follows:
+You can launch notebooks in Binder directly in browser, but when we come to building models that will not work and you will have to use your own PC. To do that just clone this repo, install all packages and run jupyter as follows:
 
 ```sh
 git clone https://github.com/trokas/ai_primer.git
@@ -39,6 +42,8 @@ pip install pipenv
 pipenv install
 pipenv run jupyter-notebook
 ```
+
+More info about [pipenv](https://pipenv.pypa.io/en/latest/) and [Jupyter](https://jupyter-notebook.readthedocs.io/en/latest/ui_components.html#interactive-user-interface-tour-of-the-notebook).
 
 ## (re)Sources
 
