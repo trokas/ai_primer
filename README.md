@@ -48,7 +48,7 @@ More info about [pipenv](https://pipenv.pypa.io/en/latest/) and [Jupyter](https:
 ## (re)Sources
 
 Each chapter will have a list of resources, but for now I highly recommend to start listening/watching following resources on your spare time:
-- [Data Skeptic podcast](https://dataskeptic.com/podcast?limit=10&offset=0)
+- [Data Skeptic podcast](https://dataskeptic.com/podcasts/ai)
 - [Artificial Intelligence podcast](https://lexfridman.com/ai/)
 - [Two Minute Papers youtube channel](https://www.youtube.com/user/keeroyz)
 
