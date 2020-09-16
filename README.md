@@ -43,6 +43,12 @@ pipenv install
 pipenv run jupyter-notebook
 ```
 
+If you need to install pip download this file [get-pip.py](https://bootstrap.pypa.io/get-pip.py) and launch:
+
+```
+python get-pip.py
+```
+
 More info about [pipenv](https://pipenv.pypa.io/en/latest/) and [Jupyter](https://jupyter-notebook.readthedocs.io/en/latest/ui_components.html#interactive-user-interface-tour-of-the-notebook).
 
 ## (re)Sources
