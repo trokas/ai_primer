@@ -52,3 +52,5 @@ Each chapter will have a list of resources, but for now I highly recommend to st
 - [Artificial Intelligence podcast](https://lexfridman.com/ai/)
 - [Two Minute Papers youtube channel](https://www.youtube.com/user/keeroyz)
 
+If I had to recommend a single book for beginner it will be this one - [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 2nd Edition](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/).
+
