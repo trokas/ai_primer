@@ -49,6 +49,8 @@ If you need to install pip download this file [get-pip.py](https://bootstrap.pyp
 python get-pip.py
 ```
 
+If you have python 3.7 just edit last line in Pipfile.
+
 More info about [pipenv](https://pipenv.pypa.io/en/latest/) and [Jupyter](https://jupyter-notebook.readthedocs.io/en/latest/ui_components.html#interactive-user-interface-tour-of-the-notebook).
 
 ## (re)Sources
