@@ -296,7 +296,7 @@
 <p>In 1844 Hermann Grassmann published his “Theory of Extension” which included foundational new topics of what is today called <strong>linear algebra</strong>. In 1848, James Joseph Sylvester introduced the term <strong>matrix</strong>, which is Latin for womb.
 Linear algebra is the branch of mathematics concerning linear equations such as
 <span class="math notranslate nohighlight">\($a_{1}x_{1}+\cdots +a_{n}x_{n}=b\)</span>$ and linear functions such as <span class="math notranslate nohighlight">\($(x_{1},\ldots ,x_{n})\mapsto a_{1}x_{1}+\ldots +a_{n}x_{n}\)</span>$
-and their representations through <strong>matrices and vector spaces</strong>. Linear algebra is increasing in importance as is core tool in AI field. Nice <a class="reference external" href="https://lexfridman.com/gilbert-strang/">podcast</a> about this increasing importance, Strang even suggests to replace calculus by linear albebra in schools. By the way most calculus operations have discrete analogues in linear algebra.</p>
+and their representations through <strong>matrices and vector spaces</strong>. Linear algebra is increasing in importance as a core tool in the AI field. Nice <a class="reference external" href="https://lexfridman.com/gilbert-strang/">podcast</a> about this increasing importance, Strang even suggests to replace calculus by linear algebra in schools. By the way most calculus operations have discrete analogues in linear algebra.</p>
 <div class="section" id="linear-algebra-missing-pieces">
 <h3>Linear algebra (missing pieces?)<a class="headerlink" href="#linear-algebra-missing-pieces" title="Permalink to this headline">¶</a></h3>
 <p>Since you know linear algebra well I just want to point out some important things which often are left forgotten:</p>
@@ -304,7 +304,7 @@ and their representations through <strong>matrices and vector spaces</strong>. L
 <li><p>Algebra has geometric interpretation</p></li>
 <li><p>Usually you can think about algebraic objects and operations in alternative ways and that can open up some doors</p></li>
 </ul>
-<p>Here are couple examples to prove these points and give you some intuition.</p>
+<p>Here are a couple examples to prove these points and give you some intuition.</p>
 <div class="section" id="matrix-vector-multiplication">
 <h4>Matrix-vector multiplication<a class="headerlink" href="#matrix-vector-multiplication" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
@@ -327,7 +327,7 @@ and their representations through <strong>matrices and vector spaces</strong>. L
 <div class="section" id="eigenvectors">
 <h3>Eigenvectors<a class="headerlink" href="#eigenvectors" title="Permalink to this headline">¶</a></h3>
 <p><strong>Suggested reading:</strong> <a class="reference external" href="https://www.math.arizona.edu/~glickenstein/math443f08/bryanleise.pdf">THE $25,000,000,000 EIGENVECTOR THE LINEAR ALGEBRA BEHIND GOOGLE</a></p>
-<p>So if vector multiplied by a matrix is a stretch and rotation, then axes of rotation can be especially useful. These axes are called eigenvectors and are easy to define, we just formalize the fact that rotation does nothing by <span class="math notranslate nohighlight">\(A u=\lambda u\)</span>, where <span class="math notranslate nohighlight">\(\lambda\)</span> is a scalar (eigenvalue).</p>
+<p>So if a vector multiplied by a matrix is a stretch and rotation, then axes of rotation can be especially useful. These axes are called eigenvectors and are easy to define, we just formalize the fact that rotation does nothing by <span class="math notranslate nohighlight">\(A u=\lambda u\)</span>, where <span class="math notranslate nohighlight">\(\lambda\)</span> is a scalar (eigenvalue).</p>
 <p>An eigenvector (eigen means ‘specific’ in German) is a vector whose direction remains unchanged when a linear transformation is applied to it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -391,12 +391,12 @@ Eigenvectors:
 3 &amp; 1\\
 1 &amp; 2
 \end{bmatrix}\)</span>,
-can you tell what it does to the vectorspace and where eigenvectors are located? Do they have a clear interpretation?</p>
-<p>Some of the things you might discover will work only for symmetric matrixes (those which are equal to its own transpose). Keep that in mind, later we will intentionally produce symmetric matrixes.</p>
+can you tell what it does to the vector space and where eigenvectors are located? Do they have a clear interpretation?</p>
+<p>Some of the things you might discover will work only for symmetric matrices (those which are equal to its own transpose). Keep that in mind, later we will intentionally produce symmetric matrices.</p>
 </div>
 <div class="section" id="how-to-calculate-eigenvectors">
 <h3>How to calculate eigenvectors<a class="headerlink" href="#how-to-calculate-eigenvectors" title="Permalink to this headline">¶</a></h3>
-<p>You might know that already, but let’s run through quick example to get some intuition. Let</p>
+<p>You might know that already, but let’s run through a quick example to get some intuition. Let</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}A = \begin{bmatrix}
 2 &amp; 3\\
@@ -413,18 +413,10 @@ can you tell what it does to the vectorspace and where eigenvectors are located?
 </div>
 <div class="section" id="singular-value-decomposition-svd">
 <h3>Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this headline">¶</a></h3>
-<p>We can decompose matrix any way we like, for example: <span class="math notranslate nohighlight">\(A = B + C\)</span>, <span class="math notranslate nohighlight">\(A = B \cdot C\)</span>, … It turns out that some decompositions are usefull for data compression, numerical calculations and might reveal insights into the data. SVD is defined as:</p>
+<p>We can decompose matrix any way we like, for example: <span class="math notranslate nohighlight">\(A = B + C\)</span>, <span class="math notranslate nohighlight">\(A = B \cdot C\)</span>, … It turns out that some decompositions are useful for data compression, numerical calculations and might reveal insights into the data. SVD is defined as:</p>
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Singular_value_decomposition_visualisation.svg/220px-Singular_value_decomposition_visualisation.svg.png" alt="SVD" style="width: 20%"/>
-<p>Who invented SVD?</p>
-<ul class="simple">
-<li><p>Eugenio Beltrami (1835-1899)</p></li>
-<li><p>Camille Jordan (1838-1921)</p></li>
-<li><p>James Joseph Sylvester (1814-1897)</p></li>
-<li><p>Erhard Schmidt (1876-1959)</p></li>
-<li><p>Hermann Weyl (1885- 1955)</p></li>
-</ul>
-<p>For early history see this paper. Fun fact: Gauss used matrix decomposition in 1823.</p>
-<p>SVD is videly used in:</p>
+<p>It is not really clear who invented SVD, but it’s clear that it happened in the 19th century. For early history see this <a class="reference external" href="https://www.math.ucdavis.edu/~saito/courses/229A/stewart-svd.pdf">paper</a>. Fun fact: Gauss used matrix decomposition in 1823.</p>
+<p>SVD is widely used in:</p>
 <ul class="simple">
 <li><p>Data compression</p></li>
 <li><p>Recommender systems</p></li>
@@ -432,7 +424,7 @@ can you tell what it does to the vectorspace and where eigenvectors are located?
 <li><p>NLP (natural language processing)</p></li>
 <li><p>PCA (principal component analysis)</p></li>
 </ul>
-<p>We will see some examples bellow starting from data compression.</p>
+<p>We will see some examples below starting from data compression.</p>
 <div class="section" id="how-is-svd-computed">
 <h4>How is SVD computed?<a class="headerlink" href="#how-is-svd-computed" title="Permalink to this headline">¶</a></h4>
 <p>Let’s compute SVD for
@@ -447,7 +439,7 @@ can you tell what it does to the vectorspace and where eigenvectors are located?
 26 &amp; 18\\
 18 &amp; 74
 \end{bmatrix} = USV^T.\)</span>$</p>
-<p>Now we can compute eigenvectors usging determinant. Since
+<p>Now we can compute eigenvectors using determinant. Since
 <span class="math notranslate nohighlight">\($\det(X^TX - \lambda I) = (\lambda - 20)(\lambda - 80)\)</span>$
 we have</p>
 <div class="math notranslate nohighlight">
@@ -526,7 +518,7 @@ V
 <ul class="simple">
 <li><p>Calculate SVD of an image</p></li>
 <li><p>Leave only top N factors in S</p></li>
-<li><p>Multiply matrixes to obtaine compressed image</p></li>
+<li><p>Multiply matrices to obtain compressed image</p></li>
 </ul>
 <img src="https://image1.slideserve.com/2598122/svd-and-rank-k-approximations-l.jpg" alt="Rank-k approximation" style="width: 50%"/>
 <p>As we saw this should work, because S captures most relevant eigenvectors.</p>
@@ -557,7 +549,7 @@ V
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Image shape (503, 800)
 </pre></div>
 </div>
-<img alt="_images/SVD_17_1.png" src="_images/SVD_17_1.png" />
+<img alt="_images/SVD_11_1.png" src="_images/SVD_11_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -587,11 +579,11 @@ S shape - (503,)
 V shape - (800, 800)
 </pre></div>
 </div>
-<img alt="_images/SVD_20_1.png" src="_images/SVD_20_1.png" />
+<img alt="_images/SVD_14_1.png" src="_images/SVD_14_1.png" />
 </div>
 </div>
 <p><strong>TASK:</strong> check if all values of <code class="docutils literal notranslate"><span class="pre">(U</span> <span class="pre">*</span> <span class="pre">S).dot(V[:len(S)])</span></code> match <code class="docutils literal notranslate"><span class="pre">X</span></code> using numpy.</p>
-<p>Let’s try to use only top singular values thus compressing image even more.</p>
+<p>Let’s try to use only top singular values thus compressing the image even more.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
@@ -608,7 +600,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_23_0.png" src="_images/SVD_23_0.png" />
+<img alt="_images/SVD_17_0.png" src="_images/SVD_17_0.png" />
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
 </pre></div>
 </div>
@@ -624,7 +616,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_25_0.png" src="_images/SVD_25_0.png" />
+<img alt="_images/SVD_19_0.png" src="_images/SVD_19_0.png" />
 </div>
 </div>
 <p><strong>TASK:</strong> play with animation and explore U, S, V, how many numbers do you need to transmit comprehensible image?</p>
@@ -653,7 +645,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_30_0.png" src="_images/SVD_30_0.png" />
+<img alt="_images/SVD_24_0.png" src="_images/SVD_24_0.png" />
 </div>
 </div>
 <p>Further computations might lead to even higher errors, for example we would expect <span class="math notranslate nohighlight">\(X^{-1} X v = v\)</span>.</p>
@@ -678,11 +670,11 @@ V shape - (800, 800)
 <span class="math notranslate nohighlight">\($\hat \beta = (X^T X)^{-1} X^T y\)</span>$</p>
 <p>By the way you can vizualize linear regression as the process of minimizing <span class="math notranslate nohighlight">\(e\)</span> in</p>
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQXvIwYtFpyuHEa_0zYoECXKp3JRdf6Q89eo3Prpw9SvJBJoLmC" alt="Linear regression" style="width: 40%"/>
-<p>thus it’s analogue of finding a projection of target vector in a given vector space.</p>
-<p>Let’s come back to our problem - we saw that inverse is unstable… SVD is one of the solutions to deal with that problem.</p>
+<p>thus it’s an analogue of finding a projection of the target vector in a given vector space.</p>
+<p>Let’s come back to our problem - we saw that the inverse is unstable… SVD is one of the solutions to deal with that problem.</p>
 <p>Since <span class="math notranslate nohighlight">\($X=USV^T\)</span>$ and <span class="math notranslate nohighlight">\($UU^T=I_m;\;VV^T=I_n\)</span>$ it is easy to show that <span class="math notranslate nohighlight">\($\hat \beta = (X^T X)^{-1} X^T y = V S^{-1} U^T y.\)</span>$</p>
-<p><strong>Note:</strong> inverse of S is known to be stable.</p>
-<p>Let’s see if this trick realy works on a real dataset.</p>
+<p><strong>Note:</strong> the inverse of S is known to be stable.</p>
+<p>Let’s see if this trick really works on a real dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_boston</span>
@@ -746,6 +738,7 @@ V shape - (800, 800)
 </div>
 </div>
 </div>
+<p><strong>TASK:</strong> look at the boston dataset, can you beat current result by some simple feature engineering? Or maybe we do not need all of the features?</p>
 <div class="section" id="pca-principal-component-analysis">
 <h3>PCA (Principal Component analysis)<a class="headerlink" href="#pca-principal-component-analysis" title="Permalink to this headline">¶</a></h3>
 <p>Similarly as with images SVD can be used to reveal most important components of the given dataset and thus lead to data compression. The process is called Principal Component analysis (PCA) as is executed as follows:</p>
@@ -755,7 +748,7 @@ V shape - (800, 800)
 <li><p>Calculate SVD by computing <span class="math notranslate nohighlight">\(X=USV^T\)</span>.</p></li>
 <li><p>Treat <span class="math notranslate nohighlight">\(V\)</span> are principal directions/axes and <span class="math notranslate nohighlight">\(US\)</span> are principal components/scores.</p></li>
 </ol>
-<p><strong>NOTE:</strong> make shure that you can explain why each step is needed. If you need more explanation, read throuw this <a class="reference external" href="https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pca-how-to-use-svd-to-perform-pca">discussion</a>, it contains some good links too.</p>
+<p><strong>NOTE:</strong> make sure that you can explain why each step is needed. If you need more explanation, read through this <a class="reference external" href="https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pca-how-to-use-svd-to-perform-pca">discussion</a>, it contains some good links too.</p>
 <p>This is a neat trick if we want to apply simple model (for example linear regression) on high dimensional datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -817,9 +810,10 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_46_0.png" src="_images/SVD_46_0.png" />
+<img alt="_images/SVD_41_0.png" src="_images/SVD_41_0.png" />
 </div>
 </div>
+<p><strong>TASK:</strong> PCA can be used as anomaly detection simply by looking at the reconstruction error. Try to test this out using Olivetti faces dataset (<code class="docutils literal notranslate"><span class="pre">sklearn.datasets.fetch_olivetti_faces</span></code>). Just flip one or couple of images upside down so that they would look like anomalies, then encode and decode using PCA.</p>
 </div>
 </div>
 <div class="section" id="recommender-using-svd">
@@ -1969,7 +1963,7 @@ V shape - (800, 800)
             </tr>
     </tbody></table></div></div>
 </div>
-<p>Trick is that SVD will tend to ignore/remove some of these ‘mistakes’ and end up inputing missing ratings!</p>
+<p>Trick is that SVD will tend to ignore/remove some of these ‘mistakes’ and end up imputing missing ratings!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -2718,7 +2712,8 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>I hope that all these examples illustrate how a relatively simple principle can have far reaching applications. Most importantly this shows that linear algebra is powerful tool and matrixes hold a power to do impressive things. We will see later that neural networks are build from these concepts.</p>
+<p><strong>TASK:</strong> naively in the recommender examples above we have not done any preprocessing. Actually it would be beneficial to remove movie bias by calculating average rating per movie, and subtracting this average from each user/movie pair. Try to add such a fix and see if that improves results. For evaluation you will need to make a train and test split.</p>
+<p>I hope that all these examples illustrate how a relatively simple principle can have far reaching applications. Most importantly this shows that linear algebra is powerful tool and matrices hold the power to do impressive things. We will see later that neural networks are built from these concepts.</p>
 </div>
 </div>
 <div class="section" id="re-sources">
