@@ -460,29 +460,48 @@ When we transmit one bit of information we reduce recipients uncertainty by the 
 <p>150 rows × 5 columns</p>
 </div></div></div>
 </div>
-<p><strong>TASK:</strong> lets create a simple logistic regression model (see sklearn.linear_model.LogisticRegression) making a train test split. Try to include additional features to make it better.</p>
+<p>We have 4 dimensions, but we already know that we can visualize that using PCA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
-    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>PCA(n_components=2)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: create LogisticRegression model</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pc_1&#39;</span><span class="p">,</span> <span class="s1">&#39;pc_2&#39;</span><span class="p">])</span>
+<span class="n">pc</span><span class="p">[</span><span class="s1">&#39;class_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+
+<span class="n">pc</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;pc_1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;pc_2&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;class_id&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;pc_1&#39;, ylabel=&#39;pc_2&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/RF_9_1.png" src="_images/RF_9_1.png" />
 </div>
 </div>
 </div>
@@ -500,9 +519,11 @@ When we transmit one bit of information we reduce recipients uncertainty by the 
 <p>Let’s try this out on iris dataset. First we will need to make train/test split.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train/test mask</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">0.7</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -514,13 +535,14 @@ When we transmit one bit of information we reduce recipients uncertainty by the 
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">70</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Tree for max_dept = </span><span class="si">{0}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">max_depth</span><span class="p">))</span>
     <span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">)</span>
     <span class="c1"># Fit on train data</span>
-    <span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+    <span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
     <span class="c1"># Make prediction and evaluate performance</span>
-    <span class="n">pred</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">pred_train</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">pred_test</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correctly identified on train set - </span><span class="si">{0:.02%}</span><span class="s1">, on test set - </span><span class="si">{1:.02%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-        <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>        <span class="c1"># train set</span>
-        <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>     <span class="c1"># test set</span>
+        <span class="p">(</span><span class="n">pred_train</span> <span class="o">==</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="p">(</span><span class="n">pred_test</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
 
     <span class="c1"># Make a nice plot</span>
     <span class="n">graph</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filled</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -534,22 +556,22 @@ When we transmit one bit of information we reduce recipients uncertainty by the 
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
 Tree for max_dept = 1
 
-Correctly identified on train set - 70.48%, on test set - 57.78%
+Correctly identified on train set - 64.76%, on test set - 71.11%
 </pre></div>
 </div>
-<img alt="_images/RF_12_1.svg" src="_images/RF_12_1.svg" /><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
+<img alt="_images/RF_13_1.svg" src="_images/RF_13_1.svg" /><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
 Tree for max_dept = 2
 
-Correctly identified on train set - 96.19%, on test set - 95.56%
+Correctly identified on train set - 94.29%, on test set - 97.78%
 </pre></div>
 </div>
-<img alt="_images/RF_12_3.svg" src="_images/RF_12_3.svg" /><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
+<img alt="_images/RF_13_3.svg" src="_images/RF_13_3.svg" /><div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
 Tree for max_dept = 3
 
-Correctly identified on train set - 97.14%, on test set - 97.78%
+Correctly identified on train set - 96.19%, on test set - 100.00%
 </pre></div>
 </div>
-<img alt="_images/RF_12_5.svg" src="_images/RF_12_5.svg" /></div>
+<img alt="_images/RF_13_5.svg" src="_images/RF_13_5.svg" /></div>
 </div>
 <p>As we can see simple decision tree works quite good for iris dataset.</p>
 <div class="section" id="larger-dataset-and-overfit-example">
@@ -830,27 +852,32 @@ dtype: int64
 <p>As before we will fit multiple trees with different max_depth’s. This time let’s plot performance on train and test sets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">max_depth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
     <span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
     <span class="c1"># Fit on train data</span>
-    <span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+    <span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
     <span class="c1"># Make prediction and evaluate performance</span>
-    <span class="n">pred</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">([(</span><span class="n">pred</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>        <span class="c1"># train set</span>
-              <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()])</span>     <span class="c1"># test set</span>
-    
+    <span class="n">pred_train</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">pred_test</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">([(</span><span class="n">pred_train</span> <span class="o">==</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+              <span class="p">(</span><span class="n">pred_test</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()])</span>
+
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Accuracy for different max_depth values&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11e5d3b50&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Accuracy for different max_depth values&#39;}&gt;
 </pre></div>
 </div>
-<img alt="_images/RF_18_1.png" src="_images/RF_18_1.png" />
+<img alt="_images/RF_19_1.png" src="_images/RF_19_1.png" />
 </div>
 </div>
 <p>Notice that as the depth increases, we tend to get very strangely shaped classification regions. Such overfitting turns out to be a general property of decision trees: it is very easy to go too deep in the tree, and thus to fit details of the particular data rather than the overall properties of the distributions they are drawn from. Another way to see this overfitting is to look at models trained on different subsets of the data.</p>
@@ -889,9 +916,10 @@ dtype: int64
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
 
-<span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
-<span class="n">pred</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-
+<span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pred_train</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">pred_test</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correctly identified on train set - </span><span class="si">{0:.02%}</span><span class="s1">, on test set - </span><span class="si">{1:.02%}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
     <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>        <span class="c1"># train set</span>
     <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>     <span class="c1"># test set</span>
@@ -899,15 +927,45 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 100.00%, on test set - 93.70%
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 100.00%, on test set - 96.06%
 
-CPU times: user 1.73 s, sys: 22.2 ms, total: 1.75 s
-Wall time: 1.77 s
+CPU times: user 2.01 s, sys: 21.4 ms, total: 2.04 s
+Wall time: 2.07 s
 </pre></div>
 </div>
 </div>
 </div>
-<p>We will note use this implememtation, this is just for illustration! Instead we will use <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> directly.</p>
+<p>In realiy you should use <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> implementation instead. Lines above are only for illustation purposes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correctly identified on train set - </span><span class="si">{0:.02%}</span><span class="s1">, on test set - </span><span class="si">{1:.02%}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">pred_train</span> <span class="o">==</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="p">(</span><span class="n">pred_test</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 99.71%, on test set - 97.37%
+
+CPU times: user 1.73 s, sys: 13.6 ms, total: 1.75 s
+Wall time: 1.76 s
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>Note:</strong> there are other variations of boosted trees, for example ExtraTrees can be constructed by setting splitter to random and bootstrap to False. ExtraTrees are usually faster to train, but Random Forests are more well known, just try them both and see which works better for problem at hand.</p>
 </div>
 <div class="section" id="task">
@@ -920,9 +978,12 @@ Wall time: 1.77 s
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">]</span>
 
-<span class="c1"># Train/test mask</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">0.7</span>
+<span class="c1"># Train/test split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># TODO: train RF and compare results to the ones we had above</span>
 </pre></div>
 </div>
 </div>
@@ -941,52 +1002,43 @@ Wall time: 1.77 s
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal length (cm)&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal width (cm)&#39;</span><span class="p">]</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal length (cm)&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal width (cm)&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;simetry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal area&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal area&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None,
-                       criterion=&#39;gini&#39;, max_depth=None, max_features=&#39;auto&#39;,
-                       max_leaf_nodes=None, max_samples=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, n_estimators=100,
-                       n_jobs=None, oob_score=False, random_state=None,
-                       verbose=0, warm_start=False)
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>RandomForestClassifier(max_depth=2, n_estimators=1000)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pred</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pred</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pred</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s1">.02%</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Accuracy 95.56%
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Accuracy 98.67%
 </pre></div>
 </div>
 </div>
@@ -1008,57 +1060,42 @@ Wall time: 1.77 s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">],</span> <span class="n">pred</span><span class="p">),</span>
-             <span class="n">columns</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">),</span>
+             <span class="n">columns</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>setosa</th>
-      <th>versicolor</th>
-      <th>virginica</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>setosa</th>
-      <td>11</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>versicolor</th>
-      <td>0</td>
-      <td>18</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>virginica</th>
-      <td>0</td>
-      <td>1</td>
-      <td>14</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<div class="output text_html"><style  type="text/css" >
+#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row0_col0,#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row1_col1,#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row2_col2{
+            background-color:  #023858;
+            color:  #f1f1f1;
+        }#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row0_col1,#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row0_col2,#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row1_col0,#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row1_col2,#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row2_col0{
+            background-color:  #fff7fb;
+            color:  #000000;
+        }#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row2_col1{
+            background-color:  #f8f1f8;
+            color:  #000000;
+        }</style><table id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >setosa</th>        <th class="col_heading level0 col1" >versicolor</th>        <th class="col_heading level0 col2" >virginica</th>    </tr></thead><tbody>
+                <tr>
+                        <th id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14level0_row0" class="row_heading level0 row0" >setosa</th>
+                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row0_col0" class="data row0 col0" >29</td>
+                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row0_col1" class="data row0 col1" >0</td>
+                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row0_col2" class="data row0 col2" >0</td>
+            </tr>
+            <tr>
+                        <th id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14level0_row1" class="row_heading level0 row1" >versicolor</th>
+                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row1_col0" class="data row1 col0" >0</td>
+                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row1_col1" class="data row1 col1" >23</td>
+                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row1_col2" class="data row1 col2" >0</td>
+            </tr>
+            <tr>
+                        <th id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14level0_row2" class="row_heading level0 row2" >virginica</th>
+                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row2_col0" class="data row2 col0" >0</td>
+                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row2_col1" class="data row2 col1" >1</td>
+                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row2_col2" class="data row2 col2" >22</td>
+            </tr>
+    </tbody></table></div></div>
 </div>
 </div>
 <div class="section" id="feature-importance">
@@ -1067,60 +1104,63 @@ Wall time: 1.77 s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span>
-             <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+             <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>0</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>sepal length (cm)</th>
-      <td>0.085985</td>
-    </tr>
-    <tr>
-      <th>sepal width (cm)</th>
-      <td>0.034010</td>
-    </tr>
-    <tr>
-      <th>petal length (cm)</th>
-      <td>0.220063</td>
-    </tr>
-    <tr>
-      <th>petal width (cm)</th>
-      <td>0.286245</td>
-    </tr>
-    <tr>
-      <th>sepal area</th>
-      <td>0.026488</td>
-    </tr>
-    <tr>
-      <th>petal area</th>
-      <td>0.347209</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<div class="output text_html"><style  type="text/css" >
+#T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row0_col0{
+            background-color:  #e9e5f1;
+            color:  #000000;
+        }#T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row1_col0{
+            background-color:  #fff7fb;
+            color:  #000000;
+        }#T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row2_col0{
+            background-color:  #04649d;
+            color:  #f1f1f1;
+        }#T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row3_col0{
+            background-color:  #046097;
+            color:  #f1f1f1;
+        }#T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row4_col0{
+            background-color:  #fdf5fa;
+            color:  #000000;
+        }#T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row5_col0{
+            background-color:  #023f64;
+            color:  #f1f1f1;
+        }#T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row6_col0{
+            background-color:  #023858;
+            color:  #f1f1f1;
+        }</style><table id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >0</th>    </tr></thead><tbody>
+                <tr>
+                        <th id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14level0_row0" class="row_heading level0 row0" >sepal length (cm)</th>
+                        <td id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row0_col0" class="data row0 col0" >0.052815</td>
+            </tr>
+            <tr>
+                        <th id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14level0_row1" class="row_heading level0 row1" >sepal width (cm)</th>
+                        <td id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row1_col0" class="data row1 col0" >0.021418</td>
+            </tr>
+            <tr>
+                        <th id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14level0_row2" class="row_heading level0 row2" >petal length (cm)</th>
+                        <td id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row2_col0" class="data row2 col0" >0.205589</td>
+            </tr>
+            <tr>
+                        <th id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14level0_row3" class="row_heading level0 row3" >petal width (cm)</th>
+                        <td id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row3_col0" class="data row3 col0" >0.209287</td>
+            </tr>
+            <tr>
+                        <th id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14level0_row4" class="row_heading level0 row4" >sepal area</th>
+                        <td id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row4_col0" class="data row4 col0" >0.025440</td>
+            </tr>
+            <tr>
+                        <th id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14level0_row5" class="row_heading level0 row5" >petal area</th>
+                        <td id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row5_col0" class="data row5 col0" >0.239397</td>
+            </tr>
+            <tr>
+                        <th id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14level0_row6" class="row_heading level0 row6" >simetry</th>
+                        <td id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row6_col0" class="data row6 col0" >0.246055</td>
+            </tr>
+    </tbody></table></div></div>
 </div>
 </div>
 </div>
@@ -1145,14 +1185,7 @@ Wall time: 1.77 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None,
-                       criterion=&#39;gini&#39;, max_depth=2, max_features=&#39;auto&#39;,
-                       max_leaf_nodes=None, max_samples=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, n_estimators=500,
-                       n_jobs=None, oob_score=False, random_state=None,
-                       verbose=0, warm_start=False)
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>RandomForestClassifier(max_depth=2, n_estimators=500)
 </pre></div>
 </div>
 </div>
@@ -1177,7 +1210,7 @@ Wall time: 1.77 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/RF_42_0.png" src="_images/RF_42_0.png" />
+<img alt="_images/RF_45_0.png" src="_images/RF_45_0.png" />
 </div>
 </div>
 <p>Make sure that you understand why those decision boundaries look this way.</p>
@@ -1208,7 +1241,7 @@ Wall time: 1.77 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/RF_45_0.png" src="_images/RF_45_0.png" />
+<img alt="_images/RF_48_0.png" src="_images/RF_48_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
