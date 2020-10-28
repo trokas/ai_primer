@@ -12,6 +12,19 @@ Tain set - [DOWNLOAD](https://github.com/trokas/ai_primer/blob/master/flatland_t
 
 For your submission create a new [github](https://github.com/) repo and upload code/notebooks and final model (.h5 file). Next try to go to the link [flatland evaluation](https://us-central1-aiprimer.cloudfunctions.net/flatland) and you should see message 'Welcome to Flatland!'. This means that evaluation service is running and you can submit your own model by calling `https://us-central1-aiprimer.cloudfunctions.net/flatland?model_link=[PATH TO YOUR .h5]` (be patient, it can take a while).
 
+Before submiting your model, make sure that it works well using following evaluation function:
+
+```python
+def evaluate(path, model):
+    X, y = pickle.load(gzip.open(path, 'rb'))
+    y[y != 0] -= 2
+    X /= 255.
+    acc = np.mean(model(X).numpy().argmax(axis=1) == y)
+    return acc
+
+model = keras.models.load_model('model.h5')
+evaluate('flatland_train.data', model)
+```
 
 ## Leaderboard
 

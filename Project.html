@@ -94,11 +94,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="DNN.html#re-sources">
-   (re)Sources
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="CNN.html">
    CNN (Convolutional Neural Networks)
   </a>
@@ -201,6 +196,18 @@
 <p><img alt="Project train set sample" src="_images/flatland.png" /></p>
 <p>Tain set - <a class="reference external" href="https://github.com/trokas/ai_primer/blob/master/flatland_train.data">DOWNLOAD</a>.</p>
 <p>For your submission create a new <a class="reference external" href="https://github.com/">github</a> repo and upload code/notebooks and final model (.h5 file). Next try to go to the link <a class="reference external" href="https://us-central1-aiprimer.cloudfunctions.net/flatland">flatland evaluation</a> and you should see message ‘Welcome to Flatland!’. This means that evaluation service is running and you can submit your own model by calling <code class="docutils literal notranslate"><span class="pre">https://us-central1-aiprimer.cloudfunctions.net/flatland?model_link=[PATH</span> <span class="pre">TO</span> <span class="pre">YOUR</span> <span class="pre">.h5]</span></code> (be patient, it can take a while).</p>
+<p>Before submiting your model, make sure that it works well using following evaluation function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">2</span>
+    <span class="n">X</span> <span class="o">/=</span> <span class="mf">255.</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">acc</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;model.h5&#39;</span><span class="p">)</span>
+<span class="n">evaluate</span><span class="p">(</span><span class="s1">&#39;flatland_train.data&#39;</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="section" id="leaderboard">
 <h2>Leaderboard<a class="headerlink" href="#leaderboard" title="Permalink to this headline">¶</a></h2>
 <p>To add some gamification submissions might end up in a leaderboard (we will agree on that as the course progresses). Each model will be evaluated on two test sets - one which closely matches train set and slightly more advanced one which nature will be revealed at the end of the course.</p>
