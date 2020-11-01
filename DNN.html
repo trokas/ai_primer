@@ -256,6 +256,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-approximate-interpolation">
+   Task: approximate interpolation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#re-sources">
    (re)Sources
   </a>
@@ -945,6 +950,20 @@ Epoch 20/20
 <p>There are a lot of possible architectures, we have only touched the surface. Take a glympse at the variations of Neural Networks <a class="reference external" href="https://towardsdatascience.com/the-mostly-complete-chart-of-neural-networks-explained-3fb6f2367464">here</a>.</p>
 <img src="https://miro.medium.com/max/2000/1*cuTSPlTq0a_327iTPJyD-Q.png" style="width: 80%"/>
 <p>Interesting fact: using Autoencoders we can easily replicate SVD and PCA! We will try this out in the lecture.</p>
+</div>
+<div class="section" id="task-approximate-interpolation">
+<h2>Task: approximate interpolation<a class="headerlink" href="#task-approximate-interpolation" title="Permalink to this headline">¶</a></h2>
+<p>To get slightly better feel of what 2-layer NN is capable of, let’s try to implement idea presented in paper entitled “Constructive approximate interpolation by neural networks” by B. Llanas. Let <span class="math notranslate nohighlight">\(P = \{x_0=a, x_1, \dots, x_n=b\}\)</span> be any partition of interval <span class="math notranslate nohighlight">\([a,b]\)</span>. Let’s define neural net as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{j+1} - x_j} + \frac{x_{j+1} + x_j}{x_{j+1} - x_j} A \right) \\
+&amp; + f_n \sigma \left( \frac{-2Ax}{x_n - x_{n-1}} + \frac{3 x_n + x_{n-1}}{x_n - x_{n-1}} A \right)
+\end{align}.
+\end{split}\]</div>
+<p>Then for interpolation problem <span class="math notranslate nohighlight">\((x_0, f_0), (x_1, f_1), \dots, (x_n, f_n)\)</span> this network yields approximate interpolation and parameter <span class="math notranslate nohighlight">\(A &gt; 0\)</span> controls smoothness, lower value will end up in more smooth fit.</p>
+<p><strong>TASK:</strong> implement this using numpy of tensorflow and make some plots to convince yourself that it works.</p>
+<p><em>Tip: Note, that weights in the first line can be stacked into with weights listed in the second line before implementing dot product.</em></p>
 </div>
 <div class="section" id="re-sources">
 <h2>(re)Sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h2>
