@@ -962,8 +962,14 @@ N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{
 \end{align}.
 \end{split}\]</div>
 <p>Then for interpolation problem <span class="math notranslate nohighlight">\((x_0, f_0), (x_1, f_1), \dots, (x_n, f_n)\)</span> this network yields approximate interpolation and parameter <span class="math notranslate nohighlight">\(A &gt; 0\)</span> controls smoothness, lower value will end up in more smooth fit.</p>
-<p><strong>TASK:</strong> implement this using numpy of tensorflow and make some plots to convince yourself that it works.</p>
-<p><em>Tip: Note, that weights in the first line can be stacked into with weights listed in the second line before implementing dot product.</em></p>
+<p><strong>TASK:</strong> implement this using numpy (or tensorflow) and make some plots to convince yourself that it works.</p>
+<p>For test you can use any random function, for example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">x</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Tip: Note, that weights in the first line can be stacked with weights listed in the second line before implementing dot product.</em></p>
 </div>
 <div class="section" id="re-sources">
 <h2>(re)Sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h2>
