@@ -15,10 +15,13 @@ For your submission create a new [github](https://github.com/) repo and upload c
 Before submiting your model, make sure that it works well using following evaluation function:
 
 ```python
+import gzip
+import pickle
+
 def evaluate(path, model):
     X, y = pickle.load(gzip.open(path, 'rb'))
     y[y != 0] -= 2
-    X /= 255.
+    X = X / 255.
     acc = np.mean(model(X).numpy().argmax(axis=1) == y)
     return acc
 

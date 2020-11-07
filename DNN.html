@@ -251,13 +251,20 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#architectures">
-   Architectures
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#task-approximate-interpolation">
    Task: approximate interpolation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-do-not-scroll-down-try-to-solve-it-before-without-help">
+     Solution (do not scroll down, try to solve it before without help)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#callbacks">
+   Callbacks
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -689,17 +696,17 @@ Hit rate (train set) - 97.94%, Hit rate (test set) - 96.02%
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential_1&quot;
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential&quot;
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
-flatten_1 (Flatten)          (None, 784)               0         
+flatten (Flatten)            (None, 784)               0         
 _________________________________________________________________
-dense_3 (Dense)              (None, 64)                50240     
+dense (Dense)                (None, 64)                50240     
 _________________________________________________________________
-dense_4 (Dense)              (None, 32)                2080      
+dense_1 (Dense)              (None, 32)                2080      
 _________________________________________________________________
-dense_5 (Dense)              (None, 10)                330       
+dense_2 (Dense)              (None, 10)                330       
 =================================================================
 Total params: 52,650
 Trainable params: 52,650
@@ -716,47 +723,46 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Train on 48000 samples, validate on 12000 samples
-Epoch 1/20
-48000/48000 [==============================] - 3s 55us/sample - loss: 0.7528 - accuracy: 0.8008 - val_loss: 0.3494 - val_accuracy: 0.9028
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.8483 - accuracy: 0.7650 - val_loss: 0.3627 - val_accuracy: 0.9020
 Epoch 2/20
-48000/48000 [==============================] - 2s 50us/sample - loss: 0.3325 - accuracy: 0.9053 - val_loss: 0.2806 - val_accuracy: 0.9209
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.3454 - accuracy: 0.9029 - val_loss: 0.2867 - val_accuracy: 0.9187
 Epoch 3/20
-48000/48000 [==============================] - 3s 57us/sample - loss: 0.2765 - accuracy: 0.9198 - val_loss: 0.2482 - val_accuracy: 0.9284
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.2858 - accuracy: 0.9180 - val_loss: 0.2475 - val_accuracy: 0.9286
 Epoch 4/20
-48000/48000 [==============================] - 3s 56us/sample - loss: 0.2416 - accuracy: 0.9299 - val_loss: 0.2202 - val_accuracy: 0.9371
+1500/1500 [==============================] - 3s 2ms/step - loss: 0.2493 - accuracy: 0.9295 - val_loss: 0.2262 - val_accuracy: 0.9337
 Epoch 5/20
-48000/48000 [==============================] - 3s 62us/sample - loss: 0.2155 - accuracy: 0.9377 - val_loss: 0.2028 - val_accuracy: 0.9427
+1500/1500 [==============================] - 3s 2ms/step - loss: 0.2239 - accuracy: 0.9357 - val_loss: 0.2071 - val_accuracy: 0.9423
 Epoch 6/20
-48000/48000 [==============================] - 3s 53us/sample - loss: 0.1945 - accuracy: 0.9426 - val_loss: 0.1897 - val_accuracy: 0.9457
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.2030 - accuracy: 0.9422 - val_loss: 0.1923 - val_accuracy: 0.9446
 Epoch 7/20
-48000/48000 [==============================] - 3s 56us/sample - loss: 0.1765 - accuracy: 0.9488 - val_loss: 0.1711 - val_accuracy: 0.9519
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.1863 - accuracy: 0.9460 - val_loss: 0.1808 - val_accuracy: 0.9489
 Epoch 8/20
-48000/48000 [==============================] - 3s 56us/sample - loss: 0.1624 - accuracy: 0.9524 - val_loss: 0.1626 - val_accuracy: 0.9542
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.1729 - accuracy: 0.9504 - val_loss: 0.1702 - val_accuracy: 0.9515
 Epoch 9/20
-48000/48000 [==============================] - 3s 52us/sample - loss: 0.1500 - accuracy: 0.9561 - val_loss: 0.1535 - val_accuracy: 0.9562
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.1605 - accuracy: 0.9536 - val_loss: 0.1649 - val_accuracy: 0.9532
 Epoch 10/20
-48000/48000 [==============================] - 2s 52us/sample - loss: 0.1393 - accuracy: 0.9598 - val_loss: 0.1446 - val_accuracy: 0.9594
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.1505 - accuracy: 0.9564 - val_loss: 0.1583 - val_accuracy: 0.9540
 Epoch 11/20
-48000/48000 [==============================] - 2s 50us/sample - loss: 0.1291 - accuracy: 0.9626 - val_loss: 0.1419 - val_accuracy: 0.9603
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.1411 - accuracy: 0.9592 - val_loss: 0.1520 - val_accuracy: 0.9578
 Epoch 12/20
-48000/48000 [==============================] - 3s 60us/sample - loss: 0.1215 - accuracy: 0.9645 - val_loss: 0.1341 - val_accuracy: 0.9613
+1500/1500 [==============================] - 2s 1ms/step - loss: 0.1334 - accuracy: 0.9617 - val_loss: 0.1445 - val_accuracy: 0.9586
 Epoch 13/20
-48000/48000 [==============================] - 3s 58us/sample - loss: 0.1141 - accuracy: 0.9674 - val_loss: 0.1304 - val_accuracy: 0.9632
+1500/1500 [==============================] - 3s 2ms/step - loss: 0.1262 - accuracy: 0.9636 - val_loss: 0.1412 - val_accuracy: 0.9604
 Epoch 14/20
-48000/48000 [==============================] - 3s 54us/sample - loss: 0.1077 - accuracy: 0.9686 - val_loss: 0.1258 - val_accuracy: 0.9633
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.1201 - accuracy: 0.9652 - val_loss: 0.1379 - val_accuracy: 0.9599
 Epoch 15/20
-48000/48000 [==============================] - 3s 65us/sample - loss: 0.1018 - accuracy: 0.9704 - val_loss: 0.1240 - val_accuracy: 0.9649
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.1143 - accuracy: 0.9670 - val_loss: 0.1356 - val_accuracy: 0.9617
 Epoch 16/20
-48000/48000 [==============================] - 3s 66us/sample - loss: 0.0965 - accuracy: 0.9723 - val_loss: 0.1195 - val_accuracy: 0.9666
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.1087 - accuracy: 0.9688 - val_loss: 0.1288 - val_accuracy: 0.9628
 Epoch 17/20
-48000/48000 [==============================] - 3s 65us/sample - loss: 0.0916 - accuracy: 0.9737 - val_loss: 0.1206 - val_accuracy: 0.9654
+1500/1500 [==============================] - 2s 1ms/step - loss: 0.1034 - accuracy: 0.9698 - val_loss: 0.1279 - val_accuracy: 0.9632
 Epoch 18/20
-48000/48000 [==============================] - 3s 60us/sample - loss: 0.0869 - accuracy: 0.9753 - val_loss: 0.1163 - val_accuracy: 0.9660
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.0990 - accuracy: 0.9716 - val_loss: 0.1233 - val_accuracy: 0.9643
 Epoch 19/20
-48000/48000 [==============================] - 3s 59us/sample - loss: 0.0827 - accuracy: 0.9762 - val_loss: 0.1114 - val_accuracy: 0.9677
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.0952 - accuracy: 0.9723 - val_loss: 0.1232 - val_accuracy: 0.9646
 Epoch 20/20
-48000/48000 [==============================] - 3s 56us/sample - loss: 0.0783 - accuracy: 0.9777 - val_loss: 0.1154 - val_accuracy: 0.9662
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.0911 - accuracy: 0.9734 - val_loss: 0.1249 - val_accuracy: 0.9652
 </pre></div>
 </div>
 </div>
@@ -768,7 +774,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x14ff84090&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
 <img alt="_images/DNN_34_1.png" src="_images/DNN_34_1.png" />
@@ -783,7 +789,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Accuracy on test set - 96.92%
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Accuracy on test set - 96.47%
 </pre></div>
 </div>
 </div>
@@ -867,47 +873,46 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Train on 48000 samples, validate on 12000 samples
-Epoch 1/20
-48000/48000 [==============================] - 7s 152us/sample - loss: 0.6053 - accuracy: 0.8541 - val_loss: 0.3079 - val_accuracy: 0.9150
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
+1500/1500 [==============================] - 11s 7ms/step - loss: 0.5957 - accuracy: 0.8545 - val_loss: 0.3070 - val_accuracy: 0.9140
 Epoch 2/20
-48000/48000 [==============================] - 9s 189us/sample - loss: 0.2896 - accuracy: 0.9180 - val_loss: 0.2429 - val_accuracy: 0.9322
+1500/1500 [==============================] - 9s 6ms/step - loss: 0.2848 - accuracy: 0.9191 - val_loss: 0.2422 - val_accuracy: 0.9328
 Epoch 3/20
-48000/48000 [==============================] - 8s 162us/sample - loss: 0.2373 - accuracy: 0.9331 - val_loss: 0.2100 - val_accuracy: 0.9415
+1500/1500 [==============================] - 8s 6ms/step - loss: 0.2326 - accuracy: 0.9346 - val_loss: 0.2056 - val_accuracy: 0.9416
 Epoch 4/20
-48000/48000 [==============================] - 8s 173us/sample - loss: 0.2028 - accuracy: 0.9428 - val_loss: 0.1833 - val_accuracy: 0.9504
+1500/1500 [==============================] - 9s 6ms/step - loss: 0.1985 - accuracy: 0.9437 - val_loss: 0.1836 - val_accuracy: 0.9496
 Epoch 5/20
-48000/48000 [==============================] - 10s 205us/sample - loss: 0.1766 - accuracy: 0.9508 - val_loss: 0.1656 - val_accuracy: 0.9545
+1500/1500 [==============================] - 8s 5ms/step - loss: 0.1727 - accuracy: 0.9509 - val_loss: 0.1713 - val_accuracy: 0.9503
 Epoch 6/20
-48000/48000 [==============================] - 9s 181us/sample - loss: 0.1558 - accuracy: 0.9559 - val_loss: 0.1551 - val_accuracy: 0.9567
+1500/1500 [==============================] - 8s 6ms/step - loss: 0.1525 - accuracy: 0.9576 - val_loss: 0.1516 - val_accuracy: 0.9583
 Epoch 7/20
-48000/48000 [==============================] - 7s 151us/sample - loss: 0.1395 - accuracy: 0.9607 - val_loss: 0.1394 - val_accuracy: 0.9605
+1500/1500 [==============================] - 8s 5ms/step - loss: 0.1364 - accuracy: 0.9617 - val_loss: 0.1407 - val_accuracy: 0.9618
 Epoch 8/20
-48000/48000 [==============================] - 8s 163us/sample - loss: 0.1256 - accuracy: 0.9644 - val_loss: 0.1314 - val_accuracy: 0.9631
+1500/1500 [==============================] - 7s 5ms/step - loss: 0.1226 - accuracy: 0.9652 - val_loss: 0.1326 - val_accuracy: 0.9643
 Epoch 9/20
-48000/48000 [==============================] - 8s 169us/sample - loss: 0.1137 - accuracy: 0.9689 - val_loss: 0.1246 - val_accuracy: 0.9655
+1500/1500 [==============================] - 8s 5ms/step - loss: 0.1112 - accuracy: 0.9689 - val_loss: 0.1232 - val_accuracy: 0.9666
 Epoch 10/20
-48000/48000 [==============================] - 8s 161us/sample - loss: 0.1035 - accuracy: 0.9711 - val_loss: 0.1172 - val_accuracy: 0.9668
+1500/1500 [==============================] - 8s 5ms/step - loss: 0.1012 - accuracy: 0.9723 - val_loss: 0.1155 - val_accuracy: 0.9690
 Epoch 11/20
-48000/48000 [==============================] - 8s 159us/sample - loss: 0.0946 - accuracy: 0.9739 - val_loss: 0.1108 - val_accuracy: 0.9687
+1500/1500 [==============================] - 8s 6ms/step - loss: 0.0927 - accuracy: 0.9744 - val_loss: 0.1120 - val_accuracy: 0.9690
 Epoch 12/20
-48000/48000 [==============================] - 8s 162us/sample - loss: 0.0870 - accuracy: 0.9762 - val_loss: 0.1065 - val_accuracy: 0.9701
+1500/1500 [==============================] - 8s 5ms/step - loss: 0.0849 - accuracy: 0.9771 - val_loss: 0.1084 - val_accuracy: 0.9695
 Epoch 13/20
-48000/48000 [==============================] - 8s 160us/sample - loss: 0.0799 - accuracy: 0.9788 - val_loss: 0.1007 - val_accuracy: 0.9705
+1500/1500 [==============================] - 8s 5ms/step - loss: 0.0788 - accuracy: 0.9786 - val_loss: 0.1068 - val_accuracy: 0.9712
 Epoch 14/20
-48000/48000 [==============================] - 8s 164us/sample - loss: 0.0737 - accuracy: 0.9810 - val_loss: 0.0990 - val_accuracy: 0.9717
+1500/1500 [==============================] - 8s 6ms/step - loss: 0.0724 - accuracy: 0.9808 - val_loss: 0.0989 - val_accuracy: 0.9714
 Epoch 15/20
-48000/48000 [==============================] - 8s 159us/sample - loss: 0.0681 - accuracy: 0.9822 - val_loss: 0.0950 - val_accuracy: 0.9732
+1500/1500 [==============================] - 8s 5ms/step - loss: 0.0672 - accuracy: 0.9824 - val_loss: 0.0954 - val_accuracy: 0.9725
 Epoch 16/20
-48000/48000 [==============================] - 8s 161us/sample - loss: 0.0631 - accuracy: 0.9835 - val_loss: 0.0917 - val_accuracy: 0.9736
+1500/1500 [==============================] - 8s 5ms/step - loss: 0.0622 - accuracy: 0.9837 - val_loss: 0.0944 - val_accuracy: 0.9738
 Epoch 17/20
-48000/48000 [==============================] - 9s 183us/sample - loss: 0.0586 - accuracy: 0.9849 - val_loss: 0.0912 - val_accuracy: 0.9733
+1500/1500 [==============================] - 8s 6ms/step - loss: 0.0579 - accuracy: 0.9850 - val_loss: 0.0944 - val_accuracy: 0.9739
 Epoch 18/20
-48000/48000 [==============================] - 8s 161us/sample - loss: 0.0542 - accuracy: 0.9864 - val_loss: 0.0901 - val_accuracy: 0.9736
+1500/1500 [==============================] - 8s 5ms/step - loss: 0.0539 - accuracy: 0.9866 - val_loss: 0.0905 - val_accuracy: 0.9740
 Epoch 19/20
-48000/48000 [==============================] - 8s 158us/sample - loss: 0.0505 - accuracy: 0.9870 - val_loss: 0.0866 - val_accuracy: 0.9746
+1500/1500 [==============================] - 8s 5ms/step - loss: 0.0501 - accuracy: 0.9872 - val_loss: 0.0874 - val_accuracy: 0.9749
 Epoch 20/20
-48000/48000 [==============================] - 8s 165us/sample - loss: 0.0472 - accuracy: 0.9882 - val_loss: 0.0841 - val_accuracy: 0.9753
+1500/1500 [==============================] - 7s 5ms/step - loss: 0.0468 - accuracy: 0.9882 - val_loss: 0.0868 - val_accuracy: 0.9754
 </pre></div>
 </div>
 </div>
@@ -921,13 +926,22 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Accuracy on test set - 97.59%
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Accuracy on test set - 97.74%
 </pre></div>
 </div>
 <img alt="_images/DNN_44_1.png" src="_images/DNN_44_1.png" />
 </div>
 </div>
 <p>Thats better! For examply by using layers 1500, 1000, 500, 10 you can improve accuracy to 98.24%, but training will take quite some time. Acctually you can go even futher with simple data augmentation techniques - https://arxiv.org/pdf/1003.0358.pdf</p>
+<p>To the save and load the model you can use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;mnist-model.h5&#39;</span><span class="p">)</span>
+<span class="c1"># model = tf.keras.models.load_model(&#39;mnist-model.h5&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="dropout">
 <h2>Dropout<a class="headerlink" href="#dropout" title="Permalink to this headline">¶</a></h2>
@@ -944,12 +958,6 @@ Epoch 20/20
 </div>
 <p>Try that out.</p>
 <p>As we go further we will see that sometime bigger networks simply don’t overfit the data, standard statistics logic starts to break down. This phenomenon is called <a class="reference external" href="https://openai.com/blog/deep-double-descent/">Deep Double Descent</a>.</p>
-</div>
-<div class="section" id="architectures">
-<h2>Architectures<a class="headerlink" href="#architectures" title="Permalink to this headline">¶</a></h2>
-<p>There are a lot of possible architectures, we have only touched the surface. Take a glympse at the variations of Neural Networks <a class="reference external" href="https://towardsdatascience.com/the-mostly-complete-chart-of-neural-networks-explained-3fb6f2367464">here</a>.</p>
-<img src="https://miro.medium.com/max/2000/1*cuTSPlTq0a_327iTPJyD-Q.png" style="width: 80%"/>
-<p>Interesting fact: using Autoencoders we can easily replicate SVD and PCA! We will try this out in the lecture.</p>
 </div>
 <div class="section" id="task-approximate-interpolation">
 <h2>Task: approximate interpolation<a class="headerlink" href="#task-approximate-interpolation" title="Permalink to this headline">¶</a></h2>
@@ -970,6 +978,82 @@ N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{
 </pre></div>
 </div>
 <p><em>Tip: Note, that weights in the first line can be stacked with weights listed in the second line before implementing dot product.</em></p>
+<div class="section" id="solution-do-not-scroll-down-try-to-solve-it-before-without-help">
+<h3>Solution (do not scroll down, try to solve it before without help)<a class="headerlink" href="#solution-do-not-scroll-down-try-to-solve-it-before-without-help" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">x</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x14768bb90&gt;
+</pre></div>
+</div>
+<img alt="_images/DNN_48_1.png" src="_images/DNN_48_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">diff</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">A</span> <span class="o">/</span> <span class="n">diff</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">A</span> <span class="o">/</span> <span class="n">diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">diff</span> <span class="o">*</span> <span class="n">A</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="n">diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">A</span><span class="p">)</span>
+<span class="n">comb_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">x_ref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+<span class="n">y_interp</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">weights</span> <span class="o">*</span> <span class="n">x_ref</span> <span class="o">+</span> <span class="n">bias</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">comb_weights</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_ref</span><span class="p">,</span> <span class="n">y_interp</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/Users/trokas/.local/share/virtualenvs/current-rcFo7dEP/lib/python3.7/site-packages/ipykernel_launcher.py:1: RuntimeWarning: overflow encountered in exp
+  &quot;&quot;&quot;Entry point for launching an IPython kernel.
+</pre>
+</div>
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x146827350&gt;]
+</pre></div>
+</div>
+<img alt="_images/DNN_49_2.png" src="_images/DNN_49_2.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="callbacks">
+<h2>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this headline">¶</a></h2>
+<p>While training the models it is benefficial to have some printout after each apoch, additionally you might want to adjust learning rate, stop training etc. All of these tasks can be achieved using callbacks in fit function, for example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="c1"># Let&#39;s create different dir for each experiment based on timestamp</span>
+<span class="n">logdir</span> <span class="o">=</span> <span class="s2">&quot;logs/scalars/&quot;</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">-%H%M%S&quot;</span><span class="p">)</span>
+<span class="c1"># This callback will write logs to provided directory</span>
+<span class="n">tensorboard_callback</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="n">logdir</span><span class="p">)</span>
+
+<span class="c1"># We already have the model, but you might want to create new one prior to training</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span>
+          <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">),</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+          <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">tensorboard_callback</span><span class="p">])</span>   <span class="c1"># You can provide multiple callbacks here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now just navigate to <code class="docutils literal notranslate"><span class="pre">ai_primer</span></code> directory, and run following commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pipenv shell
+tensorboard --logdir logs/scalars
+</pre></div>
+</div>
+<p>You should get a link (probably - http://localhost:6006/) where you can track the training and compare models. For more examples see: https://www.tensorflow.org/tensorboard/scalars_and_keras.</p>
 </div>
 <div class="section" id="re-sources">
 <h2>(re)Sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h2>
