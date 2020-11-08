@@ -39,6 +39,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Project: Flatland" href="Project.html" />
+    <link rel="prev" title="CNN (Convolutional Neural Networks)" href="CNN.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -76,7 +78,7 @@
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="SVD.html">
    SVD (Singular Value Decomposition)
@@ -95,6 +97,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="CNN.html">
    CNN (Convolutional Neural Networks)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Varia
   </a>
  </li>
  <li class="toctree-l1">
@@ -190,6 +197,11 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transfer-learning">
+   Transfer Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#saliency">
    Saliency
   </a>
@@ -221,14 +233,7 @@
         
               <div>
                 
-  <div class="section" id="varia">
-<h1>Varia<a class="headerlink" href="#varia" title="Permalink to this headline">¶</a></h1>
-<p><strong>IN PROGRESS, come back here after some time</strong></p>
-<p>In this chapter we will look into different architectures and saliency.</p>
-<div class="section" id="saliency">
-<h2>Saliency<a class="headerlink" href="#saliency" title="Permalink to this headline">¶</a></h2>
-<p>Let’s start with pretrained NN for MNIST.</p>
-<div class="cell docutils container">
+  <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">gzip</span>
@@ -240,145 +245,86 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="section" id="varia">
+<h1>Varia<a class="headerlink" href="#varia" title="Permalink to this headline">¶</a></h1>
+<p><strong>IN PROGRESS, come back here after some time</strong></p>
+<p>In this chapter we will look into different architectures and saliency.</p>
+<div class="section" id="transfer-learning">
+<h2>Transfer Learning<a class="headerlink" href="#transfer-learning" title="Permalink to this headline">¶</a></h2>
+<p>Since lower level features in networks for image tasks turn out to be quite basic we can transfer this knowledge to new datasets by training only later layers.</p>
+<img width=50% src="https://miro.medium.com/max/1000/1*LUFUl_8fqS97nUzpcFjgWw.png"><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;flatland_model.h5&#39;</span><span class="p">,</span> <span class="nb">compile</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="saliency">
+<h2>Saliency<a class="headerlink" href="#saliency" title="Permalink to this headline">¶</a></h2>
+<p><strong>TODO: add writeup…</strong></p>
+<p>Gradients can be calculated in TensorFlow using GradientTape, for example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will calculate <span class="math notranslate nohighlight">\(\frac{dy}{dx}\)</span> at point <span class="math notranslate nohighlight">\(3\)</span>, thus yielding <span class="math notranslate nohighlight">\(6\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_saliency_map</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">class_idx</span><span class="p">):</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">saliency</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">single_input</span><span class="p">):</span>
+    <span class="n">single_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">single_input</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
     
     <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
-        <span class="n">tape</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-        <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-        <span class="n">loss</span> <span class="o">=</span> <span class="n">predictions</span><span class="p">[:,</span> <span class="n">class_idx</span><span class="p">]</span>
-    
-    <span class="c1"># Get the gradients of the loss w.r.t to the input image</span>
-    <span class="n">gradient</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
-        
-    <span class="k">return</span> <span class="n">gradient</span>
+        <span class="n">tape</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">single_input</span><span class="p">)</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">single_input</span><span class="p">)</span>
+        <span class="n">winning_class</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">predictions</span><span class="p">[:,</span> <span class="n">winning_class</span><span class="p">]</span>
 
-    <span class="c1"># take maximum across channels</span>
-    <span class="n">gradient</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_max</span><span class="p">(</span><span class="n">gradient</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-    
-    <span class="nb">print</span><span class="p">(</span><span class="n">gradient</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-    
-    <span class="c1"># convert to numpy</span>
-    <span class="n">gradient</span> <span class="o">=</span> <span class="n">gradient</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-    
-    <span class="c1"># normaliz between 0 and 1</span>
-    <span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">gradient</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">gradient</span><span class="p">)</span>
-    <span class="n">smap</span> <span class="o">=</span> <span class="p">(</span><span class="n">gradient</span> <span class="o">-</span> <span class="n">min_val</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">max_val</span> <span class="o">-</span> <span class="n">min_val</span> <span class="o">+</span> <span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">epsilon</span><span class="p">())</span>
-    
-    <span class="k">return</span> <span class="n">smap</span>
+    <span class="c1"># Gradients of the loss with respect to the input</span>
+    <span class="n">gradient</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">single_input</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">gradient</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>To test this out let’s make a simple dataset where <em>y</em> is averate of first two columns and third column is not used.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;flatland_train.data&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
-
-<span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">2</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">X</span> <span class="o">/</span> <span class="mi">255</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Now let’s fit simple regression NN and look at salience.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chopped_model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="n">gradients</span> <span class="o">=</span> <span class="n">get_saliency_map</span><span class="p">(</span><span class="n">chopped_model</span><span class="p">,</span> <span class="n">X</span><span class="p">[[</span><span class="n">idx</span><span class="p">]],</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">]))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">gradients</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">saliency</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">[[</span><span class="n">i</span><span class="p">]]))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Varia_7_0.png" src="_images/Varia_7_0.png" />
-<img alt="_images/Varia_7_1.png" src="_images/Varia_7_1.png" />
+<img alt="_images/Varia_9_0.png" src="_images/Varia_9_0.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pipenv install keras-vis --skip-lock</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>[39m[1mInstalling [32m[1mkeras-vis[39m[22m…[39m[22m
-[K[39m[1mAdding[39m[22m [32m[1mkeras-vis[39m[22m [39m[1mto Pipfile&#39;s[39m[22m [31m[1m[packages][39m[22m[39m[1m…[39m[22m
-[K[?25h✔ Installation Succeeded[0m 
-[39m[1mInstalling dependencies from Pipfile…[39m[22m
-  🐍   [32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m[32m[1m▉[39m[22m 0/0 — [30m[22m00:00:00[39m[22m
-[0m
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vis.visualization</span> <span class="kn">import</span> <span class="n">visualize_saliency</span>
-<span class="kn">from</span> <span class="nn">vis.utils</span> <span class="kn">import</span> <span class="n">utils</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="n">bc6320d43015</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">vis.visualization</span> <span class="kn">import</span> <span class="n">visualize_saliency</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">vis.utils</span> <span class="kn">import</span> <span class="n">utils</span>
-
-<span class="o">~/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">virtualenvs</span><span class="o">/</span><span class="n">current</span><span class="o">-</span><span class="n">rcFo7dEP</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">vis</span><span class="o">/</span><span class="n">visualization</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">.activation_maximization</span> <span class="kn">import</span> <span class="n">visualize_activation</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> 
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">.saliency</span> <span class="kn">import</span> <span class="n">visualize_saliency_with_losses</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.saliency</span> <span class="kn">import</span> <span class="n">visualize_saliency</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.saliency</span> <span class="kn">import</span> <span class="n">visualize_cam_with_losses</span>
-
-<span class="o">~/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">virtualenvs</span><span class="o">/</span><span class="n">current</span><span class="o">-</span><span class="n">rcFo7dEP</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">vis</span><span class="o">/</span><span class="n">visualization</span><span class="o">/</span><span class="n">saliency</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="kn">import</span> <span class="n">imresize</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> 
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">keras.layers.convolutional</span> <span class="kn">import</span> <span class="n">_Conv</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">keras.layers.pooling</span> <span class="kn">import</span> <span class="n">_Pooling1D</span><span class="p">,</span> <span class="n">_Pooling2D</span><span class="p">,</span> <span class="n">_Pooling3D</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;_Conv&#39; from &#39;keras.layers.convolutional&#39; (/Users/trokas/.local/share/virtualenvs/current-rcFo7dEP/lib/python3.7/site-packages/keras/layers/convolutional.py)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">activations</span><span class="o">.</span><span class="n">linear</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">apply_modifications</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>  
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">visualization</span> <span class="o">=</span> <span class="n">visualize_saliency</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">layer_index</span><span class="p">,</span> <span class="n">filter_indices</span><span class="o">=</span><span class="n">input_class</span><span class="p">,</span> <span class="n">seed_input</span><span class="o">=</span><span class="n">input_image</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>Nice, nearly all value comes from first two features, exactly as expected. If you will increase epoch count and overfit train data weights should even up (try that).</p>
+<p><strong>TASK:</strong> take your own flatland model and visualize salience.</p>
 </div>
 <div class="section" id="architectures">
 <h2>Architectures<a class="headerlink" href="#architectures" title="Permalink to this headline">¶</a></h2>
@@ -422,6 +368,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="CNN.html" title="previous page">CNN (Convolutional Neural Networks)</a>
+    <a class='right-next' id="next-link" href="Project.html" title="next page">Project: Flatland</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

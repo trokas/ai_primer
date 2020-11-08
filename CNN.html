@@ -39,7 +39,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Project: Flatland" href="Project.html" />
+    <link rel="next" title="Varia" href="Varia.html" />
     <link rel="prev" title="DNN (Deep Neural Networks)" href="DNN.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -94,14 +94,14 @@
    DNN (Deep Neural Networks)
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DNN.html#re-sources">
-   (re)Sources
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    CNN (Convolutional Neural Networks)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Varia.html">
+   Varia
   </a>
  </li>
  <li class="toctree-l1">
@@ -232,6 +232,18 @@
   <a class="reference internal nav-link" href="#cnn">
    CNN
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#super-short-history">
+     Super short history
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementation">
+     Implementation
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-s-next">
@@ -451,8 +463,18 @@
 </div>
 <div class="section" id="cnn">
 <h2>CNN<a class="headerlink" href="#cnn" title="Permalink to this headline">¶</a></h2>
-<p>Following video contains a neat exolanation of how CNN’s work.</p>
-<iframe width="560" height="315" src="https://youtu.be/YRhxdVk_sIs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="section" id="super-short-history">
+<h3>Super short history<a class="headerlink" href="#super-short-history" title="Permalink to this headline">¶</a></h3>
+<p>In 1964 Hubel and Wiesel discovered some interesting facts about cats’ visual cortex (see https://www.youtube.com/watch?v=IOHayh06LJ4). It turns out that there are specific neurons which react to different shapes, also it looks like there is hierarchical structures and basic forms are used as a basic building blocks for later neurons.</p>
+<img width=30% src="https://www.researchgate.net/profile/Anh_Nguyen44/publication/335707980/figure/fig1/AS:803803662127107@1568653135830/Fig-In-the-classic-neuroscience-experiment-Hubel-and-Wiesel-discovered-a-cats-visual.png"/>
+<p>In 1979 neocognitron was proposed by Kunihiko Fukushima and in 1980s CNN were finally developed. Le Couns group made them work on MNIST by intoducing LeNet-5 architecture.</p>
+<img width=70% src="https://miro.medium.com/max/4348/1*PXworfAP2IombUzBsDMg7Q.png"/>
+<p>Even though LeNet-5 was used for character recognition in some banks from 1980s, next real advancement came only in 2012 with AlexNet which won ImageNet competition at the time and was comprised of 60M parameters (compared to 60k used in LeNet-5). From that point CNN’s only grew in size (see https://towardsdatascience.com/illustrated-10-cnn-architectures-95d78ace614d).</p>
+<img width=60% src="https://www.researchgate.net/profile/Sherif_Shehata2/publication/308880040/figure/fig3/AS:413548556636165@1475609067864/An-illustration-of-the-architecture-of-AlexNet-deep-convolutional-neural-network.png"/>
+<p>It turns out that CNN’s do a similar thing as neurons in Hubel and Wiesels cortex model - lower levels detect simple shapes and in later layers they are combined.</p>
+</div>
+<div class="section" id="implementation">
+<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
 <p>Just as with simple fully connected networks you can try to write logic from scratch before jumping to using Keras or other ML library just to get deeper understanding of what is going on, for example see <a class="reference external" href="https://towardsdatascience.com/lets-code-convolutional-neural-network-in-plain-numpy-ce48e732f5d5">this post</a>.</p>
 <p>Let’s load MNIST dataset.</p>
 <div class="cell docutils container">
@@ -558,6 +580,7 @@ Epoch 10/10
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Accuracy on test set - 97.72%
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -779,7 +802,7 @@ Epoch 10/10
 <div class="section" id="so-where-are-we-on-mnist">
 <h2>So where are we on MNIST?<a class="headerlink" href="#so-where-are-we-on-mnist" title="Permalink to this headline">¶</a></h2>
 <p>We tried RF, DNN and CNN for MNIST and managed to reproduced some of the key benchmarks out there</p>
-<img src="http://playagricola.com/Kaggle/KaggleMNISThist3.png" style="width: 70%"/></div>
+<img src="https://paper-attachments.dropbox.com/s_2E4854D97CFCA11CB3874DE15FA048AD21CE628C357A5C14D6A303FEC847FA36_1604825782553_image.png" style="width: 70%"/></div>
 <div class="section" id="using-cnn-s-for-sequences">
 <h2>Using CNN’s for sequences<a class="headerlink" href="#using-cnn-s-for-sequences" title="Permalink to this headline">¶</a></h2>
 <p>It turns out that same principle can applied for time series prediction. Here is a neat example based on Temporal Convolutional Nets (TCN).</p>
@@ -981,6 +1004,7 @@ Epoch 20/20
 <div class="section" id="re-sources">
 <h2>(re)Sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><p>https://towardsdatascience.com/illustrated-10-cnn-architectures-95d78ace614d</p></li>
 <li><p>https://deeplizard.com/learn/video/YRhxdVk_sIs</p></li>
 </ul>
 </div>
@@ -1015,7 +1039,7 @@ Epoch 20/20
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="DNN.html" title="previous page">DNN (Deep Neural Networks)</a>
-    <a class='right-next' id="next-link" href="Project.html" title="next page">Project: Flatland</a>
+    <a class='right-next' id="next-link" href="Varia.html" title="next page">Varia</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
