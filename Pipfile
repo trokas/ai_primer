@@ -19,8 +19,10 @@ pandas = "*"
 plotly = "*"
 pytest = "*"
 scikit-learn = "*"
-scipy = "*"
+scipy = "==1.1.0"
 tensorflow = "==2.2.0"
+tabulate = "*"
+spacy = "*"
 
 [requires]
 python_version = "3.7"
