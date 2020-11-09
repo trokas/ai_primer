@@ -235,7 +235,7 @@
                 
   <div class="section" id="varia">
 <h1>Varia<a class="headerlink" href="#varia" title="Permalink to this headline">¶</a></h1>
-<p>In this chapter we will look into couple different architectures, saliency and other tricks which did not found their own chapters.</p>
+<p>In this chapter we will look into couple different architectures, saliency and other tricks, which did not found their own chapters. Each section will have open-ended task for you to experiment with.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
@@ -371,8 +371,8 @@ _________________________________________________________________
 <p>There are a lot of possible architectures, we have only touched the surface. Take a glympse at the variations of Neural Networks <a class="reference external" href="https://towardsdatascience.com/the-mostly-complete-chart-of-neural-networks-explained-3fb6f2367464">here</a>.</p>
 <img src="https://miro.medium.com/max/2000/1*cuTSPlTq0a_327iTPJyD-Q.png" style="width: 80%"/><div class="section" id="autoencoders">
 <h3>Autoencoders<a class="headerlink" href="#autoencoders" title="Permalink to this headline">¶</a></h3>
-<p>Autoencoders try to squeeze data by having a bottleneck layer (see viz above).</p>
-<p>Interesting fact: using Autoencoders we can easily replicate SVD and PCA. Let’s go back to a part of SVD lecture and try to compress image using NN.</p>
+<p>Autoencoders try to squeeze data by having a bottleneck layer (see viz above). Using Autoencoders we can easily replicate SVD and PCA. And as you know this can be used in data compression, recommenders, outlier detectors etc. Not only that NN’s allow to make much richer autoencoders, thus improving quality.</p>
+<p>Let’s go back to a part of SVD lecture and try to compress image using NN.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -465,10 +465,34 @@ _________________________________________________________________
 <img alt="_images/Varia_24_0.png" src="_images/Varia_24_0.png" />
 </div>
 </div>
+<p><strong>TASK:</strong> let’s go back to SVD lecture and Olivetti faces (<code class="docutils literal notranslate"><span class="pre">sklearn.datasets.fetch_olivetti_faces</span></code>) anomaly detection problem - flip one or couple of images upside down so that they would look like anomalies, then encode and decode. Use slightly deeper NN for anomaly detection and show that it produces more powerfull detector than PCA.</p>
 </div>
 <div class="section" id="word2vec-cnn-s">
 <h3>Word2Vec &amp; CNN’s<a class="headerlink" href="#word2vec-cnn-s" title="Permalink to this headline">¶</a></h3>
-<p><strong>IN PROGRESS, come back here after some time</strong></p>
+<p>Word2Vec is built using autoencoders and allows to convert words to vectors which have some semantic meaning. Some applications of these vectors might be stunning, for example:</p>
+<img width=50% src="http://jalammar.github.io/images/word2vec/king-analogy-viz.png"/>
+<p>To use pre-trained model we will use Spacy library (install it using <code class="docutils literal notranslate"><span class="pre">pipenv</span> <span class="pre">install</span> <span class="pre">spacy</span></code>). Then download the model by running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">spacy</span> <span class="pre">download</span> <span class="pre">en_core_web_md</span></code>. Remeber that you can run shell commands in notebook by adding <code class="docutils literal notranslate"><span class="pre">!</span></code>.</p>
+<p>From here you can get embeddings as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">spacy</span>
+
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;en_core_web_md&#39;</span><span class="p">)</span>
+<span class="n">sentance</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="s2">&quot;The answer to life the universe and everything&quot;</span><span class="p">)</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">word</span><span class="o">.</span><span class="n">vector</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sentance</span><span class="p">])</span>
+<span class="n">embeddings</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(8, 300)
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you might expect these vectors can be used while creating the model, for example we can make sentiment analysis model for reviews (trying to figure out if it is positive or negative) simply by feeding embedding to CNN.</p>
+<img width=60% src="https://datasciencetoday.net/images/CNN.png"/>
+<p><strong>TASK:</strong> using data from <a class="reference external" href="https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews">imdb reviews</a> train simple CNN based sentiment classifier.</p>
 </div>
 </div>
 </div>
