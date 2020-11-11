@@ -29,6 +29,8 @@ model = keras.models.load_model('model.h5')
 evaluate('flatland_train.data', model)
 ```
 
+For faster training you can use [colab](https://colab.research.google.com/), just change it GPU mode by setting it at Edit -> Notebook settings -> Hardware accelerator.
+
 ## Leaderboard
 
 To add some gamification submissions might end up in a leaderboard (we will agree on that as the course progresses). Each model will be evaluated on two test sets - one which closely matches train set and slightly more advanced one which nature will be revealed at the end of the course.

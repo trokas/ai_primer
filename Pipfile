@@ -20,7 +20,7 @@ plotly = "*"
 pytest = "*"
 scikit-learn = "*"
 scipy = "==1.1.0"
-tensorflow = "==2.2.0"
+tensorflow = "==2.3.0"
 tabulate = "*"
 spacy = "*"
 
