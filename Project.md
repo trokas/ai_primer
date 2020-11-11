@@ -45,3 +45,5 @@ Passing benchmarks:
 | 8 | CNN | >85% | any |
 | 9 | CNN | >90% | any |
 | 10 | Transfer learning | >90% | >80% |
+
+*Additional task:* if you have beated advanced set and have model that gives nearly ideal accuracy, try to make it as small as possible.
