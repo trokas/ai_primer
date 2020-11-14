@@ -182,6 +182,18 @@
   <a class="reference internal nav-link" href="#launching-notebooks">
    Launching notebooks
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#option-1-paperspace">
+     Option 1. Paperspace
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#option-2-own-pc">
+     Option 2. Own PC
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#re-sources">
@@ -227,9 +239,8 @@ Also we will cover following toolset, which hopefully will be useful for your fu
 <li><p><a class="reference external" href="https://keras.io/examples/vision/mnist_convnet/">keras</a> (FCN and CNN lectures) - simple deep learning library based on tensorflow.</p></li>
 <li><p><a class="reference external" href="https://rogerdudler.github.io/git-guide/">git</a> (final project) - version control tool.</p></li>
 </ul>
-<p>For coding I suggest to use <a class="reference external" href="https://code.visualstudio.com/">VSC</a> and shell with <a class="reference external" href="https://github.com/ohmyzsh/ohmyzsh">Oh My Zsh</a>.</p>
-<p>Toolset will be presented only in lectures, thus it’s up to you to learn them on your own if you do not plan to attend. There are a lot of resources, but I highly suggest to read intros in corresponding docs.
-What to expect from a single lecture?</p>
+<p>Toolset will be presented only in lectures, thus it’s up to you to learn them on your own if you do not plan to attend. There are a lot of resources, but I highly suggest to read intros in corresponding docs.</p>
+<p>What to expect from a single lecture?</p>
 <ul class="simple">
 <li><p>There will be no clear distinction between theory and practice, thus you should have your PC ready for small assignments that you will encounter on the way.</p></li>
 <li><p>Most important material will be listed here, but during lectures you will hear and see a lot of complementary material.</p></li>
@@ -237,7 +248,22 @@ What to expect from a single lecture?</p>
 </ul>
 <div class="section" id="launching-notebooks">
 <h2>Launching notebooks<a class="headerlink" href="#launching-notebooks" title="Permalink to this headline">¶</a></h2>
-<p>You can launch notebooks in Binder directly in browser, but when we come to building models that will not work and you will have to use your own PC. To do that just clone this repo, install all packages and run jupyter as follows:</p>
+<p>You can launch notebooks in Binder directly in browser, but when we come to building models that will not work and you will have to use Paperspace (with GPU) or your own PC.</p>
+<div class="section" id="option-1-paperspace">
+<h3>Option 1. Paperspace<a class="headerlink" href="#option-1-paperspace" title="Permalink to this headline">¶</a></h3>
+<p>To have much fater training using GPU sign up for <a class="reference external" href="https://www.paperspace.com/">Paperspace</a> and got to <a class="reference external" href="https://console.paperspace.com/gradient">gradient console</a>. The follow these steps:</p>
+<ol class="simple">
+<li><p>Click on <em>Notebooks</em> in left menu</p></li>
+<li><p>Press on <em>Custom Container</em> tab</p></li>
+<li><p>In the field <em>Enter Container Name</em> enter <em>rokastamosiunas/ai_primer:latest</em></p></li>
+<li><p>Choose <em>Free-GPU</em> machine</p></li>
+<li><p>Scroll down and press <em>Create Notebook</em></p></li>
+</ol>
+<p>This should spin a new notebook with GPU support that will be available for the next 6 hours. Just press <em>Open</em> and you should see all course materials in <em>Jupyter Notebook</em>.</p>
+</div>
+<div class="section" id="option-2-own-pc">
+<h3>Option 2. Own PC<a class="headerlink" href="#option-2-own-pc" title="Permalink to this headline">¶</a></h3>
+<p>To run on your own PC, just clone this repo, install all packages and run jupyter as follows:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/trokas/ai_primer.git
 <span class="nb">cd</span> ai_primer
 pip install pipenv
@@ -249,8 +275,8 @@ pipenv run jupyter-notebook
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">get</span><span class="o">-</span><span class="n">pip</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>If you have python 3.7 just edit last line in Pipfile.</p>
-<p>More info about <a class="reference external" href="https://pipenv.pypa.io/en/latest/">pipenv</a> and <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/latest/ui_components.html#interactive-user-interface-tour-of-the-notebook">Jupyter</a>.</p>
+<p>More info about <a class="reference external" href="https://pipenv.pypa.io/en/latest/">pipenv</a> and <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/latest/ui_components.html#interactive-user-interface-tour-of-the-notebook">Jupyter</a>. For proper coding I suggest to use <a class="reference external" href="https://code.visualstudio.com/">VSC</a> and shell with <a class="reference external" href="https://github.com/ohmyzsh/ohmyzsh">Oh My Zsh</a>, but mostly we will use Jupyter Notebooks.</p>
+</div>
 </div>
 <div class="section" id="re-sources">
 <h2>(re)Sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h2>

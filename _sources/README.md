@@ -22,9 +22,8 @@ Also we will cover following toolset, which hopefully will be useful for your fu
 - [keras](https://keras.io/examples/vision/mnist_convnet/) (FCN and CNN lectures) - simple deep learning library based on tensorflow.
 - [git](https://rogerdudler.github.io/git-guide/) (final project) - version control tool.
 
-For coding I suggest to use [VSC](https://code.visualstudio.com/) and shell with [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh).
-
 Toolset will be presented only in lectures, thus it’s up to you to learn them on your own if you do not plan to attend. There are a lot of resources, but I highly suggest to read intros in corresponding docs.
+
 What to expect from a single lecture?
 
 - There will be no clear distinction between theory and practice, thus you should have your PC ready for small assignments that you will encounter on the way.
@@ -33,7 +32,23 @@ What to expect from a single lecture?
 
 ## Launching notebooks
 
-You can launch notebooks in Binder directly in browser, but when we come to building models that will not work and you will have to use your own PC. To do that just clone this repo, install all packages and run jupyter as follows:
+You can launch notebooks in Binder directly in browser, but when we come to building models that will not work and you will have to use Paperspace (with GPU) or your own PC.
+
+### Option 1. Paperspace
+
+To have much fater training using GPU sign up for [Paperspace](https://www.paperspace.com/) and got to [gradient console](https://console.paperspace.com/gradient). The follow these steps:
+
+1. Click on *Notebooks* in left menu
+2. Press on *Custom Container* tab
+3. In the field *Enter Container Name* enter *rokastamosiunas/ai_primer:latest*
+4. Choose *Free-GPU* machine
+5. Scroll down and press *Create Notebook*
+
+This should spin a new notebook with GPU support that will be available for the next 6 hours. Just press *Open* and you should see all course materials in *Jupyter Notebook*.
+
+### Option 2. Own PC
+
+To run on your own PC, just clone this repo, install all packages and run jupyter as follows:
 
 ```sh
 git clone https://github.com/trokas/ai_primer.git
@@ -49,9 +64,7 @@ If you need to install pip download this file [get-pip.py](https://bootstrap.pyp
 python get-pip.py
 ```
 
-If you have python 3.7 just edit last line in Pipfile.
-
-More info about [pipenv](https://pipenv.pypa.io/en/latest/) and [Jupyter](https://jupyter-notebook.readthedocs.io/en/latest/ui_components.html#interactive-user-interface-tour-of-the-notebook).
+More info about [pipenv](https://pipenv.pypa.io/en/latest/) and [Jupyter](https://jupyter-notebook.readthedocs.io/en/latest/ui_components.html#interactive-user-interface-tour-of-the-notebook). For proper coding I suggest to use [VSC](https://code.visualstudio.com/) and shell with [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh), but mostly we will use Jupyter Notebooks.
 
 ## (re)Sources
 
