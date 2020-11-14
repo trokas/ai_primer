@@ -36,7 +36,7 @@ You can launch notebooks in Binder directly in browser, but when we come to buil
 
 ### Option 1. Paperspace
 
-To have much fater training using GPU sign up for [Paperspace](https://www.paperspace.com/) and got to [gradient console](https://console.paperspace.com/gradient). Then, just follow these steps:
+To have much faster training using GPU sign up for [Paperspace](https://www.paperspace.com/) and got to [gradient console](https://console.paperspace.com/gradient). Then, just follow these steps:
 
 1. Click on *Notebooks* in left menu
 2. Press on *Custom Container* tab
