@@ -223,6 +223,11 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mimics">
+   Mimics
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -494,6 +499,17 @@ _________________________________________________________________
 <img width=60% src="https://datasciencetoday.net/images/CNN.png"/>
 <p><strong>TASK:</strong> using data from <a class="reference external" href="https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews">imdb reviews</a> train simple CNN based sentiment classifier.</p>
 </div>
+</div>
+<div class="section" id="mimics">
+<h2>Mimics<a class="headerlink" href="#mimics" title="Permalink to this headline">¶</a></h2>
+<p>If you ever need to compress the model due to some hardware or inference time contraints there is a simple trick that can help. Called mimic or teacher-student network idea is to train simpler model to do the same thing that bigger model does. It is achieved by:</p>
+<ol class="simple">
+<li><p>Creating big and good model (can be ensemble of models) that outputs softmax probabilities.</p></li>
+<li><p>Pass a bunch of unlabeled examples via this teacher network and store his outputs.</p></li>
+<li><p>Use these outputs to train smaller model. You don’t even need original training data now.
+Try to think of the reasons why this trick works well. For more details see - <a class="reference external" href="https://arxiv.org/abs/1312.6184">Do Deep Nets Really Need to be Deep?</a>.</p></li>
+</ol>
+<p><strong>TASK:</strong> even though we do not have unlabeled data in flatland’s project, try out mimic approach on your best model to see if you can reduce size without loosing too much accuracy.</p>
 </div>
 </div>
 
