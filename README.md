@@ -36,7 +36,7 @@ You can launch notebooks in Binder directly in browser, but when we come to buil
 
 ### Option 1. Paperspace
 
-To have much fater training using GPU sign up for [Paperspace](https://www.paperspace.com/) and got to [gradient console](https://console.paperspace.com/gradient). The follow these steps:
+To have much fater training using GPU sign up for [Paperspace](https://www.paperspace.com/) and got to [gradient console](https://console.paperspace.com/gradient). Then, just follow these steps:
 
 1. Click on *Notebooks* in left menu
 2. Press on *Custom Container* tab
@@ -44,7 +44,7 @@ To have much fater training using GPU sign up for [Paperspace](https://www.paper
 4. Choose *Free-GPU* machine
 5. Scroll down and press *Create Notebook*
 
-This should spin a new notebook with GPU support that will be available for the next 6 hours. Just press *Open* and you should see all course materials in *Jupyter Notebook*.
+This should spin-up a new notebook with GPU support that will be available for the next 6 hours. Just press *Open* and you should see all course materials in *Jupyter Notebook*.
 
 ### Option 2. Own PC
 
