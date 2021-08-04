@@ -1,0 +1,1001 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blocking &#8212; AI primer</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Varia" href="Varia.html" />
+    <link rel="prev" title="CNN (Convolutional Neural Networks)" href="CNN.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">AI primer</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   Welcome to AI primer course
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="SVD.html">
+   SVD (Singular Value Decomposition)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="RF.html">
+   RF (Random Forest)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DNN.html">
+   DNN (Deep Neural Networks)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CNN.html">
+   CNN (Convolutional Neural Networks)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Blocking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Varia.html">
+   Varia
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Project.html">
+   Project: Flatland
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/TD.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/trokas/ai_primer/master?urlpath=tree/TD.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Blocking
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#higher-order-conditioning">
+   Higher order conditioning
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#games">
+   Games
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#works-self-play-with-dictionary-approach">
+   [WORKS] Self-play with dictionary approach
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deep-td-0-with-experience-replay">
+   Deep TD(0) with experience replay
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dqn">
+   DQN
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>Our goal in this lecture is to construct simple reinforcement learning agent while going through the most important concepts (temporal difference, elgibility traces, …). On the way we will look for inspiration in behavioristic and neuro science research and will try to construct our agent from scratch.</p>
+<p>We start with Pavlov’s dog experiment. Most of you know about stimulus reward results - you ring a bell and dog starts to extrete saliva knowing that food is on the way. That will be the first thing we expect from our system - learn to predict that reward is coming given a stimulus. Since in the end we want to use neural nets let’s stick to weight update rule that we have already seen.</p>
+<div class="math notranslate nohighlight">
+\[ w_{t+1} = w_{t} + \text{learning rate} \cdot \text{error} \cdot \text{diff for given input} \]</div>
+<p>For simplicity now let’s ignore time and focus on single trial as the input. In such case our input is just a vector of indicators which show the presence of the various stimula and output is predicted reward. For error we can simply pass diference between our prediction and reward.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s start with simple experiment that contains three trials and where stimulus B clearly predicts reward.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#           stimula  reward</span>
+<span class="c1">#          [A, B, C] </span>
+<span class="n">trials</span> <span class="o">=</span> <span class="p">[[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">],</span>
+          <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">],</span>
+          <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the model we will use simplest thing we can think of - weight vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>    <span class="c1"># That&#39;s our &#39;model&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since we have only three trials we will repeatedly use them for weight updates to get convergence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="n">trials</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">trials</span> <span class="o">*</span> <span class="n">repeat</span><span class="p">:</span>    <span class="c1"># instead of * we could use second for loop</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">pred</span>
+        <span class="n">w</span> <span class="o">+=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">error</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">w</span>
+
+<span class="n">train_model</span><span class="p">(</span><span class="n">trials</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.        , 0.98847078, 0.        ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>As expected our model learned to associate stimulus B with reward. But our story only begins here.</p>
+<div class="section" id="blocking">
+<h1>Blocking<a class="headerlink" href="#blocking" title="Permalink to this headline">¶</a></h1>
+<p>In his later experiments Pavlov noticed that there is phenomenon called <em>blocking</em>. If you teach your dog to associate bell with food and then introduce something new (for example showing some picture) after a bell - dog will not learn to associate this new stimulus with food. Let’s test if our model does that. If you have executed cells above you already have trained weights and we can introduce some new trials that try to show stimulus C. This new stimulus should be ignored according to the experimental evidence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#           stimula  reward</span>
+<span class="c1">#          [A, B, C] </span>
+<span class="n">trials</span> <span class="o">=</span> <span class="p">[[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">],</span>
+          <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">],</span>
+          <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_model</span><span class="p">(</span><span class="n">trials</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.        , 0.99423518, 0.0057644 ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since model uses errors for the update if we have a stimulus that is able to predict reward it will block further learning. This is actually known as Rescota-Wagner model and in Barto &amp; Sutton <a class="reference external" href="https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf">book</a> is expressed as follows.</p>
+<p>For the prediction using weights we have a dot product</p>
+<div class="math notranslate nohighlight">
+\[\hat{v}(s, w) = w^T x(s).\]</div>
+<p>Then our error is defined as</p>
+<div class="math notranslate nohighlight">
+\[\delta_t = R_t - \hat{v}(S_t, w_t).\]</div>
+<p>As implemented above update rule with learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[w_{t+1} = w_t + \alpha \delta_t x(S_t).\]</div>
+</div>
+<div class="section" id="higher-order-conditioning">
+<h1>Higher order conditioning<a class="headerlink" href="#higher-order-conditioning" title="Permalink to this headline">¶</a></h1>
+<p>Notice that our model does not take time into account. That is a huge limitation. For sure we can not look for stimulus reward response for infinite time and splitting into trials does not represent reality well. It turns out that if after training to asociate bell with food you show image before the bell, dog learns to associate that with food. Not only that there is effect called <em>higher order conditioning</em> and if after introcuding new stimulus you do not give reward dog still will learn to asociate it with food. It seams that instead of learning that image asociates with reward he learns that image predicts bell and bell predicts reward, thus even if reward is not given he will learn to pass know-how.</p>
+<p>We will have to introduce time into our model. And comes with another complication - clearly there is some discounting and stimulus effect diminishes over time.</p>
+<p>So now we have two problems to solve:</p>
+<ul class="simple">
+<li><p>model should predict next step instead of predicting reward directly from trial</p></li>
+<li><p>model should contain some discounting scheme so that old stimulus are forgotten</p></li>
+</ul>
+<p>If you think about experiments described above it makes sense to say that model should not predict reward directly, but instead at each time step focus on difference in it’s own predictions. This is called <em>temporal difference</em> and we will discuss it thoroughly in the lecture. For the time lag we can simply add some factor that discount previous inputs. This trick is known as <em>eligibily traces</em>.</p>
+<p>It’s time to put those ideas to the test. First let’s implement those and check if simple conditioning and blocking works as expected.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#           stimula  reward</span>
+<span class="c1">#          [A, B, C] </span>
+<span class="n">trials</span> <span class="o">=</span> <span class="p">[[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">],</span>
+          <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">],</span>
+          <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To simulate time we will run through each stimulus in sequence and accumulate history of stimulus presence (see <em>v_accum</em>). Also, note that reward is received only at the end of the trial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="n">trials</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">trials</span> <span class="o">*</span> <span class="n">repeat</span><span class="p">:</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+        <span class="n">prev_pred</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">v_accum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tri</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span> <span class="o">*</span> <span class="n">v</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dim</span><span class="p">):</span>
+            <span class="n">v_t</span> <span class="o">=</span> <span class="n">v_accum</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v_t</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="c1"># reward is zero while stimulus are coming in,</span>
+                <span class="c1"># thus we look only for TD error</span>
+                <span class="n">next_v_t</span> <span class="o">=</span> <span class="n">v_accum</span><span class="p">[</span><span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="n">next_pred</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">next_v_t</span><span class="p">)</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">+</span> <span class="n">next_pred</span> <span class="o">-</span> <span class="n">pred</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># At the end there is no next prediction and</span>
+                <span class="c1"># we will finally pass actual reward signal</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">pred</span>
+
+            <span class="n">w</span> <span class="o">+=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">error</span> <span class="o">*</span> <span class="n">v_t</span>
+            <span class="n">prev_pred</span> <span class="o">=</span> <span class="n">pred</span>
+
+    <span class="k">return</span> <span class="n">w</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>    <span class="c1"># Let&#39;s start over</span>
+<span class="n">train_model</span><span class="p">(</span><span class="n">trials</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.        , 0.98847078, 0.        ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s check if blocking still works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#           stimula  reward</span>
+<span class="c1">#          [A, B, C] </span>
+<span class="n">trials</span> <span class="o">=</span> <span class="p">[[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">],</span>
+          <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">],</span>
+          <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">]]</span>
+
+<span class="n">train_model</span><span class="p">(</span><span class="n">trials</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.00000000e+00, 9.99547284e-01, 7.99164294e-04])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Higher order conditioning with reward.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset to the original state first</span>
+<span class="n">trials</span> <span class="o">=</span> <span class="p">[[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">],</span>
+          <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">],</span>
+          <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">]]</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+<span class="n">train_model</span><span class="p">(</span><span class="n">trials</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+
+<span class="c1">#           stimula  reward</span>
+<span class="c1">#          [A, B, C] </span>
+<span class="n">trials</span> <span class="o">=</span> <span class="p">[[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">],</span>
+          <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">],</span>
+          <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">]]</span>
+
+<span class="n">train_model</span><span class="p">(</span><span class="n">trials</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.94702972, 0.0944271 , 0.        ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Even if reward is not there every time, model will still learn to transition the signal complying with real life experiments. For sure at the moment our implementation is not flexible enough. To get more control we will introduce couple parameters to the mix - <em>decay</em> and <em>discount</em>.</p>
+<p>Formaly <span class="math notranslate nohighlight">\(\text{TD}(\lambda)\)</span> is defined by following equations (source: Barto &amp; Sutton <a class="reference external" href="https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf">book</a>).</p>
+<p>Error is</p>
+<div class="math notranslate nohighlight">
+\[\delta_t = R_{t+1} + \delta \hat{v} (S_{t+1}, w_t) - \hat{v}(S_t, w_t).\]</div>
+<p>Weight update is</p>
+<div class="math notranslate nohighlight">
+\[w_{t+1} = w_t + \alpha \delta_t z_t,\]</div>
+<p>where <span class="math notranslate nohighlight">\(z_t\)</span> is defined by</p>
+<div class="math notranslate nohighlight">
+\[z_{t+1} = \delta \lambda z_t + x(S_t).\]</div>
+<p>Here <span class="math notranslate nohighlight">\(\lambda \in [0, 1]\)</span> is <em>eligibility trace decay</em> parameter and <span class="math notranslate nohighlight">\(\delta \in [0,1]\)</span> is <em>discount factor</em>. We can easily add them to our code by modifying</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">error</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">+</span> <span class="n">discount</span> <span class="o">*</span> <span class="n">next_pred</span> <span class="o">-</span> <span class="n">pred</span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">decay</span> <span class="o">*</span> <span class="n">discount</span> <span class="o">*</span> <span class="n">z</span> <span class="o">+</span> <span class="n">v_t</span>
+<span class="n">w</span> <span class="o">+=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">error</span> <span class="o">*</span> <span class="n">z</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="games">
+<h1>Games<a class="headerlink" href="#games" title="Permalink to this headline">¶</a></h1>
+<p>Most likely you have heared about success of reinforcement learning in games likes Go. To implement MuZero from scratch would require quite a lot of tricks and we lack a bunch of theory to do that. Instead we will do similar thing as TD-Backgammon while playing Tic-Tac-Toe. We will train <span class="math notranslate nohighlight">\(\text{TD}(0)\)</span> agent from scratch using self play.</p>
+<p>Let’s create simple tic-tac-toe enviroment. To implement our agent we will use simple FCN with two layers and 18 inputs. First 9 represent board for current player. For simplicity we will add this to the class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TicTacToe</span><span class="p">:</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">idx</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>  <span class="c1"># rows</span>
+                    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>  <span class="c1"># cols</span>
+                    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>  <span class="c1"># diagonals</span>
+        
+    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">position</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_actions</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Move is not allowed&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="p">[</span><span class="n">position</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tic_or_tac</span>
+        <span class="n">win</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">winner</span><span class="p">()</span>
+        <span class="n">draw</span> <span class="o">=</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">available_actions</span><span class="p">())</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tic_or_tac</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">win</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="p">,</span> <span class="n">state</span>      <span class="c1"># a win</span>
+        <span class="k">if</span> <span class="n">draw</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">state</span>    <span class="c1"># a draw</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="n">state</span>
+        
+    <span class="k">def</span> <span class="nf">available_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">board</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="k">def</span> <span class="nf">available_action_states</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">S</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_actions</span><span class="p">():</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">()</span>
+            <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tic_or_tac</span>
+            <span class="n">S</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">S</span><span class="p">),</span> <span class="n">A</span>
+    
+    <span class="k">def</span> <span class="nf">winner</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">tic_or_tac</span>
+                       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">])</span>
+    
+    <span class="k">def</span> <span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="c1">#         return np.hstack([self.board == self.tic_or_tac,</span>
+<span class="c1">#                           self.board == -self.tic_or_tac]) \</span>
+<span class="c1">#                .reshape((1, 18)).astype(&#39;int&#39;)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">board</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tic_or_tac</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># 1 for tic, -1 for tac</span>
+        
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+        
+<span class="n">ttt</span> <span class="o">=</span> <span class="n">TicTacToe</span><span class="p">()</span>
+<span class="n">ttt</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ttt</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ttt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-1  0  0]
+ [ 0  1  0]
+ [ 0  0  0]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s try to win this game.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">ttt</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">ttt</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">8</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">ttt</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">7</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make sure you understand how states are expressed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ttt</span> <span class="o">=</span> <span class="n">TicTacToe</span><span class="p">()</span>
+<span class="n">ttt</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ttt</span><span class="o">.</span><span class="n">available_action_states</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[-1,  0,  0,  0,  1,  0,  0,  0,  0],
+        [ 0, -1,  0,  0,  1,  0,  0,  0,  0],
+        [ 0,  0, -1,  0,  1,  0,  0,  0,  0],
+        [ 0,  0,  0, -1,  1,  0,  0,  0,  0],
+        [ 0,  0,  0,  0,  1, -1,  0,  0,  0],
+        [ 0,  0,  0,  0,  1,  0, -1,  0,  0],
+        [ 0,  0,  0,  0,  1,  0,  0, -1,  0],
+        [ 0,  0,  0,  0,  1,  0,  0,  0, -1]]),
+ [0, 1, 2, 3, 5, 6, 7, 8])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each move returns a state of the game that we will feed to FCN (denoted as <span class="math notranslate nohighlight">\(v(S, w)\)</span>). Our algorithm <span class="math notranslate nohighlight">\(\text{TD}(0)\)</span> is</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Loop</span> <span class="k">for</span> <span class="n">each</span> <span class="n">episode</span><span class="p">:</span>
+    <span class="n">Initialize</span> <span class="n">S</span>
+    <span class="n">Loop</span> <span class="k">for</span> <span class="n">each</span> <span class="n">step</span> <span class="n">of</span> <span class="n">episode</span><span class="p">:</span>
+        <span class="n">A</span> <span class="o">&lt;-</span> <span class="n">action</span> <span class="n">given</span> <span class="n">by</span> <span class="n">policy</span> <span class="k">for</span> <span class="n">S</span>
+        <span class="n">Take</span> <span class="n">action</span> <span class="n">A</span><span class="p">,</span> <span class="n">observe</span> <span class="n">R</span><span class="p">,</span> <span class="n">S</span><span class="s1">&#39;</span>
+        <span class="n">w</span> <span class="o">+=</span> <span class="n">lr</span> <span class="o">*</span> <span class="p">[</span><span class="n">R</span> <span class="o">+</span> <span class="n">discount</span> <span class="o">*</span> <span class="n">v</span><span class="p">(</span><span class="n">S</span><span class="s1">&#39;, w) - v(S, w)] ∇v(S, w)</span>
+        <span class="n">S</span> <span class="o">&lt;-</span> <span class="n">S</span><span class="s1">&#39;</span>
+    <span class="n">until</span> <span class="n">S</span> <span class="ow">is</span> <span class="n">terminated</span>
+</pre></div>
+</div>
+<p>Note, that actually what we are doing is pushing weights in such a way that previous prediction is closer to the new one, thus</p>
+<div class="math notranslate nohighlight">
+\[V(S_t) \leftarrow V(S_t) + \alpha [V(S_{t+1}) - V(S_t)].\]</div>
+<p>For derivative we will use autodiff from tensorfow. Training is completely driven by self-play. We also need some way to explore new strategies.</p>
+<p>Our value network expects board state as input and returns expected win probability.</p>
+<p>For sure for tic-tac-toe using TD is an overkill. Model is still unstable and can be vastly improved by simplifying (using Q-learning), adding game know-how (symetries) or simply using a search tree. Keep in mind that what we did here was for illustrative purpose - aim was to show that TD is general principle, that can be used in games. Also game states can be fed right into NN, thus creating usefull state embeddings. Similar principles are applied in TD-Backgammon, Alpha Zero, MuZero and other RL agents.</p>
+<p>By the way, formally we could have tried to compute derivatives and train FCN (denoted as <span class="math notranslate nohighlight">\(v(S, w)\)</span>) using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Loop</span> <span class="k">for</span> <span class="n">each</span> <span class="n">episode</span><span class="p">:</span>
+    <span class="n">Initialize</span> <span class="n">S</span>
+    <span class="n">Loop</span> <span class="k">for</span> <span class="n">each</span> <span class="n">step</span> <span class="n">of</span> <span class="n">episode</span><span class="p">:</span>
+        <span class="n">A</span> <span class="o">&lt;-</span> <span class="n">action</span> <span class="n">given</span> <span class="n">by</span> <span class="n">policy</span> <span class="k">for</span> <span class="n">S</span>
+        <span class="n">Take</span> <span class="n">action</span> <span class="n">A</span><span class="p">,</span> <span class="n">observe</span> <span class="n">R</span><span class="p">,</span> <span class="n">S</span><span class="s1">&#39;</span>
+        <span class="n">w</span> <span class="o">+=</span> <span class="n">lr</span> <span class="o">*</span> <span class="p">[</span><span class="n">R</span> <span class="o">+</span> <span class="n">discount</span> <span class="o">*</span> <span class="n">v</span><span class="p">(</span><span class="n">S</span><span class="s1">&#39;, w) - v(S, w)] ∇v(S, w)</span>
+        <span class="n">S</span> <span class="o">&lt;-</span> <span class="n">S</span><span class="s1">&#39;</span>
+    <span class="n">until</span> <span class="n">S</span> <span class="ow">is</span> <span class="n">terminated</span>
+</pre></div>
+</div>
+<p>Since opponent is random our agent will focus on simple tricks (completing 3 in a row) instead of discovering more complex behaviour (blocking possible opponent wins). In a longer simulation values converge, but due to the random opponent nature they are sometime far from what human would assign. If played well, then in example above center move will lead to the win and with smart opponent currently suggested corner will lead to a draw.</p>
+<p>Instead we could come up with competing agents.</p>
+<p>Note, that training process is much more stable than with deep learning approach.</p>
+</div>
+<div class="section" id="works-self-play-with-dictionary-approach">
+<h1>[WORKS] Self-play with dictionary approach<a class="headerlink" href="#works-self-play-with-dictionary-approach" title="Permalink to this headline">¶</a></h1>
+<p>Nice <a class="reference external" href="https://jinglescode.github.io/reinforcement-learning-tic-tac-toe/">viz</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Agent</span><span class="p">:</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exploration</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exploration</span> <span class="o">=</span> <span class="n">exploration</span>
+
+    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ttt</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">exploration</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">ttt</span><span class="o">.</span><span class="n">available_actions</span><span class="p">())</span>
+            <span class="n">r</span><span class="p">,</span> <span class="n">new_state</span> <span class="o">=</span> <span class="n">ttt</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">r</span><span class="p">:</span>    <span class="c1"># game over</span>
+                <span class="k">return</span> <span class="n">r</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Choose the best action according to the stored values</span>
+            <span class="n">states</span><span class="p">,</span> <span class="n">actions</span> <span class="o">=</span> <span class="n">ttt</span><span class="o">.</span><span class="n">available_action_states</span><span class="p">()</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">value_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)),</span> <span class="mf">0.5</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">states</span><span class="p">]</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">actions</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">values</span><span class="p">)]</span>
+            <span class="n">r</span><span class="p">,</span> <span class="n">new_state</span> <span class="o">=</span> <span class="n">ttt</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">))</span>
+            <span class="n">new_key</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">new_state</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">value_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">new_key</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">r</span><span class="p">:</span>   <span class="c1"># game over</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">value_dict</span><span class="p">[</span><span class="n">new_key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">new_key</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="p">((</span><span class="n">r</span> <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">new_key</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+                <span class="k">return</span> <span class="n">r</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">new_state</span>
+        <span class="k">return</span> <span class="mf">0.</span>
+    
+    <span class="k">def</span> <span class="nf">lost</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span> 
+
+<span class="n">episodes</span> <span class="o">=</span> <span class="mi">10_001</span>
+<span class="n">agent_1</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">agent_2</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">win_history</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ttt</span> <span class="o">=</span> <span class="n">TicTacToe</span><span class="p">()</span>
+<span class="c1"># Loop for each episode:</span>
+<span class="k">for</span> <span class="n">ep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">episodes</span><span class="p">):</span>
+    <span class="c1"># Initialize S</span>
+    <span class="n">ttt</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="c1"># Loop for each step of episode:</span>
+    <span class="c1"># until S is terminated</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">agent_1</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">ttt</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">r</span><span class="p">:</span>
+            <span class="n">agent_2</span><span class="o">.</span><span class="n">lost</span><span class="p">()</span>
+            <span class="n">win_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+            <span class="k">break</span>
+
+        <span class="n">r</span> <span class="o">=</span> <span class="n">agent_2</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">ttt</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">r</span><span class="p">:</span>
+            <span class="n">agent_1</span><span class="o">.</span><span class="n">lost</span><span class="p">()</span>
+            <span class="n">win_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span>
+            <span class="k">break</span>
+
+    <span class="k">if</span> <span class="n">ep</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;win or draw rate (last 1000 games) - </span><span class="si">{0:.02%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+              <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">win_history</span><span class="p">[</span><span class="o">-</span><span class="mi">1000</span><span class="p">:])</span> <span class="o">!=</span> <span class="mf">0.</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>win or draw rate (last 1000 games) - 100.00%
+win or draw rate (last 1000 games) - 82.30%
+win or draw rate (last 1000 games) - 95.30%
+win or draw rate (last 1000 games) - 93.10%
+win or draw rate (last 1000 games) - 92.80%
+win or draw rate (last 1000 games) - 85.30%
+win or draw rate (last 1000 games) - 93.90%
+win or draw rate (last 1000 games) - 86.50%
+win or draw rate (last 1000 games) - 91.40%
+win or draw rate (last 1000 games) - 81.90%
+win or draw rate (last 1000 games) - 88.70%
+CPU times: user 1min, sys: 22.7 ms, total: 1min
+Wall time: 1min 1s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ttt</span> <span class="o">=</span> <span class="n">TicTacToe</span><span class="p">()</span>
+<span class="n">states</span><span class="p">,</span> <span class="n">actions</span> <span class="o">=</span> <span class="n">ttt</span><span class="o">.</span><span class="n">available_action_states</span><span class="p">()</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">agent_1</span><span class="o">.</span><span class="n">value_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)),</span> <span class="mf">0.5</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">states</span><span class="p">]</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.57454762, 0.56282788, 0.61569813],
+       [0.50418249, 0.81350581, 0.52416274],
+       [0.61962225, 0.51681234, 0.56206647]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ttt</span> <span class="o">=</span> <span class="n">TicTacToe</span><span class="p">()</span>
+<span class="n">ttt</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">states</span><span class="p">,</span> <span class="n">actions</span> <span class="o">=</span> <span class="n">ttt</span><span class="o">.</span><span class="n">available_action_states</span><span class="p">()</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">agent_2</span><span class="o">.</span><span class="n">value_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)),</span> <span class="mf">0.5</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">states</span><span class="p">]</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">actions</span><span class="p">):</span>
+    <span class="n">T</span><span class="p">[</span><span class="n">a</span> <span class="o">//</span> <span class="mi">3</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+<span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.16927708, 0.06483458, 0.17500661],
+       [0.14831087, 0.        , 0.1324976 ],
+       [0.08615713, 0.10270979, 0.08706275]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, self-play is a critical component if we want to end up with a smart agent.</p>
+<p>For AlphaZero like implementation look at <a class="reference external" href="https://github.com/DanielSlater/AlphaToe">AlphaToe</a>.</p>
+</div>
+<div class="section" id="deep-td-0-with-experience-replay">
+<h1>Deep TD(0) with experience replay<a class="headerlink" href="#deep-td-0-with-experience-replay" title="Permalink to this headline">¶</a></h1>
+<p>Ensures i.i.d. and is biologicaly inspired (see deepmind blog).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Agent</span><span class="p">:</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exploration</span><span class="o">=</span><span class="mf">0.9</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exploration</span> <span class="o">=</span> <span class="n">exploration</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hist</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hist</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">90</span><span class="p">:</span>
+            <span class="n">hist</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">hist</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hist</span><span class="p">)),</span> <span class="mi">16</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hist</span><span class="p">]),</span>
+                   <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="nb">int</span>
+                              <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hist</span><span class="p">]),</span>
+                   <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ttt</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">exploration</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">ttt</span><span class="o">.</span><span class="n">available_actions</span><span class="p">())</span>
+            <span class="n">r</span><span class="p">,</span> <span class="n">new_state</span> <span class="o">=</span> <span class="n">ttt</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">r</span><span class="p">:</span>    <span class="c1"># game over</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">r</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Choose the best action according to the stored values</span>
+            <span class="n">states</span><span class="p">,</span> <span class="n">actions</span> <span class="o">=</span> <span class="n">ttt</span><span class="o">.</span><span class="n">available_action_states</span><span class="p">()</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">actions</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">(</span><span class="n">states</span><span class="p">))]</span>
+            <span class="n">r</span><span class="p">,</span> <span class="n">new_state</span> <span class="o">=</span> <span class="n">ttt</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hist</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="n">new_state</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">r</span><span class="p">:</span>   <span class="c1"># game over</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">new_state</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">hist</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">new_state</span><span class="p">,</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">r</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">new_state</span>
+        <span class="k">return</span> <span class="mf">0.</span>
+
+    <span class="k">def</span> <span class="nf">lost</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hist</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span> 
+
+<span class="n">episodes</span> <span class="o">=</span> <span class="mi">10_001</span>
+<span class="n">agent_1</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">()</span>
+<span class="n">agent_2</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">()</span>
+
+<span class="n">win_history</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ttt</span> <span class="o">=</span> <span class="n">TicTacToe</span><span class="p">()</span>
+<span class="c1"># Loop for each episode:</span>
+<span class="k">for</span> <span class="n">ep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">episodes</span><span class="p">):</span>
+    <span class="c1"># Initialize S</span>
+    <span class="n">ttt</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="c1"># Loop for each step of episode:</span>
+    <span class="c1"># until S is terminated</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">agent_1</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">ttt</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">r</span><span class="p">:</span>
+            <span class="n">agent_2</span><span class="o">.</span><span class="n">lost</span><span class="p">()</span>
+            <span class="n">win_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+            <span class="k">break</span>
+
+        <span class="n">r</span> <span class="o">=</span> <span class="n">agent_2</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">ttt</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">r</span><span class="p">:</span>
+            <span class="n">agent_1</span><span class="o">.</span><span class="n">lost</span><span class="p">()</span>
+            <span class="n">win_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span>
+            <span class="k">break</span>
+
+    <span class="k">if</span> <span class="n">ep</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;win or draw rate (last 1000 games) - </span><span class="si">{0:.02%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+              <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">win_history</span><span class="p">[</span><span class="o">-</span><span class="mi">1000</span><span class="p">:])</span> <span class="o">!=</span> <span class="mf">0.</span><span class="p">)))</span>
+        <span class="n">ttt</span> <span class="o">=</span> <span class="n">TicTacToe</span><span class="p">()</span>
+        <span class="n">states</span><span class="p">,</span> <span class="n">actions</span> <span class="o">=</span> <span class="n">ttt</span><span class="o">.</span><span class="n">available_action_states</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">agent_1</span><span class="o">.</span><span class="n">v</span><span class="p">(</span><span class="n">states</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+        <span class="n">ttt</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">states</span><span class="p">,</span> <span class="n">actions</span> <span class="o">=</span> <span class="n">ttt</span><span class="o">.</span><span class="n">available_action_states</span><span class="p">()</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">agent_2</span><span class="o">.</span><span class="n">v</span><span class="p">(</span><span class="n">states</span><span class="p">),</span> <span class="n">actions</span><span class="p">):</span>
+            <span class="n">T</span><span class="p">[</span><span class="n">a</span> <span class="o">//</span> <span class="mi">3</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>win or draw rate (last 1000 games) - 100.00%
+[[0.4916704  0.48525652 0.47802982]
+ [0.48747227 0.49330837 0.48380294]
+ [0.51800615 0.48726496 0.52977437]]
+[[0.50695962 0.53919619 0.57110035]
+ [0.52761245 0.         0.56992632]
+ [0.58140391 0.53762287 0.55702502]]
+win or draw rate (last 1000 games) - 70.80%
+[[0.19857982 0.5731377  0.22716764]
+ [0.24610418 0.8355091  0.19589329]
+ [0.3072345  0.10940447 0.5762914 ]]
+[[0.00848639 0.02569416 0.02345979]
+ [0.01719093 0.         0.02280116]
+ [0.00972328 0.03122777 0.0841741 ]]
+win or draw rate (last 1000 games) - 87.10%
+[[0.2558624  0.48461166 0.5048217 ]
+ [0.4042833  0.924652   0.18331254]
+ [0.33432338 0.0753983  0.44958222]]
+[[0.00572839 0.02248144 0.01194683]
+ [0.01206854 0.         0.01220462]
+ [0.00607294 0.02383551 0.05225745]]
+win or draw rate (last 1000 games) - 92.50%
+[[0.40035123 0.54496217 0.7670125 ]
+ [0.48041937 0.9245795  0.17145503]
+ [0.5033201  0.06989989 0.50753075]]
+[[0.00171757 0.00827879 0.00377765]
+ [0.00448915 0.         0.00560331]
+ [0.00186938 0.01140457 0.04909718]]
+win or draw rate (last 1000 games) - 94.30%
+[[0.55405456 0.49907514 0.79478425]
+ [0.60511076 0.9764682  0.15467757]
+ [0.61028516 0.06207812 0.5619402 ]]
+[[0.00067696 0.0036236  0.00148234]
+ [0.00243032 0.         0.00312361]
+ [0.00106969 0.00739855 0.02599847]]
+win or draw rate (last 1000 games) - 95.20%
+[[0.6284584  0.46854228 0.8208797 ]
+ [0.6521456  0.97109735 0.11898199]
+ [0.3457625  0.04561237 0.42221943]]
+[[0.00142226 0.00576219 0.00131583]
+ [0.00481987 0.         0.00633064]
+ [0.00144213 0.01076797 0.01400068]]
+win or draw rate (last 1000 games) - 94.10%
+[[0.8050296  0.489751   0.8788645 ]
+ [0.72182167 0.9754179  0.13875425]
+ [0.47207278 0.05375874 0.49411008]]
+[[0.00182512 0.0086399  0.00112212]
+ [0.0077593  0.         0.00856066]
+ [0.00193074 0.01376402 0.01478055]]
+win or draw rate (last 1000 games) - 87.40%
+[[0.6750169  0.42116672 0.81997144]
+ [0.7628833  0.98143387 0.16021743]
+ [0.5187866  0.04705718 0.4210554 ]]
+[[0.00334474 0.01778463 0.00178617]
+ [0.01105863 0.         0.00800505]
+ [0.00590411 0.02112225 0.01209691]]
+win or draw rate (last 1000 games) - 91.10%
+[[0.7669873  0.36637706 0.90033984]
+ [0.6709896  0.990423   0.22330934]
+ [0.41973612 0.04740518 0.36507422]]
+[[0.00517729 0.03302112 0.00217733]
+ [0.01435807 0.         0.02991852]
+ [0.01144838 0.03529805 0.01022997]]
+win or draw rate (last 1000 games) - 91.10%
+[[0.45975676 0.44303674 0.85523885]
+ [0.47312692 0.9946798  0.192976  ]
+ [0.3131255  0.08917099 0.42057443]]
+[[0.00182348 0.02626097 0.00140223]
+ [0.01025584 0.         0.02912375]
+ [0.00474551 0.01831719 0.00718066]]
+win or draw rate (last 1000 games) - 92.30%
+[[0.4421326  0.50690556 0.63432586]
+ [0.45558614 0.9926535  0.26947683]
+ [0.32076532 0.10975155 0.4054354 ]]
+[[0.00166827 0.01705    0.00143492]
+ [0.01052824 0.         0.02090362]
+ [0.00661147 0.0184623  0.00693658]]
+CPU times: user 22min 46s, sys: 28.5 s, total: 23min 14s
+Wall time: 23min 26s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Temporal Difference is an approach to learning how to predict a quantity that depends on future values of a given signal. It can be used to learn both the V-function and the Q-function, whereas Q-learning is a specific TD algorithm used to learn the Q-function. As stated by Don Reba, you need the Q-function to perform an action (e.g., following an epsilon-greedy policy). If you have only the V-function you can still derive the Q-function by iterating over all the possible next states and choosing the action which leads you to the state with the highest V-value. For examples and more insights, I recommend the classic book from Sutton and Barto.</p>
+</div>
+<div class="section" id="dqn">
+<h1>DQN<a class="headerlink" href="#dqn" title="Permalink to this headline">¶</a></h1>
+<p>For Q-learning we would need a gradient tape and a mask: https://keras.io/examples/rl/deep_q_network_breakout/</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="CNN.html" title="previous page">CNN (Convolutional Neural Networks)</a>
+    <a class='right-next' id="next-link" href="Varia.html" title="next page">Varia</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By trokas<br/>
+        
+            &copy; Copyright MIF, 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

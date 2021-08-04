@@ -108,6 +108,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="TD.html">
+   Blocking
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Varia.html">
    Varia
   </a>
@@ -225,22 +230,31 @@
 <h1>Welcome to AI primer course<a class="headerlink" href="#welcome-to-ai-primer-course" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://trokas.github.io/ai_primer/README.html">INTERACTIVE BOOK LINK</a></p>
 <p>My main aim is to give you enough information so that you can start exploring field of AI on your own and maybe even start searching for DS role.
-In essance we have only 4 main chapters to cover.</p>
+In essance we have only 5 main chapters to cover.</p>
 <ul class="simple">
-<li><p>Prior deep learning</p>
+<li><p>Unsupervised learning</p>
 <ul>
 <li><p>SVD (Singular Value Decomposition) - it’s a good tool to introduce both technical tools we will be working with aswell as giving us a glympse at unsupervised learning.</p></li>
+</ul>
+</li>
+<li><p>Supervised learning</p>
+<ul>
 <li><p>RF (Random Forests) - one of the first “silver bullets” out there. Our discussion will also cover Shannon’s work on entropy as it’s one of the key ingredients.</p></li>
 </ul>
 </li>
-<li><p>Deep learning era</p>
+<li><p>Deep learning</p>
 <ul>
 <li><p>DNN (Deep Neural Networks) - we will build our own Perceptron from scratch, thus focusing on gradient descent and backprop on the way. By changing activation fuction logistic regression will be introduced and finally we will explore what a stack of layers (deep NN) can offer.</p></li>
 <li><p>CNN (Convolutional Neural Networks) - even though different techniques come and go in deep learning world I strongly believe that CNN’s will be around for quite some time to come. We will use them not only for images, but also for time series prediction.</p></li>
 </ul>
 </li>
+<li><p>Reinforcement learning</p>
+<ul>
+<li><p>TD (Temporal Difference) - one of the core principle in reinforcement learning. We will apply it to play tic-tac-toe.</p></li>
 </ul>
-<p>After these 4 main chapter complementary material regarding new advanves of deep learning will be presented (like LSTM’s and Transformers), but it will not be mandatory.
+</li>
+</ul>
+<p>After these chapters complementary material regarding new advanves of deep learning will be presented (for example: LSTM’s, Transformers, DQN, …), but it will not be mandatory. If you are interested in some topic, feel free to make a suggestion.
 Also we will cover following toolset, which hopefully will be useful for your future projects:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://numpy.org/doc/stable/user/quickstart.html">numpy</a> (mainly in SVD and FCN lectures) - will help us store vectors, matrices and perform operations on them.</p></li>
@@ -265,21 +279,20 @@ Also we will cover following toolset, which hopefully will be useful for your fu
 <p>To have much faster training using GPU sign up for <a class="reference external" href="https://www.paperspace.com/">Paperspace</a> and got to <a class="reference external" href="https://console.paperspace.com/gradient">gradient console</a>. Then, just follow these steps:</p>
 <ol class="simple">
 <li><p>Click on <em>Notebooks</em> in left menu</p></li>
-<li><p>Press on <em>Custom Container</em> tab</p></li>
-<li><p>In the field <em>Enter Container Name</em> enter <em>rokastamosiunas/ai_primer:latest</em></p></li>
+<li><p>Select a runtime - Tensorflow 2.4.1</p></li>
+<li><p>In Advanced options near Workspace URL add - <em>https://github.com/trokas/ai_primer.git</em></p></li>
 <li><p>Choose <em>Free-GPU</em> machine</p></li>
 <li><p>Scroll down and press <em>Create Notebook</em></p></li>
 </ol>
-<p>This should spin-up a new notebook with GPU support that will be available for the next 6 hours. Just press <em>Open</em> and you should see all course materials in <em>Jupyter Notebook</em>.</p>
+<p>This should spin-up a new notebook with GPU support that will be available for the next 6 hours. Just press <em>Open</em> and you should see all course materials in <em>Jupyter Notebook</em>. Next time just use already created machine and don’t forget to use <em>git pull</em> from time to time.</p>
 </div>
 <div class="section" id="option-2-own-pc">
 <h3>Option 2. Own PC<a class="headerlink" href="#option-2-own-pc" title="Permalink to this headline">¶</a></h3>
 <p>To run on your own PC, just clone this repo, install all packages and run jupyter as follows:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/trokas/ai_primer.git
 <span class="nb">cd</span> ai_primer
-pip install pipenv
-pipenv install
-pipenv run jupyter-notebook
+pip install -r requirements.txt
+jupyter-notebook
 </pre></div>
 </div>
 <p>If you need to install pip download this file <a class="reference external" href="https://bootstrap.pypa.io/get-pip.py">get-pip.py</a> and launch:</p>
@@ -340,7 +353,7 @@ pipenv run jupyter-notebook
         
           By trokas<br/>
         
-            &copy; Copyright MIF, 2020.<br/>
+            &copy; Copyright MIF, 2021.<br/>
       </p>
     </div>
   </footer>
