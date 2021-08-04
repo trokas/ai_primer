@@ -1,35 +1,47 @@
 
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SVD (Singular Value Decomposition) &#8212; AI primer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/mystnb.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -37,18 +49,20 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="RF (Random Forest)" href="RF.html" />
     <link rel="prev" title="Welcome to AI primer course" href="README.html" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
-
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -57,28 +71,25 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">AI primer</h1>
-  
-</a>
-</div>
-
-<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">AI primer</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="README.html">
    Welcome to AI primer course
   </a>
  </li>
 </ul>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    SVD (Singular Value Decomposition)
@@ -111,9 +122,8 @@
  </li>
 </ul>
 
-</nav>
-
- <!-- To handle the deprecated key -->
+    </div>
+</nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
@@ -128,25 +138,25 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        <div class="dropdown-buttons-trigger">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
-    
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         
@@ -158,17 +168,18 @@
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
-    
 </div>
-        <!-- Source interaction buttons -->
 
+            <!-- Source interaction buttons -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Launch buttons -->
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -187,15 +198,16 @@
     </div>
 </div>
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#increasing-importance-of-linear-algebra">
    Increasing importance of linear algebra
@@ -278,7 +290,8 @@
  </li>
 </ul>
 
-        </nav>
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -300,7 +313,7 @@
 <h2>Increasing importance of linear algebra<a class="headerlink" href="#increasing-importance-of-linear-algebra" title="Permalink to this headline">¶</a></h2>
 <p>In 1844 Hermann Grassmann published his “Theory of Extension” which included foundational new topics of what is today called <strong>linear algebra</strong>. In 1848, James Joseph Sylvester introduced the term <strong>matrix</strong>, which is Latin for womb.
 Linear algebra is the branch of mathematics concerning linear equations such as
-<span class="math notranslate nohighlight">\($a_{1}x_{1}+\cdots +a_{n}x_{n}=b\)</span>$ and linear functions such as <span class="math notranslate nohighlight">\($(x_{1},\ldots ,x_{n})\mapsto a_{1}x_{1}+\ldots +a_{n}x_{n}\)</span>$
+$<span class="math notranslate nohighlight">\(a_{1}x_{1}+\cdots +a_{n}x_{n}=b\)</span><span class="math notranslate nohighlight">\( and linear functions such as \)</span><span class="math notranslate nohighlight">\((x_{1},\ldots ,x_{n})\mapsto a_{1}x_{1}+\ldots +a_{n}x_{n}\)</span>$
 and their representations through <strong>matrices and vector spaces</strong>. Linear algebra is increasing in importance as a core tool in the AI field. Nice <a class="reference external" href="https://lexfridman.com/gilbert-strang/">podcast</a> about this increasing importance, Strang even suggests to replace calculus by linear algebra in schools. By the way most calculus operations have discrete analogues in linear algebra.</p>
 <div class="section" id="linear-algebra-missing-pieces">
 <h3>Linear algebra (missing pieces?)<a class="headerlink" href="#linear-algebra-missing-pieces" title="Permalink to this headline">¶</a></h3>
@@ -331,12 +344,12 @@ and their representations through <strong>matrices and vector spaces</strong>. L
 </div>
 <div class="section" id="eigenvectors">
 <h3>Eigenvectors<a class="headerlink" href="#eigenvectors" title="Permalink to this headline">¶</a></h3>
-<p><strong>Suggested reading:</strong> <a class="reference external" href="https://www.math.arizona.edu/~glickenstein/math443f08/bryanleise.pdf">THE $25,000,000,000 EIGENVECTOR THE LINEAR ALGEBRA BEHIND GOOGLE</a></p>
+<p><strong>Suggested reading:</strong> <a class="reference external" href="https://www.math.arizona.edu/%7Eglickenstein/math443f08/bryanleise.pdf">THE $25,000,000,000 EIGENVECTOR THE LINEAR ALGEBRA BEHIND GOOGLE</a></p>
 <p>So if a vector multiplied by a matrix is a stretch and rotation, then axes of rotation can be especially useful. These axes are called eigenvectors and are easy to define, we just formalize the fact that rotation does nothing by <span class="math notranslate nohighlight">\(A u=\lambda u\)</span>, where <span class="math notranslate nohighlight">\(\lambda\)</span> is a scalar (eigenvalue).</p>
 <p>An eigenvector (eigen means ‘specific’ in German) is a vector whose direction remains unchanged when a linear transformation is applied to it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
@@ -347,7 +360,7 @@ and their representations through <strong>matrices and vector spaces</strong>. L
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Eigenvalues:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Eigenvalues:
 [-1. -2.]
 Eigenvectors:
 [[ 1.         -0.70710678]
@@ -359,7 +372,7 @@ Eigenvectors:
 <p>Let’s see what’s going on here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">22</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span>
 <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">20</span><span class="p">)),</span> <span class="n">vectors</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
@@ -383,9 +396,8 @@ Eigenvectors:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="stderr docutils container">
-<pre class="stderr literal-block">Matplotlib is building the font cache; this may take a moment.
-</pre>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
+</pre></div>
 </div>
 <img alt="_images/SVD_4_1.png" src="_images/SVD_4_1.png" />
 </div>
@@ -421,7 +433,7 @@ can you tell what it does to the vector space and where eigenvectors are located
 <p>We can decompose matrix any way we like, for example: <span class="math notranslate nohighlight">\(A = B + C\)</span>, <span class="math notranslate nohighlight">\(A = B \cdot C\)</span>, … It turns out that some decompositions are useful for data compression, numerical calculations and might reveal insights into the data. SVD is defined as:</p>
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Singular_value_decomposition_visualisation.svg/220px-Singular_value_decomposition_visualisation.svg.png" alt="SVD" style="width: 20%"/>
 <p>For some motivation see this <a class="reference external" href="https://www.youtube.com/watch?v=YPe5OP7Clv4">video</a> with Gilbert Strang.</p>
-<p>It is not really clear who invented SVD, but it’s clear that it happened in the 19th century. For early history see this <a class="reference external" href="https://www.math.ucdavis.edu/~saito/courses/229A/stewart-svd.pdf">paper</a>. Fun fact: Gauss used matrix decomposition in 1823.</p>
+<p>It is not really clear who invented SVD, but it’s clear that it happened in the 19th century. For early history see this <a class="reference external" href="https://www.math.ucdavis.edu/%7Esaito/courses/229A/stewart-svd.pdf">paper</a>. Fun fact: Gauss used matrix decomposition in 1823.</p>
 <p>SVD is widely used in:</p>
 <ul class="simple">
 <li><p>Data compression</p></li>
@@ -434,19 +446,19 @@ can you tell what it does to the vector space and where eigenvectors are located
 <div class="section" id="how-is-svd-computed">
 <h4>How is SVD computed?<a class="headerlink" href="#how-is-svd-computed" title="Permalink to this headline">¶</a></h4>
 <p>Let’s compute SVD for
-<span class="math notranslate nohighlight">\($X=
+$<span class="math notranslate nohighlight">\(X=
 \begin{bmatrix}
 5 &amp; 5\\
 -1 &amp; 7
 \end{bmatrix} = USV^T.\)</span>$</p>
 <p>We start by producing symmetric matrix (you should have some intuition why we need that by now)
-<span class="math notranslate nohighlight">\($X^T X=VS^TSV^T=
+$<span class="math notranslate nohighlight">\(X^T X=VS^TSV^T=
 \begin{bmatrix}
 26 &amp; 18\\
 18 &amp; 74
 \end{bmatrix} = USV^T.\)</span>$</p>
 <p>Now we can compute eigenvectors using determinant. Since
-<span class="math notranslate nohighlight">\($\det(X^TX - \lambda I) = (\lambda - 20)(\lambda - 80)\)</span>$
+$<span class="math notranslate nohighlight">\(\det(X^TX - \lambda I) = (\lambda - 20)(\lambda - 80)\)</span>$
 we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}X^TX - 80 I =
@@ -494,7 +506,7 @@ U = \frac{1}{\sqrt{2}}
 <p>Let’s confirm our results using numpy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
               <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span>
 
 <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -503,7 +515,7 @@ U = \frac{1}{\sqrt{2}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>U
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>U
 [[ 0.70710678  0.70710678]
  [ 0.70710678 -0.70710678]]
 S
@@ -530,7 +542,7 @@ V
 <p>As we saw this should work, because S captures most relevant eigenvectors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 
@@ -545,14 +557,14 @@ V
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;img/flud.jpg&#39;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;img/flud.jpg&#39;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Image shape </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Image shape (503, 800)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Image shape (503, 800)
 </pre></div>
 </div>
 <img alt="_images/SVD_11_1.png" src="_images/SVD_11_1.png" />
@@ -560,7 +572,7 @@ V
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate number of values in SVD&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">u</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
@@ -570,7 +582,7 @@ V
 <p>First, let’s use all singular values. Even then we reach some compression!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;U shape - </span><span class="si">{0}</span><span class="se">\n</span><span class="s1">S shape - </span><span class="si">{1}</span><span class="se">\n</span><span class="s1">V shape - </span><span class="si">{2}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">V</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 <span class="n">plot</span><span class="p">((</span><span class="n">U</span> <span class="o">*</span> <span class="n">S</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">S</span><span class="p">)]))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Compression rate with all singular values - </span><span class="si">{0:.02%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -580,7 +592,7 @@ V
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>U shape - (503, 503)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>U shape - (503, 503)
 S shape - (503,)
 V shape - (800, 800)
 </pre></div>
@@ -592,7 +604,7 @@ V shape - (800, 800)
 <p>Let’s try to use only top singular values thus compressing the image even more.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
     <span class="n">u</span> <span class="o">=</span> <span class="n">U</span><span class="p">[:,:</span><span class="n">i</span><span class="p">]</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">S</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
     <span class="n">v</span> <span class="o">=</span> <span class="n">V</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
@@ -607,7 +619,7 @@ V shape - (800, 800)
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/SVD_17_0.png" src="_images/SVD_17_0.png" />
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
 </pre></div>
 </div>
 </div>
@@ -615,7 +627,7 @@ V shape - (800, 800)
 <p>Note, that first singular values capture most of the information and thus lead to high compression rate.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Singular values&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -632,7 +644,7 @@ V shape - (800, 800)
 <p>As you might know inverses are computationally unstable, for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">hilbert</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">hilbert</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">hilbert</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
@@ -642,7 +654,7 @@ V shape - (800, 800)
 <p>For sure we expect <span class="math notranslate nohighlight">\((X^{-1})^{-1} = X\)</span>, but</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="p">))</span> <span class="o">-</span> <span class="n">X</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="p">))</span> <span class="o">-</span> <span class="n">X</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Errors obtained by $(X^{-1})^{-1} - X$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
@@ -657,13 +669,13 @@ V shape - (800, 800)
 <p>Further computations might lead to even higher errors, for example we would expect <span class="math notranslate nohighlight">\(X^{-1} X v = v\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">-</span> <span class="n">v</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>[ 2.54168321e-04 -2.16246846e-03  5.54641009e-03 -5.06685157e-03
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 2.54168321e-04 -2.16246846e-03  5.54641009e-03 -5.06685157e-03
  -8.80313369e-04  3.72902505e-03 -1.29186754e-03 -2.74052998e-04
   3.00842378e-04 -4.69960481e-05]
 </pre></div>
@@ -671,19 +683,19 @@ V shape - (800, 800)
 </div>
 </div>
 <p>Linear regression works by
-<span class="math notranslate nohighlight">\($y=X\hat\beta\)</span>$
-<span class="math notranslate nohighlight">\($X^Ty=X^TX\hat\beta\)</span>$
-<span class="math notranslate nohighlight">\($\hat \beta = (X^T X)^{-1} X^T y\)</span>$</p>
+$<span class="math notranslate nohighlight">\(y=X\hat\beta\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(X^Ty=X^TX\hat\beta\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(\hat \beta = (X^T X)^{-1} X^T y\)</span>$</p>
 <p>By the way you can vizualize linear regression as the process of minimizing <span class="math notranslate nohighlight">\(e\)</span> in</p>
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQXvIwYtFpyuHEa_0zYoECXKp3JRdf6Q89eo3Prpw9SvJBJoLmC" alt="Linear regression" style="width: 40%"/>
 <p>thus it’s an analogue of finding a projection of the target vector in a given vector space.</p>
 <p>Let’s come back to our problem - we saw that the inverse is unstable… SVD is one of the solutions to deal with that problem.</p>
-<p>Since <span class="math notranslate nohighlight">\($X=USV^T\)</span>$ and <span class="math notranslate nohighlight">\($UU^T=I_m;\;VV^T=I_n\)</span>$ it is easy to show that <span class="math notranslate nohighlight">\($\hat \beta = (X^T X)^{-1} X^T y = V S^{-1} U^T y.\)</span>$</p>
+<p>Since $<span class="math notranslate nohighlight">\(X=USV^T\)</span><span class="math notranslate nohighlight">\( and \)</span><span class="math notranslate nohighlight">\(UU^T=I_m;\;VV^T=I_n\)</span><span class="math notranslate nohighlight">\( it is easy to show that \)</span><span class="math notranslate nohighlight">\(\hat \beta = (X^T X)^{-1} X^T y = V S^{-1} U^T y.\)</span>$</p>
 <p><strong>Note:</strong> the inverse of S is known to be stable.</p>
 <p>Let’s see if this trick really works on a real dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_boston</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_boston</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">()</span><span class="o">.</span><span class="n">data</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">()</span><span class="o">.</span><span class="n">target</span>
@@ -698,13 +710,13 @@ V shape - (800, 800)
 <p>Calculate beta using direct inverse</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RMSE = </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>RMSE = 21.894831181729202
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RMSE = 21.894831181729202
 </pre></div>
 </div>
 </div>
@@ -712,7 +724,7 @@ V shape - (800, 800)
 <p>Calculate using SVD</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">S</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">14</span><span class="p">,</span> <span class="mi">492</span><span class="p">))])</span><span class="o">.</span><span class="n">T</span>    <span class="c1"># X ~ U.dot(S).dot(V)</span>
 <span class="n">beta_svd</span> <span class="o">=</span> <span class="n">V</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">S</span><span class="p">))</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RMSE = </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">beta_svd</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
@@ -720,7 +732,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>RMSE = 21.8948311817292
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RMSE = 21.8948311817292
 </pre></div>
 </div>
 </div>
@@ -728,7 +740,7 @@ V shape - (800, 800)
 <p><strong>Note:</strong> sklearn and most other libraries use SVD for regression.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">()</span><span class="o">.</span><span class="n">data</span>   <span class="c1"># we do not need to add 1&#39;s column now</span>
 <span class="n">lr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -739,7 +751,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>RMSE = 21.894831181729202
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RMSE = 21.894831181729202
 </pre></div>
 </div>
 </div>
@@ -758,7 +770,7 @@ V shape - (800, 800)
 <p>This is a neat trick if we want to apply simple model (for example linear regression) on high dimensional datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="n">X</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># this is called Standard Scaling</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="n">X</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># this is called Standard Scaling</span>
 <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
 <span class="n">i</span> <span class="o">=</span> <span class="mi">4</span>
@@ -767,7 +779,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[-2.09829747,  0.77311275,  0.34294273,  0.89177403],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-2.09829747,  0.77311275,  0.34294273,  0.89177403],
        [-1.45725167,  0.59198521, -0.69519931,  0.48745853],
        [-2.07459756,  0.5996394 ,  0.1671216 ,  0.73920419],
        ...,
@@ -781,7 +793,7 @@ V shape - (800, 800)
 <p>Just to confirm that we interpreted SVD correctly this is sklearn implementation of PCA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 
 <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -790,7 +802,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([[-2.09829747,  0.77311275,  0.34294273, -0.89177403],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-2.09829747,  0.77311275,  0.34294273, -0.89177403],
        [-1.45725167,  0.59198521, -0.69519931, -0.48745853],
        [-2.07459756,  0.5996394 ,  0.1671216 , -0.73920419],
        ...,
@@ -804,7 +816,7 @@ V shape - (800, 800)
 <p>For our simple dataset PCA does not help to improve RMSE, but keep this in your toolbox for those case where you have high number of correlated features. Also it can be used to plot high dimensional datasets by projecting them to lower dimension. Let’s take a look.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">X_proj</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
@@ -826,7 +838,7 @@ V shape - (800, 800)
 <h2>Recommender using SVD<a class="headerlink" href="#recommender-using-svd" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -834,7 +846,7 @@ V shape - (800, 800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
                    <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Matrix&#39;</span><span class="p">,</span> <span class="s1">&#39;Alien&#39;</span><span class="p">,</span> <span class="s1">&#39;Serenity&#39;</span><span class="p">,</span> <span class="s1">&#39;Casablanca&#39;</span><span class="p">,</span> <span class="s1">&#39;Amelie&#39;</span><span class="p">])</span>
@@ -923,14 +935,14 @@ V shape - (800, 800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1089,7 +1101,7 @@ V shape - (800, 800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1129,7 +1141,7 @@ V shape - (800, 800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1204,7 +1216,7 @@ V shape - (800, 800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">U</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">])</span>   <span class="c1"># User to concept similarity</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">U</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">])</span>   <span class="c1"># User to concept similarity</span>
 </pre></div>
 </div>
 </div>
@@ -1268,7 +1280,7 @@ V shape - (800, 800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">S</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>      <span class="c1"># Concept strengths</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">S</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>      <span class="c1"># Concept strengths</span>
 </pre></div>
 </div>
 </div>
@@ -1293,7 +1305,7 @@ V shape - (800, 800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>    <span class="c1"># Movie to concept similarity</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>    <span class="c1"># Movie to concept similarity</span>
 </pre></div>
 </div>
 </div>
@@ -1326,7 +1338,7 @@ V shape - (800, 800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">((</span><span class="n">U</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">S</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="mi">2</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">((</span><span class="n">U</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">S</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="mi">2</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -1412,7 +1424,7 @@ V shape - (800, 800)
 <p>What if we add some noise?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
                    <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Matrix&#39;</span><span class="p">,</span> <span class="s1">&#39;Alien&#39;</span><span class="p">,</span> <span class="s1">&#39;Serenity&#39;</span><span class="p">,</span> <span class="s1">&#39;Casablanca&#39;</span><span class="p">,</span> <span class="s1">&#39;Amelie&#39;</span><span class="p">])</span>
 <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
@@ -1499,14 +1511,14 @@ V shape - (800, 800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">U</span><span class="p">[:,:</span><span class="mi">3</span><span class="p">])</span>   <span class="c1"># User to concept similarity</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">U</span><span class="p">[:,:</span><span class="mi">3</span><span class="p">])</span>   <span class="c1"># User to concept similarity</span>
 </pre></div>
 </div>
 </div>
@@ -1607,7 +1619,7 @@ V shape - (800, 800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">S</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>      <span class="c1"># Concept strengths</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">S</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>      <span class="c1"># Concept strengths</span>
 </pre></div>
 </div>
 </div>
@@ -1639,7 +1651,7 @@ V shape - (800, 800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>    <span class="c1"># Movie to concept similarity</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>    <span class="c1"># Movie to concept similarity</span>
 </pre></div>
 </div>
 </div>
@@ -1686,7 +1698,7 @@ V shape - (800, 800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">((</span><span class="n">U</span><span class="p">[:,:</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">S</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">((</span><span class="n">U</span><span class="p">[:,:</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">S</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -1772,7 +1784,7 @@ V shape - (800, 800)
 <p>Or an approximation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">((</span><span class="n">U</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">S</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="mi">2</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">((</span><span class="n">U</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">S</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="mi">2</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -1884,7 +1896,7 @@ V shape - (800, 800)
 <p>Let’s add some missing ratings into the mix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
                    <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Matrix&#39;</span><span class="p">,</span> <span class="s1">&#39;Alien&#39;</span><span class="p">,</span> <span class="s1">&#39;Serenity&#39;</span><span class="p">,</span> <span class="s1">&#39;Casablanca&#39;</span><span class="p">,</span> <span class="s1">&#39;Amelie&#39;</span><span class="p">])</span>
 <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
@@ -1972,7 +1984,7 @@ V shape - (800, 800)
 <p>Trick is that SVD will tend to ignore/remove some of these ‘mistakes’ and end up imputing missing ratings!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">display</span><span class="p">((</span><span class="n">U</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">S</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="mi">2</span><span class="p">]))</span>
 </pre></div>
 </div>
@@ -2092,13 +2104,13 @@ V shape - (800, 800)
 <p>You can download dataset from here: https://grouplens.org/datasets/movielens/latest/</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!curl http://files.grouplens.org/datasets/movielens/ml-latest-small.zip --output ml-latest-small.zip
-!unzip ml-latest-small.zip
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>curl http://files.grouplens.org/datasets/movielens/ml-latest-small.zip --output ml-latest-small.zip
+<span class="o">!</span>unzip ml-latest-small.zip
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  955k  100  955k    0     0   405k      0  0:00:02  0:00:02 --:--:--  405k
 Archive:  ml-latest-small.zip
@@ -2114,7 +2126,7 @@ Archive:  ml-latest-small.zip
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ratings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;ml-latest-small/ratings.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ratings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;ml-latest-small/ratings.csv&#39;</span><span class="p">)</span>
 <span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;ml-latest-small/movies.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Limit to top movies so that we don&#39;t run out of memory</span>
@@ -2136,7 +2148,7 @@ Archive:  ml-latest-small.zip
 <p>Using SVD we will extract movie to concept similarities.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">20</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="n">k</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">movies</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">movie_idx_map</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
 <span class="n">data</span>
@@ -2674,12 +2686,12 @@ Archive:  ml-latest-small.zip
 <p>Now using any distance measure we can try to extract similar movies directly from V!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;Toy Story (1995)&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;Toy Story (1995)&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>title
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>title
 Toy Story (1995)                              0.000000
 Toy Story 2 (1999)                            0.002411
 Nutty Professor, The (1996)                   0.002757
@@ -2697,12 +2709,12 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;Matrix, The (1999)&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;Matrix, The (1999)&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>title
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>title
 Matrix, The (1999)                                           0.000000
 Fight Club (1999)                                            0.003215
 Saving Private Ryan (1998)                                   0.003370
@@ -2726,7 +2738,7 @@ dtype: float64
 <h2>(re)Sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://medium.com/&#64;jonathan_hui/machine-learning-singular-value-decomposition-svd-principal-component-analysis-pca-1d45e885e491">SVD math basics</a> or the <a class="reference external" href="https://towardsdatascience.com/understanding-singular-value-decomposition-and-its-application-in-data-science-388a54be95d">extended</a> version.</p></li>
-<li><p><a class="reference external" href="https://www.rose-hulman.edu/~bryan/googleFinalVersionFixed.pdf">Paper - THE $25,000,000,000∗ EIGENVECTOR THE LINEAR ALGEBRA BEHIND GOOGLE</a></p></li>
+<li><p><a class="reference external" href="https://www.rose-hulman.edu/%7Ebryan/googleFinalVersionFixed.pdf">Paper - THE $25,000,000,000∗ EIGENVECTOR THE LINEAR ALGEBRA BEHIND GOOGLE</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/Qz58vTa8-SY">Video - A primer (or refresher) on linear algebra</a></p></li>
 <li><p><a class="reference external" href="https://slideplayer.com/slide/5283216/">Slides - Dimensionality Reduction PCA – SVD</a></p></li>
 <li><p><a class="reference external" href="https://hackernoon.com/introduction-to-recommender-system-part-1-collaborative-filtering-singular-value-decomposition-44c9659c5e75">Blog - Introduction to Recommender System. Part 1 (Collaborative Filtering, Singular Value Decomposition)</a></p></li>
@@ -2757,15 +2769,15 @@ dtype: float64
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
+        <div class='prev-next-bottom'>
+            
     <a class='left-prev' id="prev-link" href="README.html" title="previous page">Welcome to AI primer course</a>
     <a class='right-next' id="next-link" href="RF.html" title="next page">RF (Random Forest)</a>
 
+        </div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -2782,8 +2794,9 @@ dtype: float64
 
       </div>
     </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    <script src="_static/js/index.js"></script>
-    
+  
   </body>
 </html>
