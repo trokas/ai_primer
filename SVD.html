@@ -329,7 +329,7 @@
 <h2>Increasing importance of linear algebra<a class="headerlink" href="#increasing-importance-of-linear-algebra" title="Permalink to this headline">¶</a></h2>
 <p>In 1844 Hermann Grassmann published his “Theory of Extension” which included foundational new topics of what is today called <strong>linear algebra</strong>. In 1848, James Joseph Sylvester introduced the term <strong>matrix</strong>, which is Latin for womb.
 Linear algebra is the branch of mathematics concerning linear equations such as
-$<span class="math notranslate nohighlight">\(a_{1}x_{1}+\cdots +a_{n}x_{n}=b\)</span><span class="math notranslate nohighlight">\( and linear functions such as \)</span><span class="math notranslate nohighlight">\((x_{1},\ldots ,x_{n})\mapsto a_{1}x_{1}+\ldots +a_{n}x_{n}\)</span>$
+<span class="math notranslate nohighlight">\(a_{1}x_{1}+\cdots +a_{n}x_{n}=b\)</span> and linear functions such as <span class="math notranslate nohighlight">\((x_{1},\ldots ,x_{n})\mapsto a_{1}x_{1}+\ldots +a_{n}x_{n}\)</span>
 and their representations through <strong>matrices and vector spaces</strong>. Linear algebra is increasing in importance as a core tool in the AI field. Nice <a class="reference external" href="https://lexfridman.com/gilbert-strang/">podcast</a> about this increasing importance, Strang even suggests to replace calculus by linear algebra in schools. By the way most calculus operations have discrete analogues in linear algebra.</p>
 <div class="section" id="linear-algebra-missing-pieces">
 <h3>Linear algebra (missing pieces?)<a class="headerlink" href="#linear-algebra-missing-pieces" title="Permalink to this headline">¶</a></h3>
@@ -351,10 +351,13 @@ and their representations through <strong>matrices and vector spaces</strong>. L
 <p>So if we multiply a space by a matrix it enables us to <strong>stretch and rotate</strong> original space.</p>
 <img src="https://i.ytimg.com/vi/XkY2DOUCWMU/maxresdefault.jpg" alt="Space deformation" style="width: 50%"/>
 <p>For example</p>
-<p>\begin{bmatrix}
-\cos(\theta) &amp; -\sin(\theta)\
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+\cos(\theta) &amp; -\sin(\theta)\\
 \sin(\theta) &amp; \cos(\theta)
-\end{bmatrix}</p>
+\end{bmatrix}
+\end{split}\]</div>
 <p>works as a simple counter-clockwise rotation, and it’s inverse as clockwise rotation. For more geometric interpretations see <strong>3Blue1Brown</strong> <a class="reference external" href="https://www.youtube.com/watch?v=kjBOesZCoqc&amp;feature=emb_title">linear algebra</a> course.</p>
 </div>
 </div>
@@ -458,20 +461,21 @@ can you tell what it does to the vector space and where eigenvectors are located
 <p>We will see some examples below starting from data compression.</p>
 <div class="section" id="how-is-svd-computed">
 <h4>How is SVD computed?<a class="headerlink" href="#how-is-svd-computed" title="Permalink to this headline">¶</a></h4>
-<p>Let’s compute SVD for
-$<span class="math notranslate nohighlight">\(X=
+<p>Let’s compute SVD for</p>
+<p><span class="math notranslate nohighlight">\(X=
 \begin{bmatrix}
 5 &amp; 5\\
 -1 &amp; 7
-\end{bmatrix} = USV^T.\)</span>$</p>
-<p>We start by producing symmetric matrix (you should have some intuition why we need that by now)
-$<span class="math notranslate nohighlight">\(X^T X=VS^TSV^T=
+\end{bmatrix} = USV^T.\)</span></p>
+<p>We start by producing symmetric matrix (you should have some intuition why we need that by now)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X^T X=VS^TSV^T=
 \begin{bmatrix}
 26 &amp; 18\\
 18 &amp; 74
-\end{bmatrix} = USV^T.\)</span>$</p>
+\end{bmatrix} = USV^T.\end{split}\]</div>
 <p>Now we can compute eigenvectors using determinant. Since
-$<span class="math notranslate nohighlight">\(\det(X^TX - \lambda I) = (\lambda - 20)(\lambda - 80)\)</span>$
+<span class="math notranslate nohighlight">\(\det(X^TX - \lambda I) = (\lambda - 20)(\lambda - 80)\)</span>
 we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}X^TX - 80 I =
@@ -695,15 +699,18 @@ V shape - (800, 800)
 </div>
 </div>
 </div>
-<p>Linear regression works by
-$<span class="math notranslate nohighlight">\(y=X\hat\beta\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(X^Ty=X^TX\hat\beta\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(\hat \beta = (X^T X)^{-1} X^T y\)</span>$</p>
+<p>Linear regression works by</p>
+<div class="math notranslate nohighlight">
+\[y=X\hat\beta\]</div>
+<div class="math notranslate nohighlight">
+\[X^Ty=X^TX\hat\beta\]</div>
+<div class="math notranslate nohighlight">
+\[\hat \beta = (X^T X)^{-1} X^T y\]</div>
 <p>By the way you can vizualize linear regression as the process of minimizing <span class="math notranslate nohighlight">\(e\)</span> in</p>
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQXvIwYtFpyuHEa_0zYoECXKp3JRdf6Q89eo3Prpw9SvJBJoLmC" alt="Linear regression" style="width: 40%"/>
 <p>thus it’s an analogue of finding a projection of the target vector in a given vector space.</p>
 <p>Let’s come back to our problem - we saw that the inverse is unstable… SVD is one of the solutions to deal with that problem.</p>
-<p>Since $<span class="math notranslate nohighlight">\(X=USV^T\)</span><span class="math notranslate nohighlight">\( and \)</span><span class="math notranslate nohighlight">\(UU^T=I_m;\;VV^T=I_n\)</span><span class="math notranslate nohighlight">\( it is easy to show that \)</span><span class="math notranslate nohighlight">\(\hat \beta = (X^T X)^{-1} X^T y = V S^{-1} U^T y.\)</span>$</p>
+<p>Since <span class="math notranslate nohighlight">\(X=USV^T\)</span> and <span class="math notranslate nohighlight">\(UU^T=I_m;\;VV^T=I_n\)</span> it is easy to show that <span class="math notranslate nohighlight">\(\hat \beta = (X^T X)^{-1} X^T y = V S^{-1} U^T y.\)</span></p>
 <p><strong>Note:</strong> the inverse of S is known to be stable.</p>
 <p>Let’s see if this trick really works on a real dataset.</p>
 <div class="cell docutils container">
