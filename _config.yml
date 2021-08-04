@@ -16,3 +16,5 @@ repository:
 
 parse:
   myst_extended_syntax: true
+  myst_enable_extensions:
+    - amsmath
