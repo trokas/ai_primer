@@ -2,8 +2,8 @@
 
 [INTERACTIVE BOOK LINK](https://trokas.github.io/ai_primer/README.html)
 
-My main aim is to give you enough information so that you can start exploring field of AI on your own and maybe even start searching for DS role.
-In essance we have only 5 main chapters to cover.
+Main aim of this course is to give you enough information so that you can start exploring field of AI on your own and maybe even start searching for DS role.
+We have only 5 main chapters to cover.
 
 - Unsupervised learning
     - SVD (Singular Value Decomposition) - it’s a good tool to introduce both technical tools we will be working with aswell as giving us a glympse at unsupervised learning.
@@ -15,7 +15,6 @@ In essance we have only 5 main chapters to cover.
 - Reinforcement learning
     - TD (Temporal Difference) - one of the core principle in reinforcement learning. We will apply it to play tic-tac-toe.
 
-After these chapters complementary material regarding new advanves of deep learning will be presented (for example: LSTM’s, Transformers, DQN, ...), but it will not be mandatory. If you are interested in some topic, feel free to make a suggestion.
 Also we will cover following toolset, which hopefully will be useful for your future projects:
 
 - [numpy](https://numpy.org/doc/stable/user/quickstart.html) (mainly in SVD and FCN lectures) - will help us store vectors, matrices and perform operations on them.
@@ -77,3 +76,7 @@ Each chapter will have a list of resources, but for now I highly recommend to st
 
 If I had to recommend a single book for beginner it will be this one - [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 2nd Edition](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/).
 
+
+```sh
+
+```

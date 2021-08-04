@@ -224,18 +224,18 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#games">
-   Games
+  <a class="reference internal nav-link" href="#tic-tac-toe">
+   Tic-Tac-Toe
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#self-play-with-dictionary-approach">
-   Self-play with dictionary approach
+  <a class="reference internal nav-link" href="#deep-td-0">
+   Deep TD(0)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deep-td-0-with-experience-replay">
-   Deep TD(0) with experience replay
+  <a class="reference internal nav-link" href="#where-to-go-next">
+   Where to go next?
   </a>
  </li>
 </ul>
@@ -471,10 +471,10 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="games">
-<h2>Games<a class="headerlink" href="#games" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tic-tac-toe">
+<h2>Tic-Tac-Toe<a class="headerlink" href="#tic-tac-toe" title="Permalink to this headline">¶</a></h2>
 <p>Most likely you have heared about success of reinforcement learning in games likes Go. To implement MuZero from scratch would require quite a lot of tricks and we lack a bunch of theory to do that. Instead we will do similar thing as TD-Backgammon while playing Tic-Tac-Toe. We will train <span class="math notranslate nohighlight">\(\text{TD}(0)\)</span> agent from scratch using self play.</p>
-<p>Let’s create simple tic-tac-toe enviroment. To implement our agent we will use simple FCN with two layers and 18 inputs. First 9 represent board for current player. For simplicity we will add this to the class.</p>
+<p>Let’s create simple tic-tac-toe enviroment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TicTacToe</span><span class="p">:</span>
@@ -516,9 +516,6 @@
                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">])</span>
     
     <span class="k">def</span> <span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="c1">#         return np.hstack([self.board == self.tic_or_tac,</span>
-<span class="c1">#                           self.board == -self.tic_or_tac]) \</span>
-<span class="c1">#                .reshape((1, 18)).astype(&#39;int&#39;)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">board</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -576,41 +573,11 @@
 </div>
 </div>
 </div>
-<p>Each move returns a state of the game that we will feed to FCN (denoted as <span class="math notranslate nohighlight">\(v(S, w)\)</span>). Our algorithm <span class="math notranslate nohighlight">\(\text{TD}(0)\)</span> is</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Loop</span> <span class="k">for</span> <span class="n">each</span> <span class="n">episode</span><span class="p">:</span>
-    <span class="n">Initialize</span> <span class="n">S</span>
-    <span class="n">Loop</span> <span class="k">for</span> <span class="n">each</span> <span class="n">step</span> <span class="n">of</span> <span class="n">episode</span><span class="p">:</span>
-        <span class="n">A</span> <span class="o">&lt;-</span> <span class="n">action</span> <span class="n">given</span> <span class="n">by</span> <span class="n">policy</span> <span class="k">for</span> <span class="n">S</span>
-        <span class="n">Take</span> <span class="n">action</span> <span class="n">A</span><span class="p">,</span> <span class="n">observe</span> <span class="n">R</span><span class="p">,</span> <span class="n">S</span><span class="s1">&#39;</span>
-        <span class="n">w</span> <span class="o">+=</span> <span class="n">lr</span> <span class="o">*</span> <span class="p">[</span><span class="n">R</span> <span class="o">+</span> <span class="n">discount</span> <span class="o">*</span> <span class="n">v</span><span class="p">(</span><span class="n">S</span><span class="s1">&#39;, w) - v(S, w)] ∇v(S, w)</span>
-        <span class="n">S</span> <span class="o">&lt;-</span> <span class="n">S</span><span class="s1">&#39;</span>
-    <span class="n">until</span> <span class="n">S</span> <span class="ow">is</span> <span class="n">terminated</span>
-</pre></div>
-</div>
-<p>Note, that actually what we are doing is pushing weights in such a way that previous prediction is closer to the new one, thus</p>
+<p>Following TD ideas presented above we want to push weights in such a way that previous prediction is closer to the new one, thus</p>
 <div class="math notranslate nohighlight">
 \[V(S_t) \leftarrow V(S_t) + \alpha [V(S_{t+1}) - V(S_t)].\]</div>
-<p>For derivative we will use autodiff from tensorfow. Training is completely driven by self-play. We also need some way to explore new strategies.</p>
-<p>Our value network expects board state as input and returns expected win probability.</p>
-<p>For sure for tic-tac-toe using TD is an overkill. Model is still unstable and can be vastly improved by simplifying (using Q-learning), adding game know-how (symetries) or simply using a search tree. Keep in mind that what we did here was for illustrative purpose - aim was to show that TD is general principle, that can be used in games. Also game states can be fed right into NN, thus creating usefull state embeddings. Similar principles are applied in TD-Backgammon, Alpha Zero, MuZero and other RL agents.</p>
-<p>By the way, formally we could have tried to compute derivatives and train FCN (denoted as <span class="math notranslate nohighlight">\(v(S, w)\)</span>) using</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Loop</span> <span class="k">for</span> <span class="n">each</span> <span class="n">episode</span><span class="p">:</span>
-    <span class="n">Initialize</span> <span class="n">S</span>
-    <span class="n">Loop</span> <span class="k">for</span> <span class="n">each</span> <span class="n">step</span> <span class="n">of</span> <span class="n">episode</span><span class="p">:</span>
-        <span class="n">A</span> <span class="o">&lt;-</span> <span class="n">action</span> <span class="n">given</span> <span class="n">by</span> <span class="n">policy</span> <span class="k">for</span> <span class="n">S</span>
-        <span class="n">Take</span> <span class="n">action</span> <span class="n">A</span><span class="p">,</span> <span class="n">observe</span> <span class="n">R</span><span class="p">,</span> <span class="n">S</span><span class="s1">&#39;</span>
-        <span class="n">w</span> <span class="o">+=</span> <span class="n">lr</span> <span class="o">*</span> <span class="p">[</span><span class="n">R</span> <span class="o">+</span> <span class="n">discount</span> <span class="o">*</span> <span class="n">v</span><span class="p">(</span><span class="n">S</span><span class="s1">&#39;, w) - v(S, w)] ∇v(S, w)</span>
-        <span class="n">S</span> <span class="o">&lt;-</span> <span class="n">S</span><span class="s1">&#39;</span>
-    <span class="n">until</span> <span class="n">S</span> <span class="ow">is</span> <span class="n">terminated</span>
-</pre></div>
-</div>
-<p>Since opponent is random our agent will focus on simple tricks (completing 3 in a row) instead of discovering more complex behaviour (blocking possible opponent wins). In a longer simulation values converge, but due to the random opponent nature they are sometime far from what human would assign. If played well, then in example above center move will lead to the win and with smart opponent currently suggested corner will lead to a draw.</p>
-<p>Instead we could come up with competing agents.</p>
-<p>Note, that training process is much more stable than with deep learning approach.</p>
-</div>
-<div class="section" id="self-play-with-dictionary-approach">
-<h2>Self-play with dictionary approach<a class="headerlink" href="#self-play-with-dictionary-approach" title="Permalink to this headline">¶</a></h2>
-<p>Nice <a class="reference external" href="https://jinglescode.github.io/reinforcement-learning-tic-tac-toe/">viz</a>.</p>
+<p>Training is completely driven by self-play. We also need some way to explore new strategies. For the first try we can simple store values in the dictionary.</p>
+<p>Nice <a class="reference external" href="https://jinglescode.github.io/reinforcement-learning-tic-tac-toe/">viz</a> that behind the scenes uses the same method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Agent</span><span class="p">:</span>
@@ -649,6 +616,7 @@
 </div>
 </div>
 </div>
+<p>Let’s train our agents for 10k games.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span> 
@@ -702,6 +670,7 @@ Wall time: 1min 1s
 </div>
 </div>
 </div>
+<p>Agent 1 learns that it is optimal to start the game in the middle.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ttt</span> <span class="o">=</span> <span class="n">TicTacToe</span><span class="p">()</span>
@@ -719,6 +688,7 @@ Wall time: 1min 1s
 </div>
 </div>
 </div>
+<p>And agent 2 understands that he is doomed in such case and can not win.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ttt</span> <span class="o">=</span> <span class="n">TicTacToe</span><span class="p">()</span>
@@ -741,11 +711,11 @@ Wall time: 1min 1s
 </div>
 </div>
 <p>As you can see, self-play is a critical component if we want to end up with a smart agent.</p>
-<p>For AlphaZero like implementation look at <a class="reference external" href="https://github.com/DanielSlater/AlphaToe">AlphaToe</a>.</p>
 </div>
-<div class="section" id="deep-td-0-with-experience-replay">
-<h2>Deep TD(0) with experience replay<a class="headerlink" href="#deep-td-0-with-experience-replay" title="Permalink to this headline">¶</a></h2>
-<p>Ensures i.i.d. and is biologicaly inspired (see deepmind blog).</p>
+<div class="section" id="deep-td-0">
+<h2>Deep TD(0)<a class="headerlink" href="#deep-td-0" title="Permalink to this headline">¶</a></h2>
+<p>Instead of using value dictionary we could try to use neural network. That might be usefull if the game is much more complex. In such case our value network expects board state as input and returns expected win probability.</p>
+<p>There is one big problem - while training NN we need to ensure that data is i.i.d. and it is not so if we update it during each step. Instead we will gather historical plays into a list and sample it randomly to train the network. This trick is called <em>experience replay</em> and is <a class="reference external" href="https://deepmind.com/blog/article/replay-in-biological-and-artificial-neural-networks">vital component</a> in RL.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
@@ -808,6 +778,7 @@ Wall time: 1min 1s
 </div>
 </div>
 </div>
+<p>Since we are training NN it will take a while.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span> 
@@ -936,7 +907,20 @@ Wall time: 23min 26s
 </div>
 </div>
 </div>
-<p>Temporal Difference is an approach to learning how to predict a quantity that depends on future values of a given signal. It can be used to learn both the V-function and the Q-function, whereas Q-learning is a specific TD algorithm used to learn the Q-function. As stated by Don Reba, you need the Q-function to perform an action (e.g., following an epsilon-greedy policy). If you have only the V-function you can still derive the Q-function by iterating over all the possible next states and choosing the action which leads you to the state with the highest V-value. For examples and more insights, I recommend the classic book from Sutton and Barto.</p>
+<p>As you can see it was able to produce similar results as the dictionary approach. We could extend it further, for example AlphaZero like implementation can be found at <a class="reference external" href="https://github.com/DanielSlater/AlphaToe">AlphaToe</a>.</p>
+<p>For sure for tic-tac-toe using TD is an overkill. Keep in mind that what we did here was for illustrative purpose - aim was to show that TD is general principle, that can be used in games. Similar principles are applied in TD-Backgammon, Alpha Zero, MuZero and other RL agents.</p>
+</div>
+<div class="section" id="where-to-go-next">
+<h2>Where to go next?<a class="headerlink" href="#where-to-go-next" title="Permalink to this headline">¶</a></h2>
+<p>If you are interested to dig deeper:</p>
+<ul class="simple">
+<li><p>Read what <a class="reference external" href="https://deepmind.com/blog/article/deep-reinforcement-learning">deepmind</a> is doing.</p></li>
+<li><p>Read what <a class="reference external" href="https://openai.com/">openAI</a> is doing.</p></li>
+<li><p>Watch <a class="reference external" href="https://www.imdb.com/title/tt6700846/">AlphaGO</a> movie and read <a class="reference external" href="https://www.nature.com/articles/nature16961">paper</a>.</p></li>
+<li><p>Read Barto &amp; Sutton <a class="reference external" href="https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf">book</a>.</p></li>
+<li><p>Work through <a class="reference external" href="https://github.com/trokas/Deep_RL">Deep RL</a>, which contains more examples and intuitive lower level implementations. This <a class="reference external" href="https://medium.com/&#64;awjuliani/super-simple-reinforcement-learning-tutorial-part-2-ded33892c724">medium</a> series is great.</p></li>
+<li><p>Read book “Deep Reinforcement Learning Hands-On” by Maxim Laptan.</p></li>
+</ul>
 </div>
 </div>
 
