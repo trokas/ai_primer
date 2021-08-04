@@ -5,5 +5,6 @@ sections:
 - file: RF
 - file: DNN
 - file: CNN
+- file: TD
 - file: Varia
 - file: Project
