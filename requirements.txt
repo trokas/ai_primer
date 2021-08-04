@@ -1,0 +1,17 @@
+cufflinks
+ghp-import
+graphviz
+imageio
+ipython
+jupyter-book
+matplotlib
+numpy
+opencv-python
+pandas
+plotly
+pytest
+scikit-learn
+scipy
+tensorflow
+tabulate
+spacy
