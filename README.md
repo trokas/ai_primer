@@ -34,21 +34,32 @@ What to expect from a single lecture?
 
 ## Launching notebooks
 
-You can launch notebooks in Binder directly in browser, but when we come to building models that will not work and you will have to use Paperspace (with GPU) or your own PC.
+You can launch notebooks in Binder directly in browser, but when we come to building models that will not work and you will have to use Paperspace (with GPU), Colab or your own PC.
 
 ### Option 1. Paperspace
 
 To have much faster training using GPU sign up for [Paperspace](https://www.paperspace.com/) and got to [gradient console](https://console.paperspace.com/gradient). Then, just follow these steps:
 
 1. Click on *Notebooks* in left menu
-2. Select a runtime - Tensorflow 2.4.1
-3. In Advanced options near Workspace URL add - *https://github.com/trokas/ai_primer.git*
-4. Choose *Free-GPU* machine
-5. Scroll down and press *Create Notebook*
+2. Click *Create* on the right
+3. Name your project
+4. Select a runtime - Tensorflow 2.4.1
+5. For machine choose Free-GPU and set auto-shutdown to 6 hours (thats maximum for free account).
+6. In Advanced options near Workspace URL add - *https://github.com/trokas/ai_primer.git*
+7. Scroll down and press *Start Notebook*
 
 This should spin-up a new notebook with GPU support that will be available for the next 6 hours. Just press *Open* and you should see all course materials in *Jupyter Notebook*. Next time just use already created machine and don't forget to use *git pull* from time to time.
 
-### Option 2. Own PC
+### Option 2. Google Colab
+
+Colab is good and popular free option, but is less flexible than Paperspace and has slightly different Notebook flavor.
+
+1. Go to [colab page](https://colab.research.google.com/).
+2. Press Open and provide GitHub path to *ipynb* file you want to work with.
+3. Click *Runtime* and *Change runtime type*, then select GPU.
+4. You can save your work to Google Drive or yout GitHub.
+
+### Option 3. Own PC
 
 To run on your own PC, just clone this repo, install all packages and run jupyter as follows:
 
