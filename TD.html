@@ -251,11 +251,11 @@
                 
   <div class="section" id="td-temporal-difference">
 <h1>TD (Temporal Difference)<a class="headerlink" href="#td-temporal-difference" title="Permalink to this headline">¶</a></h1>
-<p>Our goal in this lecture is to construct simple reinforcement learning agent while going through the most important concepts (temporal difference, elgibility traces, …). On the way we will look for inspiration in behavioristic and neuro science research and will try to construct our agent from scratch.</p>
-<p>We start with Pavlov’s dog experiment. Most of you know about stimulus reward results - you ring a bell and dog starts to extrete saliva knowing that food is on the way. That will be the first thing we expect from our system - learn to predict that reward is coming given a stimulus. Since in the end we want to use neural nets let’s stick to weight update rule that we have already seen.</p>
+<p>Our goal in this lecture is to construct a simple reinforcement learning agent while going through the most important concepts (temporal difference, eligibility traces, …). On the way we will look for inspiration in behavioristic and neuroscience research and will try to construct our agent from scratch.</p>
+<p>We start with Pavlov’s dog experiment. Most of you know about stimulus reward results - you ring a bell and the dog starts to excrete saliva knowing that food is on the way. That will be the first thing we expect from our system - learn to predict that reward is coming given a stimulus. Since in the end we want to use neural nets let’s stick to weight update rule that we have already seen.</p>
 <div class="math notranslate nohighlight">
 \[ w_{t+1} = w_{t} + \text{learning rate} \cdot \text{error} \cdot \text{diff for given input} \]</div>
-<p>For simplicity now let’s ignore time and focus on single trial as the input. In such case our input is just a vector of indicators which show the presence of the various stimula and output is predicted reward. For error we can simply pass diference between our prediction and reward.</p>
+<p>For simplicity now let’s ignore time and focus on single trial as the input. In such a case our input is just a vector of indicators which show the presence of the various stimulus and output is predicted reward. For error we can simply pass difference between our prediction and reward.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -308,7 +308,7 @@
 <p>As expected our model learned to associate stimulus B with reward. But our story only begins here.</p>
 <div class="section" id="blocking">
 <h2>Blocking<a class="headerlink" href="#blocking" title="Permalink to this headline">¶</a></h2>
-<p>In his later experiments Pavlov noticed that there is phenomenon called <em>blocking</em>. If you teach your dog to associate bell with food and then introduce something new (for example showing some picture) after a bell - dog will not learn to associate this new stimulus with food. Let’s test if our model does that. If you have executed cells above you already have trained weights and we can introduce some new trials that try to show stimulus C. This new stimulus should be ignored according to the experimental evidence.</p>
+<p>In his later experiments Pavlov noticed that there is phenomenon called <em>blocking</em>. If you teach your dog to associate a bell with food and then introduce something new (for example showing some picture) after a bell - the dog will not learn to associate this new stimulus with food. Let’s test if our model does that. If you have executed cells above you already have trained weights and we can introduce some new trials that try to show stimulus C. This new stimulus should be ignored according to the experimental evidence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#           stimula  reward</span>
@@ -345,8 +345,8 @@
 </div>
 <div class="section" id="higher-order-conditioning">
 <h2>Higher order conditioning<a class="headerlink" href="#higher-order-conditioning" title="Permalink to this headline">¶</a></h2>
-<p>Notice that our model does not take time into account. That is a huge limitation. For sure we can not look for stimulus reward response for infinite time and splitting into trials does not represent reality well. It turns out that if after training to asociate bell with food you show image before the bell, dog learns to associate that with food. Not only that there is effect called <em>higher order conditioning</em> and if after introcuding new stimulus you do not give reward dog still will learn to asociate it with food. It seams that instead of learning that image asociates with reward he learns that image predicts bell and bell predicts reward, thus even if reward is not given he will learn to pass know-how.</p>
-<p>We will have to introduce time into our model. If you think about experiments described above it makes sense to say that model should not predict reward directly, but instead at each time step focus on difference in it’s own predictions. This is called <em>temporal difference</em> and we will discuss it thoroughly in the lecture. For the time lag we can simply add some factor that discount previous inputs. This trick is known as <em>eligibily traces</em>.</p>
+<p>Notice that our model does not take time into account. That is a huge limitation. For sure we can not look for stimulus reward response for infinite time and splitting into trials does not represent reality well. It turns out that if after training to associate the bell with food you show an image before the bell, dog learns to associate that with food. Not only that there is effect called <em>higher order conditioning</em> and if after introducing new stimulus you do not give reward, dog still will learn to associate it with food. It seams that instead of learning that image associates with reward he learns that image predicts bell and bell predicts reward, thus even if reward is not given he will learn to pass know-how.</p>
+<p>We will have to introduce time into our model. If you think about experiments described above it makes sense to say that model should not predict reward directly, but instead at each time step focus on difference in it’s own predictions. This is called <em>temporal difference</em> and we will discuss it thoroughly in the lecture. For the time lag we can simply add some factor that discount previous inputs. This trick is known as <em>eligibility traces</em>.</p>
 <p>It’s time to put those ideas to the test. First let’s implement those and check if simple conditioning and blocking works as expected.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -467,8 +467,8 @@
 </div>
 <div class="section" id="tic-tac-toe">
 <h2>Tic-Tac-Toe<a class="headerlink" href="#tic-tac-toe" title="Permalink to this headline">¶</a></h2>
-<p>Most likely you have heared about success of reinforcement learning in games likes Go. To implement MuZero from scratch would require quite a lot of tricks and we lack a bunch of theory to do that. Instead we will do similar thing as TD-Backgammon while playing Tic-Tac-Toe. We will train <span class="math notranslate nohighlight">\(\text{TD}(0)\)</span> agent from scratch using self play.</p>
-<p>Let’s create simple tic-tac-toe enviroment.</p>
+<p>Most likely you have heard about the success of reinforcement learning in games likes Go. To implement MuZero from scratch would require quite a lot of tricks and we lack a bunch of theory to do that. Instead we will do similar thing as TD-Backgammon while playing Tic-Tac-Toe. We will train <span class="math notranslate nohighlight">\(\text{TD}(0)\)</span> agent from scratch using self play.</p>
+<p>Let’s create simple tic-tac-toe environment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TicTacToe</span><span class="p">:</span>
@@ -902,7 +902,7 @@ Wall time: 23min 26s
 </div>
 </div>
 <p>As you can see it was able to produce similar results as the dictionary approach. We could extend it further, for example AlphaZero like implementation can be found at <a class="reference external" href="https://github.com/DanielSlater/AlphaToe">AlphaToe</a>.</p>
-<p>For sure for tic-tac-toe using TD is an overkill. Keep in mind that what we did here was for illustrative purpose - aim was to show that TD is general principle, that can be used in games. Similar principles are applied in TD-Backgammon, Alpha Zero, MuZero and other RL agents.</p>
+<p>For sure for tic-tac-toe using TD is an overkill. Keep in mind that what we did here was for illustrative purposes - the aim was to show that TD is a general principle that can be used in games. Similar principles are applied in TD-Backgammon, Alpha Zero, MuZero and other RL agents.</p>
 </div>
 <div class="section" id="where-to-go-next">
 <h2>Where to go next?<a class="headerlink" href="#where-to-go-next" title="Permalink to this headline">¶</a></h2>

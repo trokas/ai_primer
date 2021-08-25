@@ -245,6 +245,11 @@
    Mimics
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mixup">
+   Mixup
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -526,14 +531,20 @@ _________________________________________________________________
 </div>
 <div class="section" id="mimics">
 <h2>Mimics<a class="headerlink" href="#mimics" title="Permalink to this headline">¶</a></h2>
-<p>If you ever need to compress the model due to some hardware or inference time contraints there is a simple trick that can help. Called mimic or teacher-student network idea is to train simpler model to do the same thing that bigger model does. It is achieved by:</p>
+<p>If you ever need to compress the model due to some hardware or inference time constraints there is a simple trick that can help. Called mimic or teacher-student network, the idea is to train simpler model to do the same thing that a bigger model does. It is achieved by:</p>
 <ol class="simple">
-<li><p>Creating big and good model (can be ensemble of models) that outputs softmax probabilities.</p></li>
+<li><p>Creating a big and good model (can be an ensemble of models) that outputs softmax probabilities.</p></li>
 <li><p>Pass a bunch of unlabeled examples via this teacher network and store his outputs.</p></li>
-<li><p>Use these outputs to train smaller model. You don’t even need original training data now.
-Try to think of the reasons why this trick works well. For more details see - <a class="reference external" href="https://arxiv.org/abs/1312.6184">Do Deep Nets Really Need to be Deep?</a>.</p></li>
+<li><p>Use these outputs to train a smaller model. You don’t even need original training data now.
+Try to think of the reasons why this trick works well. For more details see <a class="reference external" href="https://arxiv.org/abs/1503.02531">Distilling the Knowledge in a Neural Network</a> and <a class="reference external" href="https://arxiv.org/abs/1312.6184">Do Deep Nets Really Need to be Deep?</a>.</p></li>
 </ol>
 <p><strong>TASK:</strong> even though we do not have unlabeled data in flatland’s project, try out mimic approach on your best model to see if you can reduce size without loosing too much accuracy.</p>
+</div>
+<div class="section" id="mixup">
+<h2>Mixup<a class="headerlink" href="#mixup" title="Permalink to this headline">¶</a></h2>
+<p>Another cool idea is to mix two images and their classes into one and use such embedded image as a training example. For example, if we take MNIST, then we can randomly pick two different numbers and fuse images <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> by constructing their linear combination <span class="math notranslate nohighlight">\(\lambda A + (1 - \lambda) B\)</span>. Doing the same for their classes gives us the expected outcome that is used for training <span class="math notranslate nohighlight">\(\lambda y_A + (1 - \lambda) y_B\)</span>. For more details see <a class="reference external" href="https://arxiv.org/abs/1710.09412">mixup: Beyond Empirical Risk Minimization</a>.</p>
+<p>Both Mimics (Knowladge Distilation) and Mixup are frequently used tricks (see <a class="reference external" href="https://arxiv.org/abs/1812.01187">bag of tricks paper</a>).</p>
+<p><strong>TASK:</strong> test this out on MNIST or flatland project.</p>
 </div>
 </div>
 
