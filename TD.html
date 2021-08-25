@@ -346,13 +346,7 @@
 <div class="section" id="higher-order-conditioning">
 <h2>Higher order conditioning<a class="headerlink" href="#higher-order-conditioning" title="Permalink to this headline">¶</a></h2>
 <p>Notice that our model does not take time into account. That is a huge limitation. For sure we can not look for stimulus reward response for infinite time and splitting into trials does not represent reality well. It turns out that if after training to asociate bell with food you show image before the bell, dog learns to associate that with food. Not only that there is effect called <em>higher order conditioning</em> and if after introcuding new stimulus you do not give reward dog still will learn to asociate it with food. It seams that instead of learning that image asociates with reward he learns that image predicts bell and bell predicts reward, thus even if reward is not given he will learn to pass know-how.</p>
-<p>We will have to introduce time into our model. And comes with another complication - clearly there is some discounting and stimulus effect diminishes over time.</p>
-<p>So now we have two problems to solve:</p>
-<ul class="simple">
-<li><p>model should predict next step instead of predicting reward directly from trial</p></li>
-<li><p>model should contain some discounting scheme so that old stimulus are forgotten</p></li>
-</ul>
-<p>If you think about experiments described above it makes sense to say that model should not predict reward directly, but instead at each time step focus on difference in it’s own predictions. This is called <em>temporal difference</em> and we will discuss it thoroughly in the lecture. For the time lag we can simply add some factor that discount previous inputs. This trick is known as <em>eligibily traces</em>.</p>
+<p>We will have to introduce time into our model. If you think about experiments described above it makes sense to say that model should not predict reward directly, but instead at each time step focus on difference in it’s own predictions. This is called <em>temporal difference</em> and we will discuss it thoroughly in the lecture. For the time lag we can simply add some factor that discount previous inputs. This trick is known as <em>eligibily traces</em>.</p>
 <p>It’s time to put those ideas to the test. First let’s implement those and check if simple conditioning and blocking works as expected.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

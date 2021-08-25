@@ -204,8 +204,13 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#option-2-own-pc">
-     Option 2. Own PC
+    <a class="reference internal nav-link" href="#option-2-google-colab">
+     Option 2. Google Colab
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#option-3-own-pc">
+     Option 3. Own PC
     </a>
    </li>
   </ul>
@@ -272,21 +277,33 @@ We have only 5 main chapters to cover.</p>
 </ul>
 <div class="section" id="launching-notebooks">
 <h2>Launching notebooks<a class="headerlink" href="#launching-notebooks" title="Permalink to this headline">¶</a></h2>
-<p>You can launch notebooks in Binder directly in browser, but when we come to building models that will not work and you will have to use Paperspace (with GPU) or your own PC.</p>
+<p>You can launch notebooks in Binder directly in browser, but when we come to building models that will not work and you will have to use Paperspace (with GPU), Colab or your own PC.</p>
 <div class="section" id="option-1-paperspace">
 <h3>Option 1. Paperspace<a class="headerlink" href="#option-1-paperspace" title="Permalink to this headline">¶</a></h3>
 <p>To have much faster training using GPU sign up for <a class="reference external" href="https://www.paperspace.com/">Paperspace</a> and got to <a class="reference external" href="https://console.paperspace.com/gradient">gradient console</a>. Then, just follow these steps:</p>
 <ol class="simple">
 <li><p>Click on <em>Notebooks</em> in left menu</p></li>
+<li><p>Click <em>Create</em> on the right</p></li>
+<li><p>Name your project</p></li>
 <li><p>Select a runtime - Tensorflow 2.4.1</p></li>
+<li><p>For machine choose Free-GPU and set auto-shutdown to 6 hours (thats maximum for free account).</p></li>
 <li><p>In Advanced options near Workspace URL add - <em>https://github.com/trokas/ai_primer.git</em></p></li>
-<li><p>Choose <em>Free-GPU</em> machine</p></li>
-<li><p>Scroll down and press <em>Create Notebook</em></p></li>
+<li><p>Scroll down and press <em>Start Notebook</em></p></li>
 </ol>
 <p>This should spin-up a new notebook with GPU support that will be available for the next 6 hours. Just press <em>Open</em> and you should see all course materials in <em>Jupyter Notebook</em>. Next time just use already created machine and don’t forget to use <em>git pull</em> from time to time.</p>
 </div>
-<div class="section" id="option-2-own-pc">
-<h3>Option 2. Own PC<a class="headerlink" href="#option-2-own-pc" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="option-2-google-colab">
+<h3>Option 2. Google Colab<a class="headerlink" href="#option-2-google-colab" title="Permalink to this headline">¶</a></h3>
+<p>Colab is good and popular free option, but is less flexible than Paperspace and has slightly different Notebook flavor.</p>
+<ol class="simple">
+<li><p>Go to <a class="reference external" href="https://colab.research.google.com/">colab page</a>.</p></li>
+<li><p>Press Open and provide GitHub path to <em>ipynb</em> file you want to work with.</p></li>
+<li><p>Click <em>Runtime</em> and <em>Change runtime type</em>, then select GPU.</p></li>
+<li><p>You can save your work to Google Drive or yout GitHub.</p></li>
+</ol>
+</div>
+<div class="section" id="option-3-own-pc">
+<h3>Option 3. Own PC<a class="headerlink" href="#option-3-own-pc" title="Permalink to this headline">¶</a></h3>
 <p>To run on your own PC, just clone this repo, install all packages and run jupyter as follows:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/trokas/ai_primer.git
 <span class="nb">cd</span> ai_primer
