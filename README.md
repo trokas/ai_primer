@@ -60,7 +60,8 @@ Colab is a good and popular free option, but is less flexible than Paperspace an
 1. Go to [colab page](https://colab.research.google.com/).
 2. Press Open and provide GitHub path to *ipynb* file you want to work with.
 3. Click *Runtime* and *Change runtime type*, then select GPU.
-4. You can save your work to Google Drive or yout GitHub.
+4. You can install missing packages by running `!pip install [package name]` directly in the notebook.
+5. You can save your work to Google Drive or your GitHub.
 
 ### Option 3. Own PC
 
