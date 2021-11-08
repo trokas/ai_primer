@@ -42,15 +42,15 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="DNN (Deep Neural Networks)" href="DNN.html" />
@@ -313,7 +313,7 @@
 <p>Before defining random forests we need to explore it’s main building block - entropy.</p>
 <div class="section" id="entropy">
 <h2>Entropy<a class="headerlink" href="#entropy" title="Permalink to this headline">¶</a></h2>
-<p>Coined by Claude Shannon in “A Mathematical Theory of Communication” 1948 (<a class="reference external" href="http://www.math.harvard.edu/%7Ectm/home/text/others/shannon/entropy/entropy.pdf">link</a>).
+<p>Coined by Claude Shannon in “A Mathematical Theory of Communication” 1948 (<a class="reference external" href="http://www.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf">link</a>).
 Main question: how much useful information are we transmitting?
 When we transmit one bit of information we reduce recipients uncertainty by the factor of two.</p>
 <p>P.S.: same paper introduced term bit = <strong>bi</strong>nary uni<strong>t</strong>.</p>
@@ -1755,7 +1755,7 @@ Wall time: 1.76 s
 <div class="section" id="re-sources">
 <h2>(Re) Sources:<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Claude Shannon “A Mathematical Theory of Communication” 1948 (<a class="reference external" href="http://www.math.harvard.edu/%7Ectm/home/text/others/shannon/entropy/entropy.pdf">link</a>).</p></li>
+<li><p>Claude Shannon “A Mathematical Theory of Communication” 1948 (<a class="reference external" href="http://www.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf">link</a>).</p></li>
 <li><p>Nice <a class="reference external" href="https://youtu.be/ErfnhcEV1O8">video</a> about Entropy</p></li>
 <li><p>Medium <a class="reference external" href="https://towardsdatascience.com/must-know-information-theory-concepts-in-deep-learning-ai-e54a5da9769d">post</a> about Entropy</p></li>
 <li><p>Logistic regression from scratch (<a class="reference external" href="https://medium.com/&#64;martinpella/logistic-regression-from-scratch-in-python-124c5636b8ac">medium post</a>)</p></li>

@@ -40,10 +40,10 @@ You can launch notebooks in Binder directly in browser, but when we come to buil
 
 To have much faster training using GPU sign up for [Paperspace](https://www.paperspace.com/) and got to [gradient console](https://console.paperspace.com/gradient). Then, just follow these steps:
 
-1. Click on *Notebooks* in the left menu
-2. Click *Create* on the right
-3. Name your project
-4. Select a runtime - Tensorflow 2.4.1
+1. Create a new *Project*
+2. Select *Notebooks* tab
+3. Click *Create*
+4. Select a runtime - Tensorflow 2.6.0
 5. For the machine choose Free-GPU and set auto-shutdown to 6 hours (thats maximum for free account).
 6. In Advanced options near Workspace URL add - *https://github.com/trokas/ai_primer.git*
 7. Scroll down and press *Start Notebook*
