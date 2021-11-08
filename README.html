@@ -286,11 +286,14 @@ We have only 5 main chapters to cover.</p>
 <li><p>Select <em>Notebooks</em> tab</p></li>
 <li><p>Click <em>Create</em></p></li>
 <li><p>Select a runtime - Tensorflow 2.6.0</p></li>
-<li><p>For the machine choose Free-GPU and set auto-shutdown to 6 hours (thats maximum for free account).</p></li>
+<li><p>For the machine choose Free-GPU and set auto-shutdown to 6 hours (thats maximum for free account)</p></li>
 <li><p>In Advanced options near Workspace URL add - <em>https://github.com/trokas/ai_primer.git</em></p></li>
 <li><p>Scroll down and press <em>Start Notebook</em></p></li>
+<li><p>This should spin-up a new notebook with GPU support that will be available for the next 6 hours. Just press <em>Open</em> and you should see all course materials in <em>Jupyter Notebook</em>.</p></li>
+<li><p>Open Jupyter Notebook, then launch new terminal and run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p></li>
+<li><p>Also launch following lines: <code class="docutils literal notranslate"><span class="pre">apt-get</span> <span class="pre">update</span></code> and <code class="docutils literal notranslate"><span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">ffmpeg</span> <span class="pre">libsm6</span> <span class="pre">libxext6</span> <span class="pre">graphviz</span> <span class="pre">-y</span></code></p></li>
 </ol>
-<p>This should spin-up a new notebook with GPU support that will be available for the next 6 hours. Just press <em>Open</em> and you should see all course materials in <em>Jupyter Notebook</em>. Next time just use already created machine and don’t forget to use <em>git pull</em> from time to time.</p>
+<p>Next time just use readily created machine and don’t forget to use <em>git pull</em> from time to time.</p>
 </div>
 <div class="section" id="option-2-google-colab">
 <h3>Option 2. Google Colab<a class="headerlink" href="#option-2-google-colab" title="Permalink to this headline">¶</a></h3>

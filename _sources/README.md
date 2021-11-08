@@ -44,11 +44,14 @@ To have much faster training using GPU sign up for [Paperspace](https://www.pape
 2. Select *Notebooks* tab
 3. Click *Create*
 4. Select a runtime - Tensorflow 2.6.0
-5. For the machine choose Free-GPU and set auto-shutdown to 6 hours (thats maximum for free account).
+5. For the machine choose Free-GPU and set auto-shutdown to 6 hours (thats maximum for free account)
 6. In Advanced options near Workspace URL add - *https://github.com/trokas/ai_primer.git*
 7. Scroll down and press *Start Notebook*
+8. This should spin-up a new notebook with GPU support that will be available for the next 6 hours. Just press *Open* and you should see all course materials in *Jupyter Notebook*.
+9. Open Jupyter Notebook, then launch new terminal and run `pip install -r requirements.txt`
+10. Also launch following lines: `apt-get update` and `apt-get install ffmpeg libsm6 libxext6 graphviz -y`
 
-This should spin-up a new notebook with GPU support that will be available for the next 6 hours. Just press *Open* and you should see all course materials in *Jupyter Notebook*. Next time just use already created machine and don't forget to use *git pull* from time to time.
+Next time just use readily created machine and don't forget to use *git pull* from time to time.
 
 ### Option 2. Google Colab
 
