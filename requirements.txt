@@ -6,7 +6,7 @@ ipython
 jupyter-book
 matplotlib
 numpy
-opencv-python
+opencv-python-headless
 pandas
 plotly
 pytest
