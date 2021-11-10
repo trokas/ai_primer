@@ -34,11 +34,14 @@ What to expect from a single lecture?
 
 ## Launching notebooks
 
-You can launch notebooks in Binder directly in browser, but when we come to building models that will not work and you will have to use Paperspace (with GPU), Colab or your own PC.
+You can launch notebooks while in [interactive book](https://trokas.github.io/ai_primer/README.html) by simply pressing the rocket logo. You have two options:
 
-### Option 1. Paperspace
+1. **Binder** - first choice for SVD and RF lectures. It will take some time to load, but you will have all necessary dependancies ready.
+2. **Colab** - we will use it in DNN and CNN lectures. To get faster run times click *Runtime* and *Change runtime type*, then select GPU or TPU.
 
-To have much faster training using GPU sign up for [Paperspace](https://www.paperspace.com/) and got to [gradient console](https://console.paperspace.com/gradient). Then, just follow these steps:
+Both in *Binder* and in *Colab* you can install missing packages by running `!pip install [package name]` directly in the notebook.
+
+As an alternative you can use [Paperspace](https://www.paperspace.com/), but you might end up in a que to get resources to launch the code. If you still are interested sign up for [Paperspace](https://www.paperspace.com/) and got to [gradient console](https://console.paperspace.com/gradient). Then, just follow these steps:
 
 1. Create a new *Project*
 2. Select *Notebooks* tab
@@ -53,34 +56,6 @@ To have much faster training using GPU sign up for [Paperspace](https://www.pape
 
 Next time just use readily created machine and don't forget to use *git pull* from time to time.
 
-### Option 2. Google Colab
-
-Colab is a good and popular free option, but is less flexible than Paperspace and has a slightly different Notebook flavor.
-
-1. Go to [colab page](https://colab.research.google.com/).
-2. Press Open and provide GitHub path to *ipynb* file you want to work with.
-3. Click *Runtime* and *Change runtime type*, then select GPU.
-4. You can install missing packages by running `!pip install [package name]` directly in the notebook.
-5. You can save your work to Google Drive or your GitHub.
-
-### Option 3. Own PC
-
-To run on your own PC, just clone this repo, install all packages and run jupyter as follows:
-
-```sh
-git clone https://github.com/trokas/ai_primer.git
-cd ai_primer
-pip install -r requirements.txt
-jupyter-notebook
-```
-
-If you need to install pip download this file [get-pip.py](https://bootstrap.pypa.io/get-pip.py) and launch:
-
-```
-python get-pip.py
-```
-
-More info about [pipenv](https://pipenv.pypa.io/en/latest/) and [Jupyter](https://jupyter-notebook.readthedocs.io/en/latest/ui_components.html#interactive-user-interface-tour-of-the-notebook). For proper coding I suggest to use [VSC](https://code.visualstudio.com/) and shell with [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh), but mostly we will use Jupyter Notebooks.
 
 ## (re)Sources
 
@@ -90,8 +65,3 @@ Each chapter will have a list of resources, but for now I highly recommend to st
 - [Two Minute Papers youtube channel](https://www.youtube.com/user/keeroyz)
 
 If I had to recommend a single book for beginner it will be this one - [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 2nd Edition](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/).
-
-
-```sh
-
-```
