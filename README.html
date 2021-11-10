@@ -197,23 +197,6 @@
   <a class="reference internal nav-link" href="#launching-notebooks">
    Launching notebooks
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#option-1-paperspace">
-     Option 1. Paperspace
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#option-2-google-colab">
-     Option 2. Google Colab
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#option-3-own-pc">
-     Option 3. Own PC
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#re-sources">
@@ -277,10 +260,13 @@ We have only 5 main chapters to cover.</p>
 </ul>
 <div class="section" id="launching-notebooks">
 <h2>Launching notebooks<a class="headerlink" href="#launching-notebooks" title="Permalink to this headline">¶</a></h2>
-<p>You can launch notebooks in Binder directly in browser, but when we come to building models that will not work and you will have to use Paperspace (with GPU), Colab or your own PC.</p>
-<div class="section" id="option-1-paperspace">
-<h3>Option 1. Paperspace<a class="headerlink" href="#option-1-paperspace" title="Permalink to this headline">¶</a></h3>
-<p>To have much faster training using GPU sign up for <a class="reference external" href="https://www.paperspace.com/">Paperspace</a> and got to <a class="reference external" href="https://console.paperspace.com/gradient">gradient console</a>. Then, just follow these steps:</p>
+<p>You can launch notebooks while in <a class="reference external" href="https://trokas.github.io/ai_primer/README.html">interactive book</a> by simply pressing the rocket logo. You have two options:</p>
+<ol class="simple">
+<li><p><strong>Binder</strong> - first choice for SVD and RF lectures. It will take some time to load, but you will have all necessary dependancies ready.</p></li>
+<li><p><strong>Colab</strong> - we will use it in DNN and CNN lectures. To get faster run times click <em>Runtime</em> and <em>Change runtime type</em>, then select GPU or TPU.</p></li>
+</ol>
+<p>Both in <em>Binder</em> and in <em>Colab</em> you can install missing packages by running <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">[package</span> <span class="pre">name]</span></code> directly in the notebook.</p>
+<p>As an alternative you can use <a class="reference external" href="https://www.paperspace.com/">Paperspace</a>, but you might end up in a que to get resources to launch the code. If you still are interested sign up for <a class="reference external" href="https://www.paperspace.com/">Paperspace</a> and got to <a class="reference external" href="https://console.paperspace.com/gradient">gradient console</a>. Then, just follow these steps:</p>
 <ol class="simple">
 <li><p>Create a new <em>Project</em></p></li>
 <li><p>Select <em>Notebooks</em> tab</p></li>
@@ -295,33 +281,6 @@ We have only 5 main chapters to cover.</p>
 </ol>
 <p>Next time just use readily created machine and don’t forget to use <em>git pull</em> from time to time.</p>
 </div>
-<div class="section" id="option-2-google-colab">
-<h3>Option 2. Google Colab<a class="headerlink" href="#option-2-google-colab" title="Permalink to this headline">¶</a></h3>
-<p>Colab is a good and popular free option, but is less flexible than Paperspace and has a slightly different Notebook flavor.</p>
-<ol class="simple">
-<li><p>Go to <a class="reference external" href="https://colab.research.google.com/">colab page</a>.</p></li>
-<li><p>Press Open and provide GitHub path to <em>ipynb</em> file you want to work with.</p></li>
-<li><p>Click <em>Runtime</em> and <em>Change runtime type</em>, then select GPU.</p></li>
-<li><p>You can install missing packages by running <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">[package</span> <span class="pre">name]</span></code> directly in the notebook.</p></li>
-<li><p>You can save your work to Google Drive or your GitHub.</p></li>
-</ol>
-</div>
-<div class="section" id="option-3-own-pc">
-<h3>Option 3. Own PC<a class="headerlink" href="#option-3-own-pc" title="Permalink to this headline">¶</a></h3>
-<p>To run on your own PC, just clone this repo, install all packages and run jupyter as follows:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/trokas/ai_primer.git
-<span class="nb">cd</span> ai_primer
-pip install -r requirements.txt
-jupyter-notebook
-</pre></div>
-</div>
-<p>If you need to install pip download this file <a class="reference external" href="https://bootstrap.pypa.io/get-pip.py">get-pip.py</a> and launch:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">get</span><span class="o">-</span><span class="n">pip</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-<p>More info about <a class="reference external" href="https://pipenv.pypa.io/en/latest/">pipenv</a> and <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/latest/ui_components.html#interactive-user-interface-tour-of-the-notebook">Jupyter</a>. For proper coding I suggest to use <a class="reference external" href="https://code.visualstudio.com/">VSC</a> and shell with <a class="reference external" href="https://github.com/ohmyzsh/ohmyzsh">Oh My Zsh</a>, but mostly we will use Jupyter Notebooks.</p>
-</div>
-</div>
 <div class="section" id="re-sources">
 <h2>(re)Sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h2>
 <p>Each chapter will have a list of resources, but for now I highly recommend to start listening/watching following resources on your spare time:</p>
@@ -331,9 +290,6 @@ jupyter-notebook
 <li><p><a class="reference external" href="https://www.youtube.com/user/keeroyz">Two Minute Papers youtube channel</a></p></li>
 </ul>
 <p>If I had to recommend a single book for beginner it will be this one - <a class="reference external" href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/">Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 2nd Edition</a>.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 <div class="toctree-wrapper compound">
 </div>
