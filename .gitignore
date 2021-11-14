@@ -9,3 +9,5 @@ _build/
 .nojekyll
 ml-latest-small.zip
 ml-latest-small/
+CroppedYale/
+Eigenfaces.ipynb
