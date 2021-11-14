@@ -787,7 +787,7 @@ V shape - (800, 800)
 <p>Similarly as with images SVD can be used to reveal most important components of the given dataset and thus lead to data compression. The process is called Principal Component analysis (PCA) as is executed as follows:</p>
 <ol class="simple">
 <li><p>Make sure that your dataset has samples in rows and variables in columns.</p></li>
-<li><p>Subtract mean and divide by standard deviation to normalize each variable to get <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p>Subtract mean and divide by standard deviation to normalize each variable to get <span class="math notranslate nohighlight">\(X\)</span>. To be fair subtracting mean is sufficient, but working with standard scaling is a good practice.</p></li>
 <li><p>Calculate SVD by computing <span class="math notranslate nohighlight">\(X=USV^T\)</span>.</p></li>
 <li><p>Treat <span class="math notranslate nohighlight">\(V\)</span> are principal directions/axes and <span class="math notranslate nohighlight">\(US\)</span> are principal components/scores.</p></li>
 </ol>
@@ -857,6 +857,17 @@ V shape - (800, 800)
 </div>
 </div>
 <p><strong>TASK:</strong> PCA can be used as anomaly detection simply by looking at the reconstruction error. Try to test this out using Olivetti faces dataset (<code class="docutils literal notranslate"><span class="pre">sklearn.datasets.fetch_olivetti_faces</span></code>). Just flip one or couple of images upside down so that they would look like anomalies, then encode and decode using PCA.</p>
+<p><strong>TASK:</strong> Make sure that you can repeat same exercise using SVD directly. Convince yourself that the last line of the code creates inverse transform.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X_avg</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># Average face</span>
+
+<span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">((</span><span class="n">X</span> <span class="o">-</span> <span class="n">X_avg</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>   <span class="c1"># We transpose so that image spans a column</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">100</span>                   <span class="c1"># Number of components</span>
+<span class="n">X_target</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">X_recons</span> <span class="o">=</span> <span class="n">X_avg</span> <span class="o">+</span> <span class="n">U</span><span class="p">[:,:</span><span class="n">i</span><span class="p">]</span> <span class="o">@</span> <span class="n">U</span><span class="p">[:,:</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="p">(</span><span class="n">X_target</span> <span class="o">-</span> <span class="n">X_avg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you want to have more fun with faces you can play with bigger dataset - http://vision.ucsd.edu/datasets/yale_face_dataset_original/yalefaces.zip.</p>
 </div>
 </div>
 <div class="section" id="recommender-using-svd">
