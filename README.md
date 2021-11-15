@@ -41,6 +41,8 @@ You can launch notebooks while in [interactive book](https://trokas.github.io/ai
 
 Both in *Binder* and in *Colab* you can install missing packages by running `!pip install [package name]` directly in the notebook.
 
+**NOTE:** *Binder* and *Colab* will not save your changes between sessions! Download notebook before closing the browser.
+
 As an alternative you can use [Paperspace](https://www.paperspace.com/), but you might end up in a que to get resources to launch the code. If you still are interested sign up for [Paperspace](https://www.paperspace.com/) and got to [gradient console](https://console.paperspace.com/gradient). Then, just follow these steps:
 
 1. Create a new *Project*
