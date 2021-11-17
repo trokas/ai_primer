@@ -256,8 +256,8 @@
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#answer">
-       Answer
+      <a class="reference internal nav-link" href="#possible-answer">
+       Possible answer
       </a>
      </li>
     </ul>
@@ -596,7 +596,7 @@ Correctly identified on train set - 94.29%, on test set - 97.78%
 <img alt="_images/RF_13_3.svg" src="_images/RF_13_3.svg" /><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
 Tree for max_dept = 3
 
-Correctly identified on train set - 96.19%, on test set - 100.00%
+Correctly identified on train set - 95.24%, on test set - 97.78%
 </pre></div>
 </div>
 <img alt="_images/RF_13_5.svg" src="_images/RF_13_5.svg" /></div>
@@ -614,9 +614,10 @@ Correctly identified on train set - 96.19%, on test set - 100.00%
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cancer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">cancer</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cancer</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">cancer</span><span class="o">.</span><span class="n">target</span><span class="p">]</span>
 
-<span class="c1"># Train/test mask</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">0.8</span>
+<span class="c1"># Train/test split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -880,11 +881,7 @@ dtype: int64
 <p>As before we will fit multiple trees with different max_depth’s. This time let’s plot performance on train and test sets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
-    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">max_depth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
     <span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
     <span class="c1"># Fit on train data</span>
@@ -931,7 +928,7 @@ dtype: int64
 
 <span class="c1"># Defining the base estimator</span>
 <span class="n">base</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">splitter</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span>
-                    <span class="n">max_features</span><span class="o">=</span><span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">)</span>
+                              <span class="n">max_features</span><span class="o">=</span><span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">)</span>
 
 <span class="c1"># Create Random Forest </span>
 <span class="n">ensemble</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">base</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
@@ -949,16 +946,16 @@ dtype: int64
 <span class="n">pred_test</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
     
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correctly identified on train set - </span><span class="si">{0:.02%}</span><span class="s1">, on test set - </span><span class="si">{1:.02%}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>        <span class="c1"># train set</span>
-    <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>     <span class="c1"># test set</span>
+    <span class="p">(</span><span class="n">pred_train</span> <span class="o">==</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>        <span class="c1"># train set</span>
+    <span class="p">(</span><span class="n">pred_test</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>         <span class="c1"># test set</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 100.00%, on test set - 96.06%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 99.71%, on test set - 97.81%
 
-CPU times: user 2.01 s, sys: 21.4 ms, total: 2.04 s
-Wall time: 2.07 s
+CPU times: user 992 ms, sys: 535 ms, total: 1.53 s
+Wall time: 844 ms
 </pre></div>
 </div>
 </div>
@@ -976,8 +973,9 @@ Wall time: 2.07 s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-<span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
-<span class="n">pred</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pred_train</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">pred_test</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correctly identified on train set - </span><span class="si">{0:.02%}</span><span class="s1">, on test set - </span><span class="si">{1:.02%}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
     <span class="p">(</span><span class="n">pred_train</span> <span class="o">==</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
@@ -986,10 +984,10 @@ Wall time: 2.07 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 99.71%, on test set - 97.37%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 100.00%, on test set - 96.49%
 
-CPU times: user 1.73 s, sys: 13.6 ms, total: 1.75 s
-Wall time: 1.76 s
+CPU times: user 693 ms, sys: 5.74 ms, total: 698 ms
+Wall time: 698 ms
 </pre></div>
 </div>
 </div>
@@ -1011,14 +1009,17 @@ Wall time: 1.76 s
     <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span>
     <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-<span class="c1"># TODO: train RF and compare results to the ones we had above</span>
+<span class="c1"># TODO:</span>
+<span class="c1"># 1. train RF and compare results to the ones we had above</span>
+<span class="c1"># 2. add more features</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>I suggest to try it out on your own before looking at the answer given bellow.</p>
-<div class="section" id="answer">
-<h4>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h4>
+<hr class="docutils" />
+<div class="section" id="possible-answer">
+<h4>Possible answer<a class="headerlink" href="#possible-answer" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
@@ -1094,36 +1095,51 @@ Wall time: 1.76 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style  type="text/css" >
-#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row0_col0,#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row1_col1,#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row2_col2{
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row0_col1,#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row0_col2,#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row1_col0,#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row1_col2,#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row2_col0{
-            background-color:  #fff7fb;
-            color:  #000000;
-        }#T_7f788b7a_08ad_11eb_a254_8c8590b50e14row2_col1{
-            background-color:  #f8f1f8;
-            color:  #000000;
-        }</style><table id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >setosa</th>        <th class="col_heading level0 col1" >versicolor</th>        <th class="col_heading level0 col2" >virginica</th>    </tr></thead><tbody>
-                <tr>
-                        <th id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14level0_row0" class="row_heading level0 row0" >setosa</th>
-                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row0_col0" class="data row0 col0" >29</td>
-                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row0_col1" class="data row0 col1" >0</td>
-                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row0_col2" class="data row0 col2" >0</td>
-            </tr>
-            <tr>
-                        <th id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14level0_row1" class="row_heading level0 row1" >versicolor</th>
-                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row1_col0" class="data row1 col0" >0</td>
-                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row1_col1" class="data row1 col1" >23</td>
-                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row1_col2" class="data row1 col2" >0</td>
-            </tr>
-            <tr>
-                        <th id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14level0_row2" class="row_heading level0 row2" >virginica</th>
-                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row2_col0" class="data row2 col0" >0</td>
-                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row2_col1" class="data row2 col1" >1</td>
-                        <td id="T_7f788b7a_08ad_11eb_a254_8c8590b50e14row2_col2" class="data row2 col2" >22</td>
-            </tr>
-    </tbody></table></div></div>
+<div class="output text_html"><style type="text/css">
+#T_e8f80_row0_col0, #T_e8f80_row1_col1, #T_e8f80_row2_col2 {
+  background-color: #023858;
+  color: #f1f1f1;
+}
+#T_e8f80_row0_col1, #T_e8f80_row0_col2, #T_e8f80_row1_col0, #T_e8f80_row1_col2, #T_e8f80_row2_col0 {
+  background-color: #fff7fb;
+  color: #000000;
+}
+#T_e8f80_row2_col1 {
+  background-color: #f8f1f8;
+  color: #000000;
+}
+</style>
+<table id="T_e8f80_">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th class="col_heading level0 col0" >setosa</th>
+      <th class="col_heading level0 col1" >versicolor</th>
+      <th class="col_heading level0 col2" >virginica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_e8f80_level0_row0" class="row_heading level0 row0" >setosa</th>
+      <td id="T_e8f80_row0_col0" class="data row0 col0" >29</td>
+      <td id="T_e8f80_row0_col1" class="data row0 col1" >0</td>
+      <td id="T_e8f80_row0_col2" class="data row0 col2" >0</td>
+    </tr>
+    <tr>
+      <th id="T_e8f80_level0_row1" class="row_heading level0 row1" >versicolor</th>
+      <td id="T_e8f80_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_e8f80_row1_col1" class="data row1 col1" >23</td>
+      <td id="T_e8f80_row1_col2" class="data row1 col2" >0</td>
+    </tr>
+    <tr>
+      <th id="T_e8f80_level0_row2" class="row_heading level0 row2" >virginica</th>
+      <td id="T_e8f80_row2_col0" class="data row2 col0" >0</td>
+      <td id="T_e8f80_row2_col1" class="data row2 col1" >1</td>
+      <td id="T_e8f80_row2_col2" class="data row2 col2" >22</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 </div>
 <div class="section" id="feature-importance">
@@ -1137,58 +1153,75 @@ Wall time: 1.76 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style  type="text/css" >
-#T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row0_col0{
-            background-color:  #e9e5f1;
-            color:  #000000;
-        }#T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row1_col0{
-            background-color:  #fff7fb;
-            color:  #000000;
-        }#T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row2_col0{
-            background-color:  #04649d;
-            color:  #f1f1f1;
-        }#T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row3_col0{
-            background-color:  #046097;
-            color:  #f1f1f1;
-        }#T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row4_col0{
-            background-color:  #fdf5fa;
-            color:  #000000;
-        }#T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row5_col0{
-            background-color:  #023f64;
-            color:  #f1f1f1;
-        }#T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row6_col0{
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }</style><table id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >0</th>    </tr></thead><tbody>
-                <tr>
-                        <th id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14level0_row0" class="row_heading level0 row0" >sepal length (cm)</th>
-                        <td id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row0_col0" class="data row0 col0" >0.052815</td>
-            </tr>
-            <tr>
-                        <th id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14level0_row1" class="row_heading level0 row1" >sepal width (cm)</th>
-                        <td id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row1_col0" class="data row1 col0" >0.021418</td>
-            </tr>
-            <tr>
-                        <th id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14level0_row2" class="row_heading level0 row2" >petal length (cm)</th>
-                        <td id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row2_col0" class="data row2 col0" >0.205589</td>
-            </tr>
-            <tr>
-                        <th id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14level0_row3" class="row_heading level0 row3" >petal width (cm)</th>
-                        <td id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row3_col0" class="data row3 col0" >0.209287</td>
-            </tr>
-            <tr>
-                        <th id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14level0_row4" class="row_heading level0 row4" >sepal area</th>
-                        <td id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row4_col0" class="data row4 col0" >0.025440</td>
-            </tr>
-            <tr>
-                        <th id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14level0_row5" class="row_heading level0 row5" >petal area</th>
-                        <td id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row5_col0" class="data row5 col0" >0.239397</td>
-            </tr>
-            <tr>
-                        <th id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14level0_row6" class="row_heading level0 row6" >simetry</th>
-                        <td id="T_f40c0f8e_08ad_11eb_a254_8c8590b50e14row6_col0" class="data row6 col0" >0.246055</td>
-            </tr>
-    </tbody></table></div></div>
+<div class="output text_html"><style type="text/css">
+#T_68eef_row0_col0 {
+  background-color: #ebe6f2;
+  color: #000000;
+}
+#T_68eef_row1_col0 {
+  background-color: #fef6fa;
+  color: #000000;
+}
+#T_68eef_row2_col0 {
+  background-color: #056ba7;
+  color: #f1f1f1;
+}
+#T_68eef_row3_col0 {
+  background-color: #3b92c1;
+  color: #f1f1f1;
+}
+#T_68eef_row4_col0 {
+  background-color: #fff7fb;
+  color: #000000;
+}
+#T_68eef_row5_col0 {
+  background-color: #03517e;
+  color: #f1f1f1;
+}
+#T_68eef_row6_col0 {
+  background-color: #023858;
+  color: #f1f1f1;
+}
+</style>
+<table id="T_68eef_">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th class="col_heading level0 col0" >0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_68eef_level0_row0" class="row_heading level0 row0" >sepal length (cm)</th>
+      <td id="T_68eef_row0_col0" class="data row0 col0" >0.054707</td>
+    </tr>
+    <tr>
+      <th id="T_68eef_level0_row1" class="row_heading level0 row1" >sepal width (cm)</th>
+      <td id="T_68eef_row1_col0" class="data row1 col0" >0.024466</td>
+    </tr>
+    <tr>
+      <th id="T_68eef_level0_row2" class="row_heading level0 row2" >petal length (cm)</th>
+      <td id="T_68eef_row2_col0" class="data row2 col0" >0.213389</td>
+    </tr>
+    <tr>
+      <th id="T_68eef_level0_row3" class="row_heading level0 row3" >petal width (cm)</th>
+      <td id="T_68eef_row3_col0" class="data row3 col0" >0.173020</td>
+    </tr>
+    <tr>
+      <th id="T_68eef_level0_row4" class="row_heading level0 row4" >sepal area</th>
+      <td id="T_68eef_row4_col0" class="data row4 col0" >0.022216</td>
+    </tr>
+    <tr>
+      <th id="T_68eef_level0_row5" class="row_heading level0 row5" >petal area</th>
+      <td id="T_68eef_row5_col0" class="data row5 col0" >0.245003</td>
+    </tr>
+    <tr>
+      <th id="T_68eef_level0_row6" class="row_heading level0 row6" >simetry</th>
+      <td id="T_68eef_row6_col0" class="data row6 col0" >0.267198</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 </div>
 </div>
@@ -1269,7 +1302,12 @@ Wall time: 1.76 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/RF_48_0.png" src="_images/RF_48_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Init Plugin
+Init Graph Optimizer
+Init Kernel
+</pre></div>
+</div>
+<img alt="_images/RF_48_1.png" src="_images/RF_48_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1290,7 +1328,7 @@ Wall time: 1.76 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9698
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9693
 </pre></div>
 </div>
 </div>
@@ -1305,439 +1343,182 @@ Wall time: 1.76 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style  type="text/css" >
-    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col0 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col1 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col2 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col3 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col4 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col5 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col6 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col7 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col8 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col9 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col0 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col2 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col3 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col4 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col5 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col6 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col7 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col8 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col9 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col0 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col1 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col2 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col3 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col4 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col5 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col6 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col7 {
-            background-color:  #fef6fa;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col8 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col9 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col0 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col1 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col2 {
-            background-color:  #fef6fa;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col3 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col4 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col5 {
-            background-color:  #fef6fa;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col6 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col7 {
-            background-color:  #fef6fa;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col8 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col9 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col0 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col1 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col2 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col3 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col4 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col5 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col6 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col7 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col8 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col9 {
-            background-color:  #fcf4fa;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col0 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col1 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col2 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col3 {
-            background-color:  #fdf5fa;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col4 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col5 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col6 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col7 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col8 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col9 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col0 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col1 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col2 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col3 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col4 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col5 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col6 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col7 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col8 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col9 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col0 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col1 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col2 {
-            background-color:  #fdf5fa;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col3 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col4 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col5 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col6 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col7 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col8 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col9 {
-            background-color:  #fdf5fa;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col0 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col1 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col2 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col3 {
-            background-color:  #fef6fa;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col4 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col5 {
-            background-color:  #fef6fa;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col6 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col7 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col8 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col9 {
-            background-color:  #fef6fa;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col0 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col1 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col2 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col3 {
-            background-color:  #fef6fa;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col4 {
-            background-color:  #fef6fa;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col5 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col6 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col7 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col8 {
-            background-color:  #fef6fb;
-            color:  #000000;
-        }    #T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col9 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }</style><table id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >0</th>        <th class="col_heading level0 col1" >1</th>        <th class="col_heading level0 col2" >2</th>        <th class="col_heading level0 col3" >3</th>        <th class="col_heading level0 col4" >4</th>        <th class="col_heading level0 col5" >5</th>        <th class="col_heading level0 col6" >6</th>        <th class="col_heading level0 col7" >7</th>        <th class="col_heading level0 col8" >8</th>        <th class="col_heading level0 col9" >9</th>    </tr></thead><tbody>
-                <tr>
-                        <th id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14level0_row0" class="row_heading level0 row0" >0</th>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col0" class="data row0 col0" >968</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col1" class="data row0 col1" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col2" class="data row0 col2" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col3" class="data row0 col3" >1</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col4" class="data row0 col4" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col5" class="data row0 col5" >3</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col6" class="data row0 col6" >5</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col7" class="data row0 col7" >1</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col8" class="data row0 col8" >2</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row0_col9" class="data row0 col9" >0</td>
-            </tr>
-            <tr>
-                        <th id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14level0_row1" class="row_heading level0 row1" >1</th>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col0" class="data row1 col0" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col1" class="data row1 col1" >1124</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col2" class="data row1 col2" >1</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col3" class="data row1 col3" >4</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col4" class="data row1 col4" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col5" class="data row1 col5" >2</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col6" class="data row1 col6" >2</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col7" class="data row1 col7" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col8" class="data row1 col8" >1</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row1_col9" class="data row1 col9" >1</td>
-            </tr>
-            <tr>
-                        <th id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14level0_row2" class="row_heading level0 row2" >2</th>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col0" class="data row2 col0" >6</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col1" class="data row2 col1" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col2" class="data row2 col2" >999</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col3" class="data row2 col3" >5</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col4" class="data row2 col4" >3</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col5" class="data row2 col5" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col6" class="data row2 col6" >3</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col7" class="data row2 col7" >9</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col8" class="data row2 col8" >7</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row2_col9" class="data row2 col9" >0</td>
-            </tr>
-            <tr>
-                        <th id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14level0_row3" class="row_heading level0 row3" >3</th>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col0" class="data row3 col0" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col1" class="data row3 col1" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col2" class="data row3 col2" >11</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col3" class="data row3 col3" >971</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col4" class="data row3 col4" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col5" class="data row3 col5" >10</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col6" class="data row3 col6" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col7" class="data row3 col7" >9</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col8" class="data row3 col8" >6</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row3_col9" class="data row3 col9" >3</td>
-            </tr>
-            <tr>
-                        <th id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14level0_row4" class="row_heading level0 row4" >4</th>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col0" class="data row4 col0" >1</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col1" class="data row4 col1" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col2" class="data row4 col2" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col3" class="data row4 col3" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col4" class="data row4 col4" >953</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col5" class="data row4 col5" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col6" class="data row4 col6" >6</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col7" class="data row4 col7" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col8" class="data row4 col8" >3</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row4_col9" class="data row4 col9" >19</td>
-            </tr>
-            <tr>
-                        <th id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14level0_row5" class="row_heading level0 row5" >5</th>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col0" class="data row5 col0" >4</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col1" class="data row5 col1" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col2" class="data row5 col2" >1</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col3" class="data row5 col3" >12</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col4" class="data row5 col4" >4</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col5" class="data row5 col5" >856</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col6" class="data row5 col6" >6</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col7" class="data row5 col7" >2</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col8" class="data row5 col8" >6</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row5_col9" class="data row5 col9" >1</td>
-            </tr>
-            <tr>
-                        <th id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14level0_row6" class="row_heading level0 row6" >6</th>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col0" class="data row6 col0" >5</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col1" class="data row6 col1" >3</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col2" class="data row6 col2" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col3" class="data row6 col3" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col4" class="data row6 col4" >3</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col5" class="data row6 col5" >3</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col6" class="data row6 col6" >941</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col7" class="data row6 col7" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col8" class="data row6 col8" >3</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row6_col9" class="data row6 col9" >0</td>
-            </tr>
-            <tr>
-                        <th id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14level0_row7" class="row_heading level0 row7" >7</th>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col0" class="data row7 col0" >2</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col1" class="data row7 col1" >2</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col2" class="data row7 col2" >19</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col3" class="data row7 col3" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col4" class="data row7 col4" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col5" class="data row7 col5" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col6" class="data row7 col6" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col7" class="data row7 col7" >991</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col8" class="data row7 col8" >2</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row7_col9" class="data row7 col9" >12</td>
-            </tr>
-            <tr>
-                        <th id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14level0_row8" class="row_heading level0 row8" >8</th>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col0" class="data row8 col0" >5</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col1" class="data row8 col1" >0</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col2" class="data row8 col2" >4</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col3" class="data row8 col3" >8</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col4" class="data row8 col4" >2</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col5" class="data row8 col5" >7</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col6" class="data row8 col6" >3</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col7" class="data row8 col7" >3</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col8" class="data row8 col8" >934</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row8_col9" class="data row8 col9" >8</td>
-            </tr>
-            <tr>
-                        <th id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14level0_row9" class="row_heading level0 row9" >9</th>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col0" class="data row9 col0" >6</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col1" class="data row9 col1" >4</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col2" class="data row9 col2" >3</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col3" class="data row9 col3" >10</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col4" class="data row9 col4" >10</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col5" class="data row9 col5" >3</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col6" class="data row9 col6" >1</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col7" class="data row9 col7" >5</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col8" class="data row9 col8" >6</td>
-                        <td id="T_a6a6fd2a_7740_11ea_84ad_8c8590b50e14row9_col9" class="data row9 col9" >961</td>
-            </tr>
-    </tbody></table></div></div>
+<div class="output text_html"><style type="text/css">
+#T_5fd8a_row0_col0, #T_5fd8a_row1_col1, #T_5fd8a_row2_col2, #T_5fd8a_row3_col3, #T_5fd8a_row4_col4, #T_5fd8a_row5_col5, #T_5fd8a_row6_col6, #T_5fd8a_row7_col7, #T_5fd8a_row8_col8, #T_5fd8a_row9_col9 {
+  background-color: #023858;
+  color: #f1f1f1;
+}
+#T_5fd8a_row0_col1, #T_5fd8a_row0_col2, #T_5fd8a_row0_col3, #T_5fd8a_row0_col4, #T_5fd8a_row0_col5, #T_5fd8a_row0_col6, #T_5fd8a_row0_col7, #T_5fd8a_row0_col8, #T_5fd8a_row0_col9, #T_5fd8a_row1_col0, #T_5fd8a_row1_col2, #T_5fd8a_row1_col3, #T_5fd8a_row1_col4, #T_5fd8a_row1_col5, #T_5fd8a_row1_col6, #T_5fd8a_row1_col7, #T_5fd8a_row1_col8, #T_5fd8a_row1_col9, #T_5fd8a_row2_col1, #T_5fd8a_row2_col4, #T_5fd8a_row2_col5, #T_5fd8a_row2_col9, #T_5fd8a_row3_col0, #T_5fd8a_row3_col1, #T_5fd8a_row3_col4, #T_5fd8a_row3_col6, #T_5fd8a_row4_col0, #T_5fd8a_row4_col1, #T_5fd8a_row4_col2, #T_5fd8a_row4_col3, #T_5fd8a_row4_col5, #T_5fd8a_row4_col7, #T_5fd8a_row4_col8, #T_5fd8a_row5_col0, #T_5fd8a_row5_col1, #T_5fd8a_row5_col2, #T_5fd8a_row5_col4, #T_5fd8a_row5_col7, #T_5fd8a_row5_col8, #T_5fd8a_row5_col9, #T_5fd8a_row6_col1, #T_5fd8a_row6_col2, #T_5fd8a_row6_col3, #T_5fd8a_row6_col4, #T_5fd8a_row6_col7, #T_5fd8a_row6_col8, #T_5fd8a_row6_col9, #T_5fd8a_row7_col0, #T_5fd8a_row7_col1, #T_5fd8a_row7_col3, #T_5fd8a_row7_col4, #T_5fd8a_row7_col5, #T_5fd8a_row7_col6, #T_5fd8a_row7_col8, #T_5fd8a_row8_col1, #T_5fd8a_row9_col2, #T_5fd8a_row9_col6 {
+  background-color: #fff7fb;
+  color: #000000;
+}
+#T_5fd8a_row2_col0, #T_5fd8a_row2_col3, #T_5fd8a_row2_col6, #T_5fd8a_row2_col8, #T_5fd8a_row3_col5, #T_5fd8a_row3_col8, #T_5fd8a_row3_col9, #T_5fd8a_row4_col6, #T_5fd8a_row5_col6, #T_5fd8a_row6_col0, #T_5fd8a_row6_col5, #T_5fd8a_row8_col0, #T_5fd8a_row8_col2, #T_5fd8a_row8_col4, #T_5fd8a_row8_col5, #T_5fd8a_row8_col6, #T_5fd8a_row8_col7, #T_5fd8a_row9_col0, #T_5fd8a_row9_col1, #T_5fd8a_row9_col5, #T_5fd8a_row9_col7, #T_5fd8a_row9_col8 {
+  background-color: #fef6fb;
+  color: #000000;
+}
+#T_5fd8a_row2_col7, #T_5fd8a_row3_col7, #T_5fd8a_row7_col9, #T_5fd8a_row8_col3, #T_5fd8a_row8_col9, #T_5fd8a_row9_col4 {
+  background-color: #fef6fa;
+  color: #000000;
+}
+#T_5fd8a_row3_col2, #T_5fd8a_row4_col9, #T_5fd8a_row9_col3 {
+  background-color: #fdf5fa;
+  color: #000000;
+}
+#T_5fd8a_row5_col3, #T_5fd8a_row7_col2 {
+  background-color: #fcf4fa;
+  color: #000000;
+}
+</style>
+<table id="T_5fd8a_">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th class="col_heading level0 col0" >0</th>
+      <th class="col_heading level0 col1" >1</th>
+      <th class="col_heading level0 col2" >2</th>
+      <th class="col_heading level0 col3" >3</th>
+      <th class="col_heading level0 col4" >4</th>
+      <th class="col_heading level0 col5" >5</th>
+      <th class="col_heading level0 col6" >6</th>
+      <th class="col_heading level0 col7" >7</th>
+      <th class="col_heading level0 col8" >8</th>
+      <th class="col_heading level0 col9" >9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_5fd8a_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_5fd8a_row0_col0" class="data row0 col0" >972</td>
+      <td id="T_5fd8a_row0_col1" class="data row0 col1" >0</td>
+      <td id="T_5fd8a_row0_col2" class="data row0 col2" >0</td>
+      <td id="T_5fd8a_row0_col3" class="data row0 col3" >0</td>
+      <td id="T_5fd8a_row0_col4" class="data row0 col4" >0</td>
+      <td id="T_5fd8a_row0_col5" class="data row0 col5" >2</td>
+      <td id="T_5fd8a_row0_col6" class="data row0 col6" >1</td>
+      <td id="T_5fd8a_row0_col7" class="data row0 col7" >1</td>
+      <td id="T_5fd8a_row0_col8" class="data row0 col8" >3</td>
+      <td id="T_5fd8a_row0_col9" class="data row0 col9" >1</td>
+    </tr>
+    <tr>
+      <th id="T_5fd8a_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_5fd8a_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_5fd8a_row1_col1" class="data row1 col1" >1123</td>
+      <td id="T_5fd8a_row1_col2" class="data row1 col2" >2</td>
+      <td id="T_5fd8a_row1_col3" class="data row1 col3" >3</td>
+      <td id="T_5fd8a_row1_col4" class="data row1 col4" >0</td>
+      <td id="T_5fd8a_row1_col5" class="data row1 col5" >2</td>
+      <td id="T_5fd8a_row1_col6" class="data row1 col6" >2</td>
+      <td id="T_5fd8a_row1_col7" class="data row1 col7" >0</td>
+      <td id="T_5fd8a_row1_col8" class="data row1 col8" >2</td>
+      <td id="T_5fd8a_row1_col9" class="data row1 col9" >1</td>
+    </tr>
+    <tr>
+      <th id="T_5fd8a_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_5fd8a_row2_col0" class="data row2 col0" >7</td>
+      <td id="T_5fd8a_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_5fd8a_row2_col2" class="data row2 col2" >1000</td>
+      <td id="T_5fd8a_row2_col3" class="data row2 col3" >4</td>
+      <td id="T_5fd8a_row2_col4" class="data row2 col4" >2</td>
+      <td id="T_5fd8a_row2_col5" class="data row2 col5" >0</td>
+      <td id="T_5fd8a_row2_col6" class="data row2 col6" >4</td>
+      <td id="T_5fd8a_row2_col7" class="data row2 col7" >8</td>
+      <td id="T_5fd8a_row2_col8" class="data row2 col8" >7</td>
+      <td id="T_5fd8a_row2_col9" class="data row2 col9" >0</td>
+    </tr>
+    <tr>
+      <th id="T_5fd8a_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_5fd8a_row3_col0" class="data row3 col0" >1</td>
+      <td id="T_5fd8a_row3_col1" class="data row3 col1" >0</td>
+      <td id="T_5fd8a_row3_col2" class="data row3 col2" >12</td>
+      <td id="T_5fd8a_row3_col3" class="data row3 col3" >971</td>
+      <td id="T_5fd8a_row3_col4" class="data row3 col4" >0</td>
+      <td id="T_5fd8a_row3_col5" class="data row3 col5" >6</td>
+      <td id="T_5fd8a_row3_col6" class="data row3 col6" >0</td>
+      <td id="T_5fd8a_row3_col7" class="data row3 col7" >9</td>
+      <td id="T_5fd8a_row3_col8" class="data row3 col8" >7</td>
+      <td id="T_5fd8a_row3_col9" class="data row3 col9" >4</td>
+    </tr>
+    <tr>
+      <th id="T_5fd8a_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_5fd8a_row4_col0" class="data row4 col0" >1</td>
+      <td id="T_5fd8a_row4_col1" class="data row4 col1" >0</td>
+      <td id="T_5fd8a_row4_col2" class="data row4 col2" >2</td>
+      <td id="T_5fd8a_row4_col3" class="data row4 col3" >0</td>
+      <td id="T_5fd8a_row4_col4" class="data row4 col4" >956</td>
+      <td id="T_5fd8a_row4_col5" class="data row4 col5" >0</td>
+      <td id="T_5fd8a_row4_col6" class="data row4 col6" >4</td>
+      <td id="T_5fd8a_row4_col7" class="data row4 col7" >0</td>
+      <td id="T_5fd8a_row4_col8" class="data row4 col8" >2</td>
+      <td id="T_5fd8a_row4_col9" class="data row4 col9" >17</td>
+    </tr>
+    <tr>
+      <th id="T_5fd8a_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_5fd8a_row5_col0" class="data row5 col0" >3</td>
+      <td id="T_5fd8a_row5_col1" class="data row5 col1" >1</td>
+      <td id="T_5fd8a_row5_col2" class="data row5 col2" >1</td>
+      <td id="T_5fd8a_row5_col3" class="data row5 col3" >20</td>
+      <td id="T_5fd8a_row5_col4" class="data row5 col4" >2</td>
+      <td id="T_5fd8a_row5_col5" class="data row5 col5" >855</td>
+      <td id="T_5fd8a_row5_col6" class="data row5 col6" >4</td>
+      <td id="T_5fd8a_row5_col7" class="data row5 col7" >1</td>
+      <td id="T_5fd8a_row5_col8" class="data row5 col8" >4</td>
+      <td id="T_5fd8a_row5_col9" class="data row5 col9" >1</td>
+    </tr>
+    <tr>
+      <th id="T_5fd8a_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_5fd8a_row6_col0" class="data row6 col0" >6</td>
+      <td id="T_5fd8a_row6_col1" class="data row6 col1" >3</td>
+      <td id="T_5fd8a_row6_col2" class="data row6 col2" >0</td>
+      <td id="T_5fd8a_row6_col3" class="data row6 col3" >0</td>
+      <td id="T_5fd8a_row6_col4" class="data row6 col4" >2</td>
+      <td id="T_5fd8a_row6_col5" class="data row6 col5" >4</td>
+      <td id="T_5fd8a_row6_col6" class="data row6 col6" >941</td>
+      <td id="T_5fd8a_row6_col7" class="data row6 col7" >0</td>
+      <td id="T_5fd8a_row6_col8" class="data row6 col8" >2</td>
+      <td id="T_5fd8a_row6_col9" class="data row6 col9" >0</td>
+    </tr>
+    <tr>
+      <th id="T_5fd8a_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_5fd8a_row7_col0" class="data row7 col0" >1</td>
+      <td id="T_5fd8a_row7_col1" class="data row7 col1" >3</td>
+      <td id="T_5fd8a_row7_col2" class="data row7 col2" >21</td>
+      <td id="T_5fd8a_row7_col3" class="data row7 col3" >1</td>
+      <td id="T_5fd8a_row7_col4" class="data row7 col4" >1</td>
+      <td id="T_5fd8a_row7_col5" class="data row7 col5" >0</td>
+      <td id="T_5fd8a_row7_col6" class="data row7 col6" >0</td>
+      <td id="T_5fd8a_row7_col7" class="data row7 col7" >989</td>
+      <td id="T_5fd8a_row7_col8" class="data row7 col8" >1</td>
+      <td id="T_5fd8a_row7_col9" class="data row7 col9" >11</td>
+    </tr>
+    <tr>
+      <th id="T_5fd8a_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_5fd8a_row8_col0" class="data row8 col0" >4</td>
+      <td id="T_5fd8a_row8_col1" class="data row8 col1" >0</td>
+      <td id="T_5fd8a_row8_col2" class="data row8 col2" >4</td>
+      <td id="T_5fd8a_row8_col3" class="data row8 col3" >9</td>
+      <td id="T_5fd8a_row8_col4" class="data row8 col4" >5</td>
+      <td id="T_5fd8a_row8_col5" class="data row8 col5" >6</td>
+      <td id="T_5fd8a_row8_col6" class="data row8 col6" >6</td>
+      <td id="T_5fd8a_row8_col7" class="data row8 col7" >4</td>
+      <td id="T_5fd8a_row8_col8" class="data row8 col8" >928</td>
+      <td id="T_5fd8a_row8_col9" class="data row8 col9" >8</td>
+    </tr>
+    <tr>
+      <th id="T_5fd8a_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_5fd8a_row9_col0" class="data row9 col0" >6</td>
+      <td id="T_5fd8a_row9_col1" class="data row9 col1" >6</td>
+      <td id="T_5fd8a_row9_col2" class="data row9 col2" >2</td>
+      <td id="T_5fd8a_row9_col3" class="data row9 col3" >12</td>
+      <td id="T_5fd8a_row9_col4" class="data row9 col4" >11</td>
+      <td id="T_5fd8a_row9_col5" class="data row9 col5" >4</td>
+      <td id="T_5fd8a_row9_col6" class="data row9 col6" >1</td>
+      <td id="T_5fd8a_row9_col7" class="data row9 col7" >4</td>
+      <td id="T_5fd8a_row9_col8" class="data row9 col8" >5</td>
+      <td id="T_5fd8a_row9_col9" class="data row9 col9" >958</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 <p>True labels are on the left and predicted ones on the top. Quick glimpse gives you insightes like - RF makes most mistakes while identifying actual 7 as 2 and actual 4 as 9. What other insights can you give?</p>
 <p>Soon we will see that using neural networks we can avoid some of these mistakes, but key insight here is that RF is good method even for complex tasks as this one.</p>
