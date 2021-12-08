@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bandits &#8212; AI primer</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">AI primer</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   Welcome to AI primer course
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="SVD.html">
+   SVD (Singular Value Decomposition)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="RF.html">
+   RF (Random Forest)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DNN.html">
+   DNN (Deep Neural Networks)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CNN.html">
+   CNN (Convolutional Neural Networks)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TD.html">
+   TD (Temporal Difference)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Varia.html">
+   Varia
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Project.html">
+   Project: Flatland
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/RL_extra.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/trokas/ai_primer/master?urlpath=tree/RL_extra.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/RL_extra.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Bandits
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q-learning">
+   Q-Learning
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cartpole-and-dqn">
+   Cartpole and DQN
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#muzero">
+   MuZero
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>Run following command to install deps:</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">keras-rl2</span> <span class="pre">gym</span></code></p>
+<p>If you are interested dig deeper:</p>
+<ul class="simple">
+<li><p>Read what <a class="reference external" href="https://deepmind.com/blog/article/deep-reinforcement-learning">deepmind</a> is doing.</p></li>
+<li><p>Read what <a class="reference external" href="https://openai.com/">openAI</a> is doing.</p></li>
+<li><p>Watch <a class="reference external" href="https://www.imdb.com/title/tt6700846/">AlphaGO</a> movie and read <a class="reference external" href="https://www.nature.com/articles/nature16961">paper</a>.</p></li>
+<li><p>Work through <a class="reference external" href="https://github.com/trokas/Deep_RL">Deep RL</a>, which contains more examples and intuitive lower level implementations. This <a class="reference external" href="https://medium.com/&#64;awjuliani/super-simple-reinforcement-learning-tutorial-part-2-ded33892c724">medium</a> series is great.</p></li>
+<li><p>Read book “Deep Reinforcement Learning Hands-On” by Maxim Laptan.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gym</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Flatten</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.optimizers</span> <span class="kn">import</span> <span class="n">Adam</span>
+
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">beta</span>
+
+<span class="kn">from</span> <span class="nn">rl.agents.dqn</span> <span class="kn">import</span> <span class="n">DQNAgent</span>
+<span class="kn">from</span> <span class="nn">rl.policy</span> <span class="kn">import</span> <span class="n">EpsGreedyQPolicy</span>
+<span class="kn">from</span> <span class="nn">rl.memory</span> <span class="kn">import</span> <span class="n">SequentialMemory</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bandits">
+<h1>Bandits<a class="headerlink" href="#bandits" title="Permalink to this headline">¶</a></h1>
+<p>First we need an experiment, for example let’s set up 3 arm bandit so that first hand gives highest reward.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BANDITS</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]</span>  <span class="c1"># arm 1 wins with prob of 50%</span>
+
+<span class="k">def</span> <span class="nf">pull</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">BANDITS</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">else</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can implement multi-armed bandit algorithm based on bayesian update</p>
+<div class="math notranslate nohighlight">
+\[P(\theta | x)=\frac{P(x | \theta) P(\theta)}{P(x)}.\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pulls</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">BANDITS</span><span class="p">))]</span>  <span class="c1"># How much pulls were executed</span>
+<span class="n">wins</span> <span class="o">=</span>  <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">BANDITS</span><span class="p">))]</span>  <span class="c1"># Number of wins</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>    <span class="c1"># Number of pulls to do</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">priors</span> <span class="o">=</span> <span class="p">[</span><span class="n">beta</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">w</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">p</span> <span class="o">-</span> <span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pulls</span><span class="p">,</span> <span class="n">wins</span><span class="p">)]</span>
+    <span class="c1"># Choose a &#39;best&#39; bandit based on probabilities</span>
+    <span class="n">chosen_arm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">priors</span><span class="p">])</span>
+    <span class="c1"># Pull and record to output</span>
+    <span class="n">reward</span> <span class="o">=</span> <span class="n">pull</span><span class="p">(</span><span class="n">chosen_arm</span><span class="p">)</span>
+    <span class="n">pulls</span><span class="p">[</span><span class="n">chosen_arm</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">wins</span><span class="p">[</span><span class="n">chosen_arm</span><span class="p">]</span> <span class="o">+=</span> <span class="n">reward</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total pulls&#39;</span><span class="p">,</span> <span class="n">pulls</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total wins &#39;</span><span class="p">,</span> <span class="n">wins</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total pulls [17, 1, 2]
+Total wins  [14, 0, 0]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">priors</span><span class="p">):</span>
+    <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;arm_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/RL_extra_6_0.png" src="_images/RL_extra_6_0.png" />
+</div>
+</div>
+<p><strong>TASK:</strong> rerun with higher number of experiments. Do the distributions look better then?</p>
+<p>Usually only to exploit the system is not a good idea and <em>epsilon-greedy</em> can help to balance out explore/exploit.</p>
+<p>Idea of <em>epsilon-greedy</em> is simple:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">random_number</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
+    <span class="c1"># choose arm to pull randomly</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># choose optimal arm based on pulls and wins</span>
+</pre></div>
+</div>
+<p><strong>TASK:</strong> implement epsilon-greedy and run some experiments with different epsilon values. Try to reson when epsilon-greedy might be a better choice.</p>
+</div>
+<div class="section" id="q-learning">
+<h1>Q-Learning<a class="headerlink" href="#q-learning" title="Permalink to this headline">¶</a></h1>
+<p>Q-learning is a model-free RL algorithm to learn quality of actions telling an agent what action to take under what circumstances. Idea is simple - we will store values in state/action table and use it as a reference for making actions.</p>
+<p>Let’s start by looking at markov decision process based game:</p>
+<img src="img/markov_decision_process.png" alt="Markov decision process" style="width: 600px;"/>
+<p>This can be represented with transition weights as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transition_probabilities</span> <span class="o">=</span> <span class="p">[</span> <span class="c1"># shape=[s, a, s&#39;]</span>
+        <span class="p">[[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]],</span>
+        <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]],</span>
+        <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="kc">None</span><span class="p">]]</span>
+<span class="n">rewards</span> <span class="o">=</span> <span class="p">[</span> <span class="c1"># shape=[s, a, s&#39;]</span>
+        <span class="p">[[</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>
+        <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">]],</span>
+        <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">+</span><span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]]</span>
+<span class="n">possible_actions</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we will try to run through iterative optimization process</p>
+<div class="math notranslate nohighlight">
+\[Q_{k+1} (s,a) \leftarrow \sum_{s'} T(s,a,s') [R(s,a,s') + \gamma \max_{a'} Q_k(s', a')] \; \text{for all} \; (s'a).\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Q_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span> <span class="c1"># -np.inf for impossible actions</span>
+<span class="k">for</span> <span class="n">state</span><span class="p">,</span> <span class="n">actions</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">possible_actions</span><span class="p">):</span>
+    <span class="n">Q_values</span><span class="p">[</span><span class="n">state</span><span class="p">,</span> <span class="n">actions</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># for all possible actions</span>
+    
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.90</span> <span class="c1"># the discount factor</span>
+
+<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">Q_prev</span> <span class="o">=</span> <span class="n">Q_values</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">possible_actions</span><span class="p">[</span><span class="n">s</span><span class="p">]:</span>
+            <span class="n">Q_values</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span>
+                    <span class="n">transition_probabilities</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">a</span><span class="p">][</span><span class="n">sp</span><span class="p">]</span>
+                    <span class="o">*</span> <span class="p">(</span><span class="n">rewards</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">a</span><span class="p">][</span><span class="n">sp</span><span class="p">]</span> <span class="o">+</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Q_prev</span><span class="p">[</span><span class="n">sp</span><span class="p">]))</span>
+                <span class="k">for</span> <span class="n">sp</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Q_values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[18.91891892, 17.02702702, 13.62162162],
+       [ 0.        ,        -inf, -4.87971488],
+       [       -inf, 50.13365013,        -inf]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The idea of using discounted rewards in Q-states is one of the fundamental ideas in RL. For sure we don’t know initial probabilities and rewards, but as we will see we can learn them.</p>
+</div>
+<div class="section" id="cartpole-and-dqn">
+<h1>Cartpole and DQN<a class="headerlink" href="#cartpole-and-dqn" title="Permalink to this headline">¶</a></h1>
+<p>Get the environment and extract the number of actions.</p>
+<p>We will try to balance a stick - <a class="reference external" href="https://github.com/openai/gym/wiki/CartPole-v0">CartPole</a></p>
+<p><img alt="" src="https://miro.medium.com/max/960/1*G_whtIrY9fGlw3It6HFfhA.gif" /></p>
+<p>To meet provide this challenge we are going to utilize the <a class="reference external" href="https://gym.openai.com/docs/">OpenAI gym</a>, a collection of reinforcement learning environments.</p>
+<ul class="simple">
+<li><p>Observations — The agent needs to know where pole currently is, and the angle at which it is balancing.</p></li>
+<li><p>Delayed reward — Keeping the pole in the air as long as possible means moving in ways that will be advantageous for both the present and the future.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;CartPole-v0&#39;</span><span class="p">)</span>
+<span class="n">nb_actions</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">n</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of actions&#39;</span><span class="p">,</span> <span class="n">nb_actions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of actions 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s build a simple NN model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">nb_actions</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential&quot;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+flatten (Flatten)            (None, 4)                 0         
+_________________________________________________________________
+dense (Dense)                (None, 16)                80        
+_________________________________________________________________
+dense_1 (Dense)              (None, 16)                272       
+_________________________________________________________________
+dense_2 (Dense)              (None, 16)                272       
+_________________________________________________________________
+dense_3 (Dense)              (None, 2)                 34        
+=================================================================
+Total params: 658
+Trainable params: 658
+Non-trainable params: 0
+_________________________________________________________________
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we configure and compile our agent. We will use Epsilon Greedy:</p>
+<ul class="simple">
+<li><p>All actions initially are tried with non-zero probability</p></li>
+<li><p>With probability <span class="math notranslate nohighlight">\(1-\epsilon\)</span> choose the greedy action</p></li>
+<li><p>With probability <span class="math notranslate nohighlight">\(\epsilon\)</span> choose an action ar random</p></li>
+</ul>
+<p>and we will estimate target Q-Value using reward and the future discounted value estimate</p>
+<div class="math notranslate nohighlight">
+\[Q_{target}(s,a) = r + \gamma \cdot \max_{a'} Q_\theta (s', a').\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">policy</span> <span class="o">=</span> <span class="n">EpsGreedyQPolicy</span><span class="p">()</span>
+<span class="n">memory</span> <span class="o">=</span> <span class="n">SequentialMemory</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">50000</span><span class="p">,</span> <span class="n">window_length</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dqn</span> <span class="o">=</span> <span class="n">DQNAgent</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">nb_actions</span><span class="o">=</span><span class="n">nb_actions</span><span class="p">,</span>
+               <span class="n">memory</span><span class="o">=</span><span class="n">memory</span><span class="p">,</span> <span class="n">nb_steps_warmup</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
+               <span class="n">target_model_update</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="n">policy</span><span class="p">)</span>
+<span class="n">dqn</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">),</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mae&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s see how it looks like before training. Note, that pole does not have to fall fully for gym to note it as a failed play.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dqn</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">nb_episodes</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Testing for 5 episodes ...
+WARNING:tensorflow:From /Users/trokas/.local/share/virtualenvs/current-rcFo7dEP/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_v1.py:2070: Model.state_updates (from tensorflow.python.keras.engine.training) is deprecated and will be removed in a future version.
+Instructions for updating:
+This property should not be used in TensorFlow 2.0, as updates are applied automatically.
+Episode 1: reward: 9.000, steps: 9
+Episode 2: reward: 10.000, steps: 10
+Episode 3: reward: 8.000, steps: 8
+Episode 4: reward: 9.000, steps: 9
+Episode 5: reward: 9.000, steps: 9
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x14bf72d90&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyglet.gl</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Okay, now it’s time to learn something! You can visualize the training by setting <code class="docutils literal notranslate"><span class="pre">visualize=True</span></code>, but this
+slows down training quite a lot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dqn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">nb_steps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">visualize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training for 5000 steps ...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/trokas/.local/share/virtualenvs/current-rcFo7dEP/lib/python3.7/site-packages/rl/memory.py:40: UserWarning: Not enough entries to sample without replacement. Consider increasing your warm-up phase to avoid oversampling!
+  warnings.warn(&#39;Not enough entries to sample without replacement. Consider increasing your warm-up phase to avoid oversampling!&#39;)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   12/5000: episode: 1, duration: 0.519s, episode steps:  12, steps per second:  23, episode reward: 12.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.917 [0.000, 1.000],  loss: 0.470474, mae: 0.588689, mean_q: -0.165078
+   22/5000: episode: 2, duration: 0.061s, episode steps:  10, steps per second: 164, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.430313, mae: 0.540784, mean_q: -0.092450
+   31/5000: episode: 3, duration: 0.070s, episode steps:   9, steps per second: 129, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.335967, mae: 0.472474, mean_q: 0.008541
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/trokas/.local/share/virtualenvs/current-rcFo7dEP/lib/python3.7/site-packages/rl/memory.py:40: UserWarning: Not enough entries to sample without replacement. Consider increasing your warm-up phase to avoid oversampling!
+  warnings.warn(&#39;Not enough entries to sample without replacement. Consider increasing your warm-up phase to avoid oversampling!&#39;)
+/Users/trokas/.local/share/virtualenvs/current-rcFo7dEP/lib/python3.7/site-packages/rl/memory.py:40: UserWarning: Not enough entries to sample without replacement. Consider increasing your warm-up phase to avoid oversampling!
+  warnings.warn(&#39;Not enough entries to sample without replacement. Consider increasing your warm-up phase to avoid oversampling!&#39;)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   41/5000: episode: 4, duration: 0.081s, episode steps:  10, steps per second: 124, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.275959, mae: 0.449669, mean_q: 0.118187
+   51/5000: episode: 5, duration: 0.092s, episode steps:  10, steps per second: 108, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.222271, mae: 0.432547, mean_q: 0.234795
+   59/5000: episode: 6, duration: 0.051s, episode steps:   8, steps per second: 156, episode reward:  8.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.174522, mae: 0.418035, mean_q: 0.355626
+   69/5000: episode: 7, duration: 0.060s, episode steps:  10, steps per second: 167, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.141265, mae: 0.404698, mean_q: 0.483447
+   79/5000: episode: 8, duration: 0.071s, episode steps:  10, steps per second: 141, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.900 [0.000, 1.000],  loss: 0.109955, mae: 0.393378, mean_q: 0.658335
+   91/5000: episode: 9, duration: 0.079s, episode steps:  12, steps per second: 152, episode reward: 12.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.917 [0.000, 1.000],  loss: 0.091450, mae: 0.396206, mean_q: 0.877767
+  100/5000: episode: 10, duration: 0.063s, episode steps:   9, steps per second: 142, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.071080, mae: 0.367935, mean_q: 1.070451
+  110/5000: episode: 11, duration: 0.080s, episode steps:  10, steps per second: 125, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.040656, mae: 0.277581, mean_q: 1.128758
+  122/5000: episode: 12, duration: 0.068s, episode steps:  12, steps per second: 175, episode reward: 12.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.917 [0.000, 1.000],  loss: 0.039916, mae: 0.235055, mean_q: 1.220565
+  133/5000: episode: 13, duration: 0.064s, episode steps:  11, steps per second: 173, episode reward: 11.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.037617, mae: 0.185672, mean_q: 1.301775
+  142/5000: episode: 14, duration: 0.064s, episode steps:   9, steps per second: 140, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.029914, mae: 0.136788, mean_q: 1.329070
+  153/5000: episode: 15, duration: 0.074s, episode steps:  11, steps per second: 149, episode reward: 11.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.020719, mae: 0.097963, mean_q: 1.405725
+  162/5000: episode: 16, duration: 0.052s, episode steps:   9, steps per second: 172, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.028612, mae: 0.103295, mean_q: 1.469801
+  172/5000: episode: 17, duration: 0.073s, episode steps:  10, steps per second: 137, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.049274, mae: 0.166730, mean_q: 1.473215
+  180/5000: episode: 18, duration: 0.047s, episode steps:   8, steps per second: 171, episode reward:  8.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.050855, mae: 0.227547, mean_q: 1.582873
+  191/5000: episode: 19, duration: 0.071s, episode steps:  11, steps per second: 155, episode reward: 11.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.909 [0.000, 1.000],  loss: 0.036931, mae: 0.293956, mean_q: 1.573139
+  201/5000: episode: 20, duration: 0.057s, episode steps:  10, steps per second: 176, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.900 [0.000, 1.000],  loss: 0.037119, mae: 0.372745, mean_q: 1.674690
+  214/5000: episode: 21, duration: 0.086s, episode steps:  13, steps per second: 150, episode reward: 13.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.923 [0.000, 1.000],  loss: 0.031381, mae: 0.466767, mean_q: 1.717232
+  224/5000: episode: 22, duration: 0.062s, episode steps:  10, steps per second: 162, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.026674, mae: 0.542755, mean_q: 1.758591
+  235/5000: episode: 23, duration: 0.067s, episode steps:  11, steps per second: 164, episode reward: 11.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.027041, mae: 0.612402, mean_q: 1.860339
+  246/5000: episode: 24, duration: 0.063s, episode steps:  11, steps per second: 174, episode reward: 11.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.909 [0.000, 1.000],  loss: 0.027587, mae: 0.699082, mean_q: 1.904512
+  256/5000: episode: 25, duration: 0.072s, episode steps:  10, steps per second: 138, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.900 [0.000, 1.000],  loss: 0.029212, mae: 0.805567, mean_q: 1.940700
+  266/5000: episode: 26, duration: 0.057s, episode steps:  10, steps per second: 174, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.900 [0.000, 1.000],  loss: 0.025534, mae: 0.899284, mean_q: 2.023443
+  276/5000: episode: 27, duration: 0.056s, episode steps:  10, steps per second: 178, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.900 [0.000, 1.000],  loss: 0.022218, mae: 0.966137, mean_q: 2.042806
+  286/5000: episode: 28, duration: 0.057s, episode steps:  10, steps per second: 177, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.800 [0.000, 1.000],  loss: 0.021570, mae: 1.044661, mean_q: 2.155052
+  295/5000: episode: 29, duration: 0.061s, episode steps:   9, steps per second: 147, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.889 [0.000, 1.000],  loss: 0.020520, mae: 1.094059, mean_q: 2.199599
+  308/5000: episode: 30, duration: 0.077s, episode steps:  13, steps per second: 169, episode reward: 13.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.692 [0.000, 1.000],  loss: 0.022571, mae: 1.133968, mean_q: 2.243752
+  317/5000: episode: 31, duration: 0.055s, episode steps:   9, steps per second: 164, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.889 [0.000, 1.000],  loss: 0.020044, mae: 1.149221, mean_q: 2.304041
+  327/5000: episode: 32, duration: 0.066s, episode steps:  10, steps per second: 151, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.900 [0.000, 1.000],  loss: 0.021239, mae: 1.169513, mean_q: 2.339834
+  336/5000: episode: 33, duration: 0.094s, episode steps:   9, steps per second:  96, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.023094, mae: 1.188593, mean_q: 2.390890
+  346/5000: episode: 34, duration: 0.065s, episode steps:  10, steps per second: 154, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.900 [0.000, 1.000],  loss: 0.022992, mae: 1.202299, mean_q: 2.471655
+  357/5000: episode: 35, duration: 0.068s, episode steps:  11, steps per second: 162, episode reward: 11.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.818 [0.000, 1.000],  loss: 0.019110, mae: 1.238184, mean_q: 2.502657
+  365/5000: episode: 36, duration: 0.051s, episode steps:   8, steps per second: 157, episode reward:  8.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.019257, mae: 1.298393, mean_q: 2.608709
+  374/5000: episode: 37, duration: 0.068s, episode steps:   9, steps per second: 132, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.022095, mae: 1.292124, mean_q: 2.564080
+  382/5000: episode: 38, duration: 0.049s, episode steps:   8, steps per second: 162, episode reward:  8.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.019151, mae: 1.287852, mean_q: 2.625877
+  390/5000: episode: 39, duration: 0.050s, episode steps:   8, steps per second: 162, episode reward:  8.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.017112, mae: 1.312830, mean_q: 2.695813
+  400/5000: episode: 40, duration: 0.056s, episode steps:  10, steps per second: 178, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.023879, mae: 1.328734, mean_q: 2.682201
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  411/5000: episode: 41, duration: 0.082s, episode steps:  11, steps per second: 135, episode reward: 11.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.020045, mae: 1.381140, mean_q: 2.797448
+  420/5000: episode: 42, duration: 0.053s, episode steps:   9, steps per second: 170, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 1.000 [1.000, 1.000],  loss: 0.019161, mae: 1.413261, mean_q: 2.860299
+  429/5000: episode: 43, duration: 0.051s, episode steps:   9, steps per second: 178, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.000 [0.000, 0.000],  loss: 0.018604, mae: 1.456374, mean_q: 2.892892
+  439/5000: episode: 44, duration: 0.056s, episode steps:  10, steps per second: 178, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.000 [0.000, 0.000],  loss: 0.020485, mae: 1.566899, mean_q: 3.080875
+  450/5000: episode: 45, duration: 0.069s, episode steps:  11, steps per second: 160, episode reward: 11.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.091 [0.000, 1.000],  loss: 0.054166, mae: 1.594057, mean_q: 3.129970
+  469/5000: episode: 46, duration: 0.109s, episode steps:  19, steps per second: 175, episode reward: 19.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.737 [0.000, 1.000],  loss: 0.085353, mae: 1.639644, mean_q: 3.223077
+  479/5000: episode: 47, duration: 0.074s, episode steps:  10, steps per second: 135, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.900 [0.000, 1.000],  loss: 0.074795, mae: 1.633099, mean_q: 3.251204
+  489/5000: episode: 48, duration: 0.080s, episode steps:  10, steps per second: 125, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.800 [0.000, 1.000],  loss: 0.064578, mae: 1.737262, mean_q: 3.414563
+  510/5000: episode: 49, duration: 0.132s, episode steps:  21, steps per second: 159, episode reward: 21.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.810 [0.000, 1.000],  loss: 0.098541, mae: 1.766980, mean_q: 3.486397
+  519/5000: episode: 50, duration: 0.064s, episode steps:   9, steps per second: 140, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.889 [0.000, 1.000],  loss: 0.023946, mae: 1.777427, mean_q: 3.657187
+  528/5000: episode: 51, duration: 0.069s, episode steps:   9, steps per second: 130, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.889 [0.000, 1.000],  loss: 0.225973, mae: 1.852565, mean_q: 3.621992
+  538/5000: episode: 52, duration: 0.058s, episode steps:  10, steps per second: 173, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.800 [0.000, 1.000],  loss: 0.073033, mae: 1.788411, mean_q: 3.667327
+  547/5000: episode: 53, duration: 0.058s, episode steps:   9, steps per second: 156, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.778 [0.000, 1.000],  loss: 0.143109, mae: 1.906599, mean_q: 3.800969
+  557/5000: episode: 54, duration: 0.059s, episode steps:  10, steps per second: 171, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.800 [0.000, 1.000],  loss: 0.116130, mae: 1.945354, mean_q: 3.823783
+  567/5000: episode: 55, duration: 0.066s, episode steps:  10, steps per second: 152, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.800 [0.000, 1.000],  loss: 0.060006, mae: 1.932278, mean_q: 3.874469
+  581/5000: episode: 56, duration: 0.078s, episode steps:  14, steps per second: 180, episode reward: 14.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.286 [0.000, 1.000],  loss: 0.055350, mae: 2.012805, mean_q: 3.915246
+  603/5000: episode: 57, duration: 0.124s, episode steps:  22, steps per second: 177, episode reward: 22.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.773 [0.000, 1.000],  loss: 0.169755, mae: 2.083003, mean_q: 4.036840
+  615/5000: episode: 58, duration: 0.078s, episode steps:  12, steps per second: 154, episode reward: 12.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.917 [0.000, 1.000],  loss: 0.114085, mae: 2.029571, mean_q: 4.084495
+  624/5000: episode: 59, duration: 0.053s, episode steps:   9, steps per second: 170, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.778 [0.000, 1.000],  loss: 0.036830, mae: 2.182385, mean_q: 4.291920
+  633/5000: episode: 60, duration: 0.053s, episode steps:   9, steps per second: 171, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.222 [0.000, 1.000],  loss: 0.079529, mae: 2.263263, mean_q: 4.401288
+  645/5000: episode: 61, duration: 0.076s, episode steps:  12, steps per second: 157, episode reward: 12.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.417 [0.000, 1.000],  loss: 0.119164, mae: 2.326660, mean_q: 4.528762
+  659/5000: episode: 62, duration: 0.077s, episode steps:  14, steps per second: 183, episode reward: 14.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.786 [0.000, 1.000],  loss: 0.157494, mae: 2.281876, mean_q: 4.494839
+  672/5000: episode: 63, duration: 0.072s, episode steps:  13, steps per second: 180, episode reward: 13.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.846 [0.000, 1.000],  loss: 0.169453, mae: 2.292716, mean_q: 4.462337
+  681/5000: episode: 64, duration: 0.053s, episode steps:   9, steps per second: 170, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.889 [0.000, 1.000],  loss: 0.151908, mae: 2.424157, mean_q: 4.723896
+  695/5000: episode: 65, duration: 0.089s, episode steps:  14, steps per second: 158, episode reward: 14.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.571 [0.000, 1.000],  loss: 0.304582, mae: 2.426633, mean_q: 4.590652
+  705/5000: episode: 66, duration: 0.057s, episode steps:  10, steps per second: 174, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.900 [0.000, 1.000],  loss: 0.436756, mae: 2.424292, mean_q: 4.715697
+  716/5000: episode: 67, duration: 0.066s, episode steps:  11, steps per second: 167, episode reward: 11.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.727 [0.000, 1.000],  loss: 0.098687, mae: 2.408761, mean_q: 4.801852
+  734/5000: episode: 68, duration: 0.104s, episode steps:  18, steps per second: 173, episode reward: 18.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.333 [0.000, 1.000],  loss: 0.155669, mae: 2.528998, mean_q: 4.861622
+  744/5000: episode: 69, duration: 0.057s, episode steps:  10, steps per second: 176, episode reward: 10.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.500 [0.000, 1.000],  loss: 0.325872, mae: 2.618933, mean_q: 4.982594
+  753/5000: episode: 70, duration: 0.063s, episode steps:   9, steps per second: 144, episode reward:  9.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.889 [0.000, 1.000],  loss: 0.138682, mae: 2.574592, mean_q: 5.071961
+  824/5000: episode: 71, duration: 0.405s, episode steps:  71, steps per second: 175, episode reward: 71.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.451 [0.000, 1.000],  loss: 0.209768, mae: 2.749775, mean_q: 5.309204
+  843/5000: episode: 72, duration: 0.135s, episode steps:  19, steps per second: 140, episode reward: 19.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.526 [0.000, 1.000],  loss: 0.499627, mae: 2.907677, mean_q: 5.520334
+  866/5000: episode: 73, duration: 0.138s, episode steps:  23, steps per second: 167, episode reward: 23.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.435 [0.000, 1.000],  loss: 0.352647, mae: 3.020049, mean_q: 5.775416
+  904/5000: episode: 74, duration: 0.212s, episode steps:  38, steps per second: 180, episode reward: 38.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.500 [0.000, 1.000],  loss: 0.480730, mae: 3.109391, mean_q: 5.915252
+  920/5000: episode: 75, duration: 0.100s, episode steps:  16, steps per second: 160, episode reward: 16.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.500 [0.000, 1.000],  loss: 0.531046, mae: 3.173185, mean_q: 5.956018
+  942/5000: episode: 76, duration: 0.148s, episode steps:  22, steps per second: 149, episode reward: 22.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.500 [0.000, 1.000],  loss: 0.377572, mae: 3.220942, mean_q: 6.163136
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  978/5000: episode: 77, duration: 0.209s, episode steps:  36, steps per second: 172, episode reward: 36.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.556 [0.000, 1.000],  loss: 0.431317, mae: 3.425709, mean_q: 6.535269
+ 1027/5000: episode: 78, duration: 0.265s, episode steps:  49, steps per second: 185, episode reward: 49.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.612 [0.000, 1.000],  loss: 0.423559, mae: 3.513860, mean_q: 6.769080
+ 1059/5000: episode: 79, duration: 0.181s, episode steps:  32, steps per second: 177, episode reward: 32.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.562 [0.000, 1.000],  loss: 0.658946, mae: 3.776556, mean_q: 7.246701
+ 1070/5000: episode: 80, duration: 0.083s, episode steps:  11, steps per second: 132, episode reward: 11.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.455 [0.000, 1.000],  loss: 0.327387, mae: 3.787353, mean_q: 7.344775
+ 1088/5000: episode: 81, duration: 0.115s, episode steps:  18, steps per second: 156, episode reward: 18.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.500 [0.000, 1.000],  loss: 0.316476, mae: 3.937152, mean_q: 7.609412
+ 1104/5000: episode: 82, duration: 0.106s, episode steps:  16, steps per second: 151, episode reward: 16.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.438 [0.000, 1.000],  loss: 0.420196, mae: 3.957492, mean_q: 7.688070
+ 1132/5000: episode: 83, duration: 0.183s, episode steps:  28, steps per second: 153, episode reward: 28.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.571 [0.000, 1.000],  loss: 0.426044, mae: 4.046975, mean_q: 7.878060
+ 1150/5000: episode: 84, duration: 0.113s, episode steps:  18, steps per second: 159, episode reward: 18.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.500 [0.000, 1.000],  loss: 0.827794, mae: 4.221570, mean_q: 8.054273
+ 1200/5000: episode: 85, duration: 0.284s, episode steps:  50, steps per second: 176, episode reward: 50.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.540 [0.000, 1.000],  loss: 0.714621, mae: 4.314801, mean_q: 8.287112
+ 1247/5000: episode: 86, duration: 0.258s, episode steps:  47, steps per second: 182, episode reward: 47.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.553 [0.000, 1.000],  loss: 0.773649, mae: 4.538174, mean_q: 8.704104
+ 1261/5000: episode: 87, duration: 0.076s, episode steps:  14, steps per second: 184, episode reward: 14.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.500 [0.000, 1.000],  loss: 0.502036, mae: 4.533714, mean_q: 8.829727
+ 1308/5000: episode: 88, duration: 0.261s, episode steps:  47, steps per second: 180, episode reward: 47.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.553 [0.000, 1.000],  loss: 0.570172, mae: 4.647412, mean_q: 9.040591
+ 1370/5000: episode: 89, duration: 0.379s, episode steps:  62, steps per second: 164, episode reward: 62.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.548 [0.000, 1.000],  loss: 0.989270, mae: 4.946057, mean_q: 9.515224
+ 1399/5000: episode: 90, duration: 0.159s, episode steps:  29, steps per second: 183, episode reward: 29.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.552 [0.000, 1.000],  loss: 1.176853, mae: 5.198234, mean_q: 9.959958
+ 1448/5000: episode: 91, duration: 0.309s, episode steps:  49, steps per second: 158, episode reward: 49.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.551 [0.000, 1.000],  loss: 0.952976, mae: 5.287143, mean_q: 10.154800
+ 1498/5000: episode: 92, duration: 0.405s, episode steps:  50, steps per second: 123, episode reward: 50.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.480 [0.000, 1.000],  loss: 0.870449, mae: 5.336462, mean_q: 10.413436
+ 1664/5000: episode: 93, duration: 1.245s, episode steps: 166, steps per second: 133, episode reward: 166.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.488 [0.000, 1.000],  loss: 0.958424, mae: 5.705412, mean_q: 11.109818
+ 1826/5000: episode: 94, duration: 0.922s, episode steps: 162, steps per second: 176, episode reward: 162.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.512 [0.000, 1.000],  loss: 0.992422, mae: 6.281146, mean_q: 12.353326
+ 1924/5000: episode: 95, duration: 0.558s, episode steps:  98, steps per second: 176, episode reward: 98.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.541 [0.000, 1.000],  loss: 0.852377, mae: 6.789612, mean_q: 13.442488
+ 2046/5000: episode: 96, duration: 0.770s, episode steps: 122, steps per second: 159, episode reward: 122.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.525 [0.000, 1.000],  loss: 0.885076, mae: 7.222069, mean_q: 14.393581
+ 2153/5000: episode: 97, duration: 0.687s, episode steps: 107, steps per second: 156, episode reward: 107.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.542 [0.000, 1.000],  loss: 1.367149, mae: 7.668120, mean_q: 15.262555
+ 2279/5000: episode: 98, duration: 0.713s, episode steps: 126, steps per second: 177, episode reward: 126.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.524 [0.000, 1.000],  loss: 1.260647, mae: 8.097031, mean_q: 16.164738
+ 2396/5000: episode: 99, duration: 0.686s, episode steps: 117, steps per second: 171, episode reward: 117.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.530 [0.000, 1.000],  loss: 1.178987, mae: 8.592623, mean_q: 17.307045
+ 2506/5000: episode: 100, duration: 0.686s, episode steps: 110, steps per second: 160, episode reward: 110.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.536 [0.000, 1.000],  loss: 1.449976, mae: 9.069571, mean_q: 18.257244
+ 2638/5000: episode: 101, duration: 0.706s, episode steps: 132, steps per second: 187, episode reward: 132.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.530 [0.000, 1.000],  loss: 1.439077, mae: 9.681490, mean_q: 19.509804
+ 2838/5000: episode: 102, duration: 1.122s, episode steps: 200, steps per second: 178, episode reward: 200.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.510 [0.000, 1.000],  loss: 1.288759, mae: 10.281319, mean_q: 20.763508
+ 2966/5000: episode: 103, duration: 0.746s, episode steps: 128, steps per second: 172, episode reward: 128.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.539 [0.000, 1.000],  loss: 1.021335, mae: 10.965878, mean_q: 22.229786
+ 3085/5000: episode: 104, duration: 0.614s, episode steps: 119, steps per second: 194, episode reward: 119.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.529 [0.000, 1.000],  loss: 1.724188, mae: 11.502838, mean_q: 23.207365
+ 3240/5000: episode: 105, duration: 0.935s, episode steps: 155, steps per second: 166, episode reward: 155.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.535 [0.000, 1.000],  loss: 1.152186, mae: 11.955059, mean_q: 24.223032
+ 3351/5000: episode: 106, duration: 0.765s, episode steps: 111, steps per second: 145, episode reward: 111.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.550 [0.000, 1.000],  loss: 1.526762, mae: 12.509210, mean_q: 25.333750
+ 3503/5000: episode: 107, duration: 0.819s, episode steps: 152, steps per second: 186, episode reward: 152.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.533 [0.000, 1.000],  loss: 1.491376, mae: 12.957224, mean_q: 26.248934
+ 3648/5000: episode: 108, duration: 0.802s, episode steps: 145, steps per second: 181, episode reward: 145.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.538 [0.000, 1.000],  loss: 1.509259, mae: 13.522982, mean_q: 27.380350
+ 3796/5000: episode: 109, duration: 0.749s, episode steps: 148, steps per second: 198, episode reward: 148.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.541 [0.000, 1.000],  loss: 1.833841, mae: 14.026245, mean_q: 28.358576
+ 3933/5000: episode: 110, duration: 0.747s, episode steps: 137, steps per second: 183, episode reward: 137.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.547 [0.000, 1.000],  loss: 1.839880, mae: 14.553422, mean_q: 29.404638
+ 4089/5000: episode: 111, duration: 1.021s, episode steps: 156, steps per second: 153, episode reward: 156.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.545 [0.000, 1.000],  loss: 2.253473, mae: 14.786485, mean_q: 29.928009
+ 4221/5000: episode: 112, duration: 0.693s, episode steps: 132, steps per second: 191, episode reward: 132.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.553 [0.000, 1.000],  loss: 1.984523, mae: 15.235884, mean_q: 30.869091
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 4354/5000: episode: 113, duration: 0.721s, episode steps: 133, steps per second: 184, episode reward: 133.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.549 [0.000, 1.000],  loss: 2.111134, mae: 15.772705, mean_q: 32.011673
+ 4498/5000: episode: 114, duration: 0.878s, episode steps: 144, steps per second: 164, episode reward: 144.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.542 [0.000, 1.000],  loss: 2.185027, mae: 16.169411, mean_q: 32.845894
+ 4643/5000: episode: 115, duration: 0.847s, episode steps: 145, steps per second: 171, episode reward: 145.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.545 [0.000, 1.000],  loss: 2.088379, mae: 16.734930, mean_q: 33.954765
+ 4775/5000: episode: 116, duration: 0.753s, episode steps: 132, steps per second: 175, episode reward: 132.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.545 [0.000, 1.000],  loss: 2.871243, mae: 17.063446, mean_q: 34.656677
+ 4941/5000: episode: 117, duration: 0.941s, episode steps: 166, steps per second: 176, episode reward: 166.000, mean reward:  1.000 [ 1.000,  1.000], mean action: 0.536 [0.000, 1.000],  loss: 2.217524, mae: 17.468794, mean_q: 35.423603
+done, took 30.338 seconds
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x15108fb10&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s test our reinforcement learning model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dqn</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">nb_episodes</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Testing for 5 episodes ...
+Episode 1: reward: 157.000, steps: 157
+Episode 2: reward: 140.000, steps: 140
+Episode 3: reward: 134.000, steps: 134
+Episode 4: reward: 200.000, steps: 200
+Episode 5: reward: 143.000, steps: 143
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x15269e050&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is nearly a perfect play, since CartPole exits if 200 steps are reached. You can experiment with version which limit is 500 by changing env to <code class="docutils literal notranslate"><span class="pre">CartPole-v1</span></code>.</p>
+</div>
+<div class="section" id="muzero">
+<h1>MuZero<a class="headerlink" href="#muzero" title="Permalink to this headline">¶</a></h1>
+<p>Recent and impressive advancement in AI is MuZero. We will just run the implementation listed in - https://github.com/werner-duvaud/muzero-general. General idea involves first constructing the embedding and only then training the agent. According to George Hotz this algorithm is the one of the most important event in the history AI that people will cite for ages.</p>
+<img width="60%" src="https://miro.medium.com/max/2424/1*NowOwxV5SQ9aLKbjdz41lQ.png"/><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># I just downloaded it from git and installed deps</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/Users/trokas/muzero-general/&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">muzero</span> <span class="kn">import</span> <span class="n">MuZero</span>
+
+<span class="n">muzero</span> <span class="o">=</span> <span class="n">MuZero</span><span class="p">(</span><span class="s2">&quot;cartpole&quot;</span><span class="p">)</span>  <span class="c1"># it uses v1 by default</span>
+<span class="n">muzero</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-12-11 14:57:51,604	ERROR worker.py:660 -- Calling ray.init() again after it has already been called.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training...
+Run tensorboard --logdir ./results and go to http://localhost:6006/ to see in real time the training performance.
+
+<span class=" -Color -Color-Faint -Color-Faint-Cyan">(pid=33338)</span> You are not training on GPU.
+<span class=" -Color -Color-Faint -Color-Faint-Cyan">(pid=33338)</span> 
+Last test reward: 386.00. Training step: 10000/10000. Played games: 68. Loss: 5.89
+Shutting down workers...
+
+
+Persisting replay buffer games to disk...
+</pre></div>
+</div>
+</div>
+</div>
+<p>Only with 68 it achieved decent result!</p>
+<p>If you want interesting challenge you could try to add additional experiment and insted of using cartpole position as input pass image of the cartpole instead. That’s where the power of MuZero can be seen, it should be able to construct internal representation suitable for learning on it’s own!</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By trokas<br/>
+        
+            &copy; Copyright MIF, 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
