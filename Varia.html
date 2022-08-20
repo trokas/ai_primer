@@ -255,6 +255,11 @@
    Mixup
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#permutation-feature-importance">
+   Permutation Feature Importance
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -280,6 +285,13 @@
 <span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
 <span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Init Plugin
+Init Graph Optimizer
+Init Kernel
 </pre></div>
 </div>
 </div>
@@ -529,6 +541,66 @@ _________________________________________________________________
 </div>
 </div>
 </div>
+<p>It is interesting to explore word reconstructions by mapping it to vector, performing some operations and going back using a distance measure. You can find more neat examples and high level explanation of Word2Vec in a book <a class="reference external" href="https://www.goodreads.com/en/book/show/50489349-the-alignment-problem">The Alignment Problem</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">cosine</span>
+    
+<span class="k">def</span> <span class="nf">reconstruct_word</span><span class="p">(</span><span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="p">{</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">:</span> <span class="n">cosine</span><span class="p">(</span><span class="n">emb</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">vectors</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">is_lower</span><span class="p">}</span>   <span class="c1"># let&#39;s look</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">dist</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))[:</span><span class="n">n</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reconstruct_word</span><span class="p">(</span><span class="n">nlp</span><span class="p">(</span><span class="s1">&#39;king&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;king&#39;, 0),
+ (&#39;kings&#39;, 0.21233856678009033),
+ (&#39;princes&#39;, 0.21233856678009033),
+ (&#39;sultans&#39;, 0.21233856678009033)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reconstruct_word</span><span class="p">(</span><span class="n">nlp</span><span class="p">(</span><span class="s1">&#39;king&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span> <span class="o">-</span> <span class="n">nlp</span><span class="p">(</span><span class="s1">&#39;man&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span> <span class="o">+</span> <span class="n">nlp</span><span class="p">(</span><span class="s1">&#39;woman&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;king&#39;, 0.19757401943206787),
+ (&#39;queen&#39;, 0.21191561222076416),
+ (&#39;prince&#39;, 0.3598923087120056),
+ (&#39;highness&#39;, 0.3598923087120056)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>To have more fun examples you will have to use much bigger model. Install gensim using <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">gensim</span></code> and download <a class="reference external" href="https://code.google.com/archive/p/word2vec/#:~:text=GoogleNews%2Dvectors%2Dnegative300.bin.gz">model file</a> which is 1.5G. Then play with it, for example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gensim</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">gensim</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">KeyedVectors</span><span class="o">.</span><span class="n">load_word2vec_format</span><span class="p">(</span><span class="s1">&#39;GoogleNews-vectors-negative300.bin&#39;</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar_cosmul</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;king&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;man&#39;</span><span class="p">])</span>
+
+<span class="o">&gt;&gt;</span> <span class="p">[(</span><span class="s1">&#39;queen&#39;</span><span class="p">,</span> <span class="mf">0.9314123392105103</span><span class="p">),</span>
+<span class="o">&gt;&gt;</span>  <span class="p">(</span><span class="s1">&#39;monarch&#39;</span><span class="p">,</span> <span class="mf">0.858533501625061</span><span class="p">),</span>
+<span class="o">&gt;&gt;</span>  <span class="p">(</span><span class="s1">&#39;princess&#39;</span><span class="p">,</span> <span class="mf">0.8476566672325134</span><span class="p">),</span> <span class="o">...</span><span class="p">]</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar_cosmul</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;fish&#39;</span><span class="p">,</span> <span class="s1">&#39;music&#39;</span><span class="p">])</span>
+
+<span class="o">&gt;&gt;</span> <span class="p">[(</span><span class="s1">&#39;bass&#39;</span><span class="p">,</span> <span class="mf">0.5192274451255798</span><span class="p">),</span>
+<span class="o">&gt;&gt;</span>  <span class="p">(</span><span class="s1">&#39;catfish&#39;</span><span class="p">,</span> <span class="mf">0.5176859498023987</span><span class="p">),</span>
+<span class="o">&gt;&gt;</span>  <span class="p">(</span><span class="s1">&#39;trout&#39;</span><span class="p">,</span> <span class="mf">0.5006918907165527</span><span class="p">),</span> <span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
 <p>As you might expect these vectors can be used while creating the model, for example we can make sentiment analysis model for reviews (trying to figure out if it is positive or negative) simply by feeding embedding to CNN.</p>
 <img width=60% src="https://datasciencetoday.net/images/CNN.png"/>
 <p><strong>TASK:</strong> using data from <a class="reference external" href="https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews">imdb reviews</a> train simple CNN based sentiment classifier.</p>
@@ -550,6 +622,10 @@ Try to think of the reasons why this trick works well. For more details see <a c
 <p>Another cool idea is to mix two images and their classes into one and use such embedded image as a training example. For example, if we take MNIST, then we can randomly pick two different numbers and fuse images <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> by constructing their linear combination <span class="math notranslate nohighlight">\(\lambda A + (1 - \lambda) B\)</span>. Doing the same for their classes gives us the expected outcome that is used for training <span class="math notranslate nohighlight">\(\lambda y_A + (1 - \lambda) y_B\)</span>. For more details see <a class="reference external" href="https://arxiv.org/abs/1710.09412">mixup: Beyond Empirical Risk Minimization</a>.</p>
 <p>Both Mimics (Knowladge Distilation) and Mixup are frequently used tricks (see <a class="reference external" href="https://arxiv.org/abs/1812.01187">bag of tricks paper</a>).</p>
 <p><strong>TASK:</strong> test this out on MNIST or flatland project.</p>
+</div>
+<div class="section" id="permutation-feature-importance">
+<h2>Permutation Feature Importance<a class="headerlink" href="#permutation-feature-importance" title="Permalink to this headline">¶</a></h2>
+<p>Sometime you want to know which feature is most valuable. As we saw with Random Forests it can be done knowing how the algorithm is constructed. On the other hand it is useful to have a model agnostic approach that can be used without thinking about the model itself. Principle of permutation importance is quite simple - just shuffle a single column and measure the loss in accuracy. While estimating importance it’s a good practice to use test set. Idea is explored in paper “All models are wrong, but many are useful: …” by Fisher, Rudin, and Dominici (2018). Even though it’s quite trivial to implement on your own you might find <a class="reference external" href="https://scikit-learn.org/stable/modules/permutation_importance.html">scikit-learn implementation</a> useful.</p>
 </div>
 </div>
 
