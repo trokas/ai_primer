@@ -43,21 +43,7 @@ Both in *Binder* and in *Colab* you can install missing packages by running `!pi
 
 **NOTE:** *Binder* and *Colab* will not save your changes between sessions! Download notebook before closing the browser.
 
-As an alternative you can use [Paperspace](https://www.paperspace.com/), but you might end up in a que to get resources to launch the code. If you still are interested sign up for [Paperspace](https://www.paperspace.com/) and got to [gradient console](https://console.paperspace.com/gradient). Then, just follow these steps:
-
-1. Create a new *Project*
-2. Select *Notebooks* tab
-3. Click *Create*
-4. Select a runtime - Tensorflow 2.6.0
-5. For the machine choose Free-GPU and set auto-shutdown to 6 hours (thats maximum for free account)
-6. In Advanced options near Workspace URL add - *https://github.com/trokas/ai_primer.git*
-7. Scroll down and press *Start Notebook*
-8. This should spin-up a new notebook with GPU support that will be available for the next 6 hours. Just press *Open* and you should see all course materials in *Jupyter Notebook*.
-9. Open Jupyter Notebook, then launch new terminal and run `pip install -r requirements.txt`
-10. Also launch following lines: `apt-get update` and `apt-get install ffmpeg libsm6 libxext6 graphviz -y`
-
-Next time just use readily created machine and don't forget to use *git pull* from time to time.
-
+As an alternative you can use non free, but cheap option like [Jarvislabs](https://jarvislabs.ai/) or [Paperspace](https://www.paperspace.com/). Actually Paperspace has free GPU option, but often it is not available.
 
 ## (re)Sources
 
@@ -67,3 +53,5 @@ Each chapter will have a list of resources, but for now I highly recommend to st
 - [Two Minute Papers youtube channel](https://www.youtube.com/user/keeroyz)
 
 If I had to recommend a single book for beginner it will be this one - [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 2nd Edition](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/).
+
+
