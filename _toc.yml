@@ -6,6 +6,6 @@ sections:
 - file: DNN
 - file: CNN
 - file: Attention
-- file: TD
 - file: Varia
+- file: TD
 - file: Project
