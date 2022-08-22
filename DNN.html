@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DNN (Deep Neural Networks) &#8212; AI primer</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,48 +19,64 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="CNN (Convolutional Neural Networks)" href="CNN.html" />
     <link rel="prev" title="RF (Random Forest)" href="RF.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -68,10 +85,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">AI primer</h1>
@@ -80,16 +99,17 @@
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="README.html">
-   Welcome to AI primer course
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Welcome to AI primer course
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="SVD.html">
    SVD (Singular Value Decomposition)
@@ -111,6 +131,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="Attention.html">
+   Attention
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="TD.html">
    TD (Temporal Difference)
   </a>
@@ -128,96 +153,182 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/DNN.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/trokas/ai_primer/master?urlpath=tree/DNN.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/DNN.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/trokas/ai_primer/master?urlpath=tree/DNN.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/DNN.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/DNN.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gradient-descent">
    Gradient Descent
@@ -301,19 +412,118 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>DNN (Deep Neural Networks)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-descent">
+   Gradient Descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#timeline">
+   Timeline
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-perceptron">
+   The Perceptron
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perceptron-for-2-class-case">
+     Perceptron for 2 class case
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#power-of-perceptron-formulation">
+     Power of perceptron formulation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#beginning-of-first-ai-winter">
+   Beginning of first AI winter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#backpropagation">
+   Backpropagation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#two-layer-nn-for-2-class-case">
+     Two layer NN for 2 class case
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mnist-application-of-backprop-by-yann-lecun-1989">
+   MNIST (Application of backprop by Yann LeCun, 1989)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#keras">
+   Keras
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dropout">
+   Dropout
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-approximate-interpolation">
+   Task: approximate interpolation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-do-not-scroll-down-try-to-solve-it-before-without-help">
+     Solution (do not scroll down, try to solve it before without help)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#callbacks">
+   Callbacks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#re-sources">
+   (re)Sources
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="dnn-deep-neural-networks">
-<h1>DNN (Deep Neural Networks)<a class="headerlink" href="#dnn-deep-neural-networks" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="dnn-deep-neural-networks">
+<h1>DNN (Deep Neural Networks)<a class="headerlink" href="#dnn-deep-neural-networks" title="Permalink to this headline">#</a></h1>
 <div class="section" id="gradient-descent">
-<h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h2>
+<h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">#</a></h2>
 <p>Before jumping right into neural networks let’s look at a simple idea of how we can perform gradient descent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -379,7 +589,7 @@
 <p>You can use the same trick to fit a line over multiple points. Training process should look similar to that:</p>
 <img src="https://paper-attachments.dropbox.com/s_F57E27FDF0C54777F2844EECCBABB7DF8EEB9597E5F323F9CC73F1690617FCAD_1567686156887_grad_desc_demo.gif" style="width: 50%"/></div>
 <div class="section" id="timeline">
-<h2>Timeline<a class="headerlink" href="#timeline" title="Permalink to this headline">¶</a></h2>
+<h2>Timeline<a class="headerlink" href="#timeline" title="Permalink to this headline">#</a></h2>
 <img src="https://cdn-images-1.medium.com/max/2000/1*Z_DnCyKt18RM0aCCrFzaIQ.png" style="width: 80%"/>
 <p>ANNs have been around for quite a while: they were first introduced back in <strong>1943</strong> by the neurophysiologist Warren <strong>McCulloch</strong> and the mathematician Walter <strong>Pitts</strong> (see “A Logical Calculus of Ideas Immanent in Nervous Activity”).</p>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117028252_image.png" style="width: 50%"/>
@@ -387,7 +597,7 @@
 <p>Most of the pictures are taken from the great book “Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 2nd Edition” by Aurélien Géron.</p>
 </div>
 <div class="section" id="the-perceptron">
-<h2>The Perceptron<a class="headerlink" href="#the-perceptron" title="Permalink to this headline">¶</a></h2>
+<h2>The Perceptron<a class="headerlink" href="#the-perceptron" title="Permalink to this headline">#</a></h2>
 <p>The <em>Perceptron</em> is one of the simplest ANN architectures, invented in <strong>1957</strong> by Frank <strong>Rosenblatt</strong>. It is based on a slightly different artificial neuron called a <em>threshold logic unit</em> (TLU), or sometimes a <em>linear threshold unit</em> (LTU). A Perceptron is simply composed of a single layer of TLUs, with each TLU connected to all the inputs.</p>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117134137_image.png" alt="Threshold logic unit: an artificial neuron which computes a weighted sum of its inputs then applies a step function" style="width: 50%"/>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117253013_image.png" alt="Architecture of a Perceptron with two input neurons, one bias neuron, and three output neurons" style="width: 50%"/>
@@ -396,7 +606,7 @@
 <img src="https://paper-attachments.dropbox.com/s_DC20E26BBCBCDC1CE35F486489133207E7462B05AFD4747CE4118D2918E8D180_1580039607658_Screenshot+2020-01-26+13.52.47.png" style="width: 70%"/>
 <p>The decision boundary of each output neuron is linear, so Perceptrons are incapable of learning complex patterns (just like Logistic Regression classifiers). However, if the training instances are linearly separable, <strong>Rosenblatt</strong> demonstrated that this algorithm would converge to a solution. This is called the <strong>Perceptron convergence theorem</strong>.</p>
 <div class="section" id="perceptron-for-2-class-case">
-<h3>Perceptron for 2 class case<a class="headerlink" href="#perceptron-for-2-class-case" title="Permalink to this headline">¶</a></h3>
+<h3>Perceptron for 2 class case<a class="headerlink" href="#perceptron-for-2-class-case" title="Permalink to this headline">#</a></h3>
 <p>We will produce following perceptron from scratch</p>
 <img src="https://miro.medium.com/max/2870/1*n6sJ4yZQzwKL9wnF5wnVNg.png" style="width: 60%"/>
 <p>but first we need some data first. We will work with iris dataset.</p>
@@ -494,14 +704,14 @@
 <p>Well, clearly it’s easy to sepperate setosa from other two classes. Try to change target class to versicolor and virginica.</p>
 </div>
 <div class="section" id="power-of-perceptron-formulation">
-<h3>Power of perceptron formulation<a class="headerlink" href="#power-of-perceptron-formulation" title="Permalink to this headline">¶</a></h3>
+<h3>Power of perceptron formulation<a class="headerlink" href="#power-of-perceptron-formulation" title="Permalink to this headline">#</a></h3>
 <p>Perceptron definition is quite flexible and modifying loss and activation allows to replicate some whell known algorithms, see picture taken from “Neural Networks and Deep Learning: A Textbook” (book by Charu C. Aggarwal).</p>
 <img src="https://paper-attachments.dropbox.com/s_2E4854D97CFCA11CB3874DE15FA048AD21CE628C357A5C14D6A303FEC847FA36_1596967818835_image.png" style="width: 60%"/>
 <p>All of this flexibility and initial results led people to believe that AI is just behind the corner. This is clearly seen in movies, books, conferences, papers, etc.</p>
 <img src="https://paper-attachments.dropbox.com/s_2E4854D97CFCA11CB3874DE15FA048AD21CE628C357A5C14D6A303FEC847FA36_1596968518047_Screenshot+2020-08-09+at+13.21.56.png" style="width: 60%"/></div>
 </div>
 <div class="section" id="beginning-of-first-ai-winter">
-<h2>Beginning of first AI winter<a class="headerlink" href="#beginning-of-first-ai-winter" title="Permalink to this headline">¶</a></h2>
+<h2>Beginning of first AI winter<a class="headerlink" href="#beginning-of-first-ai-winter" title="Permalink to this headline">#</a></h2>
 <p>Researchers strongy believed that perceptrons can and will solve hard problems. In <strong>1966</strong> Marvin Minskey together with Seymour Papert as a summer project for his students gave a task to solve computer vision. Task was to split image into regions of likely objects and background areas and perform object classification. It turned out to be much harder than they anticipated. We will soon construct object classifier, if you are interested in background detection read about U-Net.</p>
 <p>In their <strong>1969</strong> monograph <em>Perceptrons</em>, Marvin Minsky and Seymour Papert (same guys after 3 years) highlighted a number of serious weaknesses of Perceptrons—in particular, the fact that they are incapable of solving some trivial problems (e.g., the <em>Exclusive OR</em> (XOR) classification problem.
 It turns out that some of the limitations of Perceptrons can be eliminated by stacking multiple Perceptrons (or using ADA activation)!</p>
@@ -509,7 +719,7 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 <p>But, we have no idea how to train those stacked Perceptorns (DNN - deep neural nets). And also there are no big enough datasets or resources to try this out…</p>
 <img src="https://miro.medium.com/max/2101/1*mWYZanOv3QUafz0nnhbEWw.png"  style="width: 50%"/></div>
 <div class="section" id="backpropagation">
-<h2>Backpropagation<a class="headerlink" href="#backpropagation" title="Permalink to this headline">¶</a></h2>
+<h2>Backpropagation<a class="headerlink" href="#backpropagation" title="Permalink to this headline">#</a></h2>
 <p>When an ANN contains a deep stack of hidden layers, it is called a <em><strong>deep neural network</strong></em> <strong>(DNN)</strong>.</p>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117766740_image.png" alt="Architecture of a Multilayer Perceptron" style="width: 50%"/>
 <p>For many years researchers struggled to find a way to train MLPs, without success. But in <strong>1986</strong>, David <strong>Rumelhart</strong>, Geoffrey <strong>Hinton</strong>, and Ronald <strong>Williams</strong> published a groundbreaking paper (“Learning Internal Representations by Error Propagation”) that introduced the <strong>backpropagation</strong> training algorithm, which is still used today.</p>
@@ -519,7 +729,7 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 <img src="https://miro.medium.com/max/3040/1*q1M7LGiDTirwU-4LcFq7_Q.png" style="width: 50%"/>
 <p>Automatically computing gradients is called <em>automatic differentiation</em>, or <em>autodiff</em>. There are various autodiff techniques, with different pros and cons. The one used by backpropagation is called <em>reverse-mode autodiff</em>.</p>
 <div class="section" id="two-layer-nn-for-2-class-case">
-<h3>Two layer NN for 2 class case<a class="headerlink" href="#two-layer-nn-for-2-class-case" title="Permalink to this headline">¶</a></h3>
+<h3>Two layer NN for 2 class case<a class="headerlink" href="#two-layer-nn-for-2-class-case" title="Permalink to this headline">#</a></h3>
 <img src="https://miro.medium.com/max/1000/1*sX6T0Y4aa3ARh7IBS_sdqw.png" style="width: 40%"/><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigmoid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
@@ -568,7 +778,7 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 </div>
 </div>
 <div class="section" id="mnist-application-of-backprop-by-yann-lecun-1989">
-<h2>MNIST (Application of backprop by Yann LeCun, 1989)<a class="headerlink" href="#mnist-application-of-backprop-by-yann-lecun-1989" title="Permalink to this headline">¶</a></h2>
+<h2>MNIST (Application of backprop by Yann LeCun, 1989)<a class="headerlink" href="#mnist-application-of-backprop-by-yann-lecun-1989" title="Permalink to this headline">#</a></h2>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571320140589_image.png" style="width: 50%"/>
 <img src="https://camo.githubusercontent.com/807102dc1f1f17a1318535548d05d54867135be2/68747470733a2f2f6d6c34612e6769746875622e696f2f696d616765732f666967757265732f6d6e6973742d696e7075742e706e67" style="width: 50%"/>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571320219769_image.png" alt="Before training" style="width: 50%"/>
@@ -698,7 +908,7 @@ Hit rate (train set) - 97.94%, Hit rate (test set) - 96.02%
 </div>
 </div>
 <div class="section" id="keras">
-<h2>Keras<a class="headerlink" href="#keras" title="Permalink to this headline">¶</a></h2>
+<h2>Keras<a class="headerlink" href="#keras" title="Permalink to this headline">#</a></h2>
 <p>From now on we will use keras to create our models. It will take care of backprop and differentiation, thus we only need to define the NN architecture!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -973,7 +1183,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="section" id="dropout">
-<h2>Dropout<a class="headerlink" href="#dropout" title="Permalink to this headline">¶</a></h2>
+<h2>Dropout<a class="headerlink" href="#dropout" title="Permalink to this headline">#</a></h2>
 <p>There is a nice and popular way to <strong>prevent over-fitting</strong> in Neural Networks - turn off some neurons during training procudure.</p>
 <img src="https://miro.medium.com/proxy/1*iWQzxhVlvadk6VAJjsgXgg.png" style="width: 50%"/>
 <p>You can try that out by adding Dropout layers between Dense ones as follows:</p>
@@ -989,7 +1199,7 @@ Epoch 20/20
 <p>As we go further we will see that sometime bigger networks simply don’t overfit the data, standard statistics logic starts to break down. This phenomenon is called <a class="reference external" href="https://openai.com/blog/deep-double-descent/">Deep Double Descent</a>.</p>
 </div>
 <div class="section" id="task-approximate-interpolation">
-<h2>Task: approximate interpolation<a class="headerlink" href="#task-approximate-interpolation" title="Permalink to this headline">¶</a></h2>
+<h2>Task: approximate interpolation<a class="headerlink" href="#task-approximate-interpolation" title="Permalink to this headline">#</a></h2>
 <p>To get slightly better feel of what 2-layer NN is capable of, let’s try to implement idea presented in paper entitled “Constructive approximate interpolation by neural networks” by B. Llanas. Let <span class="math notranslate nohighlight">\(P = \{x_0=a, x_1, \dots, x_n=b\}\)</span> be any partition of interval <span class="math notranslate nohighlight">\([a,b]\)</span>. Let’s define neural net as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1008,7 +1218,7 @@ N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{
 </div>
 <p><em>Tip: Note, that weights in the first line can be stacked with weights listed in the second line before implementing dot product.</em></p>
 <div class="section" id="solution-do-not-scroll-down-try-to-solve-it-before-without-help">
-<h3>Solution (do not scroll down, try to solve it before without help)<a class="headerlink" href="#solution-do-not-scroll-down-try-to-solve-it-before-without-help" title="Permalink to this headline">¶</a></h3>
+<h3>Solution (do not scroll down, try to solve it before without help)<a class="headerlink" href="#solution-do-not-scroll-down-try-to-solve-it-before-without-help" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
@@ -1056,7 +1266,7 @@ N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{
 </div>
 </div>
 <div class="section" id="callbacks">
-<h2>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this headline">¶</a></h2>
+<h2>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this headline">#</a></h2>
 <p>While training the models it is benefficial to have some printout after each apoch, additionally you might want to adjust learning rate, stop training etc. All of these tasks can be achieved using callbacks in fit function, for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1084,7 +1294,7 @@ tensorboard --logdir logs/scalars
 <p>You should get a link (probably - http://localhost:6006/) where you can track the training and compare models. For more examples see: https://www.tensorflow.org/tensorboard/scalars_and_keras.</p>
 </div>
 <div class="section" id="re-sources">
-<h2>(re)Sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">¶</a></h2>
+<h2>(re)Sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Rosenblatt’s perceptron, the first modern neural network (<a class="reference external" href="https://towardsdatascience.com/rosenblatts-perceptron-the-very-first-neural-network-37a3ec09038a">blog post</a>)</p></li>
 <li><p>Neural Network in 11 lines of code (<a class="reference external" href="https://iamtrask.github.io/2015/07/12/basic-python-network/">blog post</a>)</p></li>
@@ -1119,34 +1329,48 @@ tensorboard --logdir logs/scalars
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="RF.html" title="previous page">RF (Random Forest)</a>
-    <a class='right-next' id="next-link" href="CNN.html" title="next page">CNN (Convolutional Neural Networks)</a>
-
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="RF.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">RF (Random Forest)</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="CNN.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CNN (Convolutional Neural Networks)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By trokas<br/>
-        
-            &copy; Copyright MIF, 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By trokas<br/>
+  
+      &copy; Copyright MIF, 2021.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>

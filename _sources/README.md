@@ -12,8 +12,9 @@ We have only 5 main chapters to cover.
 - Deep learning
     - DNN (Deep Neural Networks) - we will build our own Perceptron from scratch, thus focusing on gradient descent and backprop on the way. By changing activation function logistic regression will be introduced and finally we will explore what a stack of layers (deep NN) can offer.
     - CNN (Convolutional Neural Networks) - even though different techniques come and go in deep learning world I strongly believe that CNN’s will be around for quite some time to come. We will use them not only for images, but also for time series prediction.
-- Reinforcement learning
-    - TD (Temporal Difference) - one of the core principles in reinforcement learning. We will apply it to play tic-tac-toe.
+    - Attention - powerful idea that stands behind Transformers and one of the enablers for GPT-3, DALL-E 2 and others.
+
+As a bonus lecture we will take a look into reinforcement learning focusing on Temporal Difference (TD) - one of the core principles in reinforcement learning. We will apply it to play tic-tac-toe.
 
 Also we will cover following toolset, which hopefully will be useful for your future projects:
 
