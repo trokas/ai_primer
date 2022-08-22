@@ -3,7 +3,7 @@
 [INTERACTIVE BOOK LINK](https://trokas.github.io/ai_primer/README.html)
 
 Main aim of this course is to give you enough information so that you can start exploring field of AI on your own and maybe even start searching for DS role.
-We have only 5 main chapters to cover.
+We have only 5 main chapters and one bonus lecture to cover.
 
 - Unsupervised learning
     - SVD (Singular Value Decomposition) - it’s a good tool to introduce both technical tools we will be working with as well as giving us a glimpse at unsupervised learning.
@@ -13,8 +13,8 @@ We have only 5 main chapters to cover.
     - DNN (Deep Neural Networks) - we will build our own Perceptron from scratch, thus focusing on gradient descent and backprop on the way. By changing activation function logistic regression will be introduced and finally we will explore what a stack of layers (deep NN) can offer.
     - CNN (Convolutional Neural Networks) - even though different techniques come and go in deep learning world I strongly believe that CNN’s will be around for quite some time to come. We will use them not only for images, but also for time series prediction.
     - Attention - powerful idea that stands behind Transformers and one of the enablers for GPT-3, DALL-E 2 and others.
-
-As a bonus lecture we will take a look into reinforcement learning focusing on Temporal Difference (TD) - one of the core principles in reinforcement learning. We will apply it to play tic-tac-toe.
+- Reinforcement Learning (bonus lecture)
+    - TD (Temporal Difference) - one of the core principles in reinforcement learning. We will apply it to play tic-tac-toe.
 
 Also we will cover following toolset, which hopefully will be useful for your future projects:
 
