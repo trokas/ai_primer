@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="TD (Temporal Difference)" href="TD.html" />
+    <link rel="next" title="Varia" href="Varia.html" />
     <link rel="prev" title="CNN (Convolutional Neural Networks)" href="CNN.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -136,13 +136,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="TD.html">
-   TD (Temporal Difference)
+  <a class="reference internal" href="Varia.html">
+   Varia
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Varia.html">
-   Varia
+  <a class="reference internal" href="TD.html">
+   Bonus: TD (Temporal Difference)
   </a>
  </li>
  <li class="toctree-l1">
@@ -476,20 +476,20 @@ Init Kernel
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input:  [7 9 4 0 0 0 0 0 0 0 0]
-Output: [4 7 9 0 0 0 0 0 0 0 0]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input:  [7 0 0 0 0 0 0 0 0]
+Output: [7 0 0 0 0 0 0 0 0]
 
-Input:  [4 2 0 0 0 0 0 0 0 0 0]
-Output: [0 2 4 0 0 0 0 0 0 0 0]
+Input:  [4 7 2 9 9 4 7 7 3]
+Output: [2 3 4 4 7 7 7 9 9]
 
-Input:  [0 8 7 3 8 0 4 5 8 3 3]
-Output: [0 0 3 3 3 4 5 7 8 8 8]
+Input:  [6 0 0 0 0 0 0 0 0]
+Output: [6 0 0 0 0 0 0 0 0]
 
-Input:  [5 7 0 5 1 0 5 0 0 0 0]
-Output: [0 0 1 5 5 5 7 0 0 0 0]
+Input:  [7 9 1 1 1 3 0 0 0]
+Output: [1 1 1 3 7 9 0 0 0]
 
-Input:  [4 6 3 6 0 0 0 0 0 0 0]
-Output: [3 4 6 6 0 0 0 0 0 0 0]
+Input:  [2 0 0 0 0 0 0 0 0]
+Output: [2 0 0 0 0 0 0 0 0]
 </pre></div>
 </div>
 </div>
@@ -702,7 +702,7 @@ Actual seq: [0 1 2 4 4 4 5 6 7 7 8 8 8 9 0 0 0 0 0]
 </div>
 </div>
 </div>
-<p>Much better! You can try to remove the attention layer to convince yourself that this net will fail without it.</p>
+<p>Much better! You can try to remove the attention layer to convince yourself that this net will fail without it since that disables the passing of the information about other sequence elements. Actually, if we reformulate this problem for fixed length sequences, then flattening and using simple FCN could work, but with arbitrary length sequences, Attention is a way to go.</p>
 </div>
 <div class="section" id="final-architecture">
 <h2>Final Architecture<a class="headerlink" href="#final-architecture" title="Permalink to this headline">#</a></h2>
@@ -817,10 +817,10 @@ Actual seq: [0 0 0 0 1 2 7 8 8 9 0 0 0 0 0 0 0 0 0]
             <p class="prev-next-title">CNN (Convolutional Neural Networks)</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="TD.html" title="next page">
+    <a class='right-next' id="next-link" href="Varia.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">TD (Temporal Difference)</p>
+        <p class="prev-next-title">Varia</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
