@@ -134,13 +134,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="TD.html">
-   TD (Temporal Difference)
+  <a class="reference internal" href="Varia.html">
+   Varia
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Varia.html">
-   Varia
+  <a class="reference internal" href="TD.html">
+   Bonus: TD (Temporal Difference)
   </a>
  </li>
  <li class="toctree-l1">
@@ -549,7 +549,14 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;img/castle.jpg&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>curl https://raw.githubusercontent.com/trokas/ai_primer/master/img/castle.jpg --output castle.jpg
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;castle.jpg&#39;</span><span class="p">)</span>
 <span class="n">img</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int32&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
 <span class="c1"># X = X.mean(axis=2) / 255</span>
@@ -558,7 +565,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_3_0.png" src="_images/CNN_3_0.png" />
+<img alt="_images/CNN_4_0.png" src="_images/CNN_4_0.png" />
 </div>
 </div>
 <div class="section" id="filters">
@@ -576,7 +583,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_5_0.png" src="_images/CNN_5_0.png" />
+<img alt="_images/CNN_6_0.png" src="_images/CNN_6_0.png" />
 </div>
 </div>
 </div>
@@ -592,7 +599,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_7_0.png" src="_images/CNN_7_0.png" />
+<img alt="_images/CNN_8_0.png" src="_images/CNN_8_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -605,7 +612,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_8_0.png" src="_images/CNN_8_0.png" />
+<img alt="_images/CNN_9_0.png" src="_images/CNN_9_0.png" />
 </div>
 </div>
 </div>
@@ -621,7 +628,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_10_0.png" src="_images/CNN_10_0.png" />
+<img alt="_images/CNN_11_0.png" src="_images/CNN_11_0.png" />
 </div>
 </div>
 </div>
@@ -640,7 +647,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_12_0.png" src="_images/CNN_12_0.png" />
+<img alt="_images/CNN_13_0.png" src="_images/CNN_13_0.png" />
 </div>
 </div>
 </div>
@@ -681,7 +688,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_18_0.png" src="_images/CNN_18_0.png" />
+<img alt="_images/CNN_19_0.png" src="_images/CNN_19_0.png" />
 </div>
 </div>
 </div>
@@ -790,7 +797,7 @@ Epoch 10/10
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fdf2b363390&gt;
 </pre></div>
 </div>
-<img alt="_images/CNN_24_1.png" src="_images/CNN_24_1.png" />
+<img alt="_images/CNN_25_1.png" src="_images/CNN_25_1.png" />
 </div>
 </div>
 <p>Using FCN we had 96.36% on test set.</p>
@@ -1077,7 +1084,7 @@ Epoch 10/10
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13c03c0d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/CNN_44_1.png" src="_images/CNN_44_1.png" />
+<img alt="_images/CNN_45_1.png" src="_images/CNN_45_1.png" />
 </div>
 </div>
 <p>Great explanationa of simplified <a class="reference external" href="https://github.com/JEddy92/TimeSeries_Seq2Seq/blob/master/notebooks/TS_Seq2Seq_Conv_Intro.ipynb">TCN</a>.</p>
@@ -1212,16 +1219,16 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_49_0.png" src="_images/CNN_49_0.png" />
-<img alt="_images/CNN_49_1.png" src="_images/CNN_49_1.png" />
-<img alt="_images/CNN_49_2.png" src="_images/CNN_49_2.png" />
-<img alt="_images/CNN_49_3.png" src="_images/CNN_49_3.png" />
-<img alt="_images/CNN_49_4.png" src="_images/CNN_49_4.png" />
-<img alt="_images/CNN_49_5.png" src="_images/CNN_49_5.png" />
-<img alt="_images/CNN_49_6.png" src="_images/CNN_49_6.png" />
-<img alt="_images/CNN_49_7.png" src="_images/CNN_49_7.png" />
-<img alt="_images/CNN_49_8.png" src="_images/CNN_49_8.png" />
-<img alt="_images/CNN_49_9.png" src="_images/CNN_49_9.png" />
+<img alt="_images/CNN_50_0.png" src="_images/CNN_50_0.png" />
+<img alt="_images/CNN_50_1.png" src="_images/CNN_50_1.png" />
+<img alt="_images/CNN_50_2.png" src="_images/CNN_50_2.png" />
+<img alt="_images/CNN_50_3.png" src="_images/CNN_50_3.png" />
+<img alt="_images/CNN_50_4.png" src="_images/CNN_50_4.png" />
+<img alt="_images/CNN_50_5.png" src="_images/CNN_50_5.png" />
+<img alt="_images/CNN_50_6.png" src="_images/CNN_50_6.png" />
+<img alt="_images/CNN_50_7.png" src="_images/CNN_50_7.png" />
+<img alt="_images/CNN_50_8.png" src="_images/CNN_50_8.png" />
+<img alt="_images/CNN_50_9.png" src="_images/CNN_50_9.png" />
 </div>
 </div>
 <p>I hope this example prooves universality and usefulness of Convolutional layers. For even crazier example of how filters (convolutionas) can be used look into <a class="reference external" href="https://distill.pub/2020/growing-ca/">Neural Celural Automata</a>.</p>
