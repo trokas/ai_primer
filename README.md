@@ -35,16 +35,11 @@ What to expect from a single lecture?
 
 ## Launching notebooks
 
-You can launch notebooks while in [interactive book](https://trokas.github.io/ai_primer/README.html) by simply pressing the rocket logo. You have two options:
+You can launch notebooks while in [interactive book](https://trokas.github.io/ai_primer/README.html) by simply pressing the rocket logo and choosing **Colab**. To get faster run times click *Runtime* and *Change runtime type*, then select GPU or TPU. If necessary you can install missing packages by running `!pip install [package name]` directly in the notebook.
 
-1. **Binder** - first choice for SVD and RF lectures. It will take some time to load, but you will have all necessary dependancies ready.
-2. **Colab** - we will use it in DNN and CNN lectures. To get faster run times click *Runtime* and *Change runtime type*, then select GPU or TPU.
+**NOTE:** *Colab* will not save your changes between sessions! Download the notebook or save a copy in Google Drive before closing the browser. If you want to open notebooks locally (for a quick preview) you might find [nteract](https://nteract.io/) useful.
 
-Both in *Binder* and in *Colab* you can install missing packages by running `!pip install [package name]` directly in the notebook.
-
-**NOTE:** *Binder* and *Colab* will not save your changes between sessions! Download notebook before closing the browser.
-
-As an alternative you can use non free, but cheap option like [Jarvislabs](https://jarvislabs.ai/) or [Paperspace](https://www.paperspace.com/). Actually Paperspace has free GPU option, but often it is not available.
+As an alternative you can use non free, but cheap options like [Jarvislabs](https://jarvislabs.ai/) or [Paperspace](https://www.paperspace.com/). Actually Paperspace has free GPU option, but often it is not available.
 
 ## (re)Sources
 
