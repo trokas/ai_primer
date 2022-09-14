@@ -966,24 +966,13 @@ _________________________________________________________________
 </div>
 </div>
 </div>
-<p>Let’s add logger so that we can check outputs in tensorboard. To run tensorboard use: <code class="docutils literal notranslate"><span class="pre">tensorboard</span> <span class="pre">--logdir=./my_logs</span> <span class="pre">--port=6006</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">root_logdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">,</span> <span class="s2">&quot;my_logs&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">get_run_logdir</span><span class="p">():</span>
-    <span class="n">run_id</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;run_%Y_%m_</span><span class="si">%d</span><span class="s2">-%H_%M_%S&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_logdir</span><span class="p">,</span> <span class="n">run_id</span><span class="p">)</span>
-
-<span class="n">run_logdir</span> <span class="o">=</span> <span class="n">get_run_logdir</span><span class="p">()</span>
-<span class="n">tensorboard_cb</span> <span class="o">=</span> <span class="n">TensorBoard</span><span class="p">(</span><span class="n">run_logdir</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">tensorboard_cb</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span>
+          <span class="n">y_train</span><span class="p">,</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+          <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+          <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1016,7 +1005,7 @@ Epoch 10/10
 </div>
 </div>
 </div>
-<p>Go to <a class="reference external" href="http://localhost:6006">tensorboard</a> and familarize with it while model is training.</p>
+<p>Don’t forget to use GPU or TPU, otherwise it will be really slow.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1084,7 +1073,7 @@ Epoch 10/10
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13c03c0d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/CNN_45_1.png" src="_images/CNN_45_1.png" />
+<img alt="_images/CNN_43_1.png" src="_images/CNN_43_1.png" />
 </div>
 </div>
 <p>Great explanationa of simplified <a class="reference external" href="https://github.com/JEddy92/TimeSeries_Seq2Seq/blob/master/notebooks/TS_Seq2Seq_Conv_Intro.ipynb">TCN</a>.</p>
@@ -1219,16 +1208,16 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_50_0.png" src="_images/CNN_50_0.png" />
-<img alt="_images/CNN_50_1.png" src="_images/CNN_50_1.png" />
-<img alt="_images/CNN_50_2.png" src="_images/CNN_50_2.png" />
-<img alt="_images/CNN_50_3.png" src="_images/CNN_50_3.png" />
-<img alt="_images/CNN_50_4.png" src="_images/CNN_50_4.png" />
-<img alt="_images/CNN_50_5.png" src="_images/CNN_50_5.png" />
-<img alt="_images/CNN_50_6.png" src="_images/CNN_50_6.png" />
-<img alt="_images/CNN_50_7.png" src="_images/CNN_50_7.png" />
-<img alt="_images/CNN_50_8.png" src="_images/CNN_50_8.png" />
-<img alt="_images/CNN_50_9.png" src="_images/CNN_50_9.png" />
+<img alt="_images/CNN_48_0.png" src="_images/CNN_48_0.png" />
+<img alt="_images/CNN_48_1.png" src="_images/CNN_48_1.png" />
+<img alt="_images/CNN_48_2.png" src="_images/CNN_48_2.png" />
+<img alt="_images/CNN_48_3.png" src="_images/CNN_48_3.png" />
+<img alt="_images/CNN_48_4.png" src="_images/CNN_48_4.png" />
+<img alt="_images/CNN_48_5.png" src="_images/CNN_48_5.png" />
+<img alt="_images/CNN_48_6.png" src="_images/CNN_48_6.png" />
+<img alt="_images/CNN_48_7.png" src="_images/CNN_48_7.png" />
+<img alt="_images/CNN_48_8.png" src="_images/CNN_48_8.png" />
+<img alt="_images/CNN_48_9.png" src="_images/CNN_48_9.png" />
 </div>
 </div>
 <p>I hope this example prooves universality and usefulness of Convolutional layers. For even crazier example of how filters (convolutionas) can be used look into <a class="reference external" href="https://distill.pub/2020/growing-ca/">Neural Celural Automata</a>.</p>
