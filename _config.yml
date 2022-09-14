@@ -8,7 +8,6 @@ execute:
 launch_buttons:
   notebook_interface: classic
   colab_url: https://colab.research.google.com
-  binderhub_url: https://mybinder.org
 
 repository:
   url: https://github.com/trokas/ai_primer
