@@ -51,7 +51,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Varia" href="Varia.html" />
+    <link rel="prev" title="Bonus: TD (Temporal Difference)" href="TD.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -133,13 +133,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="TD.html">
-   TD (Temporal Difference)
+  <a class="reference internal" href="Varia.html">
+   Varia
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Varia.html">
-   Varia
+  <a class="reference internal" href="TD.html">
+   Bonus: TD (Temporal Difference)
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -324,21 +324,23 @@ title="Print to PDF"
 <img src="https://www.manhattanrarebooks.com/pictures/2038.jpg?v=1516738067" width="350"/>
 <p>Train set contains pictures of the following shapes: circles, triangles, squares, pentagons and hexagons.</p>
 <p><img alt="Project train set sample" src="_images/flatland.png" /></p>
-<p>Tain set - <a class="reference external" href="https://github.com/trokas/ai_primer/blob/master/flatland_train.data">DOWNLOAD</a>.</p>
+<p>Tain set - <a class="reference external" href="https://github.com/trokas/ai_primer/blob/master/flatland_train.npz">DOWNLOAD</a>. In Colab you can download it using <em>curl</em>.</p>
 <p>For your submission create a new <a class="reference external" href="https://github.com/">github</a> repo and upload code/notebooks and final model (.h5 file). Next try to go to the link <a class="reference external" href="https://us-central1-aiprimer.cloudfunctions.net/flatland">flatland evaluation</a> and you should see message ‘Welcome to Flatland!’. This means that evaluation service is running and you can submit your own model by calling <code class="docutils literal notranslate"><span class="pre">https://us-central1-aiprimer.cloudfunctions.net/flatland?model_link=[PATH</span> <span class="pre">TO</span> <span class="pre">YOUR</span> <span class="pre">.h5]</span></code> (be patient, it can take a while).</p>
-<p>Before submiting your model, make sure that it works well using following evaluation function:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gzip</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
+<p>Evaluation script and corrects labels as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
-    <span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">2</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span> <span class="o">/</span> <span class="mf">255.</span>
-    <span class="n">acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">acc</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;flatland_train.npz&#39;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;model.h5&#39;</span><span class="p">)</span>
-<span class="n">evaluate</span><span class="p">(</span><span class="s1">&#39;flatland_train.data&#39;</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+<span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">2</span>    <span class="c1"># Correct labels so that triangle is mapped to class 1</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span> <span class="o">/</span> <span class="mf">255.</span>      <span class="c1"># Scale down to range [0, 1]</span>
+
+<span class="c1"># Construct and train your model (don&#39;t forget train/test split and other tricks)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Save the model and upload to git</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;model.h5&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>For faster training you can use <a class="reference external" href="https://colab.research.google.com/">colab</a>, just change it GPU mode by setting it at Edit -&gt; Notebook settings -&gt; Hardware accelerator.</p>
@@ -418,11 +420,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Varia.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="TD.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Varia</p>
+            <p class="prev-next-title">Bonus: TD (Temporal Difference)</p>
         </div>
     </a>
 </div>
