@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; AI primer</title>
+    <title>Namesformer &#8212; AI primer</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -107,7 +107,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="SVD.html">
    SVD (Singular Value Decomposition)
@@ -131,6 +131,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="Attention.html">
    Attention
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Namesformer
   </a>
  </li>
  <li class="toctree-l1">
@@ -305,50 +310,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1>Namesformer</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -356,7 +334,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <p>Inspired by Andrej Karpathy lecture <a class="reference external" href="https://www.youtube.com/watch?v=PaCmpygFfXo&amp;t=131s">makemore</a> that contains english name generation.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="namesformer">
+<h1>Namesformer<a class="headerlink" href="#namesformer" title="Permalink to this headline">#</a></h1>
+<p>Inspired by Andrej Karpathy lecture <a class="reference external" href="https://www.youtube.com/watch?v=PaCmpygFfXo&amp;t=131s">makemore</a> that contains english name generation.</p>
 <p>The code was fully writen using ChatGPT with minimal corrections. My first query was:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">am</span> <span class="n">preparing</span> <span class="n">a</span> <span class="n">lecture</span> <span class="k">for</span> <span class="n">my</span> <span class="n">students</span> <span class="n">on</span> <span class="n">AI</span> <span class="n">basics</span><span class="o">.</span> <span class="n">They</span> <span class="n">already</span> <span class="n">know</span> <span class="n">how</span> <span class="n">to</span> <span class="n">use</span> <span class="n">attention</span> <span class="ow">in</span> <span class="n">keras</span> <span class="n">to</span> <span class="n">create</span> <span class="bp">self</span><span class="o">-</span><span class="n">attention</span> <span class="n">layers</span><span class="o">.</span> <span class="n">What</span> <span class="n">I</span> <span class="n">want</span> <span class="n">to</span> <span class="n">explain</span> <span class="n">them</span> <span class="ow">is</span> <span class="n">how</span> <span class="n">to</span> <span class="n">make</span> <span class="n">a</span> <span class="n">simplest</span> <span class="n">possible</span> <span class="n">transformer</span> <span class="n">architecture</span> <span class="p">(</span><span class="k">with</span> <span class="n">minimal</span> <span class="n">amount</span> <span class="n">of</span> <span class="n">code</span><span class="p">)</span><span class="o">.</span>
  <span class="n">As</span> <span class="n">a</span> <span class="n">dataset</span> <span class="n">I</span> <span class="n">will</span> <span class="n">use</span> <span class="n">a</span> <span class="n">csv</span> <span class="k">with</span> <span class="n">names</span><span class="p">:</span>
@@ -813,6 +793,7 @@ Name is new? True
 </div>
 </div>
 <p>Here we go, we have a Lithuanian name generator!</p>
+</div>
 
     <script type="text/x-thebe-config">
     {
