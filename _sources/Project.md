@@ -35,17 +35,15 @@ For faster training you can use [colab](https://colab.research.google.com/), jus
 
 ## Leaderboard
 
-To add some gamification submissions might end up in a leaderboard (we will agree on that as the course progresses). Each model will be evaluated on two test sets - one which closely matches train set and slightly more advanced one which nature will be revealed at the end of the course.
+To add some gamification submissions might end up in a leaderboard (we will agree on that as the course progresses). Each model will be evaluated on two test sets - one which closely matches train set and slightly more advanced one which nature will be revealed at the end of the course. To know your greate look at advanced one!
 
 Passing benchmarks:
 
-| Grade | Hints | Test set (simple) | Test set (adv.) |
-|---|---|---|---|
-| 5 | Simple NN | >70% | any |
-| 6 | Simple NN | >75% | any |
-| 7 | CNN | >80% | any |
-| 8 | CNN | >85% | any |
-| 9 | CNN | >90% | any |
-| 10 | Transfer learning | >90% | >80% |
+| Points (out of 4) | Hint | Test set (adv.) |
+|---|---|---|
+| 0 | ??? | <70% |
+| 2 | FNN | >70% |
+| 3 | CNN | >80% |
+| 4 | ??? | >90% |
 
-*Additional task:* if you have beated advanced set and have model that gives nearly ideal accuracy, try to make it as small as possible.
+*Additional task:* extra 0.5 points are added if you manage to make a model that takes less than 500kb.
