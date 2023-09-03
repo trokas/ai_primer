@@ -133,6 +133,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="Namesformer.html">
+   Namesformer
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Varia.html">
    Varia
   </a>
@@ -320,12 +325,12 @@ title="Print to PDF"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="project-flatland">
 <h1>Project: Flatland<a class="headerlink" href="#project-flatland" title="Permalink to this headline">#</a></h1>
-<p>Task is slightly inspired by the book Flatland. You will have to classify images by ‘calculating’ number of corners a figure in that image has using deep learning.</p>
+<p>Task is slightly inspired by the book Flatland. You will have to classify images by ‘calculating’ a number of corners a figure in that image has using deep learning.</p>
 <img src="https://www.manhattanrarebooks.com/pictures/2038.jpg?v=1516738067" width="350"/>
-<p>Train set contains pictures of the following shapes: circles, triangles, squares, pentagons and hexagons.</p>
+<p>Train set contains pictures of the following shapes: circles, triangles, squares, pentagons, and hexagons.</p>
 <p><img alt="Project train set sample" src="_images/flatland.png" /></p>
-<p>Tain set - <a class="reference external" href="https://github.com/trokas/ai_primer/blob/master/flatland_train.npz">DOWNLOAD</a>. Just download it and upload to Colab. Don’t use <em>curl</em> since it manages to mess up zipped files!</p>
-<p>For your submission create a new <a class="reference external" href="https://github.com/">github</a> repo and upload code/notebooks and final model (.h5 file). Next try to go to the link <a class="reference external" href="https://us-central1-aiprimer.cloudfunctions.net/flatland">flatland evaluation</a> and you should see message ‘Welcome to Flatland!’. This means that evaluation service is running and you can submit your own model by calling <code class="docutils literal notranslate"><span class="pre">https://us-central1-aiprimer.cloudfunctions.net/flatland?model_link=[PATH</span> <span class="pre">TO</span> <span class="pre">YOUR</span> <span class="pre">.h5]</span></code> (be patient, it can take a while).</p>
+<p>Tain set - <a class="reference external" href="https://github.com/trokas/ai_primer/blob/master/flatland_train.npz">DOWNLOAD</a>. Just download it and upload it to Colab. Don’t use <em>curl</em> since it manages to mess up zipped files!</p>
+<p>For your submission create a new <a class="reference external" href="https://github.com/">github</a> repo and upload code/notebooks and the final model (.h5 file). Next, try to go to the link <a class="reference external" href="https://us-central1-aiprimer.cloudfunctions.net/flatland">flatland evaluation</a> and you should see the message ‘Welcome to Flatland!’. This means that the evaluation service is running and you can submit your own model by calling <code class="docutils literal notranslate"><span class="pre">https://us-central1-aiprimer.cloudfunctions.net/flatland?model_link=[PATH</span> <span class="pre">TO</span> <span class="pre">YOUR</span> <span class="pre">.h5]</span></code> (be patient, it can take a while).</p>
 <p>Evaluation script and corrects labels as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -339,14 +344,14 @@ title="Print to PDF"
 <span class="c1"># Construct and train your model (don&#39;t forget train/test split and other tricks)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="o">...</span>
 
-<span class="c1"># Save the model and upload to git</span>
+<span class="c1"># Save the model and upload it to git</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;model.h5&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For faster training you can use <a class="reference external" href="https://colab.research.google.com/">colab</a>, just change it GPU mode by setting it at Edit -&gt; Notebook settings -&gt; Hardware accelerator.</p>
+<p>For faster training you can use <a class="reference external" href="https://colab.research.google.com/">colab</a>, just change it to GPU mode by setting it at Edit -&gt; Notebook settings -&gt; Hardware accelerator.</p>
 <div class="section" id="leaderboard">
 <h2>Leaderboard<a class="headerlink" href="#leaderboard" title="Permalink to this headline">#</a></h2>
-<p>To add some gamification submissions might end up in a leaderboard (we will agree on that as the course progresses). Each model will be evaluated on two test sets - one which closely matches train set and slightly more advanced one which nature will be revealed at the end of the course. To know your greate look at advanced one!</p>
+<p>Submissions will end up in a leaderboard that will be shared during the lectures. Each model will be evaluated on two test sets - one that closely matches the training set and a slightly more advanced one whose nature will be revealed at the end of the course. To know your grade look at the advanced one!</p>
 <p>Passing benchmarks:</p>
 <table class="colwidths-auto table">
 <thead>
