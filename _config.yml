@@ -6,7 +6,6 @@ execute:
   execute_notebooks: 'off'
 
 launch_buttons:
-  notebook_interface: classic
   colab_url: https://colab.research.google.com
 
 repository:
