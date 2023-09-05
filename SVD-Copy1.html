@@ -53,8 +53,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="RF (Random Forest)" href="RF.html" />
-    <link rel="prev" title="Welcome to AI primer course" href="README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -109,9 +107,9 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="SVD.html">
    SVD (Singular Value Decomposition)
   </a>
  </li>
@@ -214,7 +212,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/trokas/ai_primer/master?urlpath=tree/SVD.ipynb"
+        <a href="https://mybinder.org/v2/gh/trokas/ai_primer/master?urlpath=tree/SVD-Copy1.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -232,7 +230,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/SVD.ipynb"
+        <a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/SVD-Copy1.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -275,7 +273,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/SVD.ipynb"
+        <a href="_sources/SVD-Copy1.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -644,7 +642,7 @@ Eigenvectors:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_4_0.png" src="_images/SVD_4_0.png" />
+<img alt="_images/SVD-Copy1_4_0.png" src="_images/SVD-Copy1_4_0.png" />
 </div>
 </div>
 <p><strong>TASK:</strong> play a bit and make sure that it works as expected and you can use basic <em>numpy</em> functions easily (for example <em>np.dot</em>), we will need it a lot in the future.</p>
@@ -842,7 +840,7 @@ V
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Image shape (503, 800)
 </pre></div>
 </div>
-<img alt="_images/SVD_15_1.png" src="_images/SVD_15_1.png" />
+<img alt="_images/SVD-Copy1_15_1.png" src="_images/SVD-Copy1_15_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -872,7 +870,7 @@ S shape - (503,)
 V shape - (800, 800)
 </pre></div>
 </div>
-<img alt="_images/SVD_18_1.png" src="_images/SVD_18_1.png" />
+<img alt="_images/SVD-Copy1_18_1.png" src="_images/SVD-Copy1_18_1.png" />
 </div>
 </div>
 <p><strong>TASK:</strong> check if all values of <code class="docutils literal notranslate"><span class="pre">(U</span> <span class="pre">*</span> <span class="pre">S).dot(V[:len(S)])</span></code> match <code class="docutils literal notranslate"><span class="pre">X</span></code> using numpy.</p>
@@ -893,7 +891,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_21_0.png" src="_images/SVD_21_0.png" />
+<img alt="_images/SVD-Copy1_21_0.png" src="_images/SVD-Copy1_21_0.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
 </pre></div>
 </div>
@@ -909,7 +907,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_23_0.png" src="_images/SVD_23_0.png" />
+<img alt="_images/SVD-Copy1_23_0.png" src="_images/SVD-Copy1_23_0.png" />
 </div>
 </div>
 <p><strong>TASK:</strong> play with animation and explore U, S, V, how many numbers do you need to transmit comprehensible image?</p>
@@ -938,7 +936,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_28_0.png" src="_images/SVD_28_0.png" />
+<img alt="_images/SVD-Copy1_28_0.png" src="_images/SVD-Copy1_28_0.png" />
 </div>
 </div>
 <p>Further computations might lead to even higher errors, for example we would expect <span class="math notranslate nohighlight">\(X^{-1} X v = v\)</span>.</p>
@@ -1105,7 +1103,7 @@ V shape - (800, 800)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/SVD_45_0.png" src="_images/SVD_45_0.png" />
+<img alt="_images/SVD-Copy1_45_0.png" src="_images/SVD-Copy1_45_0.png" />
 </div>
 </div>
 <p><strong>TASK:</strong> PCA can be used as anomaly detection simply by looking at the reconstruction error. Try to test this out using Olivetti faces dataset (<code class="docutils literal notranslate"><span class="pre">sklearn.datasets.fetch_olivetti_faces</span></code>). Just flip one or couple of images upside down so that they would look like anomalies, then encode and decode using PCA.</p>
@@ -3498,20 +3496,6 @@ dtype: float64
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="README.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Welcome to AI primer course</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="RF.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RF (Random Forest)</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
