@@ -825,7 +825,7 @@ V
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100  103k  100  103k    0     0   350k      0 --:--:-- --:--:-- --:--:--  353k
+100  103k  100  103k    0     0   295k      0 --:--:-- --:--:-- --:--:--  299k
 </pre></div>
 </div>
 </div>
@@ -850,6 +850,8 @@ V
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate number of values in SVD&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">u</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -861,7 +863,7 @@ V
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;U shape - </span><span class="si">{0}</span><span class="se">\n</span><span class="s1">S shape - </span><span class="si">{1}</span><span class="se">\n</span><span class="s1">V shape - </span><span class="si">{2}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">V</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 <span class="n">plot</span><span class="p">((</span><span class="n">U</span> <span class="o">*</span> <span class="n">S</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">S</span><span class="p">)]))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Compression rate with all singular values - </span><span class="si">{0:.02%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-    <span class="mi">1</span> <span class="o">-</span> <span class="n">size</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">S</span><span class="p">)])</span> <span class="o">/</span> <span class="n">size</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span><span class="p">)))</span>
+    <span class="mi">1</span> <span class="o">-</span> <span class="n">size</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">S</span><span class="p">)])</span> <span class="o">/</span> <span class="n">n</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -885,7 +887,7 @@ V shape - (800, 800)
     <span class="n">v</span> <span class="o">=</span> <span class="n">V</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
     <span class="n">plot</span><span class="p">((</span><span class="n">u</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Using </span><span class="si">{0}</span><span class="s1"> singular values, compression rate = </span><span class="si">{1:.02%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-        <span class="n">i</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">size</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">/</span> <span class="n">size</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span><span class="p">)))</span>
+        <span class="n">i</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">size</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span><span class="p">))</span>
     <span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">())</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
@@ -1124,17 +1126,40 @@ V shape - (800, 800)
 <span class="n">i</span> <span class="o">=</span> <span class="mi">20</span>                    <span class="c1"># Number of components</span>
 <span class="n">face_to_encode</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>     <span class="c1"># You can take any image here (for example: try to flip it using X[0][::-1])</span>
 <span class="n">encoded</span> <span class="o">=</span> <span class="n">U</span><span class="p">[:,:</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="p">(</span><span class="n">face_to_encode</span> <span class="o">-</span> <span class="n">avg_face</span><span class="p">)</span>      <span class="c1"># Here we encode image from 64x64 to only 20 values!</span>
-<span class="n">decoded</span> <span class="o">=</span> <span class="n">X_avg</span> <span class="o">+</span> <span class="n">U</span><span class="p">[:,:</span><span class="n">i</span><span class="p">]</span> <span class="o">@</span> <span class="n">encoded</span>     <span class="c1"># This should be similar to face_to_encode</span>
+<span class="n">decoded</span> <span class="o">=</span> <span class="n">avg_face</span> <span class="o">+</span> <span class="n">U</span><span class="p">[:,:</span><span class="n">i</span><span class="p">]</span> <span class="o">@</span> <span class="n">encoded</span>     <span class="c1"># This should be similar to face_to_encode</span>
 </pre></div>
 </div>
 <p>In essence we create a base of images in U that are used for encoding and decoding. If you take high number of components <code class="docutils literal notranslate"><span class="pre">U[:,:i]</span> <span class="pre">&#64;</span> <span class="pre">U[:,:i].T</span></code> will get close to identity, but when number of components is small it preserves only most relevant info. This is similar to Fourier transform, just that the base to use is suggested by the data. By the way, if you have big datasets you might need to use <code class="docutils literal notranslate"><span class="pre">sklearn.utils.extmath.randomized_svd</span></code> instead of <code class="docutils literal notranslate"><span class="pre">np.linalg.svd</span></code> to get decent run times.</p>
 <p><strong>TASK:</strong> Download the extended Yale faces dataset using the code provided below. Take the first face and leave it aside for testing (don’t show it for the encoder while fitting it). Use PCA (or randomized SVD) and fit provided data. Check how it works on the image you have set aside. How many components do you need to get a decent reconstruction? Now comes the fun part - download <a class="reference external" href="https://raw.githubusercontent.com/trokas/ai_primer/master/img/dog_crop.jpg">cropped dog</a> and <a class="reference external" href="https://raw.githubusercontent.com/trokas/ai_primer/master/img/dog_full.jpg">full dog</a> images and try to encode and decode them using a different number of components. Which of those is easier to reconstruct? How many components do you need?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!curl https://raw.githubusercontent.com/trokas/ai_primer/master/img/CroppedYale.zip --output CroppedYale.zip
-!unzip -f CroppedYale.zip
+!unzip CroppedYale.zip
 X = np.array([np.asarray(Image.open(path)) for path in glob.glob(&#39;CroppedYale/*/*E*.pgm&#39;)])
 </pre></div>
 </div>
 <p>Originally dataset was hosted on http://vision.ucsd.edu/extyaleb/CroppedYaleBZip/CroppedYale.zip.</p>
+<hr class="docutils" />
+<p><strong>Solution (to the last TASK)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils.extmath</span> <span class="kn">import</span> <span class="n">randomized_svd</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">))</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;CroppedYale/*/*E*.pgm&#39;</span><span class="p">)])</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2414</span><span class="p">,</span> <span class="mi">192</span> <span class="o">*</span> <span class="mi">168</span><span class="p">))</span>
+
+<span class="n">avg_face</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>     <span class="c1"># Average face</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">randomized_svd</span><span class="p">((</span><span class="n">X</span> <span class="o">-</span> <span class="n">avg_face</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="mi">600</span>  <span class="c1"># play with number of values</span>
+<span class="n">dog</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;dog_crop.jpg&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">))</span>   <span class="c1"># try to change to dog_full.jpg</span>
+
+<span class="n">face_to_encode</span> <span class="o">=</span> <span class="n">dog</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">U</span><span class="p">[:,</span> <span class="p">:</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="p">(</span><span class="n">face_to_encode</span> <span class="o">-</span> <span class="n">avg_face</span><span class="p">)</span>
+<span class="n">decoded</span> <span class="o">=</span> <span class="n">avg_face</span> <span class="o">+</span> <span class="n">U</span><span class="p">[:,</span> <span class="p">:</span><span class="n">k</span><span class="p">]</span> <span class="o">@</span> <span class="n">encoded</span>
+
+<span class="n">plot</span><span class="p">(</span><span class="n">face_to_encode</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">192</span><span class="p">,</span> <span class="mi">168</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">decoded</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">192</span><span class="p">,</span> <span class="mi">168</span><span class="p">))</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="recommender-using-svd">
@@ -2735,7 +2760,7 @@ X = np.array([np.asarray(Image.open(path)) for path in glob.glob(&#39;CroppedYal
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>curl http://files.grouplens.org/datasets/movielens/ml-latest-small.zip --output ml-latest-small.zip
-<span class="o">!</span>unzip -f ml-latest-small.zip
+<span class="o">!</span>unzip ml-latest-small.zip
 </pre></div>
 </div>
 </div>
@@ -3528,7 +3553,7 @@ dtype: float64
   
     By trokas<br/>
   
-      &copy; Copyright MIF, 2021.<br/>
+      &copy; Copyright MIF, 2023.<br/>
 </p>
         </footer>
     </div>

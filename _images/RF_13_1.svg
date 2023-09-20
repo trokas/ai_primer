@@ -5,8 +5,8 @@
 <!-- 0 -->
 <g id="node1" class="node">
 <title>0</title>
-<polygon fill="#ffffff" stroke="black" points="201,-187 52,-187 52,-104 201,-104 201,-187"/>
-<text text-anchor="middle" x="126.5" y="-171.8" font-family="Times,serif" font-size="14.00">petal width (cm) &lt;= 0.8</text>
+<polygon fill="#ffffff" stroke="black" points="206,-187 47,-187 47,-104 206,-104 206,-187"/>
+<text text-anchor="middle" x="126.5" y="-171.8" font-family="Times,serif" font-size="14.00">petal length (cm) &lt;= 2.45</text>
 <text text-anchor="middle" x="126.5" y="-156.8" font-family="Times,serif" font-size="14.00">entropy = 1.58</text>
 <text text-anchor="middle" x="126.5" y="-141.8" font-family="Times,serif" font-size="14.00">samples = 105</text>
 <text text-anchor="middle" x="126.5" y="-126.8" font-family="Times,serif" font-size="14.00">value = [31, 37, 37]</text>
