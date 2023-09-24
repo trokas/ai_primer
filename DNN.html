@@ -543,6 +543,13 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Init Plugin
+Init Graph Optimizer
+Init Kernel
+</pre></div>
+</div>
+</div>
 </div>
 <p>Let’s say we have a simple line <span class="math notranslate nohighlight">\(y=5x+2\)</span>.</p>
 <div class="cell docutils container">
@@ -561,7 +568,7 @@ title="Print to PDF"
 </div>
 <p>So the model will have two coefficients - <span class="math notranslate nohighlight">\(k, b\)</span>. For sure it’s easy to solve it analytically and it’s an overkill to use gradient descent, but this is just for illustration purposes. The idea is super simple - let’s move into the direction which leads to lower cost (error).</p>
 <img src="https://miro.medium.com/max/1005/1*_6TVU8yGpXNYDkkpOfnJ6Q.png" style="width: 50%"/>
-<p>For regression task it is common to use MSE loss <span class="math notranslate nohighlight">\((\hat{y} - y)^2\)</span>. Now its derivative is just <span class="math notranslate nohighlight">\(2(\hat{y} - y)\)</span>, thus simplifying our implementation (acctually we could skip <span class="math notranslate nohighlight">\(2\)</span> and increase learning rate instead).</p>
+<p>For regression task it is common to use MSE loss <span class="math notranslate nohighlight">\((\hat{y} - y)^2\)</span>. It’s derivative is just <span class="math notranslate nohighlight">\(2(\hat{y} - y)\)</span>, thus we get</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>     <span class="c1"># initial values</span>
@@ -571,10 +578,12 @@ title="Print to PDF"
 <span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>   <span class="c1"># storage for k and b through training</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
     <span class="n">pred</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">X</span> <span class="o">+</span> <span class="n">b</span>
-    <span class="n">diff_k</span> <span class="o">=</span> <span class="n">X</span>
-    <span class="n">diff_b</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">k</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">diff_k</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">pred</span> <span class="o">-</span> <span class="n">y</span><span class="p">))</span>
-    <span class="n">b</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">diff_b</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">pred</span> <span class="o">-</span> <span class="n">y</span><span class="p">))</span>
+    <span class="c1"># Compute the gradients for k and b</span>
+    <span class="n">dk</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">pred</span><span class="p">))</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">pred</span><span class="p">)</span>
+    <span class="c1"># Update k and b using the gradients</span>
+    <span class="n">k</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">dk</span>
+    <span class="n">b</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">db</span>
     <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
 
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -690,7 +699,7 @@ title="Print to PDF"
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
     <span class="c1"># Train only on train set</span>
     <span class="k">for</span> <span class="n">features</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">mask</span><span class="p">]):</span>
-        <span class="n">pred</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">1</span>     <span class="c1"># step function</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>     <span class="c1"># step function</span>
         <span class="n">W</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="p">(</span><span class="n">pred</span> <span class="o">-</span> <span class="n">label</span><span class="p">)</span> <span class="o">*</span> <span class="n">features</span>
 
 <span class="n">pred_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">W</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
@@ -701,7 +710,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hit rate (train set) - 98.10%, Hit rate (test set) - 100.00%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hit rate (train set) - 100.00%, Hit rate (test set) - 100.00%
 </pre></div>
 </div>
 </div>
@@ -746,8 +755,8 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 
 <span class="c1"># Initial weights between 0 and 1</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">W_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">hidden</span><span class="p">))</span>
-<span class="n">W_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">W_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>
+<span class="n">W_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -782,6 +791,7 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 </div>
 </div>
 </div>
+<p><strong>TASK:</strong> Change the class from <code class="docutils literal notranslate"><span class="pre">CLASS</span> <span class="pre">=</span> <span class="pre">'setosa'</span></code> and see if non-linearity works. Play with this visualization - https://www.geogebra.org/m/a5x9szmc to get a sense why.</p>
 </div>
 </div>
 <div class="section" id="mnist-application-of-backprop-by-yann-lecun-1989">
@@ -807,7 +817,7 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_25_0.png" src="_images/DNN_25_0.png" />
+<img alt="_images/DNN_26_0.png" src="_images/DNN_26_0.png" />
 </div>
 </div>
 <p>Before jumping to Keras let’s see of how this would look like if we try to build it from scratch.</p>
@@ -833,6 +843,7 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigmoid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
 <span class="n">diff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
+
 <span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
     <span class="n">z_exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="n">z</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">z_exp</span> <span class="o">/</span> <span class="n">z_exp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1023,7 +1034,7 @@ Epoch 20/20
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="_images/DNN_34_1.png" src="_images/DNN_34_1.png" />
+<img alt="_images/DNN_35_1.png" src="_images/DNN_35_1.png" />
 </div>
 </div>
 <p>Structurally this is the same network we had before, thus our error rate is expected to be simmilar.</p>
@@ -1054,7 +1065,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_38_0.png" src="_images/DNN_38_0.png" />
+<img alt="_images/DNN_39_0.png" src="_images/DNN_39_0.png" />
 </div>
 </div>
 <p>Let’s look only at misclassifiesd cases.</p>
@@ -1073,7 +1084,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_40_0.png" src="_images/DNN_40_0.png" />
+<img alt="_images/DNN_41_0.png" src="_images/DNN_41_0.png" />
 </div>
 </div>
 <p>As you might remember Random Forest achieved similar accuracy so why do we need NN then? Well, let’s try to increse number of parameters in our network.</p>
@@ -1175,10 +1186,10 @@ Epoch 20/20
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy on test set - 97.74%
 </pre></div>
 </div>
-<img alt="_images/DNN_44_1.png" src="_images/DNN_44_1.png" />
+<img alt="_images/DNN_45_1.png" src="_images/DNN_45_1.png" />
 </div>
 </div>
-<p>Thats better! For examply by using layers 1500, 1000, 500, 10 you can improve accuracy to 98.24%, but training will take quite some time. Acctually you can go even futher with simple data augmentation techniques - https://arxiv.org/pdf/1003.0358.pdf</p>
+<p>Thats better! For examply by using layers 1500, 1000, 500, 10 you can improve accuracy to 98.24%, but training will take quite some time. Actually you can go even futher with simple data augmentation techniques - https://arxiv.org/pdf/1003.0358.pdf</p>
 <p>To the save and load the model you can use:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1238,7 +1249,7 @@ N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x14768bb90&gt;
 </pre></div>
 </div>
-<img alt="_images/DNN_48_1.png" src="_images/DNN_48_1.png" />
+<img alt="_images/DNN_49_1.png" src="_images/DNN_49_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1267,7 +1278,7 @@ N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x146827350&gt;]
 </pre></div>
 </div>
-<img alt="_images/DNN_49_2.png" src="_images/DNN_49_2.png" />
+<img alt="_images/DNN_50_2.png" src="_images/DNN_50_2.png" />
 </div>
 </div>
 </div>
