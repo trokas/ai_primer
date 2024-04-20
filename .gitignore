@@ -11,3 +11,8 @@ ml-latest-small.zip
 ml-latest-small/
 CroppedYale/
 Eigenfaces.ipynb
+data
+*.h5
+*.onnx
+*.jpg
+*.txt
