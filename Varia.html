@@ -1,106 +1,167 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Varia &#8212; AI primer</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Varia';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Bonus: TD (Temporal Difference)" href="TD.html" />
     <link rel="prev" title="Namesformer" href="Namesformer.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">AI primer</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AI primer</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -110,449 +171,463 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="SVD.html">
-   SVD (Singular Value Decomposition)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="RF.html">
-   RF (Random Forest)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DNN.html">
-   DNN (Deep Neural Networks)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CNN.html">
-   CNN (Convolutional Neural Networks)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Attention.html">
-   Attention
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Namesformer.html">
-   Namesformer
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Varia
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="TD.html">
-   Bonus: TD (Temporal Difference)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Project.html">
-   Project: Flatland
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="SVD.html">SVD (Singular Value Decomposition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RF.html">RF (Random Forest)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DNN.html">DNN (Deep Neural Networks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN.html">CNN (Convolutional Neural Networks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attention.html">Attention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Namesformer.html">Namesformer</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Varia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TD.html">Bonus: TD (Temporal Difference)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RL.html">Bonus: Reinforcement Learning</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Project.html">Project: Flatland</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/trokas/ai_primer/master?urlpath=tree/Varia.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/Varia.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/Varia.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Varia.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Varia.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transfer-learning">
-   Transfer Learning
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#saliency">
-   Saliency
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#architectures">
-   Architectures
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#autoencoders">
-     Autoencoders
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#word2vec-cnn-s">
-     Word2Vec &amp; CNN’s
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mimics">
-   Mimics
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mixup">
-   Mixup
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#permutation-feature-importance">
-   Permutation Feature Importance
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Varia</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transfer-learning">
-   Transfer Learning
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#saliency">
-   Saliency
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#architectures">
-   Architectures
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#autoencoders">
-     Autoencoders
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#word2vec-cnn-s">
-     Word2Vec &amp; CNN’s
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mimics">
-   Mimics
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mixup">
-   Mixup
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#permutation-feature-importance">
-   Permutation Feature Importance
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Varia</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-learning">Transfer Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saliency">Saliency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architectures">Architectures</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoencoders">Autoencoders</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word2vec-cnn-s">Word2Vec &amp; CNN’s</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mimics">Mimics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixup">Mixup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-feature-importance">Permutation Feature Importance</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="varia">
-<h1>Varia<a class="headerlink" href="#varia" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="varia">
+<h1>Varia<a class="headerlink" href="#varia" title="Link to this heading">#</a></h1>
 <p>In this chapter we will look into couple different architectures, saliency and other tricks, which did not found their own chapters. Each section will have open-ended task for you to experiment with.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">gzip</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">torchvision</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">models</span><span class="p">,</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span><span class="p">,</span> <span class="n">optim</span>
 <span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="transfer-learning">
-<h2>Transfer Learning<a class="headerlink" href="#transfer-learning" title="Permalink to this headline">#</a></h2>
+<section id="transfer-learning">
+<h2>Transfer Learning<a class="headerlink" href="#transfer-learning" title="Link to this heading">#</a></h2>
 <p>Since lower level features in networks for image tasks turn out to be quite basic we can transfer this knowledge to new datasets by training only later layers.</p>
 <img width=50% src="https://miro.medium.com/max/1000/1*LUFUl_8fqS97nUzpcFjgWw.png">
 <p>For example let’s take MobileNet pre-trained on imagenet and chop it’s end.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Default input is 32x32x3, it might de different in your application</span>
-<span class="n">mobile_net</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">applications</span><span class="o">.</span><span class="n">MobileNet</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s1">&#39;imagenet&#39;</span><span class="p">,</span> <span class="n">include_top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if GPU is available and set the device accordingly</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;mps&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">mps</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using device: </span><span class="si">{</span><span class="n">device</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="c1"># Let&#39;s fix those weights</span>
-<span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">mobile_net</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
-    <span class="n">layer</span><span class="o">.</span><span class="n">trainable</span> <span class="o">=</span> <span class="kc">False</span>
-    
-<span class="c1"># Adding new trainable Dense layers</span>
-<span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="c1"># Note that we might need to upsample our images if they are too small (less than 32x32), this is done via:</span>
-<span class="c1"># inputs = keras.layers.UpSampling2D((2, 2))(inputs)</span>
-<span class="n">embedding</span> <span class="o">=</span> <span class="n">mobile_net</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-<span class="c1"># Output shape for sure is problem dependant, but this should give you the idea</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()(</span><span class="n">embedding</span><span class="p">)</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)(</span><span class="n">output</span><span class="p">)</span>
-<span class="c1"># Build the model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="c1"># Step 1: Load Fashion MNIST with transformations</span>
+<span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+    <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)),</span>  <span class="c1"># Resize to be compatible with MobileNet</span>
+    <span class="n">transforms</span><span class="o">.</span><span class="n">Grayscale</span><span class="p">(</span><span class="n">num_output_channels</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>  <span class="c1"># Convert to 3-channel grayscale</span>
+    <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+    <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.5</span><span class="p">,),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,)),</span>
+<span class="p">])</span>
+
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">FashionMNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">FashionMNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Step 2: Modify model for 1-channel input, update the final layer, and send to device</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">resnet18</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">ResNet18_Weights</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Freeze all layers&#39; weights except for conv1 and the final classification layer</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;conv1.weight&quot;</span><span class="p">,</span> <span class="s2">&quot;fc.weight&quot;</span><span class="p">,</span> <span class="s2">&quot;fc.bias&quot;</span><span class="p">]:</span>
+        <span class="n">param</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># Add the last trainable layer</span>
+<span class="n">num_features</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fc</span><span class="o">.</span><span class="n">in_features</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_features</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Send model to device</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="c1"># Step 3: Define optimizer, loss function, and move them to the device</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">([</span>
+        <span class="p">{</span><span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">conv1</span><span class="o">.</span><span class="n">parameters</span><span class="p">()},</span>
+        <span class="p">{</span><span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">fc</span><span class="o">.</span><span class="n">parameters</span><span class="p">()}</span>
+    <span class="p">],</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+<span class="c1"># Training loop</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+        <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>  <span class="c1"># Move data to the device</span>
+        
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        
+        <span class="n">running_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">, Loss: </span><span class="si">{</span><span class="n">running_loss</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+        <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy of the network on the 10000 test images: </span><span class="si">{</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">correct</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">total</span><span class="si">}</span><span class="s1"> %&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:`input_shape` is undefined or non-square, or `rows` is not in [128, 160, 192, 224]. Weights for input shape (224, 224) will be loaded as the default.
-Metal device set to: Apple M1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using device: mps
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-23 13:54:58.575500: I tensorflow/core/common_runtime/pluggable_device/pluggable_device_factory.cc:306] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
-2022-11-23 13:54:58.575710: I tensorflow/core/common_runtime/pluggable_device/pluggable_device_factory.cc:272] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -&gt; physical PluggableDevice (device: 0, name: METAL, pci bus id: &lt;undefined&gt;)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████| 938/938 [00:30&lt;00:00, 30.88it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model&quot;
-_________________________________________________________________
- Layer (type)                Output Shape              Param #   
-=================================================================
- input_2 (InputLayer)        [(None, 32, 32, 3)]       0         
-                                                                 
- mobilenet_1.00_224 (Functio  (None, 1, 1, 1024)       3228864   
- nal)                                                            
-                                                                 
- flatten (Flatten)           (None, 1024)              0         
-                                                                 
- dense (Dense)               (None, 10)                10250     
-                                                                 
-=================================================================
-Total params: 3,239,114
-Trainable params: 10,250
-Non-trainable params: 3,228,864
-_________________________________________________________________
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1, Loss: 0.9756850496029803
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████| 938/938 [00:30&lt;00:00, 31.15it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 2, Loss: 0.7356271022227782
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████| 938/938 [00:29&lt;00:00, 31.27it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 3, Loss: 0.6794217945034824
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████| 938/938 [00:29&lt;00:00, 31.58it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 4, Loss: 0.6545539951718438
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████| 938/938 [00:29&lt;00:00, 31.55it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 5, Loss: 0.6321801520359795
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████| 938/938 [00:29&lt;00:00, 31.47it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 6, Loss: 0.6211532306061116
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████| 938/938 [00:29&lt;00:00, 31.29it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 7, Loss: 0.606150176320503
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████| 938/938 [00:29&lt;00:00, 31.32it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 8, Loss: 0.6007817822859994
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████| 938/938 [00:29&lt;00:00, 31.41it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 9, Loss: 0.5912473409859611
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████| 938/938 [00:29&lt;00:00, 31.66it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 10, Loss: 0.5835546002522715
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of the network on the 10000 test images: 79.39 %
 </pre></div>
 </div>
 </div>
 </div>
-<p>Note the number of trainable parameters. For sure it’s possible to update original weights too, but fixing them is a usually a good starting point.</p>
-<p><strong>TASK:</strong> try to train last layers of this net on Fashion MNIST dataset. Note, that MobileNet requires 3 color channels and different input shape.</p>
-</div>
-<div class="section" id="saliency">
-<h2>Saliency<a class="headerlink" href="#saliency" title="Permalink to this headline">#</a></h2>
-<p>There is the myth that NN’s are hard to interpret and there is no clear way to interpret feature importance. It turns out that this is quite easy and we can use backpropagation itself for that. Think about the maning of the abosulte value of <span class="math notranslate nohighlight">\(\frac{d_{out}}{d_{input}}\)</span>. This value will be high for features which are highly contributing for the output! We will implement this idea using GradientTape.</p>
-<p>Gradients can be calculated in TensorFlow using GradientTape, for example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
-<span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize counters</span>
+<span class="n">total_params</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">trainable_params</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">non_trainable_params</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Iterate through the model&#39;s parameters</span>
+<span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+    <span class="c1"># Sum up the total number of parameters</span>
+    <span class="n">total_params</span> <span class="o">+=</span> <span class="n">param</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span>
+    <span class="c1"># Check if the parameter is trainable</span>
+    <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">:</span>
+        <span class="c1"># Sum up the number of trainable parameters</span>
+        <span class="n">trainable_params</span> <span class="o">+=</span> <span class="n">param</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Sum up the number of non-trainable parameters</span>
+        <span class="n">non_trainable_params</span> <span class="o">+=</span> <span class="n">param</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span>
+
+<span class="c1"># Print the counts</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total parameters: </span><span class="si">{</span><span class="n">total_params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trainable parameters: </span><span class="si">{</span><span class="n">trainable_params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Non-trainable parameters: </span><span class="si">{</span><span class="n">non_trainable_params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>will calculate <span class="math notranslate nohighlight">\(\frac{dy}{dx}\)</span> at point <span class="math notranslate nohighlight">\(3\)</span>, thus yielding <span class="math notranslate nohighlight">\(6\)</span>.</p>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total parameters: 11181642
+Trainable parameters: 14538
+Non-trainable parameters: 11167104
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note the number of trainable parameters. For sure it’s possible to update original weights too, but fixing them is a usually a good starting point. Some forums suggest unfreezing them gradually after top layer training slows down.</p>
+<p><strong>TASK:</strong> can you improve the example above and get a better accuracy on Fashion MNIST dataset?</p>
+</section>
+<section id="saliency">
+<h2>Saliency<a class="headerlink" href="#saliency" title="Link to this heading">#</a></h2>
+<p>There is the myth that NN’s are hard to interpret and there is no clear way to interpret feature importance. It turns out that this is quite easy and we can use backpropagation itself for that. Think about the maning of the abosulte value of $\frac{d_{out}}{d_{input}}$. This value will be high for features which are highly contributing for the output!</p>
+<p>Gradients can be calculated in PyTorch using:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="c1"># Compute the gradients</span>
+<span class="n">y</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="c1"># Print the gradient at x = 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>this will calculate $\frac{dy}{dx}$ at point $3$, thus yielding $6$.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">saliency</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">single_input</span><span class="p">):</span>
-    <span class="n">single_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">single_input</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">single_input</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">True</span>
     
-    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
-        <span class="n">tape</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">single_input</span><span class="p">)</span>
-        <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">single_input</span><span class="p">)</span>
-        <span class="n">winning_class</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">output</span> <span class="o">=</span> <span class="n">predictions</span><span class="p">[:,</span> <span class="n">winning_class</span><span class="p">]</span>
-
-    <span class="c1"># Gradients of the loss with respect to the input</span>
-    <span class="n">gradient</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">single_input</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">gradient</span><span class="p">)</span>
+    <span class="c1"># Forward pass</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">single_input</span><span class="p">)</span>
+    
+    <span class="c1"># Assuming a regression task, use the output directly</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">predictions</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">predictions</span><span class="p">))</span>
+    
+    <span class="c1"># Gradients of the model&#39;s output with respect to the input</span>
+    <span class="n">gradients</span> <span class="o">=</span> <span class="n">single_input</span><span class="o">.</span><span class="n">grad</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">gradients</span>
 </pre></div>
 </div>
 </div>
@@ -560,8 +635,12 @@ _________________________________________________________________
 <p>To test this out let’s make a simple dataset where <em>y</em> is averate of first two columns and third column is not used.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">((</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Convert numpy arrays to PyTorch tensors</span>
+<span class="n">X_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">y_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -569,20 +648,30 @@ _________________________________________________________________
 <p>Now let’s fit simple regression NN and look at salience.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimpleModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SimpleModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-23 15:21:48.733615: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x28e6d33a0&gt;
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dense1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1"># Model, loss and optimizer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">SimpleModel</span><span class="p">()</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="c1"># Training loop</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_tensor</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">y_tensor</span><span class="p">)</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -590,10 +679,11 @@ _________________________________________________________________
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">saliency_map</span> <span class="o">=</span> <span class="n">saliency</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_tensor</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">saliency</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">[[</span><span class="n">i</span><span class="p">]]))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">saliency_map</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -601,32 +691,23 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Varia_12_0.png" src="_images/Varia_12_0.png" />
+<img alt="_images/62ff08b6a378c2ea021d23aea7dc172dea9287e820536c466e326e92314f5e89.png" src="_images/62ff08b6a378c2ea021d23aea7dc172dea9287e820536c466e326e92314f5e89.png" />
 </div>
 </div>
 <p>Nice, nearly all value comes from first two features, exactly as expected. If you will increase epoch count and overfit train data weights should even up (try that).</p>
 <p><strong>TASK:</strong> take your own flatland model and visualize salience.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FCN</span> <span class="p">(</span><span class="n">Dense</span><span class="p">)</span>
-<span class="n">CNN</span>
-<span class="n">Attention</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="architectures">
-<h2>Architectures<a class="headerlink" href="#architectures" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="architectures">
+<h2>Architectures<a class="headerlink" href="#architectures" title="Link to this heading">#</a></h2>
 <p>There are a lot of possible architectures, we have only touched the surface. Take a glympse at the variations of Neural Networks <a class="reference external" href="https://towardsdatascience.com/the-mostly-complete-chart-of-neural-networks-explained-3fb6f2367464">here</a>.</p>
-<img src="https://miro.medium.com/max/2000/1*cuTSPlTq0a_327iTPJyD-Q.png" style="width: 80%"/><div class="section" id="autoencoders">
-<h3>Autoencoders<a class="headerlink" href="#autoencoders" title="Permalink to this headline">#</a></h3>
+<img src="https://miro.medium.com/max/2000/1*cuTSPlTq0a_327iTPJyD-Q.png" style="width: 80%"/><section id="autoencoders">
+<h3>Autoencoders<a class="headerlink" href="#autoencoders" title="Link to this heading">#</a></h3>
 <p>Autoencoders try to squeeze data by having a bottleneck layer (see viz above). Using Autoencoders we can easily replicate SVD and PCA. And as you know this can be used in data compression, recommenders, outlier detectors etc. Not only that NN’s allow to make much richer autoencoders, thus improving quality.</p>
 <p>Let’s go back to a part of SVD lecture and try to compress image using NN.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Just a little helper function to get a nice image plot&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Just a little helper function to get a nice image plot&quot;&quot;&quot;</span>
     <span class="n">m</span> <span class="o">=</span> <span class="mi">255</span> <span class="k">if</span> <span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">200</span> <span class="k">else</span> <span class="mi">1</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">m</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
@@ -636,14 +717,14 @@ _________________________________________________________________
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>curl https://raw.githubusercontent.com/trokas/ai_primer/master/img/castle.jpg --output castle.jpg
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>curl<span class="w"> </span>https://raw.githubusercontent.com/trokas/ai_primer/master/img/castle.jpg<span class="w"> </span>--output<span class="w"> </span>castle.jpg
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100  9217  100  9217    0     0  21915      0 --:--:-- --:--:-- --:--:-- 22263
+100  9217  100  9217    0     0  37547      0 --:--:-- --:--:-- --:--:--     0-:-- --:--:-- --:--:-- 37467
 </pre></div>
 </div>
 </div>
@@ -662,7 +743,7 @@ _________________________________________________________________
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Image shape (312, 198)
 </pre></div>
 </div>
-<img alt="_images/Varia_21_1.png" src="_images/Varia_21_1.png" />
+<img alt="_images/fd243a66fa787f352b26652631bdf80abb6ca5564dd63a80c0b71d531ce4a60a.png" src="_images/fd243a66fa787f352b26652631bdf80abb6ca5564dd63a80c0b71d531ce4a60a.png" />
 </div>
 </div>
 <p>As you might remember we did compression using SVD.</p>
@@ -676,7 +757,7 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Varia_23_0.png" src="_images/Varia_23_0.png" />
+<img alt="_images/28b0be78401b6d05fdf97935e31fd79745a5107f6350c1555212171bdc23f5d4.png" src="_images/28b0be78401b6d05fdf97935e31fd79745a5107f6350c1555212171bdc23f5d4.png" />
 </div>
 </div>
 <p>Before training NN, let’s scale down and center our inputs. Scaling this time is important!</p>
@@ -685,72 +766,91 @@ _________________________________________________________________
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.</span>
 <span class="n">means</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">X</span> <span class="o">-</span> <span class="n">means</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
-<span class="o">...</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">use_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
-<span class="o">...</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">use_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">)</span>
 
-<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># Verbose 0 allows to hide prints during training</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-23 15:50:59.983549: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+<span class="n">X_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">+</span> <span class="n">means</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+    
+<span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">(</span><span class="n">X_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Loss and optimizer</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+
+<span class="c1"># Training loop</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="c1"># Forward pass</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_tensor</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">X_tensor</span><span class="p">)</span>
+    
+    <span class="c1"># Backward and optimize</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting the reconstructed data</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>  <span class="c1"># We don&#39;t need gradients for plotting</span>
+    <span class="n">reconstructed</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_tensor</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">+</span> <span class="n">means</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">reconstructed</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Varia_27_0.png" src="_images/Varia_27_0.png" />
+<img alt="_images/a973e11bec09673779f5e3b759778e918899a0c1fce1b88206e92b71fd52a92c.png" src="_images/a973e11bec09673779f5e3b759778e918899a0c1fce1b88206e92b71fd52a92c.png" />
 </div>
 </div>
 <p>Result looks really similar to what we get from SVD. What have we learned here?</p>
-<p>We have just performed a matrix decomposition, since <span class="math notranslate nohighlight">\(X \approx X W^T V^T\)</span>. Let’s cite from Neural Networks and Deep Learning, a textbook by Chrau C. Aggarwal:</p>
+<p>We have just performed a matrix decomposition, since $X \approx X W^T V^T$. Let’s cite from Neural Networks and Deep Learning, a textbook by Chrau C. Aggarwal:</p>
 <blockquote>
-<div><p>Note that the autoencoder creates the reconstructed representation <span class="math notranslate nohighlight">\(D W^T V^T\)</span> of the original data matrix. Therefore, it tries to optimize the problem of minimizing <span class="math notranslate nohighlight">\(||DW^T V^T − D||^2\)</span>. The optimal solution to this problem is obtained when the matrix <span class="math notranslate nohighlight">\(W\)</span> contains the pseudo-inverse of <span class="math notranslate nohighlight">\(V\)</span>.</p>
+<div><p>Note that the autoencoder creates the reconstructed representation $D W^T V^T$ of the original data matrix. Therefore, it tries to optimize the problem of minimizing $||DW^T V^T − D||^2$. The optimal solution to this problem is obtained when the matrix $W$ contains the pseudo-inverse of $V$.</p>
 </div></blockquote>
 <p>Let’s check this statement</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Accessing and plotting the dot product of weights</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">dense1</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">dense2</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Varia_29_0.png" src="_images/Varia_29_0.png" />
+<img alt="_images/85f8b014b57a706297a261990f6922cc240e5aae75306a64773d27498bf9f5fb.png" src="_images/85f8b014b57a706297a261990f6922cc240e5aae75306a64773d27498bf9f5fb.png" />
 </div>
 </div>
 <p><strong>TASK:</strong> let’s go back to SVD lecture and Olivetti faces (<code class="docutils literal notranslate"><span class="pre">sklearn.datasets.fetch_olivetti_faces</span></code>) anomaly detection problem - flip one or couple of images upside down so that they would look like anomalies, then encode and decode. Use slightly deeper NN for anomaly detection and show that it produces more powerfull detector than PCA.</p>
-</div>
-<div class="section" id="word2vec-cnn-s">
-<h3>Word2Vec &amp; CNN’s<a class="headerlink" href="#word2vec-cnn-s" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="word2vec-cnn-s">
+<h3>Word2Vec &amp; CNN’s<a class="headerlink" href="#word2vec-cnn-s" title="Link to this heading">#</a></h3>
 <p>Word2Vec is built using autoencoders and allows to convert words to vectors which have some semantic meaning. Some applications of these vectors might be stunning, for example:</p>
 <img width=50% src="http://jalammar.github.io/images/word2vec/king-analogy-viz.png"/>
 <p>To use pre-trained model we will use Spacy library (install it using <code class="docutils literal notranslate"><span class="pre">pipenv</span> <span class="pre">install</span> <span class="pre">spacy</span></code>). Then download the model by running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">spacy</span> <span class="pre">download</span> <span class="pre">en_core_web_md</span></code>. Remeber that you can run shell commands in notebook by adding <code class="docutils literal notranslate"><span class="pre">!</span></code>.</p>
 <p>From here you can get embeddings as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !python -m spacy download lt_core_news_md</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!python -m spacy download lt_core_news_md</span>
 </pre></div>
 </div>
 </div>
@@ -775,7 +875,8 @@ _________________________________________________________________
 <p>It is interesting to explore word reconstructions by mapping it to vector, performing some operations and going back using a distance measure. You can find more neat examples and high level explanation of Word2Vec in a book <a class="reference external" href="https://www.goodreads.com/en/book/show/50489349-the-alignment-problem">The Alignment Problem</a>.</p>
 <p>To have more fun examples you will have to use much bigger model. Install gensim using <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">gensim</span></code> and download <a class="reference external" href="https://code.google.com/archive/p/word2vec/#:~:text=GoogleNews%2Dvectors%2Dnegative300.bin.gz">model file</a> which is 1.5G. Then play with it, for example</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gensim</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">gensim</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">KeyedVectors</span><span class="o">.</span><span class="n">load_word2vec_format</span><span class="p">(</span><span class="s1">&#39;GoogleNews-vectors-negative300.bin&#39;</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">gensim.downloader</span> <span class="k">as</span> <span class="nn">api</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;word2vec-google-news-300&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">most_similar_cosmul</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;king&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;man&#39;</span><span class="p">])</span>
 
 <span class="o">&gt;&gt;</span> <span class="p">[(</span><span class="s1">&#39;queen&#39;</span><span class="p">,</span> <span class="mf">0.9314123392105103</span><span class="p">),</span>
@@ -789,669 +890,33 @@ _________________________________________________________________
 <span class="o">&gt;&gt;</span>  <span class="p">(</span><span class="s1">&#39;trout&#39;</span><span class="p">,</span> <span class="mf">0.5006918907165527</span><span class="p">),</span> <span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gensim.downloader</span> <span class="k">as</span> <span class="nn">api</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;word2vec-google-news-300&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[--------------------------------------------------] 1.4% 23.4/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[=-------------------------------------------------] 3.8% 63.4/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[=====---------------------------------------------] 10.3% 171.4/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[======--------------------------------------------] 12.1% 201.2/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[======--------------------------------------------] 14.0% 232.0/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[===========---------------------------------------] 23.5% 391.1/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[============--------------------------------------] 25.3% 421.2/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[===============-----------------------------------] 32.0% 531.4/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[================----------------------------------] 33.7% 560.8/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[=================---------------------------------] 35.5% 589.7/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[==================--------------------------------] 36.1% 601.1/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[===================-------------------------------] 38.7% 643.4/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[====================------------------------------] 40.5% 672.9/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[=====================-----------------------------] 42.4% 704.5/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[======================----------------------------] 44.2% 735.4/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[=======================---------------------------] 46.2% 767.4/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[========================--------------------------] 48.5% 806.6/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[=========================-------------------------] 51.2% 851.5/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[=================================-----------------] 66.6% 1107.2/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[=================================-----------------] 67.7% 1125.6/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[==================================----------------] 68.8% 1143.2/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[===================================---------------] 70.3% 1169.2/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[====================================--------------] 72.0% 1197.3/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[====================================--------------] 73.7% 1225.5/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[=====================================-------------] 75.4% 1254.0/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[======================================------------] 77.2% 1283.9/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[=======================================-----------] 78.8% 1311.1/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[========================================----------] 80.6% 1340.2/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[=========================================---------] 82.1% 1365.5/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[=========================================---------] 83.2% 1383.2/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[=========================================---------] 84.0% 1396.6/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[==============================================----] 93.3% 1551.4/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[===============================================---] 94.4% 1569.9/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[===============================================---] 95.4% 1587.0/1662.8MB downloaded
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IOPub message rate exceeded.
-The notebook server will temporarily stop sending output
-to the client in order to avoid crashing it.
-To change this limit, set the config variable
-`--NotebookApp.iopub_msg_rate_limit`.
-
-Current values:
-NotebookApp.iopub_msg_rate_limit=1000.0 (msgs/sec)
-NotebookApp.rate_limit_window=3.0 (secs)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[==================================================] 100.0% 1662.8/1662.8MB downloaded
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">most_similar_cosmul</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;king&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;man&#39;</span><span class="p">])</span>   <span class="c1"># king - man + woman = queen</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;queen&#39;, 0.9314123392105103),
- (&#39;monarch&#39;, 0.858533501625061),
- (&#39;princess&#39;, 0.8476566672325134),
- (&#39;Queen_Consort&#39;, 0.8150269985198975),
- (&#39;queens&#39;, 0.8099815249443054),
- (&#39;crown_prince&#39;, 0.808997631072998),
- (&#39;royal_palace&#39;, 0.8027306795120239),
- (&#39;monarchy&#39;, 0.8019613027572632),
- (&#39;prince&#39;, 0.800979733467102),
- (&#39;empress&#39;, 0.7958388328552246)]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">most_similar_cosmul</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;paris&#39;</span><span class="p">,</span> <span class="s1">&#39;spain&#39;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;france&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;madrid&#39;, 0.8418088555335999),
- (&#39;dubai&#39;, 0.8352458477020264),
- (&#39;heidi&#39;, 0.8218225240707397),
- (&#39;lohan&#39;, 0.8193089365959167),
- (&#39;paula&#39;, 0.8185458779335022),
- (&#39;britney&#39;, 0.8145740032196045),
- (&#39;portugal&#39;, 0.8145568370819092),
- (&#39;alex&#39;, 0.8132041692733765),
- (&#39;costa&#39;, 0.8125410676002502),
- (&#39;florence&#39;, 0.8121743202209473)]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">most_similar_cosmul</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;roof&#39;</span><span class="p">,</span> <span class="s1">&#39;castle&#39;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;house&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;spire&#39;, 0.8677828311920166),
- (&#39;dome&#39;, 0.8600829243659973),
- (&#39;turrets&#39;, 0.8587723970413208),
- (&#39;crenelated&#39;, 0.8557136654853821),
- (&#39;spiers&#39;, 0.8545315265655518),
- (&#39;bell_tower&#39;, 0.8510499000549316),
- (&#39;crenellations&#39;, 0.8497854471206665),
- (&#39;campanile&#39;, 0.8468117713928223),
- (&#39;domed&#39;, 0.8448273539543152),
- (&#39;flying_buttresses&#39;, 0.8436140418052673)]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">most_similar_cosmul</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;knee&#39;</span><span class="p">,</span> <span class="s1">&#39;arm&#39;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;leg&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;shoulder&#39;, 0.8514087200164795),
- (&#39;elbow&#39;, 0.8418511748313904),
- (&#39;surgically_repaired&#39;, 0.8303367495536804),
- (&#39;forearm&#39;, 0.8242732286453247),
- (&#39;rotator_cuff&#39;, 0.8171960115432739),
- (&#39;wrist&#39;, 0.8161568641662598),
- (&#39;elbow_ligament&#39;, 0.8117757439613342),
- (&#39;surgically_repaired_knee&#39;, 0.8087441325187683),
- (&#39;ankle&#39;, 0.8013917803764343),
- (&#39;biceps&#39;, 0.7907865047454834)]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">most_similar_cosmul</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bride&#39;</span><span class="p">,</span> <span class="s1">&#39;man&#39;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;woman&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;groom&#39;, 0.8478626012802124),
- (&#39;bridegroom&#39;, 0.8317368626594543),
- (&#39;groomsmen&#39;, 0.8246725797653198),
- (&#39;groomsman&#39;, 0.7922314405441284),
- (&#39;wedding&#39;, 0.7913592457771301),
- (&#39;Mohammad_Rassool_cousin&#39;, 0.7825929522514343),
- (&#39;bestman&#39;, 0.7730644941329956),
- (&#39;Groomsman&#39;, 0.7628263831138611),
- (&#39;Groomsmen&#39;, 0.7602482438087463),
- (&#39;fiance&#39;, 0.7579715847969055)]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">most_similar_cosmul</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;doctor&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;man&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;gynecologist&#39;, 0.9882153868675232),
- (&#39;nurse_practitioner&#39;, 0.9429976940155029),
- (&#39;nurse&#39;, 0.9373465776443481),
- (&#39;ob_gyn&#39;, 0.9323367476463318),
- (&#39;doctors&#39;, 0.9288290739059448),
- (&#39;pediatrician&#39;, 0.9242749810218811),
- (&#39;obstetrician&#39;, 0.9175830483436584),
- (&#39;physician&#39;, 0.9160466194152832),
- (&#39;midwife&#39;, 0.9073526263237),
- (&#39;nurse_midwife&#39;, 0.9057160019874573)]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">most_similar_cosmul</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;politics&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;man&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Politics&#39;, 0.8753053545951843),
- (&#39;political&#39;, 0.8647885918617249),
- (&#39;partisan_politics&#39;, 0.8531237244606018),
- (&#39;feminism&#39;, 0.8180195689201355),
- (&#39;feminist&#39;, 0.8147555589675903),
- (&#39;politicians&#39;, 0.813095211982727),
- (&#39;politcs&#39;, 0.8110021352767944),
- (&#39;commentator_Minoru_Morita&#39;, 0.7975637912750244),
- (&#39;Lisa_Vorderbrueggen_covers&#39;, 0.7966701984405518),
- (&#39;feminist_theology&#39;, 0.7942215800285339)]
-</pre></div>
-</div>
-</div>
-</div>
 <p>As you might expect these vectors can be used while creating the model, for example we can make sentiment analysis model for reviews (trying to figure out if it is positive or negative) simply by feeding embedding to CNN.</p>
 <img width=60% src="https://datasciencetoday.net/images/CNN.png"/>
 <p><strong>TASK:</strong> using data from <a class="reference external" href="https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews">imdb reviews</a> train simple CNN based sentiment classifier.</p>
-</div>
-</div>
-<div class="section" id="mimics">
-<h2>Mimics<a class="headerlink" href="#mimics" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="mimics">
+<h2>Mimics<a class="headerlink" href="#mimics" title="Link to this heading">#</a></h2>
 <p>If you ever need to compress the model due to some hardware or inference time constraints there is a simple trick that can help. Called mimic or teacher-student network, the idea is to train simpler model to do the same thing that a bigger model does. It is achieved by:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Creating a big and good model (can be an ensemble of models) that outputs softmax probabilities.</p></li>
 <li><p>Pass a bunch of unlabeled examples via this teacher network and store his outputs.</p></li>
 <li><p>Use these outputs to train a smaller model. You don’t even need original training data now.
 Try to think of the reasons why this trick works well. For more details see <a class="reference external" href="https://arxiv.org/abs/1503.02531">Distilling the Knowledge in a Neural Network</a> and <a class="reference external" href="https://arxiv.org/abs/1312.6184">Do Deep Nets Really Need to be Deep?</a>.</p></li>
 </ol>
 <p><strong>TASK:</strong> even though we do not have unlabeled data in flatland’s project, try out mimic approach on your best model to see if you can reduce size without loosing too much accuracy.</p>
-</div>
-<div class="section" id="mixup">
-<h2>Mixup<a class="headerlink" href="#mixup" title="Permalink to this headline">#</a></h2>
-<p>Another cool idea is to mix two images and their classes into one and use such embedded image as a training example. For example, if we take MNIST, then we can randomly pick two different numbers and fuse images <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> by constructing their linear combination <span class="math notranslate nohighlight">\(\lambda A + (1 - \lambda) B\)</span>. Doing the same for their classes gives us the expected outcome that is used for training <span class="math notranslate nohighlight">\(\lambda y_A + (1 - \lambda) y_B\)</span>. For more details see <a class="reference external" href="https://arxiv.org/abs/1710.09412">mixup: Beyond Empirical Risk Minimization</a>.</p>
+</section>
+<section id="mixup">
+<h2>Mixup<a class="headerlink" href="#mixup" title="Link to this heading">#</a></h2>
+<p>Another cool idea is to mix two images and their classes into one and use such embedded image as a training example. For example, if we take MNIST, then we can randomly pick two different numbers and fuse images $A$ and $B$ by constructing their linear combination $\lambda A + (1 - \lambda) B$. Doing the same for their classes gives us the expected outcome that is used for training $\lambda y_A + (1 - \lambda) y_B$. For more details see <a class="reference external" href="https://arxiv.org/abs/1710.09412">mixup: Beyond Empirical Risk Minimization</a>.</p>
 <p>Both Mimics (Knowladge Distilation) and Mixup are frequently used tricks (see <a class="reference external" href="https://arxiv.org/abs/1812.01187">bag of tricks paper</a>).</p>
 <p><strong>TASK:</strong> test this out on MNIST or flatland project.</p>
-</div>
-<div class="section" id="permutation-feature-importance">
-<h2>Permutation Feature Importance<a class="headerlink" href="#permutation-feature-importance" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="permutation-feature-importance">
+<h2>Permutation Feature Importance<a class="headerlink" href="#permutation-feature-importance" title="Link to this heading">#</a></h2>
 <p>Sometime you want to know which feature is most valuable. As we saw with Random Forests it can be done knowing how the algorithm is constructed. On the other hand it is useful to have a model agnostic approach that can be used without thinking about the model itself. Principle of permutation importance is quite simple - just shuffle a single column and measure the loss in accuracy. While estimating importance it’s a good practice to use test set. Idea is explored in paper “All models are wrong, but many are useful: …” by Fisher, Rudin, and Dominici (2018). Even though it’s quite trivial to implement on your own you might find <a class="reference external" href="https://scikit-learn.org/stable/modules/permutation_importance.html">scikit-learn implementation</a> useful.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1465,7 +930,7 @@ Try to think of the reasons why this trick works well. For more details see <a c
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1473,50 +938,112 @@ Try to think of the reasons why this trick works well. For more details see <a c
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Namesformer.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Namesformer</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Namesformer.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Namesformer</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="TD.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="TD.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Bonus: TD (Temporal Difference)</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-learning">Transfer Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saliency">Saliency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architectures">Architectures</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoencoders">Autoencoders</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word2vec-cnn-s">Word2Vec &amp; CNN’s</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mimics">Mimics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixup">Mixup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-feature-importance">Permutation Feature Importance</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By trokas<br/>
-  
-      &copy; Copyright MIF, 2023.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By trokas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright MIF, 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

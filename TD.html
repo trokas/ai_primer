@@ -1,106 +1,167 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Bonus: TD (Temporal Difference) &#8212; AI primer</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'TD';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Project: Flatland" href="Project.html" />
+    <link rel="next" title="Bonus: Reinforcement Learning" href="RL.html" />
     <link rel="prev" title="Varia" href="Varia.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">AI primer</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AI primer</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -110,315 +171,221 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="SVD.html">
-   SVD (Singular Value Decomposition)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="RF.html">
-   RF (Random Forest)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DNN.html">
-   DNN (Deep Neural Networks)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CNN.html">
-   CNN (Convolutional Neural Networks)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Attention.html">
-   Attention
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Namesformer.html">
-   Namesformer
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Varia.html">
-   Varia
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Bonus: TD (Temporal Difference)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Project.html">
-   Project: Flatland
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="SVD.html">SVD (Singular Value Decomposition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RF.html">RF (Random Forest)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DNN.html">DNN (Deep Neural Networks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN.html">CNN (Convolutional Neural Networks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attention.html">Attention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Namesformer.html">Namesformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Varia.html">Varia</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bonus: TD (Temporal Difference)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RL.html">Bonus: Reinforcement Learning</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Project.html">Project: Flatland</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/trokas/ai_primer/master?urlpath=tree/TD.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/TD.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/TD.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/TD.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/TD.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#blocking">
-   Blocking
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#higher-order-conditioning">
-   Higher order conditioning
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tic-tac-toe">
-   Tic-Tac-Toe
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deep-td-0">
-   Deep TD(0)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#where-to-go-next">
-   Where to go next?
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Bonus: TD (Temporal Difference)</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#blocking">
-   Blocking
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#higher-order-conditioning">
-   Higher order conditioning
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tic-tac-toe">
-   Tic-Tac-Toe
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deep-td-0">
-   Deep TD(0)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#where-to-go-next">
-   Where to go next?
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bonus: TD (Temporal Difference)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blocking">Blocking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-conditioning">Higher order conditioning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tic-tac-toe">Tic-Tac-Toe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-td-0">Deep TD(0)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-go-next">Where to go next?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="bonus-td-temporal-difference">
-<h1>Bonus: TD (Temporal Difference)<a class="headerlink" href="#bonus-td-temporal-difference" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="bonus-td-temporal-difference">
+<h1>Bonus: TD (Temporal Difference)<a class="headerlink" href="#bonus-td-temporal-difference" title="Link to this heading">#</a></h1>
+<p><em>Note: this lecture is the one I thought about ommitting from year 2024, thus implementation is left in Keras and it is listed as optional read.</em></p>
 <p>Our goal in this lecture is to construct a simple reinforcement learning agent while going through the most important concepts (temporal difference, eligibility traces, …). On the way we will look for inspiration in behavioristic and neuroscience research and will try to construct our agent from scratch.</p>
 <p>We start with Pavlov’s dog experiment. Most of you know about stimulus reward results - you ring a bell and the dog starts to excrete saliva knowing that food is on the way. That will be the first thing we expect from our system - learn to predict that reward is coming given a stimulus. Since in the end we want to use neural nets let’s stick to weight update rule that we have already seen.</p>
-<div class="math notranslate nohighlight">
-\[ w_{t+1} = w_{t} + \text{learning rate} \cdot \text{error} \cdot \text{diff for given input} \]</div>
+<p>$$ w_{t+1} = w_{t} + \text{learning rate} \cdot \text{error} \cdot \text{diff for given input} $$</p>
 <p>For simplicity now let’s ignore time and focus on single trial as the input. In such a case our input is just a vector of indicators which show the presence of the various stimulus and output is predicted reward. For error we can simply pass difference between our prediction and reward.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -470,8 +437,8 @@ title="Print to PDF"
 </div>
 </div>
 <p>As expected our model learned to associate stimulus B with reward. But our story only begins here.</p>
-<div class="section" id="blocking">
-<h2>Blocking<a class="headerlink" href="#blocking" title="Permalink to this headline">#</a></h2>
+<section id="blocking">
+<h2>Blocking<a class="headerlink" href="#blocking" title="Link to this heading">#</a></h2>
 <p>In his later experiments Pavlov noticed that there is phenomenon called <em>blocking</em>. If you teach your dog to associate a bell with food and then introduce something new (for example showing some picture) after a bell - the dog will not learn to associate this new stimulus with food. Let’s test if our model does that. If you have executed cells above you already have trained weights and we can introduce some new trials that try to show stimulus C. This new stimulus should be ignored according to the experimental evidence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -498,17 +465,14 @@ title="Print to PDF"
 </div>
 <p>Since model uses errors for the update if we have a stimulus that is able to predict reward it will block further learning. This is actually known as Rescota-Wagner model and in Barto &amp; Sutton <a class="reference external" href="https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf">book</a> is expressed as follows.</p>
 <p>For the prediction using weights we have a dot product</p>
-<div class="math notranslate nohighlight">
-\[\hat{v}(s, w) = w^T x(s).\]</div>
+<p>$$\hat{v}(s, w) = w^T x(s).$$</p>
 <p>Then our error is defined as</p>
-<div class="math notranslate nohighlight">
-\[\delta_t = R_t - \hat{v}(S_t, w_t).\]</div>
-<p>As implemented above update rule with learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[w_{t+1} = w_t + \alpha \delta_t x(S_t).\]</div>
-</div>
-<div class="section" id="higher-order-conditioning">
-<h2>Higher order conditioning<a class="headerlink" href="#higher-order-conditioning" title="Permalink to this headline">#</a></h2>
+<p>$$\delta_t = R_t - \hat{v}(S_t, w_t).$$</p>
+<p>As implemented above update rule with learning rate $\alpha$ is</p>
+<p>$$w_{t+1} = w_t + \alpha \delta_t x(S_t).$$</p>
+</section>
+<section id="higher-order-conditioning">
+<h2>Higher order conditioning<a class="headerlink" href="#higher-order-conditioning" title="Link to this heading">#</a></h2>
 <p>Notice that our model does not take time into account. That is a huge limitation. For sure we can not look for stimulus reward response for infinite time and splitting into trials does not represent reality well. It turns out that if after training to associate the bell with food you show an image before the bell, dog learns to associate that with food. Not only that there is effect called <em>higher order conditioning</em> and if after introducing new stimulus you do not give reward, dog still will learn to associate it with food. It seams that instead of learning that image associates with reward he learns that image predicts bell and bell predicts reward, thus even if reward is not given he will learn to pass know-how.</p>
 <p>We will have to introduce time into our model. If you think about experiments described above it makes sense to say that model should not predict reward directly, but instead at each time step focus on difference in it’s own predictions. This is called <em>temporal difference</em> and we will discuss it thoroughly in the lecture. For the time lag we can simply add some factor that discount previous inputs. This trick is known as <em>eligibility traces</em>.</p>
 <p>It’s time to put those ideas to the test. First let’s implement those and check if simple conditioning and blocking works as expected.</p>
@@ -609,17 +573,14 @@ title="Print to PDF"
 </div>
 </div>
 <p>Even if reward is not there every time, model will still learn to transition the signal complying with real life experiments. For sure at the moment our implementation is not flexible enough. To get more control we will introduce couple parameters to the mix - <em>decay</em> and <em>discount</em>.</p>
-<p>Formaly <span class="math notranslate nohighlight">\(\text{TD}(\lambda)\)</span> is defined by following equations (source: Barto &amp; Sutton <a class="reference external" href="https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf">book</a>).</p>
+<p>Formaly $\text{TD}(\lambda)$ is defined by following equations (source: Barto &amp; Sutton <a class="reference external" href="https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf">book</a>).</p>
 <p>Error is</p>
-<div class="math notranslate nohighlight">
-\[\delta_t = R_{t+1} + \delta \hat{v} (S_{t+1}, w_t) - \hat{v}(S_t, w_t).\]</div>
+<p>$$\delta_t = R_{t+1} + \delta \hat{v} (S_{t+1}, w_t) - \hat{v}(S_t, w_t).$$</p>
 <p>Weight update is</p>
-<div class="math notranslate nohighlight">
-\[w_{t+1} = w_t + \alpha \delta_t z_t,\]</div>
-<p>where <span class="math notranslate nohighlight">\(z_t\)</span> is defined by</p>
-<div class="math notranslate nohighlight">
-\[z_{t+1} = \delta \lambda z_t + x(S_t).\]</div>
-<p>Here <span class="math notranslate nohighlight">\(\lambda \in [0, 1]\)</span> is <em>eligibility trace decay</em> parameter and <span class="math notranslate nohighlight">\(\delta \in [0,1]\)</span> is <em>discount factor</em>. We can easily add them to our code by modifying</p>
+<p>$$w_{t+1} = w_t + \alpha \delta_t z_t,$$</p>
+<p>where $z_t$ is defined by</p>
+<p>$$z_{t+1} = \delta \lambda z_t + x(S_t).$$</p>
+<p>Here $\lambda \in [0, 1]$ is <em>eligibility trace decay</em> parameter and $\delta \in [0,1]$ is <em>discount factor</em>. We can easily add them to our code by modifying</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">error</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">+</span> <span class="n">discount</span> <span class="o">*</span> <span class="n">next_pred</span> <span class="o">-</span> <span class="n">pred</span>
 </pre></div>
 </div>
@@ -628,10 +589,10 @@ title="Print to PDF"
 <span class="n">w</span> <span class="o">+=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">error</span> <span class="o">*</span> <span class="n">z</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="tic-tac-toe">
-<h2>Tic-Tac-Toe<a class="headerlink" href="#tic-tac-toe" title="Permalink to this headline">#</a></h2>
-<p>Most likely you have heard about the success of reinforcement learning in games likes Go. To implement MuZero from scratch would require quite a lot of tricks and we lack a bunch of theory to do that. Instead we will do similar thing as TD-Backgammon while playing Tic-Tac-Toe. We will train <span class="math notranslate nohighlight">\(\text{TD}(0)\)</span> agent from scratch using self play.</p>
+</section>
+<section id="tic-tac-toe">
+<h2>Tic-Tac-Toe<a class="headerlink" href="#tic-tac-toe" title="Link to this heading">#</a></h2>
+<p>Most likely you have heard about the success of reinforcement learning in games likes Go. To implement MuZero from scratch would require quite a lot of tricks and we lack a bunch of theory to do that. Instead we will do similar thing as TD-Backgammon while playing Tic-Tac-Toe. We will train $\text{TD}(0)$ agent from scratch using self play.</p>
 <p>Let’s create simple tic-tac-toe environment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -732,8 +693,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>Following TD ideas presented above we want to push weights in such a way that previous prediction is closer to the new one, thus</p>
-<div class="math notranslate nohighlight">
-\[V(S_t) \leftarrow V(S_t) + \alpha [V(S_{t+1}) - V(S_t)].\]</div>
+<p>$$V(S_t) \leftarrow V(S_t) + \alpha [V(S_{t+1}) - V(S_t)].$$</p>
 <p>Training is completely driven by self-play. We also need some way to explore new strategies. For the first try we can simple store values in the dictionary.</p>
 <p>Nice <a class="reference external" href="https://jinglescode.github.io/reinforcement-learning-tic-tac-toe/">viz</a> that behind the scenes uses the same method.</p>
 <div class="cell docutils container">
@@ -869,9 +829,9 @@ Wall time: 1min 1s
 </div>
 </div>
 <p>As you can see, self-play is a critical component if we want to end up with a smart agent.</p>
-</div>
-<div class="section" id="deep-td-0">
-<h2>Deep TD(0)<a class="headerlink" href="#deep-td-0" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="deep-td-0">
+<h2>Deep TD(0)<a class="headerlink" href="#deep-td-0" title="Link to this heading">#</a></h2>
 <p>Instead of using value dictionary we could try to use neural network. That might be usefull if the game is much more complex. In such case our value network expects board state as input and returns expected win probability.</p>
 <p>There is one big problem - while training NN we need to ensure that data is i.i.d. and it is not so if we update it during each step. Instead we will gather historical plays into a list and sample it randomly to train the network. This trick is called <em>experience replay</em> and is <a class="reference external" href="https://deepmind.com/blog/article/replay-in-biological-and-artificial-neural-networks">vital component</a> in RL.</p>
 <div class="cell docutils container">
@@ -1067,9 +1027,9 @@ Wall time: 23min 26s
 </div>
 <p>As you can see it was able to produce similar results as the dictionary approach. We could extend it further, for example AlphaZero like implementation can be found at <a class="reference external" href="https://github.com/DanielSlater/AlphaToe">AlphaToe</a>.</p>
 <p>For sure for tic-tac-toe using TD is an overkill. Keep in mind that what we did here was for illustrative purposes - the aim was to show that TD is a general principle that can be used in games. Similar principles are applied in TD-Backgammon, Alpha Zero, MuZero and other RL agents.</p>
-</div>
-<div class="section" id="where-to-go-next">
-<h2>Where to go next?<a class="headerlink" href="#where-to-go-next" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="where-to-go-next">
+<h2>Where to go next?<a class="headerlink" href="#where-to-go-next" title="Link to this heading">#</a></h2>
 <p>If you are interested to dig deeper:</p>
 <ul class="simple">
 <li><p>Read what <a class="reference external" href="https://deepmind.com/blog/article/deep-reinforcement-learning">deepmind</a> is doing.</p></li>
@@ -1079,8 +1039,8 @@ Wall time: 23min 26s
 <li><p>Work through <a class="reference external" href="https://github.com/trokas/Deep_RL">Deep RL</a>, which contains more examples and intuitive lower level implementations. This <a class="reference external" href="https://medium.com/&#64;awjuliani/super-simple-reinforcement-learning-tutorial-part-2-ded33892c724">medium</a> series is great.</p></li>
 <li><p>Read book “Deep Reinforcement Learning Hands-On” by Maxim Laptan.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1094,7 +1054,7 @@ Wall time: 23min 26s
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1102,50 +1062,107 @@ Wall time: 23min 26s
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Varia.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Varia</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="Project.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Project: Flatland</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By trokas<br/>
-  
-      &copy; Copyright MIF, 2023.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
 
-
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Varia.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Varia</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="RL.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bonus: Reinforcement Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blocking">Blocking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-conditioning">Higher order conditioning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tic-tac-toe">Tic-Tac-Toe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-td-0">Deep TD(0)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-go-next">Where to go next?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By trokas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright MIF, 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

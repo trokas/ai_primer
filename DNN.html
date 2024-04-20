@@ -1,106 +1,167 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>DNN (Deep Neural Networks) &#8212; AI primer</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'DNN';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="CNN (Convolutional Neural Networks)" href="CNN.html" />
     <link rel="prev" title="RF (Random Forest)" href="RF.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">AI primer</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AI primer</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -110,425 +171,234 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="SVD.html">
-   SVD (Singular Value Decomposition)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="RF.html">
-   RF (Random Forest)
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   DNN (Deep Neural Networks)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CNN.html">
-   CNN (Convolutional Neural Networks)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Attention.html">
-   Attention
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Namesformer.html">
-   Namesformer
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Varia.html">
-   Varia
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="TD.html">
-   Bonus: TD (Temporal Difference)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Project.html">
-   Project: Flatland
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="SVD.html">SVD (Singular Value Decomposition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RF.html">RF (Random Forest)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DNN (Deep Neural Networks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN.html">CNN (Convolutional Neural Networks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attention.html">Attention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Namesformer.html">Namesformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Varia.html">Varia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TD.html">Bonus: TD (Temporal Difference)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RL.html">Bonus: Reinforcement Learning</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Project.html">Project: Flatland</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/trokas/ai_primer/master?urlpath=tree/DNN.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/DNN.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/DNN.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/DNN.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/DNN.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gradient-descent">
-   Gradient Descent
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#timeline">
-   Timeline
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-perceptron">
-   The Perceptron
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#perceptron-for-2-class-case">
-     Perceptron for 2 class case
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#power-of-perceptron-formulation">
-     Power of perceptron formulation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#beginning-of-first-ai-winter">
-   Beginning of first AI winter
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#backpropagation">
-   Backpropagation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#two-layer-nn-for-2-class-case">
-     Two layer NN for 2 class case
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mnist-application-of-backprop-by-yann-lecun-1989">
-   MNIST (Application of backprop by Yann LeCun, 1989)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#keras">
-   Keras
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dropout">
-   Dropout
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#task-approximate-interpolation">
-   Task: approximate interpolation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-do-not-scroll-down-try-to-solve-it-before-without-help">
-     Solution (do not scroll down, try to solve it before without help)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#callbacks">
-   Callbacks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#re-sources">
-   (re)Sources
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>DNN (Deep Neural Networks)</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gradient-descent">
-   Gradient Descent
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#timeline">
-   Timeline
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-perceptron">
-   The Perceptron
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#perceptron-for-2-class-case">
-     Perceptron for 2 class case
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#power-of-perceptron-formulation">
-     Power of perceptron formulation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#beginning-of-first-ai-winter">
-   Beginning of first AI winter
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#backpropagation">
-   Backpropagation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#two-layer-nn-for-2-class-case">
-     Two layer NN for 2 class case
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mnist-application-of-backprop-by-yann-lecun-1989">
-   MNIST (Application of backprop by Yann LeCun, 1989)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#keras">
-   Keras
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dropout">
-   Dropout
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#task-approximate-interpolation">
-   Task: approximate interpolation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-do-not-scroll-down-try-to-solve-it-before-without-help">
-     Solution (do not scroll down, try to solve it before without help)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#callbacks">
-   Callbacks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#re-sources">
-   (re)Sources
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DNN (Deep Neural Networks)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent">Gradient Descent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeline">Timeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-perceptron">The Perceptron</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perceptron-for-2-class-case">Perceptron for 2 class case</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-of-perceptron-formulation">Power of perceptron formulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beginning-of-first-ai-winter">Beginning of first AI winter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation">Backpropagation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-layer-nn-for-2-class-case">Two layer NN for 2 class case</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mnist-application-of-backprop-by-yann-lecun-1989">MNIST (Application of backprop by Yann LeCun, 1989)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-all-the-way">PyTorch all the way</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropout">Dropout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-approximate-interpolation">Task: approximate interpolation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-do-not-scroll-down-try-to-solve-it-before-without-help">Solution (do not scroll down, try to solve it before without help)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-sources">(re)Sources</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="dnn-deep-neural-networks">
-<h1>DNN (Deep Neural Networks)<a class="headerlink" href="#dnn-deep-neural-networks" title="Permalink to this headline">#</a></h1>
-<div class="section" id="gradient-descent">
-<h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">#</a></h2>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="dnn-deep-neural-networks">
+<h1>DNN (Deep Neural Networks)<a class="headerlink" href="#dnn-deep-neural-networks" title="Link to this heading">#</a></h1>
+<section id="gradient-descent">
+<h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Link to this heading">#</a></h2>
 <p>Before jumping right into neural networks let’s look at a simple idea of how we can perform gradient descent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -537,21 +407,13 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Init Plugin
-Init Graph Optimizer
-Init Kernel
-</pre></div>
 </div>
-</div>
-</div>
-<p>Let’s say we have a simple line <span class="math notranslate nohighlight">\(y=5x+2\)</span>.</p>
+<p>Let’s say we have a simple line $y=5x+2$.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -563,12 +425,12 @@ Init Kernel
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_3_0.png" src="_images/DNN_3_0.png" />
+<img alt="_images/4febb5f758eb22c493c66f9d81d5788184d82793ac82782a7a836a855b1a9de8.png" src="_images/4febb5f758eb22c493c66f9d81d5788184d82793ac82782a7a836a855b1a9de8.png" />
 </div>
 </div>
-<p>So the model will have two coefficients - <span class="math notranslate nohighlight">\(k, b\)</span>. For sure it’s easy to solve it analytically and it’s an overkill to use gradient descent, but this is just for illustration purposes. The idea is super simple - let’s move into the direction which leads to lower cost (error).</p>
+<p>So the model will have two coefficients - $k, b$. For sure it’s easy to solve it analytically and it’s an overkill to use gradient descent, but this is just for illustration purposes. The idea is super simple - let’s move into the direction which leads to lower cost (error).</p>
 <img src="https://miro.medium.com/max/1005/1*_6TVU8yGpXNYDkkpOfnJ6Q.png" style="width: 50%"/>
-<p>For regression task it is common to use MSE loss <span class="math notranslate nohighlight">\((\hat{y} - y)^2\)</span>. It’s derivative is just <span class="math notranslate nohighlight">\(2(\hat{y} - y)\)</span>, thus we get</p>
+<p>For regression task it is common to use MSE loss $(\hat{y} - y)^2$. It’s derivative is just $2(\hat{y} - y)$, thus we get</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>     <span class="c1"># initial values</span>
@@ -592,7 +454,7 @@ Init Kernel
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_5_0.png" src="_images/DNN_5_0.png" />
+<img alt="_images/0c4f07b5dea2e4b79a8c84a63e0edc54d317edf8b15b307f96c3e92841963e6c.png" src="_images/0c4f07b5dea2e4b79a8c84a63e0edc54d317edf8b15b307f96c3e92841963e6c.png" />
 </div>
 </div>
 <p>Note, that gradient descent is sensitive to the step size. We will meet some solutions to this problem in the future.</p>
@@ -601,17 +463,17 @@ Init Kernel
 <p>Also gradient descent is not guaranteed to find global minimum, but when we work with high dimensional data this risk partly wanishes.</p>
 <img src="https://paper-attachments.dropbox.com/s_F57E27FDF0C54777F2844EECCBABB7DF8EEB9597E5F323F9CC73F1690617FCAD_1569311505423_image.png" style="width: 50%"/>
 <p>You can use the same trick to fit a line over multiple points. Training process should look similar to that:</p>
-<img src="https://paper-attachments.dropbox.com/s_F57E27FDF0C54777F2844EECCBABB7DF8EEB9597E5F323F9CC73F1690617FCAD_1567686156887_grad_desc_demo.gif" style="width: 50%"/></div>
-<div class="section" id="timeline">
-<h2>Timeline<a class="headerlink" href="#timeline" title="Permalink to this headline">#</a></h2>
+<img src="https://paper-attachments.dropbox.com/s_F57E27FDF0C54777F2844EECCBABB7DF8EEB9597E5F323F9CC73F1690617FCAD_1567686156887_grad_desc_demo.gif" style="width: 50%"/></section>
+<section id="timeline">
+<h2>Timeline<a class="headerlink" href="#timeline" title="Link to this heading">#</a></h2>
 <img src="https://cdn-images-1.medium.com/max/2000/1*Z_DnCyKt18RM0aCCrFzaIQ.png" style="width: 80%"/>
 <p>ANNs have been around for quite a while: they were first introduced back in <strong>1943</strong> by the neurophysiologist Warren <strong>McCulloch</strong> and the mathematician Walter <strong>Pitts</strong> (see “A Logical Calculus of Ideas Immanent in Nervous Activity”).</p>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117028252_image.png" style="width: 50%"/>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117050006_image.png" style="width: 50%"/>
 <p>Most of the pictures are taken from the great book “Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 2nd Edition” by Aurélien Géron.</p>
-</div>
-<div class="section" id="the-perceptron">
-<h2>The Perceptron<a class="headerlink" href="#the-perceptron" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="the-perceptron">
+<h2>The Perceptron<a class="headerlink" href="#the-perceptron" title="Link to this heading">#</a></h2>
 <p>The <em>Perceptron</em> is one of the simplest ANN architectures, invented in <strong>1957</strong> by Frank <strong>Rosenblatt</strong>. It is based on a slightly different artificial neuron called a <em>threshold logic unit</em> (TLU), or sometimes a <em>linear threshold unit</em> (LTU). A Perceptron is simply composed of a single layer of TLUs, with each TLU connected to all the inputs.</p>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117134137_image.png" alt="Threshold logic unit: an artificial neuron which computes a weighted sum of its inputs then applies a step function" style="width: 50%"/>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117253013_image.png" alt="Architecture of a Perceptron with two input neurons, one bias neuron, and three output neurons" style="width: 50%"/>
@@ -619,8 +481,8 @@ Init Kernel
 <p>The Perceptron training algorithm proposed by <strong>Rosenblatt</strong> was largely inspired by <em><strong>Hebb’s rule</strong></em>. In his <strong>1949</strong> book <em>The Organization of Behavior</em> (Wiley), Donald Hebb suggested that when a biological neuron triggers another neuron often, the connection between these two neurons grows stronger. Siegrid Löwel later summarized Hebb’s idea in the catchy phrase, “Cells that fire together, wire together”; that is, the connection weight between two neurons tends to increase when they fire simultaneously. This rule later became known as Hebb’s rule (or <em>Hebbian learning</em>).</p>
 <img src="https://paper-attachments.dropbox.com/s_DC20E26BBCBCDC1CE35F486489133207E7462B05AFD4747CE4118D2918E8D180_1580039607658_Screenshot+2020-01-26+13.52.47.png" style="width: 70%"/>
 <p>The decision boundary of each output neuron is linear, so Perceptrons are incapable of learning complex patterns (just like Logistic Regression classifiers). However, if the training instances are linearly separable, <strong>Rosenblatt</strong> demonstrated that this algorithm would converge to a solution. This is called the <strong>Perceptron convergence theorem</strong>.</p>
-<div class="section" id="perceptron-for-2-class-case">
-<h3>Perceptron for 2 class case<a class="headerlink" href="#perceptron-for-2-class-case" title="Permalink to this headline">#</a></h3>
+<section id="perceptron-for-2-class-case">
+<h3>Perceptron for 2 class case<a class="headerlink" href="#perceptron-for-2-class-case" title="Link to this heading">#</a></h3>
 <p>We will produce following perceptron from scratch</p>
 <img src="https://miro.medium.com/max/2870/1*n6sJ4yZQzwKL9wnF5wnVNg.png" style="width: 60%"/>
 <p>but first we need some data first. We will work with iris dataset.</p>
@@ -659,7 +521,7 @@ Init Kernel
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_12_0.png" src="_images/DNN_12_0.png" />
+<img alt="_images/c64d0560f6822307b8ae66e177197a96328861093f9db87bd678c75cbfc14753.png" src="_images/c64d0560f6822307b8ae66e177197a96328861093f9db87bd678c75cbfc14753.png" />
 </div>
 </div>
 <p>We will work only with two class case for now, thus let’s change the labels by leaving one class and treating all other points as a second class.</p>
@@ -716,24 +578,24 @@ Init Kernel
 </div>
 </div>
 <p>Well, clearly it’s easy to sepperate setosa from other two classes. Try to change target class to versicolor and virginica.</p>
-</div>
-<div class="section" id="power-of-perceptron-formulation">
-<h3>Power of perceptron formulation<a class="headerlink" href="#power-of-perceptron-formulation" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="power-of-perceptron-formulation">
+<h3>Power of perceptron formulation<a class="headerlink" href="#power-of-perceptron-formulation" title="Link to this heading">#</a></h3>
 <p>Perceptron definition is quite flexible and modifying loss and activation allows to replicate some whell known algorithms, see picture taken from “Neural Networks and Deep Learning: A Textbook” (book by Charu C. Aggarwal).</p>
 <img src="https://paper-attachments.dropbox.com/s_2E4854D97CFCA11CB3874DE15FA048AD21CE628C357A5C14D6A303FEC847FA36_1596967818835_image.png" style="width: 60%"/>
 <p>All of this flexibility and initial results led people to believe that AI is just behind the corner. This is clearly seen in movies, books, conferences, papers, etc.</p>
-<img src="https://paper-attachments.dropbox.com/s_2E4854D97CFCA11CB3874DE15FA048AD21CE628C357A5C14D6A303FEC847FA36_1596968518047_Screenshot+2020-08-09+at+13.21.56.png" style="width: 60%"/></div>
-</div>
-<div class="section" id="beginning-of-first-ai-winter">
-<h2>Beginning of first AI winter<a class="headerlink" href="#beginning-of-first-ai-winter" title="Permalink to this headline">#</a></h2>
+<img src="https://paper-attachments.dropbox.com/s_2E4854D97CFCA11CB3874DE15FA048AD21CE628C357A5C14D6A303FEC847FA36_1596968518047_Screenshot+2020-08-09+at+13.21.56.png" style="width: 60%"/></section>
+</section>
+<section id="beginning-of-first-ai-winter">
+<h2>Beginning of first AI winter<a class="headerlink" href="#beginning-of-first-ai-winter" title="Link to this heading">#</a></h2>
 <p>Researchers strongy believed that perceptrons can and will solve hard problems. In <strong>1966</strong> Marvin Minskey together with Seymour Papert as a summer project for his students gave a task to solve computer vision. Task was to split image into regions of likely objects and background areas and perform object classification. It turned out to be much harder than they anticipated. We will soon construct object classifier, if you are interested in background detection read about U-Net.</p>
 <p>In their <strong>1969</strong> monograph <em>Perceptrons</em>, Marvin Minsky and Seymour Papert (same guys after 3 years) highlighted a number of serious weaknesses of Perceptrons—in particular, the fact that they are incapable of solving some trivial problems (e.g., the <em>Exclusive OR</em> (XOR) classification problem.
 It turns out that some of the limitations of Perceptrons can be eliminated by stacking multiple Perceptrons (or using ADA activation)!</p>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117686838_image.png"  style="width: 50%"/>
 <p>But, we have no idea how to train those stacked Perceptorns (DNN - deep neural nets). And also there are no big enough datasets or resources to try this out…</p>
-<img src="https://miro.medium.com/max/2101/1*mWYZanOv3QUafz0nnhbEWw.png"  style="width: 50%"/></div>
-<div class="section" id="backpropagation">
-<h2>Backpropagation<a class="headerlink" href="#backpropagation" title="Permalink to this headline">#</a></h2>
+<img src="https://miro.medium.com/max/2101/1*mWYZanOv3QUafz0nnhbEWw.png"  style="width: 50%"/></section>
+<section id="backpropagation">
+<h2>Backpropagation<a class="headerlink" href="#backpropagation" title="Link to this heading">#</a></h2>
 <p>When an ANN contains a deep stack of hidden layers, it is called a <em><strong>deep neural network</strong></em> <strong>(DNN)</strong>.</p>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571117766740_image.png" alt="Architecture of a Multilayer Perceptron" style="width: 50%"/>
 <p>For many years researchers struggled to find a way to train MLPs, without success. But in <strong>1986</strong>, David <strong>Rumelhart</strong>, Geoffrey <strong>Hinton</strong>, and Ronald <strong>Williams</strong> published a groundbreaking paper (“Learning Internal Representations by Error Propagation”) that introduced the <strong>backpropagation</strong> training algorithm, which is still used today.</p>
@@ -742,8 +604,8 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 <p>In short, it is Gradient Descent using an efficient technique for computing the gradients automatically: in just <strong>two passes</strong> through the network (one <strong>forward</strong>, one <strong>backward</strong>), the backpropagation algorithm is able to compute the gradient of the network’s error with regard to every single model parameter.</p>
 <img src="https://miro.medium.com/max/3040/1*q1M7LGiDTirwU-4LcFq7_Q.png" style="width: 50%"/>
 <p>Automatically computing gradients is called <em>automatic differentiation</em>, or <em>autodiff</em>. There are various autodiff techniques, with different pros and cons. The one used by backpropagation is called <em>reverse-mode autodiff</em>.</p>
-<div class="section" id="two-layer-nn-for-2-class-case">
-<h3>Two layer NN for 2 class case<a class="headerlink" href="#two-layer-nn-for-2-class-case" title="Permalink to this headline">#</a></h3>
+<section id="two-layer-nn-for-2-class-case">
+<h3>Two layer NN for 2 class case<a class="headerlink" href="#two-layer-nn-for-2-class-case" title="Link to this heading">#</a></h3>
 <img src="https://miro.medium.com/max/1000/1*sX6T0Y4aa3ARh7IBS_sdqw.png" style="width: 40%"/><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigmoid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
@@ -792,18 +654,42 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 </div>
 </div>
 <p><strong>TASK:</strong> Change the class from <code class="docutils literal notranslate"><span class="pre">CLASS</span> <span class="pre">=</span> <span class="pre">'setosa'</span></code> and see if non-linearity works. Play with this visualization - https://www.geogebra.org/m/a5x9szmc to get a sense why. Finally go to <a class="reference external" href="http://playground.tensorflow.org/">TensorFlow Playground</a> to get even more intuition on how this works on blobs, rings, spirals, etc.</p>
-</div>
-</div>
-<div class="section" id="mnist-application-of-backprop-by-yann-lecun-1989">
-<h2>MNIST (Application of backprop by Yann LeCun, 1989)<a class="headerlink" href="#mnist-application-of-backprop-by-yann-lecun-1989" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="mnist-application-of-backprop-by-yann-lecun-1989">
+<h2>MNIST (Application of backprop by Yann LeCun, 1989)<a class="headerlink" href="#mnist-application-of-backprop-by-yann-lecun-1989" title="Link to this heading">#</a></h2>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571320140589_image.png" style="width: 50%"/>
 <img src="https://camo.githubusercontent.com/807102dc1f1f17a1318535548d05d54867135be2/68747470733a2f2f6d6c34612e6769746875622e696f2f696d616765732f666967757265732f6d6e6973742d696e7075742e706e67" style="width: 50%"/>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571320219769_image.png" alt="Before training" style="width: 50%"/>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571320227765_image.png" alt="After training" style="width: 50%"/>
 <img src="https://paper-attachments.dropbox.com/s_1F3ADB50AE0E9BFFE47A31C329F32861D3C6E5DDE635C337B9BB647E093C8832_1571118051404_image.png" style="width: 50%"/><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-<span class="c1"># Normalize</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_dataset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_dataset</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalize</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span> <span class="o">/</span> <span class="mi">255</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span> <span class="o">/</span> <span class="mi">255</span>
 
@@ -817,7 +703,7 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_26_0.png" src="_images/DNN_26_0.png" />
+<img alt="_images/b8d842dd23677e8f3f876cd9ebcdb07090ddc7ee2c0d61cd5c8f20bb117653c9.png" src="_images/b8d842dd23677e8f3f876cd9ebcdb07090ddc7ee2c0d61cd5c8f20bb117653c9.png" />
 </div>
 </div>
 <p>Before jumping to Keras let’s see of how this would look like if we try to build it from scratch.</p>
@@ -841,7 +727,9 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 <p>And then just train using gradient descent and backprop rule.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigmoid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+
+<span class="n">sigmoid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
 <span class="n">diff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
@@ -920,138 +808,337 @@ Running epoch 18
 Hit rate (train set) - 97.82%, Hit rate (test set) - 96.00%
 Running epoch 19
 Hit rate (train set) - 97.94%, Hit rate (test set) - 96.02%
+CPU times: user 1min 50s, sys: 6.18 s, total: 1min 56s
+Wall time: 16 s
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="keras">
-<h2>Keras<a class="headerlink" href="#keras" title="Permalink to this headline">#</a></h2>
-<p>From now on we will use keras to create our models. It will take care of backprop and differentiation, thus we only need to define the NN architecture!</p>
+<p>Can we make it faster using PyTorch?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow.keras</span> <span class="k">as</span> <span class="nn">keras</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.optimizers</span> <span class="kn">import</span> <span class="n">Adam</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">]))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
-              <span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;sgd&quot;</span><span class="p">,</span>
-              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
-<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">benchmark</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Perform matrix multiplication on the given device.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">    - device (str): &#39;cuda&#39; or &#39;cpu&#39;</span>
+<span class="sd">    - n (int): Size of the matrix (n x n)</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    - float: Elapsed time in seconds for the operation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Create two random matrices</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+    
+    <span class="c1"># Warm up (ensure any startup overhead is handled)</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    
+    <span class="c1"># Measure the time it takes to perform the matrix multiplication</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+
+
+<span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">gpu_time</span> <span class="o">=</span> <span class="n">benchmark</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix multiplication on GPU took </span><span class="si">{</span><span class="n">gpu_time</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> seconds.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CUDA is not available.&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">mps</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">gpu_time</span> <span class="o">=</span> <span class="n">benchmark</span><span class="p">(</span><span class="s1">&#39;mps&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix multiplication on GPU took </span><span class="si">{</span><span class="n">gpu_time</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> seconds.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MPS is not available.&quot;</span><span class="p">)</span>
+
+<span class="n">cpu_time</span> <span class="o">=</span> <span class="n">benchmark</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix multiplication on CPU took </span><span class="si">{</span><span class="n">cpu_time</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> seconds.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-flatten (Flatten)            (None, 784)               0         
-_________________________________________________________________
-dense (Dense)                (None, 64)                50240     
-_________________________________________________________________
-dense_1 (Dense)              (None, 32)                2080      
-_________________________________________________________________
-dense_2 (Dense)              (None, 10)                330       
-=================================================================
-Total params: 52,650
-Trainable params: 52,650
-Non-trainable params: 0
-_________________________________________________________________
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUDA is not available.
+Matrix multiplication on GPU took 0.0063 seconds.
+Matrix multiplication on CPU took 0.1998 seconds.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s move from numpy to PyTorch.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assuming train_dataset and test_dataset are PyTorch Datasets</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">/</span> <span class="mi">255</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="o">.</span><span class="n">targets</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_dataset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">/</span> <span class="mi">255</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_dataset</span><span class="o">.</span><span class="n">targets</span>
+
+<span class="c1"># Flatten the images</span>
+<span class="n">X_train_flat</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_test_flat</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># One-hot encoding of labels</span>
+<span class="n">y_train_one_hot</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+<span class="n">y_test_one_hot</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loss</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+
+<span class="c1"># Define sigmoid and its derivative</span>
+<span class="n">sigmoid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="n">z_exp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="n">z</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">z_exp</span> <span class="o">/</span> <span class="n">z_exp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">hidden</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="c1"># Make sure your GPU is available, otherwise fall back to CPU</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+
+<span class="c1"># Initial weights</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">W_0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">,</span> <span class="n">hidden</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">W_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="n">X_train_flat</span><span class="p">,</span> <span class="n">y_train_one_hot</span> <span class="o">=</span> <span class="n">X_train_flat</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">y_train_one_hot</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">X_test_flat</span><span class="p">,</span> <span class="n">y_test_one_hot</span> <span class="o">=</span> <span class="n">X_test_flat</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">y_test_one_hot</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Running epoch </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">X_train_flat</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">batch_size</span><span class="p">):</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">X_train_flat</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">batch_size</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y_train_one_hot</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">batch_size</span><span class="p">]</span>
+        <span class="c1"># Forward pass</span>
+        <span class="n">L_1</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W_0</span><span class="p">))</span>
+        <span class="n">L_2</span> <span class="o">=</span> <span class="n">softmax</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">L_1</span><span class="p">,</span> <span class="n">W_1</span><span class="p">))</span>
+        <span class="c1"># Backward pass</span>
+        <span class="n">diff_2</span> <span class="o">=</span> <span class="n">L_2</span> <span class="o">-</span> <span class="n">y</span>
+        <span class="n">diff_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">diff_2</span><span class="p">,</span> <span class="n">W_1</span><span class="o">.</span><span class="n">t</span><span class="p">())</span> <span class="o">*</span> <span class="n">diff</span><span class="p">(</span><span class="n">L_1</span><span class="p">)</span>
+        <span class="n">W_1</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">L_1</span><span class="o">.</span><span class="n">t</span><span class="p">(),</span> <span class="n">diff_2</span><span class="p">)</span>
+        <span class="n">W_0</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">t</span><span class="p">(),</span> <span class="n">diff_1</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">pred_train</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">X_train_flat</span><span class="p">,</span> <span class="n">W_0</span><span class="p">)),</span> <span class="n">W_1</span><span class="p">))</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="n">pred_test</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">X_test_flat</span><span class="p">,</span> <span class="n">W_0</span><span class="p">)),</span> <span class="n">W_1</span><span class="p">))</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hit rate (train set) - </span><span class="si">{0:.02%}</span><span class="s1">, Hit rate (test set) - </span><span class="si">{1:.02%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">pred_train</span> <span class="o">==</span> <span class="n">y_train</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="p">(</span><span class="n">pred_test</span> <span class="o">==</span> <span class="n">y_test</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.8483 - accuracy: 0.7650 - val_loss: 0.3627 - val_accuracy: 0.9020
-Epoch 2/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.3454 - accuracy: 0.9029 - val_loss: 0.2867 - val_accuracy: 0.9187
-Epoch 3/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.2858 - accuracy: 0.9180 - val_loss: 0.2475 - val_accuracy: 0.9286
-Epoch 4/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2493 - accuracy: 0.9295 - val_loss: 0.2262 - val_accuracy: 0.9337
-Epoch 5/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2239 - accuracy: 0.9357 - val_loss: 0.2071 - val_accuracy: 0.9423
-Epoch 6/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.2030 - accuracy: 0.9422 - val_loss: 0.1923 - val_accuracy: 0.9446
-Epoch 7/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.1863 - accuracy: 0.9460 - val_loss: 0.1808 - val_accuracy: 0.9489
-Epoch 8/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.1729 - accuracy: 0.9504 - val_loss: 0.1702 - val_accuracy: 0.9515
-Epoch 9/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.1605 - accuracy: 0.9536 - val_loss: 0.1649 - val_accuracy: 0.9532
-Epoch 10/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.1505 - accuracy: 0.9564 - val_loss: 0.1583 - val_accuracy: 0.9540
-Epoch 11/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.1411 - accuracy: 0.9592 - val_loss: 0.1520 - val_accuracy: 0.9578
-Epoch 12/20
-1500/1500 [==============================] - 2s 1ms/step - loss: 0.1334 - accuracy: 0.9617 - val_loss: 0.1445 - val_accuracy: 0.9586
-Epoch 13/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.1262 - accuracy: 0.9636 - val_loss: 0.1412 - val_accuracy: 0.9604
-Epoch 14/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.1201 - accuracy: 0.9652 - val_loss: 0.1379 - val_accuracy: 0.9599
-Epoch 15/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.1143 - accuracy: 0.9670 - val_loss: 0.1356 - val_accuracy: 0.9617
-Epoch 16/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.1087 - accuracy: 0.9688 - val_loss: 0.1288 - val_accuracy: 0.9628
-Epoch 17/20
-1500/1500 [==============================] - 2s 1ms/step - loss: 0.1034 - accuracy: 0.9698 - val_loss: 0.1279 - val_accuracy: 0.9632
-Epoch 18/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.0990 - accuracy: 0.9716 - val_loss: 0.1233 - val_accuracy: 0.9643
-Epoch 19/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.0952 - accuracy: 0.9723 - val_loss: 0.1232 - val_accuracy: 0.9646
-Epoch 20/20
-1500/1500 [==============================] - 2s 2ms/step - loss: 0.0911 - accuracy: 0.9734 - val_loss: 0.1249 - val_accuracy: 0.9652
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running epoch 0
+Hit rate (train set) - 90.22%, Hit rate (test set) - 90.11%
+Running epoch 1
+Hit rate (train set) - 92.62%, Hit rate (test set) - 92.19%
+Running epoch 2
+Hit rate (train set) - 93.86%, Hit rate (test set) - 92.99%
+Running epoch 3
+Hit rate (train set) - 94.64%, Hit rate (test set) - 93.75%
+Running epoch 4
+Hit rate (train set) - 95.23%, Hit rate (test set) - 94.06%
+Running epoch 5
+Hit rate (train set) - 95.68%, Hit rate (test set) - 94.44%
+Running epoch 6
+Hit rate (train set) - 96.06%, Hit rate (test set) - 94.80%
+Running epoch 7
+Hit rate (train set) - 96.35%, Hit rate (test set) - 95.06%
+Running epoch 8
+Hit rate (train set) - 96.55%, Hit rate (test set) - 95.29%
+Running epoch 9
+Hit rate (train set) - 96.75%, Hit rate (test set) - 95.41%
+Running epoch 10
+Hit rate (train set) - 96.94%, Hit rate (test set) - 95.53%
+Running epoch 11
+Hit rate (train set) - 97.09%, Hit rate (test set) - 95.66%
+Running epoch 12
+Hit rate (train set) - 97.22%, Hit rate (test set) - 95.68%
+Running epoch 13
+Hit rate (train set) - 97.36%, Hit rate (test set) - 95.74%
+Running epoch 14
+Hit rate (train set) - 97.47%, Hit rate (test set) - 95.81%
+Running epoch 15
+Hit rate (train set) - 97.59%, Hit rate (test set) - 95.85%
+Running epoch 16
+Hit rate (train set) - 97.72%, Hit rate (test set) - 95.93%
+Running epoch 17
+Hit rate (train set) - 97.81%, Hit rate (test set) - 95.96%
+Running epoch 18
+Hit rate (train set) - 97.91%, Hit rate (test set) - 95.95%
+Running epoch 19
+Hit rate (train set) - 98.01%, Hit rate (test set) - 95.97%
+CPU times: user 3.24 s, sys: 933 ms, total: 4.17 s
+Wall time: 2.85 s
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pytorch-all-the-way">
+<h2>PyTorch all the way<a class="headerlink" href="#pytorch-all-the-way" title="Link to this heading">#</a></h2>
+<p>From now on we will use PyTorch to create our models. It will take care of backprop and differentiation, thus we only need to define the NN architecture!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">history</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Net</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Net</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">TensorDataset</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
+                                               <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">))</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">TensorDataset</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
+                                              <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">))</span>
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/71/2t6j6ytn1t3dfp5dxb9zhh6w0000gn/T/ipykernel_9389/2847555845.py:1: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_dataset = torch.utils.data.TensorDataset(torch.tensor(X_train, dtype=torch.float32),
+/var/folders/71/2t6j6ytn1t3dfp5dxb9zhh6w0000gn/T/ipykernel_9389/2847555845.py:2: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(y_train, dtype=torch.int64))
+/var/folders/71/2t6j6ytn1t3dfp5dxb9zhh6w0000gn/T/ipykernel_9389/2847555845.py:4: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  test_dataset = torch.utils.data.TensorDataset(torch.tensor(X_test, dtype=torch.float32),
+/var/folders/71/2t6j6ytn1t3dfp5dxb9zhh6w0000gn/T/ipykernel_9389/2847555845.py:5: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(y_test, dtype=torch.int64))
 </pre></div>
 </div>
-<img alt="_images/DNN_35_1.png" src="_images/DNN_35_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Net</span><span class="p">()</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span>
+        <span class="c1"># Forward pass</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+        <span class="n">running_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="c1"># Backward pass and optimization</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        
+    <span class="n">avg_epoch_loss</span> <span class="o">=</span> <span class="n">running_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1"> loss </span><span class="si">{</span><span class="n">avg_epoch_loss</span><span class="si">:</span><span class="s1">.04f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 0 loss 2.1960
+Epoch 1 loss 1.3783
+Epoch 2 loss 0.6811
+Epoch 3 loss 0.5033
+Epoch 4 loss 0.4295
+Epoch 5 loss 0.3898
+Epoch 6 loss 0.3658
+Epoch 7 loss 0.3479
+Epoch 8 loss 0.3339
+Epoch 9 loss 0.3225
+Epoch 10 loss 0.3124
+Epoch 11 loss 0.3024
+Epoch 12 loss 0.2933
+Epoch 13 loss 0.2848
+Epoch 14 loss 0.2772
+Epoch 15 loss 0.2702
+Epoch 16 loss 0.2630
+Epoch 17 loss 0.2564
+Epoch 18 loss 0.2497
+Epoch 19 loss 0.2437
+</pre></div>
+</div>
 </div>
 </div>
 <p>Structurally this is the same network we had before, thus our error rate is expected to be simmilar.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Accuracy on test set - </span><span class="si">{0:.02%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">tag</span><span class="p">,</span> <span class="n">loader</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">)]:</span>
+        <span class="n">correct</span><span class="p">,</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
+            <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;test&#39;</span><span class="p">:</span>
+                <span class="n">P</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">predicted</span><span class="p">)</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">hit_rate</span> <span class="o">=</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hit rate </span><span class="si">{</span><span class="n">tag</span><span class="si">}</span><span class="s1"> - </span><span class="si">{</span><span class="n">hit_rate</span><span class="si">:</span><span class="s1">.02%</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy on test set - 96.47%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hit rate train - 93.17%
+Hit rate test - 93.14%
 </pre></div>
 </div>
 </div>
 </div>
 <p>Let’s explore some predictions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -1065,7 +1152,7 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_39_0.png" src="_images/DNN_39_0.png" />
+<img alt="_images/72202edbe0cd1d44ef817d8d6c0ce9a71e27c233dd3cfb161fef14b98e27a6fd.png" src="_images/72202edbe0cd1d44ef817d8d6c0ce9a71e27c233dd3cfb161fef14b98e27a6fd.png" />
 </div>
 </div>
 <p>Let’s look only at misclassifiesd cases.</p>
@@ -1075,7 +1162,7 @@ Epoch 20/20
 <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">label</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">pred</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="n">label</span><span class="p">)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">pred</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">==</span> <span class="n">label</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
@@ -1084,149 +1171,212 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_41_0.png" src="_images/DNN_41_0.png" />
+<img alt="_images/4ec2698600f84ab5cb6e5e10f4fea7bed50398f9abb417f0b7f4aca62285897e.png" src="_images/4ec2698600f84ab5cb6e5e10f4fea7bed50398f9abb417f0b7f4aca62285897e.png" />
 </div>
 </div>
 <p>As you might remember Random Forest achieved similar accuracy so why do we need NN then? Well, let’s try to increse number of parameters in our network.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">]))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
-              <span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;sgd&quot;</span><span class="p">,</span>
-              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
-<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential_1&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-flatten_1 (Flatten)          (None, 784)               0         
-_________________________________________________________________
-dense_3 (Dense)              (None, 1000)              785000    
-_________________________________________________________________
-dense_4 (Dense)              (None, 500)               500500    
-_________________________________________________________________
-dense_5 (Dense)              (None, 10)                5010      
-=================================================================
-Total params: 1,290,510
-Trainable params: 1,290,510
-Non-trainable params: 0
-_________________________________________________________________
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Net</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Net</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc4</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc4</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loss</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;mps&#39;</span>  <span class="c1"># Make sure to replace &#39;mps&#39; with &#39;cuda&#39; if using NVIDIA GPUs or &#39;cpu&#39; if you don&#39;t have access to GPU.</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Net</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>  <span class="c1"># Set the model to training mode</span>
+    <span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">correct_predictions</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total_predictions</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="c1"># Forward pass</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+        <span class="n">running_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+        <span class="c1"># Calculate accuracy</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">total_predictions</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">correct_predictions</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+        <span class="c1"># Backward pass and optimization</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+    <span class="n">avg_epoch_loss</span> <span class="o">=</span> <span class="n">running_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span>
+    <span class="n">training_accuracy</span> <span class="o">=</span> <span class="n">correct_predictions</span> <span class="o">/</span> <span class="n">total_predictions</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1">, Loss: </span><span class="si">{</span><span class="n">avg_epoch_loss</span><span class="si">:</span><span class="s1">.04f</span><span class="si">}</span><span class="s1">, Training Accuracy: </span><span class="si">{</span><span class="n">training_accuracy</span><span class="si">:</span><span class="s1">.02f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Validation phase</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>  <span class="c1"># Set the model to evaluation mode</span>
+    <span class="n">val_running_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">val_correct_predictions</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">val_total_predictions</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+            <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+            <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+            <span class="n">val_running_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+            <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">val_total_predictions</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">val_correct_predictions</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+    <span class="n">avg_val_loss</span> <span class="o">=</span> <span class="n">val_running_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_loader</span><span class="p">)</span>
+    <span class="n">validation_accuracy</span> <span class="o">=</span> <span class="n">val_correct_predictions</span> <span class="o">/</span> <span class="n">val_total_predictions</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Validation Loss: </span><span class="si">{</span><span class="n">avg_val_loss</span><span class="si">:</span><span class="s1">.04f</span><span class="si">}</span><span class="s1">, Validation Accuracy: </span><span class="si">{</span><span class="n">validation_accuracy</span><span class="si">:</span><span class="s1">.02f</span><span class="si">}</span><span class="s1">%</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-1500/1500 [==============================] - 11s 7ms/step - loss: 0.5957 - accuracy: 0.8545 - val_loss: 0.3070 - val_accuracy: 0.9140
-Epoch 2/20
-1500/1500 [==============================] - 9s 6ms/step - loss: 0.2848 - accuracy: 0.9191 - val_loss: 0.2422 - val_accuracy: 0.9328
-Epoch 3/20
-1500/1500 [==============================] - 8s 6ms/step - loss: 0.2326 - accuracy: 0.9346 - val_loss: 0.2056 - val_accuracy: 0.9416
-Epoch 4/20
-1500/1500 [==============================] - 9s 6ms/step - loss: 0.1985 - accuracy: 0.9437 - val_loss: 0.1836 - val_accuracy: 0.9496
-Epoch 5/20
-1500/1500 [==============================] - 8s 5ms/step - loss: 0.1727 - accuracy: 0.9509 - val_loss: 0.1713 - val_accuracy: 0.9503
-Epoch 6/20
-1500/1500 [==============================] - 8s 6ms/step - loss: 0.1525 - accuracy: 0.9576 - val_loss: 0.1516 - val_accuracy: 0.9583
-Epoch 7/20
-1500/1500 [==============================] - 8s 5ms/step - loss: 0.1364 - accuracy: 0.9617 - val_loss: 0.1407 - val_accuracy: 0.9618
-Epoch 8/20
-1500/1500 [==============================] - 7s 5ms/step - loss: 0.1226 - accuracy: 0.9652 - val_loss: 0.1326 - val_accuracy: 0.9643
-Epoch 9/20
-1500/1500 [==============================] - 8s 5ms/step - loss: 0.1112 - accuracy: 0.9689 - val_loss: 0.1232 - val_accuracy: 0.9666
-Epoch 10/20
-1500/1500 [==============================] - 8s 5ms/step - loss: 0.1012 - accuracy: 0.9723 - val_loss: 0.1155 - val_accuracy: 0.9690
-Epoch 11/20
-1500/1500 [==============================] - 8s 6ms/step - loss: 0.0927 - accuracy: 0.9744 - val_loss: 0.1120 - val_accuracy: 0.9690
-Epoch 12/20
-1500/1500 [==============================] - 8s 5ms/step - loss: 0.0849 - accuracy: 0.9771 - val_loss: 0.1084 - val_accuracy: 0.9695
-Epoch 13/20
-1500/1500 [==============================] - 8s 5ms/step - loss: 0.0788 - accuracy: 0.9786 - val_loss: 0.1068 - val_accuracy: 0.9712
-Epoch 14/20
-1500/1500 [==============================] - 8s 6ms/step - loss: 0.0724 - accuracy: 0.9808 - val_loss: 0.0989 - val_accuracy: 0.9714
-Epoch 15/20
-1500/1500 [==============================] - 8s 5ms/step - loss: 0.0672 - accuracy: 0.9824 - val_loss: 0.0954 - val_accuracy: 0.9725
-Epoch 16/20
-1500/1500 [==============================] - 8s 5ms/step - loss: 0.0622 - accuracy: 0.9837 - val_loss: 0.0944 - val_accuracy: 0.9738
-Epoch 17/20
-1500/1500 [==============================] - 8s 6ms/step - loss: 0.0579 - accuracy: 0.9850 - val_loss: 0.0944 - val_accuracy: 0.9739
-Epoch 18/20
-1500/1500 [==============================] - 8s 5ms/step - loss: 0.0539 - accuracy: 0.9866 - val_loss: 0.0905 - val_accuracy: 0.9740
-Epoch 19/20
-1500/1500 [==============================] - 8s 5ms/step - loss: 0.0501 - accuracy: 0.9872 - val_loss: 0.0874 - val_accuracy: 0.9749
-Epoch 20/20
-1500/1500 [==============================] - 7s 5ms/step - loss: 0.0468 - accuracy: 0.9882 - val_loss: 0.0868 - val_accuracy: 0.9754
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 0, Loss: 2.2665, Training Accuracy: 38.70%
+Validation Loss: 2.2016, Validation Accuracy: 52.47%
+
+Epoch 1, Loss: 1.8765, Training Accuracy: 56.23%
+Validation Loss: 1.2636, Validation Accuracy: 65.01%
+
+Epoch 2, Loss: 0.8719, Training Accuracy: 76.84%
+Validation Loss: 0.6187, Validation Accuracy: 82.97%
+
+Epoch 3, Loss: 0.5359, Training Accuracy: 84.89%
+Validation Loss: 0.4537, Validation Accuracy: 87.27%
+
+Epoch 4, Loss: 0.4271, Training Accuracy: 87.91%
+Validation Loss: 0.3802, Validation Accuracy: 89.18%
+
+Epoch 5, Loss: 0.3751, Training Accuracy: 89.29%
+Validation Loss: 0.3450, Validation Accuracy: 89.90%
+
+Epoch 6, Loss: 0.3432, Training Accuracy: 90.20%
+Validation Loss: 0.3222, Validation Accuracy: 90.65%
+
+Epoch 7, Loss: 0.3197, Training Accuracy: 90.84%
+Validation Loss: 0.3034, Validation Accuracy: 91.02%
+
+Epoch 8, Loss: 0.2995, Training Accuracy: 91.48%
+Validation Loss: 0.2808, Validation Accuracy: 91.72%
+
+Epoch 9, Loss: 0.2825, Training Accuracy: 91.93%
+Validation Loss: 0.2678, Validation Accuracy: 92.01%
+
+Epoch 10, Loss: 0.2679, Training Accuracy: 92.34%
+Validation Loss: 0.2503, Validation Accuracy: 92.79%
+
+Epoch 11, Loss: 0.2525, Training Accuracy: 92.76%
+Validation Loss: 0.2387, Validation Accuracy: 93.02%
+
+Epoch 12, Loss: 0.2399, Training Accuracy: 93.11%
+Validation Loss: 0.2310, Validation Accuracy: 93.35%
+
+Epoch 13, Loss: 0.2274, Training Accuracy: 93.48%
+Validation Loss: 0.2199, Validation Accuracy: 93.79%
+
+Epoch 14, Loss: 0.2155, Training Accuracy: 93.92%
+Validation Loss: 0.2120, Validation Accuracy: 93.92%
+
+Epoch 15, Loss: 0.2057, Training Accuracy: 94.13%
+Validation Loss: 0.2033, Validation Accuracy: 93.94%
+
+Epoch 16, Loss: 0.1952, Training Accuracy: 94.48%
+Validation Loss: 0.1895, Validation Accuracy: 94.52%
+
+Epoch 17, Loss: 0.1866, Training Accuracy: 94.69%
+Validation Loss: 0.1796, Validation Accuracy: 94.81%
+
+Epoch 18, Loss: 0.1780, Training Accuracy: 94.97%
+Validation Loss: 0.1750, Validation Accuracy: 94.93%
+
+Epoch 19, Loss: 0.1700, Training Accuracy: 95.16%
+Validation Loss: 0.1656, Validation Accuracy: 95.09%
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">history</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Accuracy on test set - </span><span class="si">{0:.02%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy on test set - 97.74%
-</pre></div>
-</div>
-<img alt="_images/DNN_45_1.png" src="_images/DNN_45_1.png" />
-</div>
-</div>
-<p>Thats better! For examply by using layers 1500, 1000, 500, 10 you can improve accuracy to 98.24%, but training will take quite some time. Actually you can go even futher with simple data augmentation techniques - https://arxiv.org/pdf/1003.0358.pdf</p>
+<p>Thats better! For examply by using layers 1500, 1000, 500, 10 you can improve accuracy to ~98.24%, but training will take quite some time. Actually you can go even futher with simple data augmentation techniques - https://arxiv.org/pdf/1003.0358.pdf</p>
 <p>To the save and load the model you can use:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;mnist-model.h5&#39;</span><span class="p">)</span>
-<span class="c1"># model = tf.keras.models.load_model(&#39;mnist-model.h5&#39;)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;mnist-model.pth&#39;</span><span class="p">)</span>
+<span class="c1"># model = torch.load(&#39;mnist-model.pth&#39;)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="dropout">
-<h2>Dropout<a class="headerlink" href="#dropout" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="dropout">
+<h2>Dropout<a class="headerlink" href="#dropout" title="Link to this heading">#</a></h2>
 <p>There is a nice and popular way to <strong>prevent over-fitting</strong> in Neural Networks - turn off some neurons during training procudure.</p>
 <img src="https://miro.medium.com/proxy/1*iWQzxhVlvadk6VAJjsgXgg.png" style="width: 50%"/>
 <p>You can try that out by adding Dropout layers between Dense ones as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">]))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Net</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Net</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># Dropout layer after fc1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># Dropout layer after fc2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># Dropout layer after fc3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc4</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc4</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
 </pre></div>
 </div>
-<p>Try that out.</p>
+<p>Try that out. Note that when you’re using the model for evaluation or inference, you should set it to evaluation mode with <code class="docutils literal notranslate"><span class="pre">model.eval()</span></code> to make sure the dropout layers are bypassed. When you return to training, use <code class="docutils literal notranslate"><span class="pre">model.train()</span></code> to activate dropout again.</p>
 <p>As we go further we will see that sometime bigger networks simply don’t overfit the data, standard statistics logic starts to break down. This phenomenon is called <a class="reference external" href="https://openai.com/blog/deep-double-descent/">Deep Double Descent</a>.</p>
-</div>
-<div class="section" id="task-approximate-interpolation">
-<h2>Task: approximate interpolation<a class="headerlink" href="#task-approximate-interpolation" title="Permalink to this headline">#</a></h2>
-<p>To get slightly better feel of what 2-layer NN is capable of, let’s try to implement idea presented in paper entitled “Constructive approximate interpolation by neural networks” by B. Llanas. Let <span class="math notranslate nohighlight">\(P = \{x_0=a, x_1, \dots, x_n=b\}\)</span> be any partition of interval <span class="math notranslate nohighlight">\([a,b]\)</span>. Let’s define neural net as:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+</section>
+<section id="task-approximate-interpolation">
+<h2>Task: approximate interpolation<a class="headerlink" href="#task-approximate-interpolation" title="Link to this heading">#</a></h2>
+<p>To get slightly better feel of what 2-layer NN is capable of, let’s try to implement idea presented in paper entitled “Constructive approximate interpolation by neural networks” by B. Llanas. Let $P = {x_0=a, x_1, \dots, x_n=b}$ be any partition of interval $[a,b]$. Let’s define neural net as:</p>
+<p>$$
 \begin{align}
-N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{j+1} - x_j} + \frac{x_{j+1} + x_j}{x_{j+1} - x_j} A \right) \\
+N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{j+1} - x_j} + \frac{x_{j+1} + x_j}{x_{j+1} - x_j} A \right) \
 &amp; + f_n \sigma \left( \frac{-2Ax}{x_n - x_{n-1}} + \frac{3 x_n + x_{n-1}}{x_n - x_{n-1}} A \right)
 \end{align}.
-\end{split}\]</div>
-<p>Then for interpolation problem <span class="math notranslate nohighlight">\((x_0, f_0), (x_1, f_1), \dots, (x_n, f_n)\)</span> this network yields approximate interpolation and parameter <span class="math notranslate nohighlight">\(A &gt; 0\)</span> controls smoothness, lower value will end up in more smooth fit.</p>
+$$</p>
+<p>Then for interpolation problem $(x_0, f_0), (x_1, f_1), \dots, (x_n, f_n)$ this network yields approximate interpolation and parameter $A &gt; 0$ controls smoothness, lower value will end up in more smooth fit.</p>
 <p><strong>TASK:</strong> implement this using numpy (or tensorflow) and make some plots to convince yourself that it works.</p>
 <p>For test you can use any random function, for example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
@@ -1235,8 +1385,8 @@ N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{
 </pre></div>
 </div>
 <p><em>Tip: Note, that weights in the first line can be stacked with weights listed in the second line before implementing dot product.</em></p>
-<div class="section" id="solution-do-not-scroll-down-try-to-solve-it-before-without-help">
-<h3>Solution (do not scroll down, try to solve it before without help)<a class="headerlink" href="#solution-do-not-scroll-down-try-to-solve-it-before-without-help" title="Permalink to this headline">#</a></h3>
+<section id="solution-do-not-scroll-down-try-to-solve-it-before-without-help">
+<h3>Solution (do not scroll down, try to solve it before without help)<a class="headerlink" href="#solution-do-not-scroll-down-try-to-solve-it-before-without-help" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
@@ -1244,12 +1394,6 @@ N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x14768bb90&gt;
-</pre></div>
-</div>
-<img alt="_images/DNN_49_1.png" src="_images/DNN_49_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1270,52 +1414,11 @@ N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/trokas/.local/share/virtualenvs/current-rcFo7dEP/lib/python3.7/site-packages/ipykernel_launcher.py:1: RuntimeWarning: overflow encountered in exp
-  &quot;&quot;&quot;Entry point for launching an IPython kernel.
-</pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x146827350&gt;]
-</pre></div>
-</div>
-<img alt="_images/DNN_50_2.png" src="_images/DNN_50_2.png" />
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="callbacks">
-<h2>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this headline">#</a></h2>
-<p>While training the models it is benefficial to have some printout after each apoch, additionally you might want to adjust learning rate, stop training etc. All of these tasks can be achieved using callbacks in fit function, for example:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> tensorboard
-<span class="o">%</span><span class="k">tensorboard</span> --logdir logs
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="c1"># Let&#39;s create different dir for each experiment based on timestamp</span>
-<span class="n">logdir</span> <span class="o">=</span> <span class="s2">&quot;logs/scalars/&quot;</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">-%H%M%S&quot;</span><span class="p">)</span>
-<span class="c1"># This callback will write logs to provided directory</span>
-<span class="n">tensorboard_callback</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="n">logdir</span><span class="p">)</span>
-
-<span class="c1"># We already have the model, but you might want to create new one prior to training</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span>
-          <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">),</span>
-          <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-          <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">tensorboard_callback</span><span class="p">])</span>   <span class="c1"># You can provide multiple callbacks here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Another useful callback is <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/ModelCheckpoint">ModelCheckpoint</a> which can save the best model and stop training if it stops improving.</p>
-</div>
-<div class="section" id="re-sources">
-<h2>(re)Sources<a class="headerlink" href="#re-sources" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="re-sources">
+<h2>(re)Sources<a class="headerlink" href="#re-sources" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Rosenblatt’s perceptron, the first modern neural network (<a class="reference external" href="https://towardsdatascience.com/rosenblatts-perceptron-the-very-first-neural-network-37a3ec09038a">blog post</a>)</p></li>
 <li><p>Neural Network in 11 lines of code (<a class="reference external" href="https://iamtrask.github.io/2015/07/12/basic-python-network/">blog post</a>)</p></li>
@@ -1325,8 +1428,8 @@ N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{
 <li><p>Veritasium <a class="reference external" href="https://www.youtube.com/watch?v=GVsUOuSjvcg">video</a></p></li>
 <li><p>Neural Networks and Deep Learning: <a class="reference external" href="https://www.amazon.com/Neural-Networks-Deep-Learning-Textbook/dp/3319944622">A Textbook</a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1340,7 +1443,7 @@ N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1348,50 +1451,122 @@ N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="RF.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">RF (Random Forest)</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="RF.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">RF (Random Forest)</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="CNN.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="CNN.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">CNN (Convolutional Neural Networks)</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent">Gradient Descent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeline">Timeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-perceptron">The Perceptron</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perceptron-for-2-class-case">Perceptron for 2 class case</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-of-perceptron-formulation">Power of perceptron formulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beginning-of-first-ai-winter">Beginning of first AI winter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation">Backpropagation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-layer-nn-for-2-class-case">Two layer NN for 2 class case</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mnist-application-of-backprop-by-yann-lecun-1989">MNIST (Application of backprop by Yann LeCun, 1989)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-all-the-way">PyTorch all the way</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropout">Dropout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-approximate-interpolation">Task: approximate interpolation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-do-not-scroll-down-try-to-solve-it-before-without-help">Solution (do not scroll down, try to solve it before without help)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-sources">(re)Sources</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By trokas<br/>
-  
-      &copy; Copyright MIF, 2023.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By trokas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright MIF, 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

@@ -1,106 +1,167 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Attention &#8212; AI primer</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Attention';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Namesformer" href="Namesformer.html" />
     <link rel="prev" title="CNN (Convolutional Neural Networks)" href="CNN.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">AI primer</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AI primer</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -110,321 +171,222 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="SVD.html">
-   SVD (Singular Value Decomposition)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="RF.html">
-   RF (Random Forest)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DNN.html">
-   DNN (Deep Neural Networks)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CNN.html">
-   CNN (Convolutional Neural Networks)
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Attention
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Namesformer.html">
-   Namesformer
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Varia.html">
-   Varia
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="TD.html">
-   Bonus: TD (Temporal Difference)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Project.html">
-   Project: Flatland
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="SVD.html">SVD (Singular Value Decomposition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RF.html">RF (Random Forest)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DNN.html">DNN (Deep Neural Networks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN.html">CNN (Convolutional Neural Networks)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Attention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Namesformer.html">Namesformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Varia.html">Varia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TD.html">Bonus: TD (Temporal Difference)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RL.html">Bonus: Reinforcement Learning</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Project.html">Project: Flatland</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/trokas/ai_primer/master?urlpath=tree/Attention.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/Attention.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/Attention.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Attention.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Attention.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#self-attention">
-   Self-Attention
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transformer-block">
-   Transformer Block
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#positional-embeddings">
-   Positional Embeddings
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#final-architecture">
-   Final Architecture
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#age-of-transformers">
-   Age of Transformers
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#re-sources">
-   (re)Sources:
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Attention</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#self-attention">
-   Self-Attention
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transformer-block">
-   Transformer Block
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#positional-embeddings">
-   Positional Embeddings
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#final-architecture">
-   Final Architecture
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#age-of-transformers">
-   Age of Transformers
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#re-sources">
-   (re)Sources:
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Attention</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-attention">Self-Attention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformer-block">Transformer Block</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-embeddings">Positional Embeddings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-architecture">Final Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-sequence-prediction">TASK: Sequence prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#age-of-transformers">Age of Transformers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#honorable-mentions">Honorable mentions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-sources">(re)Sources:</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="attention">
-<h1>Attention<a class="headerlink" href="#attention" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="attention">
+<h1>Attention<a class="headerlink" href="#attention" title="Link to this heading">#</a></h1>
 <p>There are problems where fully connected neural nets and CNNs are not suitable. One of the examples is dealing with sequences of different lengths.</p>
 <p>In this notebook, we will see how Self-Attention can solve the sorting problem. Given an arbitrary length sequence of digits, the task is to return sorted one.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Input</span><span class="p">:</span>  <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">8</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">8</span> <span class="mi">5</span> <span class="mi">8</span> <span class="mi">2</span> <span class="mi">6</span><span class="p">]</span>
@@ -435,17 +397,10 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Attention</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">LayerNormalization</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">MultiHeadAttention</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Init Plugin
-Init Graph Optimizer
-Init Kernel
 </pre></div>
 </div>
 </div>
@@ -456,15 +411,16 @@ Init Kernel
 
 <span class="k">def</span> <span class="nf">pad</span><span class="p">(</span><span class="n">list_of_seq</span><span class="p">):</span>
     <span class="n">N</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">list_of_seq</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)))</span>
-                     <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">list_of_seq</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">F</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)))</span>
+                        <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">list_of_seq</span><span class="p">])</span>
 
 <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="n">max_seq_len</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">):</span>
+    <span class="n">one_hot</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">max_seq_len</span><span class="p">))</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">max_seq_len</span><span class="p">),))</span>
              <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)]</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">]</span>
-        <span class="k">yield</span> <span class="n">one_hot</span><span class="p">[</span><span class="n">pad</span><span class="p">(</span><span class="n">X</span><span class="p">)],</span> <span class="n">one_hot</span><span class="p">[</span><span class="n">pad</span><span class="p">(</span><span class="n">y</span><span class="p">)]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">values</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">]</span>
+        <span class="k">yield</span> <span class="n">F</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">pad</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">(),</span> <span class="n">F</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">pad</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -481,57 +437,67 @@ Init Kernel
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input:  [7 0 0 0 0 0 0 0 0]
-Output: [7 0 0 0 0 0 0 0 0]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input:  tensor([9, 1, 3, 4, 0, 0, 0, 0])
+Output: tensor([0, 1, 3, 4, 9, 0, 0, 0])
 
-Input:  [4 7 2 9 9 4 7 7 3]
-Output: [2 3 4 4 7 7 7 9 9]
+Input:  tensor([7, 8, 4, 5, 9, 0, 0, 0])
+Output: tensor([4, 5, 7, 8, 9, 0, 0, 0])
 
-Input:  [6 0 0 0 0 0 0 0 0]
-Output: [6 0 0 0 0 0 0 0 0]
+Input:  tensor([3, 0, 8, 4, 9, 4, 0, 0])
+Output: tensor([0, 3, 4, 4, 8, 9, 0, 0])
 
-Input:  [7 9 1 1 1 3 0 0 0]
-Output: [1 1 1 3 7 9 0 0 0]
+Input:  tensor([7, 4, 3, 2, 8, 1, 1, 2])
+Output: tensor([1, 1, 2, 2, 3, 4, 7, 8])
 
-Input:  [2 0 0 0 0 0 0 0 0]
-Output: [2 0 0 0 0 0 0 0 0]
+Input:  tensor([7, 8, 0, 0, 0, 0, 0, 0])
+Output: tensor([0, 7, 8, 0, 0, 0, 0, 0])
 </pre></div>
 </div>
 </div>
 </div>
 <p>Note, that due to the padding this problem becomes even harder since 0 has different interpretations depending on where it is located. It is a good idea to pad with -1’s instead, but let’s stick with the current implementation to make it more challenging for the model.</p>
-<div class="section" id="self-attention">
-<h2>Self-Attention<a class="headerlink" href="#self-attention" title="Permalink to this headline">#</a></h2>
-<p>In principle idea of self-attention is quite simple. Input vector gets multiplied by three matrixes - <span class="math notranslate nohighlight">\(Q, K, V\)</span> to form <strong>Q</strong>uery, <strong>K</strong>ey and <strong>V</strong>alue vectors. Then <strong>Q</strong>uery and <strong>K</strong>ey are combined between the sequences to get weights which are then used to weight <strong>V</strong>alues before summing them up.</p>
+<section id="self-attention">
+<h2>Self-Attention<a class="headerlink" href="#self-attention" title="Link to this heading">#</a></h2>
+<p>In principle idea of self-attention is quite simple. Input vector gets multiplied by three matrixes - $Q, K, V$ to form <strong>Q</strong>uery, <strong>K</strong>ey and <strong>V</strong>alue vectors. Then <strong>Q</strong>uery and <strong>K</strong>ey are combined between the sequences to get weights which are then used to weight <strong>V</strong>alues before summing them up.</p>
 <p><img alt="Attention" src="_images/self_attention.gif" /></p>
 <p>There are a lot of good explanations online if you want to go deeper and understand the math behind it - https://peterbloem.nl/blog/transformers.</p>
-</div>
-<div class="section" id="transformer-block">
-<h2>Transformer Block<a class="headerlink" href="#transformer-block" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="transformer-block">
+<h2>Transformer Block<a class="headerlink" href="#transformer-block" title="Link to this heading">#</a></h2>
 <p>To use self-attention effectively we need to harness a couple of tricks. The first is to mix it up with fully connected layers and introduce some skip connections.</p>
 <p><img alt="Transformer Block" src="_images/transformer_block.png" /></p>
 <p>Since it is possible to repeat Transformer Blocks let’s a for loop (for now it will be executed only once).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_model</span><span class="p">(</span><span class="n">hidden</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">num_heads</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">num_blocks</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-
-    <span class="n">inp</span> <span class="o">=</span> <span class="n">Input</span><span class="p">((</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-    <span class="n">emb</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">hidden</span><span class="p">)(</span><span class="n">inp</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_blocks</span><span class="p">):</span>
-        <span class="n">enc</span> <span class="o">=</span> <span class="n">MultiHeadAttention</span><span class="p">(</span><span class="n">num_heads</span><span class="o">=</span><span class="n">num_heads</span><span class="p">,</span> <span class="n">key_dim</span><span class="o">=</span><span class="n">hidden</span><span class="p">)(</span><span class="n">emb</span><span class="p">,</span> <span class="n">emb</span><span class="p">)</span>
-        <span class="n">enc</span> <span class="o">=</span> <span class="n">LayerNormalization</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)(</span><span class="n">enc</span> <span class="o">+</span> <span class="n">emb</span><span class="p">)</span>
-
-        <span class="n">fcn</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">hidden</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">enc</span><span class="p">)</span>
-        <span class="n">fcn</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">hidden</span><span class="p">)(</span><span class="n">fcn</span><span class="p">)</span>
-        <span class="n">emb</span> <span class="o">=</span> <span class="n">LayerNormalization</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)(</span><span class="n">fcn</span> <span class="o">+</span> <span class="n">enc</span><span class="p">)</span>
-
-    <span class="n">out</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)(</span><span class="n">emb</span><span class="p">)</span>
-
-    <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TransformerBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TransformerBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attention</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MultiheadAttention</span><span class="p">(</span><span class="n">embed_dim</span><span class="o">=</span><span class="n">hidden</span><span class="p">,</span> <span class="n">num_heads</span><span class="o">=</span><span class="n">num_heads</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="n">hidden</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer_norm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
     
-    <span class="k">return</span> <span class="n">model</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">att</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attention</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">enc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer_norm</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">att</span><span class="p">)</span>
+        <span class="n">enc</span> <span class="o">=</span> <span class="n">enc</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">fcn</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">enc</span><span class="p">))</span>
+        <span class="n">fcn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">fcn</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer_norm</span><span class="p">(</span><span class="n">fcn</span> <span class="o">+</span> <span class="n">enc</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">TransformerModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">num_heads</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">num_blocks</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TransformerModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">TransformerBlock</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_blocks</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">block</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -539,23 +505,29 @@ Output: [2 0 0 0 0 0 0 0 0]
 <p>Let’s define a helper function that plots sequences and an image and prints out a small sample.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eval_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">gen</span><span class="p">,</span> <span class="n">seq_to_print</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
-    <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">real</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Prediction&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">real</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Actual seq&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pred</span><span class="p">[:</span><span class="n">seq_to_print</span><span class="p">],</span>
-                    <span class="n">real</span><span class="p">[:</span><span class="n">seq_to_print</span><span class="p">]):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Prediction:&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Actual seq:&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the evaluation function</span>
+<span class="k">def</span> <span class="nf">eval_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">gen</span><span class="p">,</span> <span class="n">seq_to_print</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">real</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="c1"># Plotting</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Prediction&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">real</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Actual seq&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        
+        <span class="c1"># Print sequences</span>
+        <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pred</span><span class="p">[:</span><span class="n">seq_to_print</span><span class="p">],</span> <span class="n">real</span><span class="p">[:</span><span class="n">seq_to_print</span><span class="p">]):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Prediction:&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Actual seq:&#39;</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -563,80 +535,66 @@ Output: [2 0 0 0 0 0 0 0 0]
 <p>Finally we are ready to train a model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gen</span> <span class="o">=</span> <span class="n">generator</span><span class="p">(</span><span class="n">max_seq_len</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate data, build the model, train, and evaluate</span>
+<span class="n">gen</span> <span class="o">=</span> <span class="n">generator</span><span class="p">(</span><span class="n">max_seq_len</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">TransformerModel</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">gen</span><span class="p">,</span> <span class="n">steps_per_epoch</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># For faster demonstration reduce the number of epochs</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">steps_per_epoch</span> <span class="o">=</span> <span class="mi">200</span>
 
+<span class="c1"># Move model to device (use &#39;cuda&#39; if available, otherwise &#39;cpu&#39;)</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="c1"># Train the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps_per_epoch</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">y</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">y</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+<span class="c1"># Evaluate the model</span>
 <span class="n">eval_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">gen</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metal device set to: Apple M1
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-08-22 21:47:15.419906: I tensorflow/core/common_runtime/pluggable_device/pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
-2022-08-22 21:47:15.420010: I tensorflow/core/common_runtime/pluggable_device/pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -&gt; physical PluggableDevice (device: 0, name: METAL, pci bus id: &lt;undefined&gt;)
-2022-08-22 21:47:15.990242: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:176] None of the MLIR Optimization Passes are enabled (registered 2)
-2022-08-22 21:47:15.991041: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-08-22 21:47:16.233765: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:112] Plugin optimizer for device_type GPU is enabled.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200/200 [==============================] - 8s 36ms/step - loss: 1.1721
-Epoch 2/10
-200/200 [==============================] - 7s 37ms/step - loss: 1.0920
-Epoch 3/10
-200/200 [==============================] - 8s 38ms/step - loss: 1.0749
-Epoch 4/10
-200/200 [==============================] - 8s 39ms/step - loss: 1.0552
-Epoch 5/10
-200/200 [==============================] - 8s 39ms/step - loss: 1.0364
-Epoch 6/10
-200/200 [==============================] - 8s 38ms/step - loss: 1.0297
-Epoch 7/10
-200/200 [==============================] - 8s 38ms/step - loss: 1.0499
-Epoch 8/10
-200/200 [==============================] - 8s 38ms/step - loss: 1.0398
-Epoch 9/10
-200/200 [==============================] - 7s 37ms/step - loss: 1.0212
-Epoch 10/10
-200/200 [==============================] - 8s 38ms/step - loss: 1.0447
-</pre></div>
-</div>
-<img alt="_images/Attention_12_5.png" src="_images/Attention_12_5.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prediction: [7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 0 0 0]
-Actual seq: [1 2 2 3 4 4 4 5 6 6 7 7 7 7 8 9 0 0 0]
+<img alt="_images/248ec716537830e3f7f6c630f82d5c5b2fa24fe1bacb0ba01f52a658f66a340a.png" src="_images/248ec716537830e3f7f6c630f82d5c5b2fa24fe1bacb0ba01f52a658f66a340a.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prediction: [9 0 9 9 9 9 9 0 9 9 9 9 9 9 9 0 0 0 0]
+Actual seq: [0 0 1 2 3 5 5 6 7 7 8 8 9 9 9 0 0 0 0]
 
-Prediction: [1 1 5 1 1 1 1 1 1 5 5 1 0 0 0 0 0 0 0]
-Actual seq: [1 1 3 4 5 5 6 7 7 8 9 9 0 0 0 0 0 0 0]
+Prediction: [2 2 2 2 2 2 2 0 2 2 2 2 0 0 0 0 0 0 0]
+Actual seq: [0 1 1 2 2 2 2 3 4 5 7 8 0 0 0 0 0 0 0]
 
-Prediction: [7 7 7 7 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
-Actual seq: [2 7 7 8 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+Prediction: [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+Actual seq: [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 
-Prediction: [3 3 2 3 0 7 0 0 0 0 0 0 0 0 0 0 0 0 0]
-Actual seq: [0 2 3 5 7 9 0 0 0 0 0 0 0 0 0 0 0 0 0]
+Prediction: [3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 3]
+Actual seq: [0 1 1 2 2 2 3 3 3 3 3 4 5 5 7 7 8 9 9]
 
-Prediction: [9 9 9 9 9 9 9 9 9 9 9 9 0 0 0 0 0 0 0]
-Actual seq: [1 4 4 5 5 6 7 7 8 9 9 9 0 0 0 0 0 0 0]
+Prediction: [0 2 2 2 2 2 2 2 9 2 2 2 9 2 0 0 0 0 0]
+Actual seq: [0 1 1 2 2 2 4 5 6 6 7 7 9 9 0 0 0 0 0]
 </pre></div>
 </div>
 </div>
 </div>
 <p>At this point, the model can learn to deal with sequence length and can pick the element that is most common but fails with sorting problem… Clearly, we lack something that allows the model to learn sequential nature.</p>
-</div>
-<div class="section" id="positional-embeddings">
-<h2>Positional Embeddings<a class="headerlink" href="#positional-embeddings" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="positional-embeddings">
+<h2>Positional Embeddings<a class="headerlink" href="#positional-embeddings" title="Link to this heading">#</a></h2>
 <p>To resolve the problem we will add random weights for each position! We fix those <em>positional embeddings</em> before generating sequences and then add them to the inputs. The code below should be self-explanatory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">positional_generator</span><span class="p">(</span><span class="n">max_seq_len</span><span class="p">):</span>
-    <span class="n">positional_embedding</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">max_seq_len</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">positional_embedding</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="n">max_seq_len</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
     <span class="n">gen</span> <span class="o">=</span> <span class="n">generator</span><span class="p">(</span><span class="n">max_seq_len</span><span class="p">)</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
@@ -650,143 +608,240 @@ Actual seq: [1 4 4 5 5 6 7 7 8 9 9 9 0 0 0 0 0 0 0]
 <p>Let’s retrain the model using updated generator.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gen</span> <span class="o">=</span> <span class="n">positional_generator</span><span class="p">(</span><span class="n">max_seq_len</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate data, build the model, train, and evaluate</span>
+<span class="n">gen</span> <span class="o">=</span> <span class="n">positional_generator</span><span class="p">(</span><span class="n">max_seq_len</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">TransformerModel</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">gen</span><span class="p">,</span> <span class="n">steps_per_epoch</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps_per_epoch</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">y</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">y</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
 
+<span class="c1"># Evaluate the model</span>
 <span class="n">eval_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">gen</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
-  1/200 [..............................] - ETA: 1:21 - loss: 2.2106
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-08-22 21:48:32.104336: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:112] Plugin optimizer for device_type GPU is enabled.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200/200 [==============================] - 8s 37ms/step - loss: 1.1802
-Epoch 2/10
-200/200 [==============================] - 7s 37ms/step - loss: 0.8474
-Epoch 3/10
-200/200 [==============================] - 7s 36ms/step - loss: 0.7291
-Epoch 4/10
-200/200 [==============================] - 7s 36ms/step - loss: 0.6720
-Epoch 5/10
-200/200 [==============================] - 7s 37ms/step - loss: 0.6303
-Epoch 6/10
-200/200 [==============================] - 7s 36ms/step - loss: 0.5987
-Epoch 7/10
-200/200 [==============================] - 7s 36ms/step - loss: 0.5833
-Epoch 8/10
-200/200 [==============================] - 7s 37ms/step - loss: 0.5571
-Epoch 9/10
-200/200 [==============================] - 7s 37ms/step - loss: 0.5374
-Epoch 10/10
-200/200 [==============================] - 8s 38ms/step - loss: 0.5235
-</pre></div>
-</div>
-<img alt="_images/Attention_16_3.png" src="_images/Attention_16_3.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prediction: [0 1 1 1 1 2 2 3 2 6 6 6 6 7 7 7 8 8 7]
-Actual seq: [0 0 1 1 1 2 2 2 3 3 4 6 6 6 7 7 7 8 8]
+<img alt="_images/29bcb1415ca88112615d2b145fcaa73fb306d1eb650247b2fd0befb2dfb87467.png" src="_images/29bcb1415ca88112615d2b145fcaa73fb306d1eb650247b2fd0befb2dfb87467.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prediction: [0 1 4 4 5 4 5 7 8 8 0 0 0 0 0 0 0 0 0]
+Actual seq: [2 4 4 4 5 5 5 6 7 8 0 0 0 0 0 0 0 0 0]
 
-Prediction: [1 4 4 4 4 4 4 5 5 5 5 7 7 7 9 9 9 0 9]
-Actual seq: [0 1 3 3 4 4 4 4 5 5 5 6 7 7 7 8 9 9 9]
+Prediction: [0 0 2 0 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+Actual seq: [0 2 2 4 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 
-Prediction: [1 1 1 3 3 7 7 0 0 8 0 0 0 0 0 0 0 0 0]
-Actual seq: [0 0 0 1 1 2 3 5 6 7 8 0 0 0 0 0 0 0 0]
+Prediction: [0 1 1 1 3 1 3 3 3 7 7 7 9 9 9 9 0 0 0]
+Actual seq: [0 0 0 1 1 1 1 3 3 3 3 7 7 8 9 9 9 0 0]
 
-Prediction: [0 1 3 3 3 7 5 7 7 7 8 8 8 8 8 8 9 0 0]
-Actual seq: [1 2 3 5 5 6 7 7 7 7 7 8 8 8 8 8 8 0 0]
+Prediction: [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+Actual seq: [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 
-Prediction: [0 1 2 4 4 4 4 4 7 8 8 8 8 8 0 0 0 0 0]
-Actual seq: [0 1 2 4 4 4 5 6 7 7 8 8 8 9 0 0 0 0 0]
+Prediction: [0 1 6 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+Actual seq: [1 2 6 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 </pre></div>
 </div>
 </div>
 </div>
 <p>Much better! You can try to remove the attention layer to convince yourself that this net will fail without it since that disables the passing of the information about other sequence elements. Actually, if we reformulate this problem for fixed length sequences, then flattening and using simple FCN could work, but with arbitrary length sequences, Attention is a way to go.</p>
-</div>
-<div class="section" id="final-architecture">
-<h2>Final Architecture<a class="headerlink" href="#final-architecture" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="final-architecture">
+<h2>Final Architecture<a class="headerlink" href="#final-architecture" title="Link to this heading">#</a></h2>
 <p>For sure we can add more layers to get more power. It’s already implemented above, we just need to pass <code class="docutils literal notranslate"><span class="pre">num_blocks=3</span></code> when constructing the model.</p>
 <p><img alt="Transformer Block" src="_images/transformer.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gen</span> <span class="o">=</span> <span class="n">positional_generator</span><span class="p">(</span><span class="n">max_seq_len</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">30</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="n">num_blocks</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">gen</span><span class="p">,</span> <span class="n">steps_per_epoch</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># Train another model with three blocks of attention layers using the positional generator</span>
+<span class="n">gen</span> <span class="o">=</span> <span class="n">positional_generator</span><span class="p">(</span><span class="n">max_seq_len</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">TransformerModel</span><span class="p">(</span><span class="n">num_blocks</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
 
+<span class="c1"># Train the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps_per_epoch</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">y</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">y</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+<span class="c1"># Evaluate the model</span>
 <span class="n">eval_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">gen</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-08-22 21:49:46.419997: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:112] Plugin optimizer for device_type GPU is enabled.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200/200 [==============================] - 20s 94ms/step - loss: 1.0445
-Epoch 2/10
-200/200 [==============================] - 19s 94ms/step - loss: 0.5815
-Epoch 3/10
-200/200 [==============================] - 19s 93ms/step - loss: 0.4544
-Epoch 4/10
-200/200 [==============================] - 19s 93ms/step - loss: 0.3942
-Epoch 5/10
-200/200 [==============================] - 19s 94ms/step - loss: 0.3435
-Epoch 6/10
-200/200 [==============================] - 19s 94ms/step - loss: 0.3268
-Epoch 7/10
-200/200 [==============================] - 19s 94ms/step - loss: 0.2976
-Epoch 8/10
-200/200 [==============================] - 19s 96ms/step - loss: 0.2707
-Epoch 9/10
-200/200 [==============================] - 19s 96ms/step - loss: 0.2787
-Epoch 10/10
-200/200 [==============================] - 19s 97ms/step - loss: 0.2496
-</pre></div>
-</div>
-<img alt="_images/Attention_19_3.png" src="_images/Attention_19_3.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prediction: [0 1 3 7 7 8 0 0 0 0 0 0 0 0 0 0 0 0 0]
-Actual seq: [0 1 3 7 7 8 0 0 0 0 0 0 0 0 0 0 0 0 0]
+<img alt="_images/8189b20bfb616e9d83b610c2375aa0cb8e15b436f2120d118ec2715234f05189.png" src="_images/8189b20bfb616e9d83b610c2375aa0cb8e15b436f2120d118ec2715234f05189.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prediction: [1 2 3 3 4 4 5 6 8 8 9 0 0 0 0 0 0 0 0]
+Actual seq: [1 2 3 3 4 4 5 6 8 8 9 0 0 0 0 0 0 0 0]
 
-Prediction: [2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
-Actual seq: [2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+Prediction: [3 5 6 8 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+Actual seq: [3 5 6 8 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 
-Prediction: [0 0 1 2 2 2 3 3 5 4 5 5 5 7 7 9 9 9 0]
-Actual seq: [0 0 1 2 2 3 3 3 4 4 5 5 5 5 7 9 9 9 0]
+Prediction: [1 1 3 3 4 4 4 6 6 8 8 8 8 9 0 0 0 0 0]
+Actual seq: [1 1 3 4 4 4 4 6 7 8 8 8 8 9 0 0 0 0 0]
 
-Prediction: [0 3 3 5 7 7 8 8 9 0 0 0 0 0 0 0 0 0 0]
-Actual seq: [0 3 4 5 7 7 8 8 9 0 0 0 0 0 0 0 0 0 0]
+Prediction: [0 2 3 3 5 5 5 5 6 6 6 0 0 0 0 0 0 0 0]
+Actual seq: [0 2 3 3 5 5 5 5 6 6 6 0 0 0 0 0 0 0 0]
 
-Prediction: [0 0 0 0 0 2 7 8 8 9 0 0 0 0 0 0 0 0 0]
-Actual seq: [0 0 0 0 1 2 7 8 8 9 0 0 0 0 0 0 0 0 0]
+Prediction: [1 6 6 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+Actual seq: [1 6 9 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 </pre></div>
 </div>
 </div>
 </div>
 <p>Training is still quite fast and this time results are nearly perfect. From time to time model messes up with zeros, but that is expected as discussed in the problem formulation.</p>
+</section>
+<section id="task-sequence-prediction">
+<h2>TASK: Sequence prediction<a class="headerlink" href="#task-sequence-prediction" title="Link to this heading">#</a></h2>
+<p>Your goal is to make a model capable of predicting how the sequence will continue. We will use generated sequences comprised of two sinus waves with some added noise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_time_series</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">):</span>
+    <span class="n">freq1</span><span class="p">,</span> <span class="n">freq2</span><span class="p">,</span> <span class="n">offsets1</span><span class="p">,</span> <span class="n">offsets2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+    <span class="n">series</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">((</span><span class="n">time</span> <span class="o">-</span> <span class="n">offsets1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">freq1</span> <span class="o">*</span> <span class="mi">30</span> <span class="o">+</span> <span class="mi">30</span><span class="p">))</span>  <span class="c1">#   wave 1</span>
+    <span class="n">series</span> <span class="o">+=</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">((</span><span class="n">time</span> <span class="o">-</span> <span class="n">offsets2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">freq2</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="mi">60</span><span class="p">))</span> <span class="c1"># + wave 2</span>
+    <span class="n">series</span> <span class="o">+=</span> <span class="mf">0.02</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>   <span class="c1"># + noise</span>
+    <span class="k">return</span> <span class="n">series</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">pred_steps</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">series</span> <span class="o">=</span> <span class="n">generate_time_series</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n_steps</span> <span class="o">+</span> <span class="n">pred_steps</span><span class="p">)</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span> <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="mi">7000</span><span class="p">,</span> <span class="p">:</span><span class="n">n_steps</span><span class="p">],</span> <span class="n">series</span><span class="p">[:</span><span class="mi">7000</span><span class="p">,</span> <span class="o">-</span><span class="n">pred_steps</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">X_valid</span><span class="p">,</span> <span class="n">Y_valid</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="mi">7000</span><span class="p">:</span><span class="mi">9000</span><span class="p">,</span> <span class="p">:</span><span class="n">n_steps</span><span class="p">],</span> <span class="n">series</span><span class="p">[</span><span class="mi">7000</span><span class="p">:</span><span class="mi">9000</span><span class="p">,</span> <span class="o">-</span><span class="n">pred_steps</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="mi">9000</span><span class="p">:,</span> <span class="p">:</span><span class="n">n_steps</span><span class="p">],</span> <span class="n">series</span><span class="p">[</span><span class="mi">9000</span><span class="p">:,</span> <span class="o">-</span><span class="n">pred_steps</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Train a model and make prediction, then validate it using the plots</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_steps</span><span class="p">),</span> <span class="n">X_test</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_steps</span><span class="p">,</span> <span class="n">n_steps</span> <span class="o">+</span> <span class="n">pred_steps</span><span class="p">),</span> <span class="n">Y_test</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;expected&#39;</span><span class="p">)</span>
+    <span class="c1"># plt.plot(np.arange(n_steps, n_steps + pred_steps), pred[i], label=&#39;prediction&#39;)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
 </div>
-<div class="section" id="age-of-transformers">
-<h2>Age of Transformers<a class="headerlink" href="#age-of-transformers" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a4b1ed870630ea9b10554ac21db570683396049920fe0cfe9c906dcef47d8a85.png" src="_images/a4b1ed870630ea9b10554ac21db570683396049920fe0cfe9c906dcef47d8a85.png" />
+<img alt="_images/209f0048a1bf5daf6d31a66da38e3cd3446a1704c5cbc01cbc7cab18e6a8644d.png" src="_images/209f0048a1bf5daf6d31a66da38e3cd3446a1704c5cbc01cbc7cab18e6a8644d.png" />
+<img alt="_images/785a12dc6fd365a2cc8e344cdb10439fa425ce08e00e48db1b83fdad6372b7af.png" src="_images/785a12dc6fd365a2cc8e344cdb10439fa425ce08e00e48db1b83fdad6372b7af.png" />
+<img alt="_images/2237ea2a79f7240cdc18a70d7f281860b3678960365dc6edcf8d8160b4bc01a8.png" src="_images/2237ea2a79f7240cdc18a70d7f281860b3678960365dc6edcf8d8160b4bc01a8.png" />
+</div>
+</div>
+</section>
+<section id="age-of-transformers">
+<h2>Age of Transformers<a class="headerlink" href="#age-of-transformers" title="Link to this heading">#</a></h2>
 <p>Attention is widely used for language and is finding its way into language, voice, vision, and basically any field that uses sequences or can be expressed as a sequence. It was popularized with a paper named <a class="reference external" href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a>. Usually similarly to autoencoders, there is a block that encodes input data followed by a decoder. It can be from the same domain, for example as in translation problems, but even more interestingly it can be different domains, for example, encoding text and then decoding it as an image!</p>
 <p>Widely known <a class="reference external" href="https://openai.com/api/">GPT-3</a> used Transformers with attention to creating stunning text completions that can seam intelligent. It is common to see attention used in summarization, <a class="reference external" href="https://www.deepl.com/translator">translation</a>, and text classification solutions. <a class="reference external" href="https://openai.com/dall-e-2/">DALL-E 2</a> as well as <a class="reference external" href="https://www.midjourney.com/showcase/">midjourney</a> used them to create stunning art from the text descriptions.</p>
-</div>
-<div class="section" id="re-sources">
-<h2>(re)Sources:<a class="headerlink" href="#re-sources" title="Permalink to this headline">#</a></h2>
+<section id="honorable-mentions">
+<h3>Honorable mentions<a class="headerlink" href="#honorable-mentions" title="Link to this heading">#</a></h3>
+<p>Best way to get into transformers is digging into HuggingFace. Also I would recommend this intro podcast: <a class="reference external" href="https://changelog.com/practicalai/230">Cambrian Explosion of generative models</a>.</p>
 <ul class="simple">
-<li><p>Good explanation - https://peterbloem.nl/blog/transformers.</p></li>
-<li><p>More simple examples - https://github.com/greentfrapp/attention-primer.</p></li>
+<li><p>HuggingFace Transformers - https://huggingface.co/docs/transformers/index</p></li>
+<li><p>HuggingFace Spaces - https://huggingface.co/spaces?sort=likes</p></li>
+<li><p>HuggingFace Downloads - https://huggingface.co/models?p=2&amp;sort=downloads</p></li>
+</ul>
+<p><strong>BERT (encoder)</strong></p>
+<ul class="simple">
+<li><p>BookCorpus (11k books) + Wikipedia</p></li>
+<li><p>mask any word in sentance</p></li>
+<li><p>bidirectional</p></li>
+<li><p>designed for fine-tunning</p></li>
+<li><p>focus on comprehension (classification, question-answering, and named entity recognition)</p></li>
+<li><p>BERT - https://huggingface.co/docs/transformers/model_doc/bert</p></li>
+</ul>
+<p><strong>GPT2 (decoder)</strong></p>
+<ul class="simple">
+<li><p>8 million web pages, ~40 GB of text data</p></li>
+<li><p>trained to predict next word</p></li>
+<li><p>unidirectional</p></li>
+<li><p>produces coherent and contextually relevant language output</p></li>
+<li><p>GPT2 - https://huggingface.co/docs/transformers/model_doc/gpt2</p></li>
+</ul>
+<p><strong>ViT</strong></p>
+<ul class="simple">
+<li><p>ImageNet (14mln) + JFT (300mln)</p></li>
+<li><p>optimized for single-label image classification</p></li>
+<li><p>ViT adapts the Transformer model, originally used in NLP, for image processing</p></li>
+<li><p>ViT treats an image as a sequence of fixed-size patches</p></li>
+<li><p>ViT - https://huggingface.co/docs/transformers/model_doc/vit</p></li>
+</ul>
+<p><strong>CLIP</strong></p>
+<ul class="simple">
+<li><p>WebImageText (hundreds of millions of image-text pairs)</p></li>
+<li><p>linking images and text for classification, image/text retrieval, visual question answering</p></li>
+<li><p>image encoder (ViT) + text encoder (Transformer)</p></li>
+<li><p>CLIP learns to match corresponding pairs of images and texts</p></li>
+<li><p>CLIP can perform classification tasks on categories it has never seen during training, a process known as zero-shot learning</p></li>
+<li><p>CLIP - https://huggingface.co/docs/transformers/model_doc/clip</p></li>
+<li><p>Blog post about CLIP - https://openai.com/research/clip</p></li>
+<li><p>OpenCLIP - https://github.com/mlfoundations/open_clip</p></li>
+<li><p>CLIP Interrogator - https://huggingface.co/spaces/pharmapsychotic/CLIP-Interrogator</p></li>
+</ul>
+<p><strong>OWL-ViT</strong></p>
+<ul class="simple">
+<li><p>3.6 billion image-text pairs</p></li>
+<li><p>A distinctive feature of OWL-ViT is its focus on object-level understanding. This means it not only looks at an image as a whole but also pays attention to individual objects within the image and their relations.</p></li>
+<li><p>OWL-ViT - https://huggingface.co/docs/transformers/model_doc/owlvit</p></li>
+</ul>
+<p><strong>BLIP-2</strong></p>
+<ul class="simple">
+<li><p>Dataset is unknown (paper mentions that the model is pre-trained on a combination of dataset, including COCO, Visual Genome, CC, SBU and LAION)</p></li>
+<li><p>has generative properties, thus can be used for image captioning, visual question answering, text/image retrieval</p></li>
+<li><p>focused on generating and understanding detailed text in relation to images</p></li>
+<li><p>BLIP-2 - https://huggingface.co/docs/transformers/model_doc/blip-2</p></li>
+<li><p>How to use BLIP-2 - https://huggingface.co/blog/blip-2</p></li>
+</ul>
+<p><strong>Stable Diffusion</strong></p>
+<ul class="simple">
+<li><p>LAION-5B (Common Crawl data scraped from the web, 5 billion image-text pairs)</p></li>
+<li><p>Base model compresses to latent space and then Refiner guides it backwards</p></li>
+<li><p>Stable Diffusion model - https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0</p></li>
+<li><p>Stability AI repo - https://github.com/Stability-AI/generative-models</p></li>
+<li><p>Stable Diffusion 2.1 Demo - https://huggingface.co/spaces/stabilityai/stable-diffusion</p></li>
+</ul>
+<p><strong>Whisper</strong></p>
+<ul class="simple">
+<li><p>680k hours of multilingual and multitask data (117k non-english)</p></li>
+<li><p>Next token prediction from Log-mel spectogram using Transformer architecture</p></li>
+<li><p>Whisper - https://openai.com/research/whisper</p></li>
+</ul>
+<p>Other links</p>
+<ul class="simple">
+<li><p>DALL-E 3 - https://openai.com/dall-e-3</p></li>
+<li><p>DALL-E 2 used CLIP - https://vitalflux.com/wp-content/uploads/2023/05/DALL-E-2-architecture.png</p></li>
+<li><p>LocalAI - https://github.com/mudler/LocalAI</p></li>
+<li><p>LLM dev patterns - https://eugeneyan.com/writing/llm-patterns/</p></li>
+<li><p>LLM attacks - https://llm-attacks.org/</p></li>
+</ul>
+<p>Note: people use GPT as a data generator for their projects.</p>
+</section>
+</section>
+<section id="re-sources">
+<h2>(re)Sources:<a class="headerlink" href="#re-sources" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Good explanation - https://peterbloem.nl/blog/transformers</p></li>
+<li><p>More simple examples - https://github.com/greentfrapp/attention-primer</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -800,7 +855,7 @@ Actual seq: [0 0 0 0 1 2 7 8 8 9 0 0 0 0 0 0 0 0 0]
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -808,50 +863,112 @@ Actual seq: [0 0 0 0 1 2 7 8 8 9 0 0 0 0 0 0 0 0 0]
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="CNN.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">CNN (Convolutional Neural Networks)</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="CNN.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CNN (Convolutional Neural Networks)</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="Namesformer.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="Namesformer.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Namesformer</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-attention">Self-Attention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformer-block">Transformer Block</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-embeddings">Positional Embeddings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-architecture">Final Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-sequence-prediction">TASK: Sequence prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#age-of-transformers">Age of Transformers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#honorable-mentions">Honorable mentions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-sources">(re)Sources:</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By trokas<br/>
-  
-      &copy; Copyright MIF, 2023.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By trokas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright MIF, 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

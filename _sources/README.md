@@ -22,7 +22,7 @@ Also we will cover following toolset, which hopefully will be useful for your fu
 - [matplotlib](https://matplotlib.org/tutorials/introductory/pyplot.html) (in all lectures) - nice and simple plotting lib.
 - [scikit-learn](https://scikit-learn.org/stable/tutorial/basic/tutorial.html) - ML library.
 - [pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html) (mainly in RF lecture) - structured way of looking at tabular data.
-- [keras](https://keras.io/examples/vision/mnist_convnet/) (FCN and CNN lectures) - simple deep learning library based on tensorflow.
+- [PyTorch](https://pytorch.org/) (FCN and CNN lectures) - simple deep learning library based on tensorflow.
 - [git](https://rogerdudler.github.io/git-guide/) (final project) - version control tool.
 
 Toolset will be presented only in lectures, thus it’s up to you to learn them on your own if you do not plan to attend. There are a lot of resources, but I highly suggest to read intros in corresponding docs.

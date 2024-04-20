@@ -1,106 +1,167 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>RF (Random Forest) &#8212; AI primer</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'RF';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="DNN (Deep Neural Networks)" href="DNN.html" />
     <link rel="prev" title="SVD (Singular Value Decomposition)" href="SVD.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">AI primer</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AI primer</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -110,431 +171,239 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="SVD.html">
-   SVD (Singular Value Decomposition)
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   RF (Random Forest)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DNN.html">
-   DNN (Deep Neural Networks)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CNN.html">
-   CNN (Convolutional Neural Networks)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Attention.html">
-   Attention
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Namesformer.html">
-   Namesformer
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Varia.html">
-   Varia
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="TD.html">
-   Bonus: TD (Temporal Difference)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Project.html">
-   Project: Flatland
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="SVD.html">SVD (Singular Value Decomposition)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">RF (Random Forest)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DNN.html">DNN (Deep Neural Networks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN.html">CNN (Convolutional Neural Networks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attention.html">Attention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Namesformer.html">Namesformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Varia.html">Varia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TD.html">Bonus: TD (Temporal Difference)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RL.html">Bonus: Reinforcement Learning</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Project.html">Project: Flatland</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/trokas/ai_primer/master?urlpath=tree/RF.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/RF.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/RF.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/RF.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/RF.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#entropy">
-   Entropy
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#iris-dataset">
-   Iris dataset
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#decision-trees">
-   Decision Trees
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#larger-dataset-and-overfit-example">
-     Larger dataset and overfit example
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ensembles">
-   Ensembles
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-forests">
-     Random forests
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task">
-     Task
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#possible-answer">
-       Possible answer
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#neat-tricks">
-   Neat tricks
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#confusion-matrix">
-     Confusion matrix
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#feature-importance">
-     Feature importance
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-note-on-decision-boundaries">
-   A note on decision boundaries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mnist">
-   MNIST
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#whats-next">
-   Whats next?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#re-sources">
-   (Re) Sources:
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>RF (Random Forest)</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#entropy">
-   Entropy
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#iris-dataset">
-   Iris dataset
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#decision-trees">
-   Decision Trees
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#larger-dataset-and-overfit-example">
-     Larger dataset and overfit example
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ensembles">
-   Ensembles
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-forests">
-     Random forests
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task">
-     Task
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#possible-answer">
-       Possible answer
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#neat-tricks">
-   Neat tricks
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#confusion-matrix">
-     Confusion matrix
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#feature-importance">
-     Feature importance
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-note-on-decision-boundaries">
-   A note on decision boundaries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mnist">
-   MNIST
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#whats-next">
-   Whats next?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#re-sources">
-   (Re) Sources:
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>RF (Random Forest)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy">Entropy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iris-dataset">Iris dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees">Decision Trees</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#larger-dataset-and-overfit-example">Larger dataset and overfit example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensembles">Ensembles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forests">Random forests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#possible-answer">Possible answer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neat-tricks">Neat tricks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance">Feature importance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-decision-boundaries">A note on decision boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mnist">MNIST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">Whats next?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-sources">(Re) Sources:</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="rf-random-forest">
-<h1>RF (Random Forest)<a class="headerlink" href="#rf-random-forest" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="rf-random-forest">
+<h1>RF (Random Forest)<a class="headerlink" href="#rf-random-forest" title="Link to this heading">#</a></h1>
 <p>We will break timeline a bit and jump to random forests instead of introducing perceptrons. The general method of random decision forests was first proposed by Ho only in 1995. RF became really popular approach for tabular dataset due to their simplicity and quite robust behaviour. They are still widely used and for some problems can outperform neural nets.</p>
 <p>Before defining random forests we need to explore it’s main building block - entropy.</p>
-<div class="section" id="entropy">
-<h2>Entropy<a class="headerlink" href="#entropy" title="Permalink to this headline">#</a></h2>
+<section id="entropy">
+<h2>Entropy<a class="headerlink" href="#entropy" title="Link to this heading">#</a></h2>
 <p>Coined by Claude Shannon in “A Mathematical Theory of Communication” 1948 (<a class="reference external" href="http://www.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf">link</a>).
 Main question: how much useful information are we transmitting?
 When we transmit one bit of information we reduce recipients uncertainty by the factor of two.</p>
@@ -543,12 +412,12 @@ When we transmit one bit of information we reduce recipients uncertainty by the 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ErfnhcEV1O8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p>Some key points:</p>
 <ul class="simple">
-<li><p>How much information are we getting measured in bits? <span class="math notranslate nohighlight">\(- \log_2 (prob) = bits\)</span></p></li>
-<li><p>Entropy: <span class="math notranslate nohighlight">\(H(p)=-\sum_i p_i \log_2 (p_i)\)</span></p></li>
-<li><p>Cross-Entropy: let <span class="math notranslate nohighlight">\(p\)</span> - true distribution, <span class="math notranslate nohighlight">\(q\)</span> - predicted distribution, then Cross-entropy is
-<span class="math notranslate nohighlight">\(H(p,q) = -\sum_i p_i \log_2(q_i)\)</span></p></li>
+<li><p>How much information are we getting measured in bits? $- \log_2 (prob) = bits$</p></li>
+<li><p>Entropy: $H(p)=-\sum_i p_i \log_2 (p_i)$</p></li>
+<li><p>Cross-Entropy: let $p$ - true distribution, $q$ - predicted distribution, then Cross-entropy is
+$H(p,q) = -\sum_i p_i \log_2(q_i)$</p></li>
 <li><p>If predictions are perfect Cross-entropy is equal to entropy, but usually it is greater than entropy.</p></li>
-<li><p>Cross-entropy is often used for ML as a cost function (log-loss) comparing <span class="math notranslate nohighlight">\(p\)</span> with <span class="math notranslate nohighlight">\(q\)</span>.</p></li>
+<li><p>Cross-entropy is often used for ML as a cost function (log-loss) comparing $p$ with $q$.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -565,9 +434,9 @@ When we transmit one bit of information we reduce recipients uncertainty by the 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="iris-dataset">
-<h2>Iris dataset<a class="headerlink" href="#iris-dataset" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="iris-dataset">
+<h2>Iris dataset<a class="headerlink" href="#iris-dataset" title="Link to this heading">#</a></h2>
 <p>Bellow we will work with iris dataset. The idea of the dataset is to find out iris class based on given measurements.</p>
 <img src="https://miro.medium.com/max/1100/0*SHhnoaaIm36pc1bd" alt="Iris dataset" style="width: 60%"/><div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -746,18 +615,18 @@ When we transmit one bit of information we reduce recipients uncertainty by the 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;pc_1&#39;, ylabel=&#39;pc_2&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/RF_9_1.png" src="_images/RF_9_1.png" />
+<img alt="_images/c478f81eb75654450fee8df12717f778f157fd82928004e4d8f26ec7b89f6e3e.png" src="_images/c478f81eb75654450fee8df12717f778f157fd82928004e4d8f26ec7b89f6e3e.png" />
 </div>
 </div>
-</div>
-<div class="section" id="decision-trees">
-<h2>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="decision-trees">
+<h2>Decision Trees<a class="headerlink" href="#decision-trees" title="Link to this heading">#</a></h2>
 <p>Simple decision tree can be constructed using rule: make a split which <strong>reduces entropy</strong> the most. In a well-constructed tree, each question will cut the number of options by approximately half, very quickly narrowing the options even among a large number of classes.</p>
 <img src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569515384629_image.png" alt="Space deformation" style="width: 70%"/>
 <p>Couple facts about decision trees:</p>
 <ul class="simple">
-<li><p>Alternatively you could use Gini impurity as a split criteria, which is defined as <span class="math notranslate nohighlight">\(G_i = 1 - \sum_{k=1}^n p_{i,k}^2\)</span> where <span class="math notranslate nohighlight">\(p_{i,k}\)</span> is the ratio of class k instances among the training instances in the ith node.</p></li>
-<li><p>Finding the optimal tree is known to be an NP-Complete problem <span class="math notranslate nohighlight">\(O(\exp (m))\)</span>.</p></li>
+<li><p>Alternatively you could use Gini impurity as a split criteria, which is defined as $G_i = 1 - \sum_{k=1}^n p_{i,k}^2$ where $p_{i,k}$ is the ratio of class k instances among the training instances in the ith node.</p></li>
+<li><p>Finding the optimal tree is known to be an NP-Complete problem $O(\exp (m))$.</p></li>
 <li><p>Decision Trees are very sensitive to small variations in the training data.</p></li>
 <li><p>Decision Trees can easily over-fit if there is high number of columns!</p></li>
 </ul>
@@ -804,23 +673,23 @@ Tree for max_dept = 1
 Correctly identified on train set - 64.76%, on test set - 71.11%
 </pre></div>
 </div>
-<img alt="_images/RF_13_1.svg" src="_images/RF_13_1.svg" /><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
+<img alt="_images/f9fa291a7a6bd154a7198e8e68d132c3828482b446d06909e70e1ebc6eec664d.svg" src="_images/f9fa291a7a6bd154a7198e8e68d132c3828482b446d06909e70e1ebc6eec664d.svg" /><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
 Tree for max_dept = 2
 
-Correctly identified on train set - 94.29%, on test set - 97.78%
+Correctly identified on train set - 94.29%, on test set - 100.00%
 </pre></div>
 </div>
-<img alt="_images/RF_13_3.svg" src="_images/RF_13_3.svg" /><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
+<img alt="_images/d2edf9ad4c5e714515500c538215b1f1ccfaf41a1d6ca06a2d5fffedbcc99b2e.svg" src="_images/d2edf9ad4c5e714515500c538215b1f1ccfaf41a1d6ca06a2d5fffedbcc99b2e.svg" /><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
 Tree for max_dept = 3
 
 Correctly identified on train set - 95.24%, on test set - 97.78%
 </pre></div>
 </div>
-<img alt="_images/RF_13_5.svg" src="_images/RF_13_5.svg" /></div>
+<img alt="_images/2af50409d9959fd843913765ef20f2dde27f2694f674a90ad4223c5fc7ffc2f0.svg" src="_images/2af50409d9959fd843913765ef20f2dde27f2694f674a90ad4223c5fc7ffc2f0.svg" /></div>
 </div>
 <p>As we can see simple decision tree works quite good for iris dataset.</p>
-<div class="section" id="larger-dataset-and-overfit-example">
-<h3>Larger dataset and overfit example<a class="headerlink" href="#larger-dataset-and-overfit-example" title="Permalink to this headline">#</a></h3>
+<section id="larger-dataset-and-overfit-example">
+<h3>Larger dataset and overfit example<a class="headerlink" href="#larger-dataset-and-overfit-example" title="Link to this heading">#</a></h3>
 <p>Let’s load another legendary dataset containing classification problem. If you are interested in dataset details see <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29">UCI</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -878,24 +747,24 @@ dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Accuracy for different max_depth values&#39;}&gt;
 </pre></div>
 </div>
-<img alt="_images/RF_19_1.png" src="_images/RF_19_1.png" />
+<img alt="_images/d6081cd5b614fa5b295026ed1c907a0f42e95a412339e7b587c7539ae8d42ea2.png" src="_images/d6081cd5b614fa5b295026ed1c907a0f42e95a412339e7b587c7539ae8d42ea2.png" />
 </div>
 </div>
 <p>Notice that as the depth increases, we tend to get very strangely shaped classification regions. Such overfitting turns out to be a general property of decision trees: it is very easy to go too deep in the tree, and thus to fit details of the particular data rather than the overall properties of the distributions they are drawn from. Another way to see this overfitting is to look at models trained on different subsets of the data.</p>
 <p>How can we prevent it in this case?</p>
-</div>
-</div>
-<div class="section" id="ensembles">
-<h2>Ensembles<a class="headerlink" href="#ensembles" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="ensembles">
+<h2>Ensembles<a class="headerlink" href="#ensembles" title="Link to this heading">#</a></h2>
 <p>The notion that multiple overfitting estimators can be combined to reduce the effect of overfitting is what underlies an ensemble method called bagging. Bagging makes use of an ensemble (a grab bag, perhaps) of parallel estimators, each of which overfits the data, and averages the results to find a better classification. An ensemble of randomized decision trees is known as a random forest.</p>
 <img src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569583935206_image.png"  style="width: 50%"/>
 <img src="https://paper-attachments.dropbox.com/s_4C6E1420D930BE100F0F1313D7A90868E9FB8CAFCB77E86AC4D0FB805D8FC787_1569583987571_image.png"  style="width: 50%"/>
 <p>Ensemble methods work best when the predictors are as independent from one another as possible. One way to get diverse classifiers is to train them using very different algorithms. This increases the chance that they will make very different types of errors, improving the ensemble’s accuracy.</p>
 <p>Ensemble methods lead to similar bias but a lower variance.</p>
 <img src="https://nvsyashwanth.github.io/machinelearningmaster/assets/images/bias_variance.jpg" style="width: 40%"/>
-<div class="section" id="random-forests">
-<h3>Random forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">#</a></h3>
-<p>You can make multiple trees by choosing sub-sample of features (usually <span class="math notranslate nohighlight">\(\sqrt{m}\)</span>) and taking bootstrapped samples. Then just let trees vote for decision.</p>
+<section id="random-forests">
+<h3>Random forests<a class="headerlink" href="#random-forests" title="Link to this heading">#</a></h3>
+<p>You can make multiple trees by choosing sub-sample of features (usually $\sqrt{m}$) and taking bootstrapped samples. Then just let trees vote for decision.</p>
 <img src="https://victorzhou.com/media/random-forest-post/random-forest.png" style="width: 60%"/>
 <p>Hard voting averages predictions, soft voting averages predicted probabilities instead.</p>
 <div class="cell docutils container">
@@ -928,10 +797,10 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 99.41%, on test set - 97.81%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 99.71%, on test set - 96.93%
 
-CPU times: user 824 ms, sys: 21.9 ms, total: 846 ms
-Wall time: 846 ms
+CPU times: user 1.19 s, sys: 311 ms, total: 1.5 s
+Wall time: 830 ms
 </pre></div>
 </div>
 </div>
@@ -967,18 +836,18 @@ Wall time: 846 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 100.00%, on test set - 98.25%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 100.00%, on test set - 97.81%
 
-CPU times: user 740 ms, sys: 8.45 ms, total: 749 ms
-Wall time: 747 ms
+CPU times: user 736 ms, sys: 11.6 ms, total: 747 ms
+Wall time: 753 ms
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>Note:</strong> there are other variations of boosted trees, for example ExtraTrees can be constructed by setting splitter to random and bootstrap to False. ExtraTrees are usually faster to train, but Random Forests are more well known, just try them both and see which works better for problem at hand.</p>
-</div>
-<div class="section" id="task">
-<h3>Task<a class="headerlink" href="#task" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="task">
+<h3>Task<a class="headerlink" href="#task" title="Link to this heading">#</a></h3>
 <p>Try to use <code class="docutils literal notranslate"><span class="pre">sklearn.ensemble.RandomForestClassifier</span></code> for iris dataset. Use sklearn implementation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1016,7 +885,7 @@ Wall time: 747 ms
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">71</span><span class="o">/</span><span class="mi">2</span><span class="n">t6j6ytn1t3dfp5dxb9zhh6w0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_2069</span><span class="o">/</span><span class="mf">4229513911.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">71</span><span class="o">/</span><span class="mi">2</span><span class="n">t6j6ytn1t3dfp5dxb9zhh6w0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_22584</span><span class="o">/</span><span class="mf">4229513911.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">pred_train</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
@@ -1077,20 +946,10 @@ Wall time: 747 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pred_test</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9866666666666667
 </pre></div>
 </div>
 </div>
@@ -1103,44 +962,11 @@ Wall time: 747 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotFittedError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">71</span><span class="o">/</span><span class="mi">2</span><span class="n">t6j6ytn1t3dfp5dxb9zhh6w0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_2069</span><span class="o">/</span><span class="mf">2255797810.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>              <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;sepal length (cm)&#39;</span><span class="p">,</span> <span class="s1">&#39;sepal width (cm)&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>              <span class="s1">&#39;petal length (cm)&#39;</span><span class="p">,</span> <span class="s1">&#39;petal width (cm)&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">()</span>
-
-<span class="nn">/opt/homebrew/Caskroom/miniforge/base/envs/ai_primer/lib/python3.9/site-packages/sklearn/ensemble/_forest.py</span> in <span class="ni">feature_importances_</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">442</span>             <span class="n">array</span> <span class="n">of</span> <span class="n">zeros</span><span class="o">.</span>
-<span class="g g-Whitespace">    </span><span class="mi">443</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">444</span><span class="s2">         check_is_fitted(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">445</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">446</span><span class="s2">         all_importances = Parallel(n_jobs=self.n_jobs,</span>
-
-<span class="nn">/opt/homebrew/Caskroom/miniforge/base/envs/ai_primer/lib/python3.9/site-packages/sklearn/utils/validation.py</span> in <span class="ni">inner_f</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="s2">                           FutureWarning)</span>
-<span class="nn">     71         kwargs.update({k: arg for k, arg</span> in <span class="ni">zip</span><span class="nt">(sig.parameters, args)})</span>
-<span class="ne">---&gt; </span><span class="mi">72</span><span class="s2">         return f(**kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span><span class="s2">     return inner_f</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="s2"> </span>
-
-<span class="nn">/opt/homebrew/Caskroom/miniforge/base/envs/ai_primer/lib/python3.9/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_is_fitted</span><span class="nt">(estimator, attributes, msg, all_or_any)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1017</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1018</span><span class="s2">     if not attrs:</span>
-<span class="ne">-&gt; </span><span class="mi">1019</span><span class="s2">         raise NotFittedError(msg % {&#39;name&#39;: type(estimator).__name__})</span>
-<span class="g g-Whitespace">   </span><span class="mi">1020</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1021</span><span class="s2"> </span>
-
-<span class="ne">NotFittedError</span>: This RandomForestClassifier instance is not fitted yet. Call &#39;fit&#39; with appropriate arguments before using this estimator.
-</pre></div>
-</div>
-</div>
 </div>
 <p>I suggest to try it out on your own before looking at the answer given bellow.</p>
 <hr class="docutils" />
-<div class="section" id="possible-answer">
-<h4>Possible answer<a class="headerlink" href="#possible-answer" title="Permalink to this headline">#</a></h4>
+<section id="possible-answer">
+<h4>Possible answer<a class="headerlink" href="#possible-answer" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
@@ -1173,11 +999,6 @@ Wall time: 747 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RandomForestClassifier(max_depth=2, n_estimators=1000)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1187,19 +1008,14 @@ Wall time: 747 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy 98.67%
-</pre></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="neat-tricks">
-<h2>Neat tricks<a class="headerlink" href="#neat-tricks" title="Permalink to this headline">#</a></h2>
-<div class="section" id="confusion-matrix">
-<h3>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+</section>
+<section id="neat-tricks">
+<h2>Neat tricks<a class="headerlink" href="#neat-tricks" title="Link to this heading">#</a></h2>
+<section id="confusion-matrix">
+<h3>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Link to this heading">#</a></h3>
 <p>Thisis a neat way to see where your model is making mistakes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1215,56 +1031,10 @@ Wall time: 747 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style type="text/css">
-#T_d0020_row0_col0, #T_d0020_row1_col1, #T_d0020_row2_col2 {
-  background-color: #023858;
-  color: #f1f1f1;
-}
-#T_d0020_row0_col1, #T_d0020_row0_col2, #T_d0020_row1_col0, #T_d0020_row1_col2, #T_d0020_row2_col0 {
-  background-color: #fff7fb;
-  color: #000000;
-}
-#T_d0020_row2_col1 {
-  background-color: #f8f1f8;
-  color: #000000;
-}
-</style>
-<table id="T_d0020_">
-  <thead>
-    <tr>
-      <th class="blank level0" >&nbsp;</th>
-      <th class="col_heading level0 col0" >setosa</th>
-      <th class="col_heading level0 col1" >versicolor</th>
-      <th class="col_heading level0 col2" >virginica</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_d0020_level0_row0" class="row_heading level0 row0" >setosa</th>
-      <td id="T_d0020_row0_col0" class="data row0 col0" >29</td>
-      <td id="T_d0020_row0_col1" class="data row0 col1" >0</td>
-      <td id="T_d0020_row0_col2" class="data row0 col2" >0</td>
-    </tr>
-    <tr>
-      <th id="T_d0020_level0_row1" class="row_heading level0 row1" >versicolor</th>
-      <td id="T_d0020_row1_col0" class="data row1 col0" >0</td>
-      <td id="T_d0020_row1_col1" class="data row1 col1" >23</td>
-      <td id="T_d0020_row1_col2" class="data row1 col2" >0</td>
-    </tr>
-    <tr>
-      <th id="T_d0020_level0_row2" class="row_heading level0 row2" >virginica</th>
-      <td id="T_d0020_row2_col0" class="data row2 col0" >0</td>
-      <td id="T_d0020_row2_col1" class="data row2 col1" >1</td>
-      <td id="T_d0020_row2_col2" class="data row2 col2" >22</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
 </div>
-</div>
-<div class="section" id="feature-importance">
-<h3>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="feature-importance">
+<h3>Feature importance<a class="headerlink" href="#feature-importance" title="Link to this heading">#</a></h3>
 <p>It is easy to check which features are most important - ones which were used in most trees or/and gave highest information gain overall.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1273,77 +1043,11 @@ Wall time: 747 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style type="text/css">
-#T_f171a_row0_col0 {
-  background-color: #e7e3f0;
-  color: #000000;
-}
-#T_f171a_row1_col0, #T_f171a_row4_col0 {
-  background-color: #fff7fb;
-  color: #000000;
-}
-#T_f171a_row2_col0 {
-  background-color: #056dac;
-  color: #f1f1f1;
-}
-#T_f171a_row3_col0 {
-  background-color: #0771b1;
-  color: #f1f1f1;
-}
-#T_f171a_row5_col0 {
-  background-color: #023b5d;
-  color: #f1f1f1;
-}
-#T_f171a_row6_col0 {
-  background-color: #023858;
-  color: #f1f1f1;
-}
-</style>
-<table id="T_f171a_">
-  <thead>
-    <tr>
-      <th class="blank level0" >&nbsp;</th>
-      <th class="col_heading level0 col0" >0</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_f171a_level0_row0" class="row_heading level0 row0" >sepal length (cm)</th>
-      <td id="T_f171a_row0_col0" class="data row0 col0" >0.054685</td>
-    </tr>
-    <tr>
-      <th id="T_f171a_level0_row1" class="row_heading level0 row1" >sepal width (cm)</th>
-      <td id="T_f171a_row1_col0" class="data row1 col0" >0.021274</td>
-    </tr>
-    <tr>
-      <th id="T_f171a_level0_row2" class="row_heading level0 row2" >petal length (cm)</th>
-      <td id="T_f171a_row2_col0" class="data row2 col0" >0.199785</td>
-    </tr>
-    <tr>
-      <th id="T_f171a_level0_row3" class="row_heading level0 row3" >petal width (cm)</th>
-      <td id="T_f171a_row3_col0" class="data row3 col0" >0.195682</td>
-    </tr>
-    <tr>
-      <th id="T_f171a_level0_row4" class="row_heading level0 row4" >sepal area</th>
-      <td id="T_f171a_row4_col0" class="data row4 col0" >0.020493</td>
-    </tr>
-    <tr>
-      <th id="T_f171a_level0_row5" class="row_heading level0 row5" >petal area</th>
-      <td id="T_f171a_row5_col0" class="data row5 col0" >0.252392</td>
-    </tr>
-    <tr>
-      <th id="T_f171a_level0_row6" class="row_heading level0 row6" >simetry</th>
-      <td id="T_f171a_row6_col0" class="data row6 col0" >0.255689</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
 </div>
-</div>
-</div>
-<div class="section" id="a-note-on-decision-boundaries">
-<h2>A note on decision boundaries<a class="headerlink" href="#a-note-on-decision-boundaries" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="a-note-on-decision-boundaries">
+<h2>A note on decision boundaries<a class="headerlink" href="#a-note-on-decision-boundaries" title="Link to this heading">#</a></h2>
 <p>Let’s generate some data blobs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1359,11 +1063,6 @@ Wall time: 747 ms
 
 <span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RandomForestClassifier(max_depth=2, n_estimators=500)
 </pre></div>
 </div>
 </div>
@@ -1387,15 +1086,12 @@ Wall time: 747 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/RF_50_0.png" src="_images/RF_50_0.png" />
-</div>
 </div>
 <p>Make sure that you understand why those decision boundaries look this way.</p>
 <p>By the way, RF with standard param set will not look so nice, play around.</p>
-</div>
-<div class="section" id="mnist">
-<h2>MNIST<a class="headerlink" href="#mnist" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="mnist">
+<h2>MNIST<a class="headerlink" href="#mnist" title="Link to this heading">#</a></h2>
 <p>The <a class="reference external" href="http://yann.lecun.com/exdb/mnist/">MNIST database</a> contains handwritten digits and has a training set of 60,000 examples, and a test set of 10,000 examples. It is legendary dataset crated by LeCun group in 1999.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1424,7 +1120,7 @@ Init Graph Optimizer
 Init Kernel
 </pre></div>
 </div>
-<img alt="_images/RF_53_1.png" src="_images/RF_53_1.png" />
+<img alt="_images/b8d842dd23677e8f3f876cd9ebcdb07090ddc7ee2c0d61cd5c8f20bb117653c9.png" src="_images/b8d842dd23677e8f3f876cd9ebcdb07090ddc7ee2c0d61cd5c8f20bb117653c9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1445,7 +1141,7 @@ Init Kernel
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9709
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9694
 </pre></div>
 </div>
 </div>
@@ -1461,28 +1157,32 @@ Init Kernel
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_a9b52_row0_col0, #T_a9b52_row1_col1, #T_a9b52_row2_col2, #T_a9b52_row3_col3, #T_a9b52_row4_col4, #T_a9b52_row5_col5, #T_a9b52_row6_col6, #T_a9b52_row7_col7, #T_a9b52_row8_col8, #T_a9b52_row9_col9 {
+#T_711c9_row0_col0, #T_711c9_row1_col1, #T_711c9_row2_col2, #T_711c9_row3_col3, #T_711c9_row4_col4, #T_711c9_row5_col5, #T_711c9_row6_col6, #T_711c9_row7_col7, #T_711c9_row8_col8, #T_711c9_row9_col9 {
   background-color: #023858;
   color: #f1f1f1;
 }
-#T_a9b52_row0_col1, #T_a9b52_row0_col2, #T_a9b52_row0_col3, #T_a9b52_row0_col4, #T_a9b52_row0_col5, #T_a9b52_row0_col7, #T_a9b52_row0_col8, #T_a9b52_row0_col9, #T_a9b52_row1_col0, #T_a9b52_row1_col2, #T_a9b52_row1_col4, #T_a9b52_row1_col5, #T_a9b52_row1_col6, #T_a9b52_row1_col7, #T_a9b52_row1_col8, #T_a9b52_row1_col9, #T_a9b52_row2_col1, #T_a9b52_row2_col4, #T_a9b52_row2_col5, #T_a9b52_row2_col9, #T_a9b52_row3_col0, #T_a9b52_row3_col1, #T_a9b52_row3_col4, #T_a9b52_row3_col6, #T_a9b52_row3_col9, #T_a9b52_row4_col0, #T_a9b52_row4_col1, #T_a9b52_row4_col2, #T_a9b52_row4_col3, #T_a9b52_row4_col5, #T_a9b52_row4_col7, #T_a9b52_row4_col8, #T_a9b52_row5_col0, #T_a9b52_row5_col1, #T_a9b52_row5_col2, #T_a9b52_row5_col4, #T_a9b52_row5_col7, #T_a9b52_row5_col9, #T_a9b52_row6_col1, #T_a9b52_row6_col2, #T_a9b52_row6_col3, #T_a9b52_row6_col4, #T_a9b52_row6_col7, #T_a9b52_row6_col8, #T_a9b52_row6_col9, #T_a9b52_row7_col0, #T_a9b52_row7_col1, #T_a9b52_row7_col3, #T_a9b52_row7_col4, #T_a9b52_row7_col5, #T_a9b52_row7_col6, #T_a9b52_row7_col8, #T_a9b52_row8_col1, #T_a9b52_row8_col4, #T_a9b52_row8_col6, #T_a9b52_row8_col7, #T_a9b52_row9_col2, #T_a9b52_row9_col6 {
+#T_711c9_row0_col1, #T_711c9_row0_col2, #T_711c9_row0_col3, #T_711c9_row0_col4, #T_711c9_row0_col5, #T_711c9_row0_col6, #T_711c9_row0_col7, #T_711c9_row0_col8, #T_711c9_row0_col9, #T_711c9_row1_col0, #T_711c9_row1_col2, #T_711c9_row1_col4, #T_711c9_row1_col5, #T_711c9_row1_col6, #T_711c9_row1_col7, #T_711c9_row1_col8, #T_711c9_row1_col9, #T_711c9_row2_col1, #T_711c9_row2_col4, #T_711c9_row2_col5, #T_711c9_row2_col6, #T_711c9_row2_col9, #T_711c9_row3_col0, #T_711c9_row3_col1, #T_711c9_row3_col4, #T_711c9_row3_col6, #T_711c9_row3_col9, #T_711c9_row4_col0, #T_711c9_row4_col1, #T_711c9_row4_col2, #T_711c9_row4_col3, #T_711c9_row4_col5, #T_711c9_row4_col7, #T_711c9_row4_col8, #T_711c9_row5_col0, #T_711c9_row5_col1, #T_711c9_row5_col2, #T_711c9_row5_col4, #T_711c9_row5_col7, #T_711c9_row5_col9, #T_711c9_row6_col1, #T_711c9_row6_col2, #T_711c9_row6_col3, #T_711c9_row6_col7, #T_711c9_row6_col8, #T_711c9_row6_col9, #T_711c9_row7_col0, #T_711c9_row7_col1, #T_711c9_row7_col3, #T_711c9_row7_col4, #T_711c9_row7_col5, #T_711c9_row7_col6, #T_711c9_row7_col8, #T_711c9_row8_col1, #T_711c9_row9_col2, #T_711c9_row9_col5, #T_711c9_row9_col6, #T_711c9_row9_col8 {
   background-color: #fff7fb;
   color: #000000;
 }
-#T_a9b52_row0_col6, #T_a9b52_row1_col3, #T_a9b52_row2_col0, #T_a9b52_row2_col3, #T_a9b52_row2_col6, #T_a9b52_row2_col8, #T_a9b52_row4_col6, #T_a9b52_row5_col6, #T_a9b52_row5_col8, #T_a9b52_row6_col0, #T_a9b52_row6_col5, #T_a9b52_row7_col9, #T_a9b52_row8_col0, #T_a9b52_row8_col2, #T_a9b52_row9_col0, #T_a9b52_row9_col1, #T_a9b52_row9_col5, #T_a9b52_row9_col7, #T_a9b52_row9_col8 {
+#T_711c9_row1_col3, #T_711c9_row2_col0, #T_711c9_row2_col3, #T_711c9_row2_col8, #T_711c9_row4_col6, #T_711c9_row5_col6, #T_711c9_row5_col8, #T_711c9_row6_col0, #T_711c9_row6_col4, #T_711c9_row6_col5, #T_711c9_row8_col0, #T_711c9_row8_col2, #T_711c9_row8_col3, #T_711c9_row8_col4, #T_711c9_row8_col6, #T_711c9_row8_col7, #T_711c9_row9_col0, #T_711c9_row9_col1, #T_711c9_row9_col7 {
   background-color: #fef6fb;
   color: #000000;
 }
-#T_a9b52_row2_col7, #T_a9b52_row3_col2, #T_a9b52_row3_col5, #T_a9b52_row3_col7, #T_a9b52_row3_col8, #T_a9b52_row5_col3, #T_a9b52_row8_col3, #T_a9b52_row8_col5, #T_a9b52_row8_col9, #T_a9b52_row9_col3, #T_a9b52_row9_col4 {
+#T_711c9_row2_col7, #T_711c9_row3_col2, #T_711c9_row3_col5, #T_711c9_row3_col7, #T_711c9_row3_col8, #T_711c9_row7_col9, #T_711c9_row8_col5, #T_711c9_row8_col9, #T_711c9_row9_col3 {
   background-color: #fef6fa;
   color: #000000;
 }
-#T_a9b52_row4_col9, #T_a9b52_row7_col2 {
+#T_711c9_row4_col9, #T_711c9_row5_col3, #T_711c9_row9_col4 {
   background-color: #fdf5fa;
   color: #000000;
 }
+#T_711c9_row7_col2 {
+  background-color: #fcf4fa;
+  color: #000000;
+}
 </style>
-<table id="T_a9b52_">
+<table id="T_711c9_">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
@@ -1500,145 +1200,172 @@ Init Kernel
   </thead>
   <tbody>
     <tr>
-      <th id="T_a9b52_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_a9b52_row0_col0" class="data row0 col0" >970</td>
-      <td id="T_a9b52_row0_col1" class="data row0 col1" >0</td>
-      <td id="T_a9b52_row0_col2" class="data row0 col2" >1</td>
-      <td id="T_a9b52_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_a9b52_row0_col4" class="data row0 col4" >0</td>
-      <td id="T_a9b52_row0_col5" class="data row0 col5" >1</td>
-      <td id="T_a9b52_row0_col6" class="data row0 col6" >4</td>
-      <td id="T_a9b52_row0_col7" class="data row0 col7" >1</td>
-      <td id="T_a9b52_row0_col8" class="data row0 col8" >3</td>
-      <td id="T_a9b52_row0_col9" class="data row0 col9" >0</td>
+      <th id="T_711c9_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_711c9_row0_col0" class="data row0 col0" >970</td>
+      <td id="T_711c9_row0_col1" class="data row0 col1" >0</td>
+      <td id="T_711c9_row0_col2" class="data row0 col2" >0</td>
+      <td id="T_711c9_row0_col3" class="data row0 col3" >0</td>
+      <td id="T_711c9_row0_col4" class="data row0 col4" >0</td>
+      <td id="T_711c9_row0_col5" class="data row0 col5" >3</td>
+      <td id="T_711c9_row0_col6" class="data row0 col6" >3</td>
+      <td id="T_711c9_row0_col7" class="data row0 col7" >1</td>
+      <td id="T_711c9_row0_col8" class="data row0 col8" >2</td>
+      <td id="T_711c9_row0_col9" class="data row0 col9" >1</td>
     </tr>
     <tr>
-      <th id="T_a9b52_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_a9b52_row1_col0" class="data row1 col0" >0</td>
-      <td id="T_a9b52_row1_col1" class="data row1 col1" >1123</td>
-      <td id="T_a9b52_row1_col2" class="data row1 col2" >2</td>
-      <td id="T_a9b52_row1_col3" class="data row1 col3" >4</td>
-      <td id="T_a9b52_row1_col4" class="data row1 col4" >0</td>
-      <td id="T_a9b52_row1_col5" class="data row1 col5" >2</td>
-      <td id="T_a9b52_row1_col6" class="data row1 col6" >3</td>
-      <td id="T_a9b52_row1_col7" class="data row1 col7" >0</td>
-      <td id="T_a9b52_row1_col8" class="data row1 col8" >1</td>
-      <td id="T_a9b52_row1_col9" class="data row1 col9" >0</td>
+      <th id="T_711c9_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_711c9_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_711c9_row1_col1" class="data row1 col1" >1124</td>
+      <td id="T_711c9_row1_col2" class="data row1 col2" >2</td>
+      <td id="T_711c9_row1_col3" class="data row1 col3" >4</td>
+      <td id="T_711c9_row1_col4" class="data row1 col4" >0</td>
+      <td id="T_711c9_row1_col5" class="data row1 col5" >1</td>
+      <td id="T_711c9_row1_col6" class="data row1 col6" >3</td>
+      <td id="T_711c9_row1_col7" class="data row1 col7" >0</td>
+      <td id="T_711c9_row1_col8" class="data row1 col8" >1</td>
+      <td id="T_711c9_row1_col9" class="data row1 col9" >0</td>
     </tr>
     <tr>
-      <th id="T_a9b52_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_a9b52_row2_col0" class="data row2 col0" >6</td>
-      <td id="T_a9b52_row2_col1" class="data row2 col1" >0</td>
-      <td id="T_a9b52_row2_col2" class="data row2 col2" >1000</td>
-      <td id="T_a9b52_row2_col3" class="data row2 col3" >4</td>
-      <td id="T_a9b52_row2_col4" class="data row2 col4" >2</td>
-      <td id="T_a9b52_row2_col5" class="data row2 col5" >0</td>
-      <td id="T_a9b52_row2_col6" class="data row2 col6" >4</td>
-      <td id="T_a9b52_row2_col7" class="data row2 col7" >8</td>
-      <td id="T_a9b52_row2_col8" class="data row2 col8" >8</td>
-      <td id="T_a9b52_row2_col9" class="data row2 col9" >0</td>
+      <th id="T_711c9_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_711c9_row2_col0" class="data row2 col0" >6</td>
+      <td id="T_711c9_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_711c9_row2_col2" class="data row2 col2" >1002</td>
+      <td id="T_711c9_row2_col3" class="data row2 col3" >5</td>
+      <td id="T_711c9_row2_col4" class="data row2 col4" >2</td>
+      <td id="T_711c9_row2_col5" class="data row2 col5" >0</td>
+      <td id="T_711c9_row2_col6" class="data row2 col6" >2</td>
+      <td id="T_711c9_row2_col7" class="data row2 col7" >10</td>
+      <td id="T_711c9_row2_col8" class="data row2 col8" >5</td>
+      <td id="T_711c9_row2_col9" class="data row2 col9" >0</td>
     </tr>
     <tr>
-      <th id="T_a9b52_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_a9b52_row3_col0" class="data row3 col0" >1</td>
-      <td id="T_a9b52_row3_col1" class="data row3 col1" >0</td>
-      <td id="T_a9b52_row3_col2" class="data row3 col2" >9</td>
-      <td id="T_a9b52_row3_col3" class="data row3 col3" >973</td>
-      <td id="T_a9b52_row3_col4" class="data row3 col4" >0</td>
-      <td id="T_a9b52_row3_col5" class="data row3 col5" >9</td>
-      <td id="T_a9b52_row3_col6" class="data row3 col6" >0</td>
-      <td id="T_a9b52_row3_col7" class="data row3 col7" >8</td>
-      <td id="T_a9b52_row3_col8" class="data row3 col8" >9</td>
-      <td id="T_a9b52_row3_col9" class="data row3 col9" >1</td>
+      <th id="T_711c9_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_711c9_row3_col0" class="data row3 col0" >0</td>
+      <td id="T_711c9_row3_col1" class="data row3 col1" >0</td>
+      <td id="T_711c9_row3_col2" class="data row3 col2" >10</td>
+      <td id="T_711c9_row3_col3" class="data row3 col3" >972</td>
+      <td id="T_711c9_row3_col4" class="data row3 col4" >0</td>
+      <td id="T_711c9_row3_col5" class="data row3 col5" >7</td>
+      <td id="T_711c9_row3_col6" class="data row3 col6" >0</td>
+      <td id="T_711c9_row3_col7" class="data row3 col7" >10</td>
+      <td id="T_711c9_row3_col8" class="data row3 col8" >9</td>
+      <td id="T_711c9_row3_col9" class="data row3 col9" >2</td>
     </tr>
     <tr>
-      <th id="T_a9b52_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_a9b52_row4_col0" class="data row4 col0" >1</td>
-      <td id="T_a9b52_row4_col1" class="data row4 col1" >0</td>
-      <td id="T_a9b52_row4_col2" class="data row4 col2" >2</td>
-      <td id="T_a9b52_row4_col3" class="data row4 col3" >0</td>
-      <td id="T_a9b52_row4_col4" class="data row4 col4" >955</td>
-      <td id="T_a9b52_row4_col5" class="data row4 col5" >0</td>
-      <td id="T_a9b52_row4_col6" class="data row4 col6" >5</td>
-      <td id="T_a9b52_row4_col7" class="data row4 col7" >0</td>
-      <td id="T_a9b52_row4_col8" class="data row4 col8" >2</td>
-      <td id="T_a9b52_row4_col9" class="data row4 col9" >17</td>
+      <th id="T_711c9_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_711c9_row4_col0" class="data row4 col0" >1</td>
+      <td id="T_711c9_row4_col1" class="data row4 col1" >0</td>
+      <td id="T_711c9_row4_col2" class="data row4 col2" >2</td>
+      <td id="T_711c9_row4_col3" class="data row4 col3" >0</td>
+      <td id="T_711c9_row4_col4" class="data row4 col4" >958</td>
+      <td id="T_711c9_row4_col5" class="data row4 col5" >0</td>
+      <td id="T_711c9_row4_col6" class="data row4 col6" >5</td>
+      <td id="T_711c9_row4_col7" class="data row4 col7" >0</td>
+      <td id="T_711c9_row4_col8" class="data row4 col8" >3</td>
+      <td id="T_711c9_row4_col9" class="data row4 col9" >13</td>
     </tr>
     <tr>
-      <th id="T_a9b52_level0_row5" class="row_heading level0 row5" >5</th>
-      <td id="T_a9b52_row5_col0" class="data row5 col0" >3</td>
-      <td id="T_a9b52_row5_col1" class="data row5 col1" >0</td>
-      <td id="T_a9b52_row5_col2" class="data row5 col2" >0</td>
-      <td id="T_a9b52_row5_col3" class="data row5 col3" >10</td>
-      <td id="T_a9b52_row5_col4" class="data row5 col4" >1</td>
-      <td id="T_a9b52_row5_col5" class="data row5 col5" >864</td>
-      <td id="T_a9b52_row5_col6" class="data row5 col6" >6</td>
-      <td id="T_a9b52_row5_col7" class="data row5 col7" >1</td>
-      <td id="T_a9b52_row5_col8" class="data row5 col8" >6</td>
-      <td id="T_a9b52_row5_col9" class="data row5 col9" >1</td>
+      <th id="T_711c9_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_711c9_row5_col0" class="data row5 col0" >2</td>
+      <td id="T_711c9_row5_col1" class="data row5 col1" >1</td>
+      <td id="T_711c9_row5_col2" class="data row5 col2" >1</td>
+      <td id="T_711c9_row5_col3" class="data row5 col3" >17</td>
+      <td id="T_711c9_row5_col4" class="data row5 col4" >2</td>
+      <td id="T_711c9_row5_col5" class="data row5 col5" >856</td>
+      <td id="T_711c9_row5_col6" class="data row5 col6" >4</td>
+      <td id="T_711c9_row5_col7" class="data row5 col7" >2</td>
+      <td id="T_711c9_row5_col8" class="data row5 col8" >5</td>
+      <td id="T_711c9_row5_col9" class="data row5 col9" >2</td>
     </tr>
     <tr>
-      <th id="T_a9b52_level0_row6" class="row_heading level0 row6" >6</th>
-      <td id="T_a9b52_row6_col0" class="data row6 col0" >7</td>
-      <td id="T_a9b52_row6_col1" class="data row6 col1" >3</td>
-      <td id="T_a9b52_row6_col2" class="data row6 col2" >1</td>
-      <td id="T_a9b52_row6_col3" class="data row6 col3" >0</td>
-      <td id="T_a9b52_row6_col4" class="data row6 col4" >3</td>
-      <td id="T_a9b52_row6_col5" class="data row6 col5" >4</td>
-      <td id="T_a9b52_row6_col6" class="data row6 col6" >938</td>
-      <td id="T_a9b52_row6_col7" class="data row6 col7" >0</td>
-      <td id="T_a9b52_row6_col8" class="data row6 col8" >2</td>
-      <td id="T_a9b52_row6_col9" class="data row6 col9" >0</td>
+      <th id="T_711c9_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_711c9_row6_col0" class="data row6 col0" >5</td>
+      <td id="T_711c9_row6_col1" class="data row6 col1" >3</td>
+      <td id="T_711c9_row6_col2" class="data row6 col2" >0</td>
+      <td id="T_711c9_row6_col3" class="data row6 col3" >0</td>
+      <td id="T_711c9_row6_col4" class="data row6 col4" >5</td>
+      <td id="T_711c9_row6_col5" class="data row6 col5" >5</td>
+      <td id="T_711c9_row6_col6" class="data row6 col6" >936</td>
+      <td id="T_711c9_row6_col7" class="data row6 col7" >0</td>
+      <td id="T_711c9_row6_col8" class="data row6 col8" >4</td>
+      <td id="T_711c9_row6_col9" class="data row6 col9" >0</td>
     </tr>
     <tr>
-      <th id="T_a9b52_level0_row7" class="row_heading level0 row7" >7</th>
-      <td id="T_a9b52_row7_col0" class="data row7 col0" >1</td>
-      <td id="T_a9b52_row7_col1" class="data row7 col1" >3</td>
-      <td id="T_a9b52_row7_col2" class="data row7 col2" >19</td>
-      <td id="T_a9b52_row7_col3" class="data row7 col3" >1</td>
-      <td id="T_a9b52_row7_col4" class="data row7 col4" >2</td>
-      <td id="T_a9b52_row7_col5" class="data row7 col5" >0</td>
-      <td id="T_a9b52_row7_col6" class="data row7 col6" >0</td>
-      <td id="T_a9b52_row7_col7" class="data row7 col7" >992</td>
-      <td id="T_a9b52_row7_col8" class="data row7 col8" >3</td>
-      <td id="T_a9b52_row7_col9" class="data row7 col9" >7</td>
+      <th id="T_711c9_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_711c9_row7_col0" class="data row7 col0" >1</td>
+      <td id="T_711c9_row7_col1" class="data row7 col1" >2</td>
+      <td id="T_711c9_row7_col2" class="data row7 col2" >20</td>
+      <td id="T_711c9_row7_col3" class="data row7 col3" >3</td>
+      <td id="T_711c9_row7_col4" class="data row7 col4" >2</td>
+      <td id="T_711c9_row7_col5" class="data row7 col5" >0</td>
+      <td id="T_711c9_row7_col6" class="data row7 col6" >0</td>
+      <td id="T_711c9_row7_col7" class="data row7 col7" >988</td>
+      <td id="T_711c9_row7_col8" class="data row7 col8" >2</td>
+      <td id="T_711c9_row7_col9" class="data row7 col9" >10</td>
     </tr>
     <tr>
-      <th id="T_a9b52_level0_row8" class="row_heading level0 row8" >8</th>
-      <td id="T_a9b52_row8_col0" class="data row8 col0" >5</td>
-      <td id="T_a9b52_row8_col1" class="data row8 col1" >0</td>
-      <td id="T_a9b52_row8_col2" class="data row8 col2" >5</td>
-      <td id="T_a9b52_row8_col3" class="data row8 col3" >9</td>
-      <td id="T_a9b52_row8_col4" class="data row8 col4" >3</td>
-      <td id="T_a9b52_row8_col5" class="data row8 col5" >7</td>
-      <td id="T_a9b52_row8_col6" class="data row8 col6" >3</td>
-      <td id="T_a9b52_row8_col7" class="data row8 col7" >3</td>
-      <td id="T_a9b52_row8_col8" class="data row8 col8" >930</td>
-      <td id="T_a9b52_row8_col9" class="data row8 col9" >9</td>
+      <th id="T_711c9_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_711c9_row8_col0" class="data row8 col0" >4</td>
+      <td id="T_711c9_row8_col1" class="data row8 col1" >0</td>
+      <td id="T_711c9_row8_col2" class="data row8 col2" >5</td>
+      <td id="T_711c9_row8_col3" class="data row8 col3" >6</td>
+      <td id="T_711c9_row8_col4" class="data row8 col4" >6</td>
+      <td id="T_711c9_row8_col5" class="data row8 col5" >7</td>
+      <td id="T_711c9_row8_col6" class="data row8 col6" >4</td>
+      <td id="T_711c9_row8_col7" class="data row8 col7" >4</td>
+      <td id="T_711c9_row8_col8" class="data row8 col8" >927</td>
+      <td id="T_711c9_row8_col9" class="data row8 col9" >11</td>
     </tr>
     <tr>
-      <th id="T_a9b52_level0_row9" class="row_heading level0 row9" >9</th>
-      <td id="T_a9b52_row9_col0" class="data row9 col0" >5</td>
-      <td id="T_a9b52_row9_col1" class="data row9 col1" >5</td>
-      <td id="T_a9b52_row9_col2" class="data row9 col2" >2</td>
-      <td id="T_a9b52_row9_col3" class="data row9 col3" >10</td>
-      <td id="T_a9b52_row9_col4" class="data row9 col4" >8</td>
-      <td id="T_a9b52_row9_col5" class="data row9 col5" >5</td>
-      <td id="T_a9b52_row9_col6" class="data row9 col6" >0</td>
-      <td id="T_a9b52_row9_col7" class="data row9 col7" >4</td>
-      <td id="T_a9b52_row9_col8" class="data row9 col8" >6</td>
-      <td id="T_a9b52_row9_col9" class="data row9 col9" >964</td>
+      <th id="T_711c9_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_711c9_row9_col0" class="data row9 col0" >7</td>
+      <td id="T_711c9_row9_col1" class="data row9 col1" >5</td>
+      <td id="T_711c9_row9_col2" class="data row9 col2" >3</td>
+      <td id="T_711c9_row9_col3" class="data row9 col3" >9</td>
+      <td id="T_711c9_row9_col4" class="data row9 col4" >13</td>
+      <td id="T_711c9_row9_col5" class="data row9 col5" >1</td>
+      <td id="T_711c9_row9_col6" class="data row9 col6" >1</td>
+      <td id="T_711c9_row9_col7" class="data row9 col7" >5</td>
+      <td id="T_711c9_row9_col8" class="data row9 col8" >4</td>
+      <td id="T_711c9_row9_col9" class="data row9 col9" >961</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
 <p><strong>TASK:</strong> using PCA compress MNIST to two dimensions and make a plot (color by class label).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reshape the data from 28x28 to 784</span>
+<span class="n">X_train_flat</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span>
+
+<span class="c1"># Apply PCA and reduce the dimensionality to 2</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_train_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_flat</span><span class="p">)</span>
+
+<span class="c1"># Plot the data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>  <span class="c1"># there are 10 classes (0 to 9) in MNIST</span>
+    <span class="n">subset</span> <span class="o">=</span> <span class="n">X_train_pca</span><span class="p">[</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">i</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">subset</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">subset</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PC2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PCA of MNIST Dataset&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c3d0695c2f8ed5feb184b60797567eab7148da3de37edb1e226d298eed01e25d.png" src="_images/c3d0695c2f8ed5feb184b60797567eab7148da3de37edb1e226d298eed01e25d.png" />
+</div>
+</div>
 <p>True labels are on the left and predicted ones on the top. Quick glimpse gives you insightes like - RF makes most mistakes while identifying actual 7 as 2 and actual 4 as 9. What other insights can you give?</p>
 <p>Soon we will see that using neural networks we can avoid some of these mistakes, but key insight here is that RF is good method even for complex tasks as this one.</p>
-</div>
-<div class="section" id="whats-next">
-<h2>Whats next?<a class="headerlink" href="#whats-next" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="whats-next">
+<h2>Whats next?<a class="headerlink" href="#whats-next" title="Link to this heading">#</a></h2>
 <p>There are many variations of Random Forests you can explore, to name a few:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees">ExtraTrees</a></p></li>
@@ -1646,14 +1373,14 @@ Init Kernel
 <li><p><a class="reference external" href="https://lightgbm.readthedocs.io/en/latest/">LightGBM</a></p></li>
 </ul>
 <p>Up to the day of writing XGboost is still a leading method for tabular problems, but as we will see deep learning will beat them at unstructured data. Basic idea of XGBoost: fit next decision tree on residual errors made by the previous predictor, thus trying to fix them.</p>
-<ol class="simple">
-<li><p>Fit <span class="math notranslate nohighlight">\(\text{tree}_0\)</span> on <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(y_0=y\)</span> and make predictions <span class="math notranslate nohighlight">\(y_1\)</span>. Set <span class="math notranslate nohighlight">\(i=1\)</span>.</p></li>
-<li><p>Fit <span class="math notranslate nohighlight">\(\text{tree}_i\)</span> to predict residuals <span class="math notranslate nohighlight">\(y_{i-1} - y_i\)</span> given <span class="math notranslate nohighlight">\(X\)</span> and make predictions <span class="math notranslate nohighlight">\(y_{i+1}\)</span>.</p></li>
-<li><p>Increment <span class="math notranslate nohighlight">\(i\)</span> and jump back to step 2.</p></li>
+<ol class="arabic simple">
+<li><p>Fit $\text{tree}_0$ on $X$ and $y_0=y$ and make predictions $y_1$. Set $i=1$.</p></li>
+<li><p>Fit $\text{tree}<em>i$ to predict residuals $y</em>{i-1} - y_i$ given $X$ and make predictions $y_{i+1}$.</p></li>
+<li><p>Increment $i$ and jump back to step 2.</p></li>
 </ol>
-</div>
-<div class="section" id="re-sources">
-<h2>(Re) Sources:<a class="headerlink" href="#re-sources" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="re-sources">
+<h2>(Re) Sources:<a class="headerlink" href="#re-sources" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Short <a class="reference external" href="https://dataskeptic.com/blog/episodes/2016/random-forest">podcast</a> about random forest that contains simple explanation of ensambles.</p></li>
 <li><p>Claude Shannon “A Mathematical Theory of Communication” 1948 (<a class="reference external" href="http://www.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf">link</a>).</p></li>
@@ -1661,8 +1388,8 @@ Init Kernel
 <li><p>Medium <a class="reference external" href="https://towardsdatascience.com/must-know-information-theory-concepts-in-deep-learning-ai-e54a5da9769d">post</a> about Entropy</p></li>
 <li><p>Logistic regression from scratch (<a class="reference external" href="https://medium.com/&#64;martinpella/logistic-regression-from-scratch-in-python-124c5636b8ac">medium post</a>)</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1676,7 +1403,7 @@ Init Kernel
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1684,50 +1411,125 @@ Init Kernel
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="SVD.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">SVD (Singular Value Decomposition)</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="SVD.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SVD (Singular Value Decomposition)</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="DNN.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="DNN.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">DNN (Deep Neural Networks)</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy">Entropy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iris-dataset">Iris dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees">Decision Trees</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#larger-dataset-and-overfit-example">Larger dataset and overfit example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensembles">Ensembles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forests">Random forests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#possible-answer">Possible answer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neat-tricks">Neat tricks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance">Feature importance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-decision-boundaries">A note on decision boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mnist">MNIST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">Whats next?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-sources">(Re) Sources:</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By trokas<br/>
-  
-      &copy; Copyright MIF, 2023.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By trokas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright MIF, 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

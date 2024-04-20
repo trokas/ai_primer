@@ -1,104 +1,167 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Namesformer &#8212; AI primer</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Namesformer';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Varia" href="Varia.html" />
     <link rel="prev" title="Attention" href="Attention.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">AI primer</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AI primer</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -108,235 +171,204 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="SVD.html">
-   SVD (Singular Value Decomposition)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="RF.html">
-   RF (Random Forest)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DNN.html">
-   DNN (Deep Neural Networks)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CNN.html">
-   CNN (Convolutional Neural Networks)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Attention.html">
-   Attention
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Namesformer
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Varia.html">
-   Varia
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="TD.html">
-   Bonus: TD (Temporal Difference)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Project.html">
-   Project: Flatland
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="SVD.html">SVD (Singular Value Decomposition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RF.html">RF (Random Forest)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DNN.html">DNN (Deep Neural Networks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN.html">CNN (Convolutional Neural Networks)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Attention.html">Attention</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Namesformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Varia.html">Varia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TD.html">Bonus: TD (Temporal Difference)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RL.html">Bonus: Reinforcement Learning</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Project.html">Project: Flatland</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/trokas/ai_primer/master?urlpath=tree/Namesformer.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/Namesformer.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/Namesformer.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Namesformer.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Namesformer.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
       
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
+    </div>
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
 </div>
+</div>
+              
+              
 
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Namesformer</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Namesformer</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                    </div>
-                </div>
-            </div>
-            <main id="main-content" role="main">
+              
                 
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="namesformer">
-<h1>Namesformer<a class="headerlink" href="#namesformer" title="Permalink to this headline">#</a></h1>
-<p>Inspired by Andrej Karpathy lecture <a class="reference external" href="https://www.youtube.com/watch?v=PaCmpygFfXo&amp;t=131s">makemore</a> that contains english name generation.</p>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="namesformer">
+<h1>Namesformer<a class="headerlink" href="#namesformer" title="Link to this heading">#</a></h1>
+<p>Inspired by Andrej Karpathy lecture <a class="reference external" href="https://www.youtube.com/watch?v=PaCmpygFfXo&amp;amp;t=131s">makemore</a> that contains english name generation.</p>
 <p>The code was fully writen using ChatGPT with minimal corrections. My first query was:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">am</span> <span class="n">preparing</span> <span class="n">a</span> <span class="n">lecture</span> <span class="k">for</span> <span class="n">my</span> <span class="n">students</span> <span class="n">on</span> <span class="n">AI</span> <span class="n">basics</span><span class="o">.</span> <span class="n">They</span> <span class="n">already</span> <span class="n">know</span> <span class="n">how</span> <span class="n">to</span> <span class="n">use</span> <span class="n">attention</span> <span class="ow">in</span> <span class="n">keras</span> <span class="n">to</span> <span class="n">create</span> <span class="bp">self</span><span class="o">-</span><span class="n">attention</span> <span class="n">layers</span><span class="o">.</span> <span class="n">What</span> <span class="n">I</span> <span class="n">want</span> <span class="n">to</span> <span class="n">explain</span> <span class="n">them</span> <span class="ow">is</span> <span class="n">how</span> <span class="n">to</span> <span class="n">make</span> <span class="n">a</span> <span class="n">simplest</span> <span class="n">possible</span> <span class="n">transformer</span> <span class="n">architecture</span> <span class="p">(</span><span class="k">with</span> <span class="n">minimal</span> <span class="n">amount</span> <span class="n">of</span> <span class="n">code</span><span class="p">)</span><span class="o">.</span>
  <span class="n">As</span> <span class="n">a</span> <span class="n">dataset</span> <span class="n">I</span> <span class="n">will</span> <span class="n">use</span> <span class="n">a</span> <span class="n">csv</span> <span class="k">with</span> <span class="n">names</span><span class="p">:</span>
@@ -345,11 +377,11 @@ title="Print to PDF"
     <span class="n">mike</span>
     <span class="o">...</span>
 <span class="n">And</span> <span class="n">the</span> <span class="n">goal</span> <span class="n">will</span> <span class="n">be</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">more</span> <span class="n">names</span> <span class="n">that</span> <span class="n">sound</span> <span class="n">name</span><span class="o">-</span><span class="n">like</span><span class="o">.</span>
-<span class="n">Give</span> <span class="n">me</span> <span class="n">an</span> <span class="n">implementation</span> <span class="k">with</span> <span class="n">keras</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">keep</span> <span class="n">it</span> <span class="k">as</span> <span class="n">minimal</span> <span class="k">as</span> <span class="n">possible</span><span class="o">.</span>
+<span class="n">Give</span> <span class="n">me</span> <span class="n">an</span> <span class="n">implementation</span> <span class="k">with</span> <span class="n">PyTorch</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">keep</span> <span class="n">it</span> <span class="k">as</span> <span class="n">minimal</span> <span class="k">as</span> <span class="n">possible</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>After that I had to ask for couple corrections, like avoiding using Transformer layer, adding comments, fixing a bug in token indexing. All were relatively easy to spot and in less than an hour this notebook was generating plausibly sounding names.</p>
-<p>I decided to replace original dataset since I found a list of Lithuanian names that are easy to extract from <span class="xref myst">vardai.vlkk.lt</span> using the following code snippet:</p>
+<p>I decided to replace original dataset since I found a list of Lithuanian names that are easy to extract from <a class="reference internal" href="#vardai.vlkk.lt"><span class="xref myst">vardai.vlkk.lt</span></a> using the following code snippet:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
@@ -366,14 +398,14 @@ title="Print to PDF"
 <p>If you want to play with english names download them from <a class="reference external" href="https://github.com/karpathy/makemore/blob/master/names.txt">here</a> and use <em>names.txt</em> instead of <em>vardai.txt</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">optimizers</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing.sequence</span> <span class="kn">import</span> <span class="n">pad_sequences</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing.text</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.utils</span> <span class="kn">import</span> <span class="n">to_categorical</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">torch.nn.utils.rnn</span> <span class="kn">import</span> <span class="n">pad_sequence</span>
 </pre></div>
 </div>
 </div>
@@ -425,111 +457,121 @@ title="Print to PDF"
 </div>
 </div>
 <p>Note that this dataset is not simple since it uses accentuation symbols and capital letters. Let’s intentionally keep it like this and see if the model can figure it out.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">(</span><span class="n">char_level</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">tokenizer</span><span class="o">.</span><span class="n">fit_on_texts</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
-
-<span class="n">max_len</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">])</span>
-<span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">word_index</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-
-<span class="c1"># Create input and output sequences</span>
-<span class="n">input_sequences</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">output_sequences</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)):</span>
-        <span class="n">input_seq</span> <span class="o">=</span> <span class="n">name</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">output_seq</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">input_sequences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_seq</span><span class="p">)</span>
-        <span class="n">output_sequences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_seq</span><span class="p">)</span>
-
-<span class="n">X</span> <span class="o">=</span> <span class="n">pad_sequences</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">(</span><span class="n">input_sequences</span><span class="p">),</span> <span class="n">maxlen</span><span class="o">=</span><span class="n">max_len</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">(</span><span class="n">output_sequences</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">)</span>
-
-<span class="n">max_len</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(16, 49, (28867, 16), (28867, 49))
-</pre></div>
-</div>
-</div>
-</div>
 <p>Our transformer will be based on the self-attention.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimpleTransformer</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">max_len</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="c1"># Create an Embedding layer for converting input tokens into vectors</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
-        <span class="c1"># Add positional encoding to the input embeddings</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pos_encoding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_positional_encoding</span><span class="p">(</span><span class="n">max_len</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
-        <span class="c1"># Create an Attention layer for self-attention mechanism</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attention</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Attention</span><span class="p">()</span>
-        <span class="c1"># Create a Flatten layer to flatten the output tensor</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span>
-        <span class="c1"># Create a Dense layer for generating output probabilities</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-        <span class="c1"># Pass the input through the Embedding layer</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-        <span class="c1"># Scale the embeddings by the square root of the embedding dimension</span>
-        <span class="n">x</span> <span class="o">*=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
-        <span class="c1"># Add the positional encoding to the input embeddings</span>
-        <span class="n">x</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos_encoding</span><span class="p">[:,</span> <span class="p">:</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">:]</span>
-        <span class="c1"># Apply self-attention using the Attention layer</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attention</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">])</span>
-        <span class="c1"># Flatten the output tensor</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="c1"># Pass the result through the Dense layer to generate output probabilities</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">x</span>
-
-    <span class="k">def</span> <span class="nf">add_positional_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_len</span><span class="p">,</span> <span class="n">d_model</span><span class="p">):</span>
-        <span class="c1"># Initialize a positional encoding matrix with zeros</span>
-        <span class="n">pos_encoding</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_len</span><span class="p">,</span> <span class="n">d_model</span><span class="p">))</span>
-        <span class="c1"># Calculate the positional encoding values for each position and dimension</span>
-        <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_len</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
-                <span class="n">pos_encoding</span><span class="p">[:,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">pos</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">d_model</span><span class="p">))</span>
-                <span class="n">pos_encoding</span><span class="p">[:,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">pos</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">d_model</span><span class="p">))</span>
-        <span class="c1"># Convert the numpy array to a TensorFlow tensor</span>
-        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">pos_encoding</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>First we can train for couple epochs just to make sure that it works.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compile and train the model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">SimpleTransformer</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">d_model</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">max_len</span><span class="o">=</span><span class="n">max_len</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">vocab_size</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metal device set to: Apple M1
-Epoch 1/2
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>83
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-05-07 20:16:47.818607: I tensorflow/core/common_runtime/pluggable_device/pluggable_device_factory.cc:306] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
-2023-05-07 20:16:47.818744: I tensorflow/core/common_runtime/pluggable_device/pluggable_device_factory.cc:272] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -&gt; physical PluggableDevice (device: 0, name: METAL, pci bus id: &lt;undefined&gt;)
-2023-05-07 20:16:47.946218: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
-2023-05-07 20:16:48.272305: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">int_to_char</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>903/903 [==============================] - 13s 11ms/step - loss: 2.1334 - accuracy: 0.3874
-Epoch 2/2
-903/903 [==============================] - 10s 11ms/step - loss: 1.7163 - accuracy: 0.4779
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>83
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x291cf7a00&gt;
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adjusted NameDataset</span>
+<span class="k">class</span> <span class="nc">NameDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">csv_file</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;vardai.txt&#39;</span><span class="p">)[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chars</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">)))</span>  <span class="c1"># Including a padding character</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">char_to_int</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chars</span><span class="p">)}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">int_to_char</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">char_to_int</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chars</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span>  <span class="c1"># Adding padding character at the end</span>
+        <span class="n">encoded_name</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">char_to_int</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">encoded_name</span><span class="p">)</span>
+
+<span class="c1"># Custom collate function for padding</span>
+<span class="k">def</span> <span class="nf">pad_collate</span><span class="p">(</span><span class="n">batch</span><span class="p">):</span>
+    <span class="n">padded_seqs</span> <span class="o">=</span> <span class="n">pad_sequence</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padding_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">input_seq</span> <span class="o">=</span> <span class="n">padded_seqs</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">target_seq</span> <span class="o">=</span> <span class="n">padded_seqs</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="n">input_seq</span><span class="p">,</span> <span class="n">target_seq</span>
+
+<span class="c1"># Minimal Transformer Model</span>
+<span class="k">class</span> <span class="nc">MinimalTransformer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">forward_expansion</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MinimalTransformer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embed</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">positional_encoding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">TransformerEncoderLayer</span><span class="p">(</span><span class="n">d_model</span><span class="o">=</span><span class="n">embed_size</span><span class="p">,</span> <span class="n">nhead</span><span class="o">=</span><span class="n">num_heads</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transformer_encoder</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">TransformerEncoder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoder_layer</span><span class="p">,</span> <span class="n">num_layers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_size</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">positional_encoding</span><span class="p">[:,</span> <span class="p">:</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="p">:]</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformer_encoder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1"># Training Loop</span>
+<span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>  <span class="c1"># Ensure the model is in training mode</span>
+        <span class="n">total_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">batch_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">input_seq</span><span class="p">,</span> <span class="n">target_seq</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dataloader</span><span class="p">):</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_seq</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">target_seq</span><span class="p">)</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+            
+            <span class="n">total_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="n">batch_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">average_loss</span> <span class="o">=</span> <span class="n">total_loss</span> <span class="o">/</span> <span class="n">batch_count</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">, Average Loss: </span><span class="si">{</span><span class="n">average_loss</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="n">csv_file</span> <span class="o">=</span> <span class="s1">&#39;vardai.txt&#39;</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">NameDataset</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
+<span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">pad_collate</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">MinimalTransformer</span><span class="p">(</span><span class="n">vocab_size</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">num_heads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">forward_expansion</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">train_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniforge/base/envs/torch/lib/python3.10/site-packages/torch/nn/modules/transformer.py:286: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference performance)
+  warnings.warn(f&quot;enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}&quot;)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1, Average Loss: 1.5661300399086693
+Epoch 2, Average Loss: 1.3030138059095904
+Epoch 3, Average Loss: 1.274652126160535
+Epoch 4, Average Loss: 1.2546222600069914
+Epoch 5, Average Loss: 1.2314461583440954
+Epoch 6, Average Loss: 1.22686504017223
+Epoch 7, Average Loss: 1.2192441631447186
+Epoch 8, Average Loss: 1.2121069810607217
+Epoch 9, Average Loss: 1.2129392515529285
+Epoch 10, Average Loss: 1.2083363023671236
 </pre></div>
 </div>
 </div>
@@ -537,42 +579,50 @@ Epoch 2/2
 <p>And generate a name by predicing the next letter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate new names</span>
-<span class="k">def</span> <span class="nf">generate_name</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">maxlen</span><span class="p">):</span>
-    <span class="n">generated_name</span> <span class="o">=</span> <span class="n">seed</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxlen</span><span class="p">):</span>
-        <span class="n">sequence</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">([</span><span class="n">generated_name</span><span class="p">])</span>
-        <span class="n">padded_sequence</span> <span class="o">=</span> <span class="n">pad_sequences</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="n">max_len</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">)</span>
-        <span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">padded_sequence</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">next_char</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">index_word</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">next_char</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
-            <span class="k">break</span>
-        <span class="n">generated_name</span> <span class="o">+=</span> <span class="n">next_char</span>
-    <span class="k">return</span> <span class="n">generated_name</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed</span> <span class="o">=</span> <span class="s1">&#39;R&#39;</span>
-<span class="n">generated_name</span> <span class="o">=</span> <span class="n">generate_name</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">max_len</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Generated name: </span><span class="si">{</span><span class="n">generated_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">start_str</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>  <span class="c1"># Switch to evaluation mode</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="c1"># Convert start string to tensor</span>
+        <span class="n">chars</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataset</span><span class="o">.</span><span class="n">char_to_int</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">start_str</span><span class="p">]</span>
+        <span class="n">input_seq</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Add batch dimension</span>
+        
+        <span class="n">output_name</span> <span class="o">=</span> <span class="n">start_str</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_length</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">start_str</span><span class="p">)):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_seq</span><span class="p">)</span>
+            
+            <span class="c1"># Get the last character from the output</span>
+            <span class="n">probabilities</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="c1"># Sample a character from the probability distribution</span>
+            <span class="n">next_char_idx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="n">probabilities</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="n">next_char</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">int_to_char</span><span class="p">[</span><span class="n">next_char_idx</span><span class="p">]</span>
+            
+            <span class="k">if</span> <span class="n">next_char</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>  <span class="c1"># Assume &#39; &#39; is your end-of-sequence character</span>
+                <span class="k">break</span>
+            
+            <span class="n">output_name</span> <span class="o">+=</span> <span class="n">next_char</span>
+            <span class="c1"># Update the input sequence for the next iteration</span>
+            <span class="n">input_seq</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">input_seq</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="n">next_char_idx</span><span class="p">]])],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">output_name</span>
+
+<span class="c1"># After training your model, generate a name starting with a specific letter</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">generated_name</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">start_str</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">generated_name</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 13ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 11ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 11ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 11ms/step
-1/1 [==============================] - 0s 11ms/step
-Generated name: Raũdvydas
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Regontas
+Rongonis
+Rẽšvijus
+Ralijijus
+Rugaustinas
+Rámeñtas
+Raùcius
+Rigū̃sintas
+Rùntis
+Rorū́lis
 </pre></div>
 </div>
 </div>
@@ -580,7 +630,19 @@ Generated name: Raũdvydas
 <p>Not bad! Note that this name is not in our names list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Raũdvydas &#39;</span> <span class="ow">in</span> <span class="n">names</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">generated_name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Rorū́lis&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">generated_name</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="ow">in</span> <span class="n">names</span>
 </pre></div>
 </div>
 </div>
@@ -593,78 +655,234 @@ Generated name: Raũdvydas
 <p>Let’s train for longer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.6320 - accuracy: 0.4956
-Epoch 2/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.5971 - accuracy: 0.5021
-Epoch 3/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.5763 - accuracy: 0.5087
-Epoch 4/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.5629 - accuracy: 0.5101
-Epoch 5/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.5512 - accuracy: 0.5087
-Epoch 6/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.5421 - accuracy: 0.5123
-Epoch 7/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.5318 - accuracy: 0.5163
-Epoch 8/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.5226 - accuracy: 0.5161
-Epoch 9/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.5179 - accuracy: 0.5179
-Epoch 10/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.5087 - accuracy: 0.5225
-Epoch 11/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.5068 - accuracy: 0.5209
-Epoch 12/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.4960 - accuracy: 0.5251
-Epoch 13/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.4954 - accuracy: 0.5222
-Epoch 14/20
-903/903 [==============================] - 9s 11ms/step - loss: 1.4919 - accuracy: 0.5195
-Epoch 15/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.4852 - accuracy: 0.5245
-Epoch 16/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.4842 - accuracy: 0.5230
-Epoch 17/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.4777 - accuracy: 0.5275
-Epoch 18/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.4731 - accuracy: 0.5282
-Epoch 19/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.4740 - accuracy: 0.5258
-Epoch 20/20
-903/903 [==============================] - 10s 11ms/step - loss: 1.4709 - accuracy: 0.5262
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x29dbd5420&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1, Average Loss: 1.2126153149388053
+Epoch 2, Average Loss: 1.2008646195585078
+Epoch 3, Average Loss: 1.2044431323354894
+Epoch 4, Average Loss: 1.2084777745333586
+Epoch 5, Average Loss: 1.2039412173357877
+Epoch 6, Average Loss: 1.2010385670445183
+Epoch 7, Average Loss: 1.2084186375141144
+Epoch 8, Average Loss: 1.2009209258989855
+Epoch 9, Average Loss: 1.1919255847280676
+Epoch 10, Average Loss: 1.196088556809859
+Epoch 11, Average Loss: 1.1934009887955406
+Epoch 12, Average Loss: 1.1910438266667454
+Epoch 13, Average Loss: 1.1883929929950021
+Epoch 14, Average Loss: 1.18849547884681
+Epoch 15, Average Loss: 1.1841346204280854
+Epoch 16, Average Loss: 1.1886381100524555
+Epoch 17, Average Loss: 1.1862260487946596
+Epoch 18, Average Loss: 1.1879008596593683
+Epoch 19, Average Loss: 1.1960965817624873
+Epoch 20, Average Loss: 1.182948770306327
+Epoch 21, Average Loss: 1.1842969905246388
+Epoch 22, Average Loss: 1.184790024432269
+Epoch 23, Average Loss: 1.181914219531146
+Epoch 24, Average Loss: 1.1763226807117462
+Epoch 25, Average Loss: 1.179220708391883
+Epoch 26, Average Loss: 1.1783306847919117
+Epoch 27, Average Loss: 1.1771398804404518
+Epoch 28, Average Loss: 1.1773126699707726
+Epoch 29, Average Loss: 1.176071114431728
+Epoch 30, Average Loss: 1.1774945611303502
+Epoch 31, Average Loss: 1.1753104345365004
+Epoch 32, Average Loss: 1.1693926020102068
+Epoch 33, Average Loss: 1.1799512798135932
+Epoch 34, Average Loss: 1.1740663609721445
+Epoch 35, Average Loss: 1.1694568932056426
+Epoch 36, Average Loss: 1.1811962263150648
+Epoch 37, Average Loss: 1.17307439067147
+Epoch 38, Average Loss: 1.176123644547029
+Epoch 39, Average Loss: 1.1735039640556681
+Epoch 40, Average Loss: 1.1717253424904563
+Epoch 41, Average Loss: 1.177093555168672
+Epoch 42, Average Loss: 1.171743896332654
+Epoch 43, Average Loss: 1.1714473003690893
+Epoch 44, Average Loss: 1.1676099918105385
+Epoch 45, Average Loss: 1.1768520918759433
+Epoch 46, Average Loss: 1.173742602630095
+Epoch 47, Average Loss: 1.180647957866842
+Epoch 48, Average Loss: 1.1670065533031118
+Epoch 49, Average Loss: 1.1708998994393782
+Epoch 50, Average Loss: 1.174356814406135
+Epoch 51, Average Loss: 1.171154983477159
+Epoch 52, Average Loss: 1.1716643262993205
+Epoch 53, Average Loss: 1.1670574442906814
+Epoch 54, Average Loss: 1.1785864970900797
+Epoch 55, Average Loss: 1.1648033169182863
+Epoch 56, Average Loss: 1.1688325421376662
+Epoch 57, Average Loss: 1.17388866760514
+Epoch 58, Average Loss: 1.1666124620220877
+Epoch 59, Average Loss: 1.172797761180184
+Epoch 60, Average Loss: 1.176192511211742
+Epoch 61, Average Loss: 1.169443035667593
+Epoch 62, Average Loss: 1.1800002092664892
+Epoch 63, Average Loss: 1.171481213244525
+Epoch 64, Average Loss: 1.1669982026923786
+Epoch 65, Average Loss: 1.1764582509344275
+Epoch 66, Average Loss: 1.163921559940685
+Epoch 67, Average Loss: 1.1642179787158966
+Epoch 68, Average Loss: 1.1651612466031855
+Epoch 69, Average Loss: 1.1650332786820152
+Epoch 70, Average Loss: 1.1688154946674
+Epoch 71, Average Loss: 1.1705795759504491
+Epoch 72, Average Loss: 1.1614629257809033
+Epoch 73, Average Loss: 1.1699370909820903
+Epoch 74, Average Loss: 1.1682413280010224
+Epoch 75, Average Loss: 1.1624731887470592
+Epoch 76, Average Loss: 1.1658373101191086
+Epoch 77, Average Loss: 1.1636967192996632
+Epoch 78, Average Loss: 1.1620631938630885
+Epoch 79, Average Loss: 1.1607454305345362
+Epoch 80, Average Loss: 1.1687679886817932
+Epoch 81, Average Loss: 1.1678154587745666
+Epoch 82, Average Loss: 1.1654754454439336
+Epoch 83, Average Loss: 1.155006990107623
+Epoch 84, Average Loss: 1.163443606008183
+Epoch 85, Average Loss: 1.1602861404418945
+Epoch 86, Average Loss: 1.167173838073557
+Epoch 87, Average Loss: 1.1719990968704224
+Epoch 88, Average Loss: 1.1669102771715685
+Epoch 89, Average Loss: 1.1618749781088396
+Epoch 90, Average Loss: 1.165453993732279
+Epoch 91, Average Loss: 1.1623399273915724
+Epoch 92, Average Loss: 1.1563565720211375
+Epoch 93, Average Loss: 1.163650984655727
+Epoch 94, Average Loss: 1.1724212256344881
+Epoch 95, Average Loss: 1.167005370421843
+Epoch 96, Average Loss: 1.1674671113491057
+Epoch 97, Average Loss: 1.1701534655961123
+Epoch 98, Average Loss: 1.1644188783385536
+Epoch 99, Average Loss: 1.1655203813856299
+Epoch 100, Average Loss: 1.1715436978773637
+Epoch 101, Average Loss: 1.1552146738225764
+Epoch 102, Average Loss: 1.1608184684406628
+Epoch 103, Average Loss: 1.159850030595606
+Epoch 104, Average Loss: 1.1684163879264484
+Epoch 105, Average Loss: 1.1663107931613923
+Epoch 106, Average Loss: 1.158122861927206
+Epoch 107, Average Loss: 1.1624844074249268
+Epoch 108, Average Loss: 1.1574821585958655
+Epoch 109, Average Loss: 1.1655770285563036
+Epoch 110, Average Loss: 1.1647455410523848
+Epoch 111, Average Loss: 1.1573507780378516
+Epoch 112, Average Loss: 1.1607191784815354
+Epoch 113, Average Loss: 1.1629504626447504
+Epoch 114, Average Loss: 1.1642750745469874
+Epoch 115, Average Loss: 1.1613674646074121
+Epoch 116, Average Loss: 1.166970002109354
+Epoch 117, Average Loss: 1.1576437251134353
+Epoch 118, Average Loss: 1.1650751937519421
+Epoch 119, Average Loss: 1.1617956735871056
+Epoch 120, Average Loss: 1.164371263439005
+Epoch 121, Average Loss: 1.1629116388884457
+Epoch 122, Average Loss: 1.1550310535864396
+Epoch 123, Average Loss: 1.1581492738290267
+Epoch 124, Average Loss: 1.158476221561432
+Epoch 125, Average Loss: 1.1614776307886296
+Epoch 126, Average Loss: 1.1575686704028736
+Epoch 127, Average Loss: 1.1618938050486824
+Epoch 128, Average Loss: 1.1620031795718453
+Epoch 129, Average Loss: 1.1597038236531345
+Epoch 130, Average Loss: 1.1628466026349502
+Epoch 131, Average Loss: 1.158760524337942
+Epoch 132, Average Loss: 1.1628416088494387
+Epoch 133, Average Loss: 1.1603023599494586
+Epoch 134, Average Loss: 1.1653292233293706
+Epoch 135, Average Loss: 1.1570394418456338
+Epoch 136, Average Loss: 1.159251956506209
+Epoch 137, Average Loss: 1.15108516107906
+Epoch 138, Average Loss: 1.157251045920632
+Epoch 139, Average Loss: 1.1605818797241558
+Epoch 140, Average Loss: 1.162669566002759
+Epoch 141, Average Loss: 1.1601114251396873
+Epoch 142, Average Loss: 1.16759164983576
+Epoch 143, Average Loss: 1.1619377488439733
+Epoch 144, Average Loss: 1.1621505347165195
+Epoch 145, Average Loss: 1.1543098693544214
+Epoch 146, Average Loss: 1.1532247613776814
+Epoch 147, Average Loss: 1.1500764911825008
+Epoch 148, Average Loss: 1.1602625012397767
+Epoch 149, Average Loss: 1.1586852783506567
+Epoch 150, Average Loss: 1.1529835099523718
+Epoch 151, Average Loss: 1.1618636467240073
+Epoch 152, Average Loss: 1.1549416943029924
+Epoch 153, Average Loss: 1.1662258408286355
+Epoch 154, Average Loss: 1.1571188888766548
+Epoch 155, Average Loss: 1.1591200124133716
+Epoch 156, Average Loss: 1.1585772801529277
+Epoch 157, Average Loss: 1.1559988807548176
+Epoch 158, Average Loss: 1.1582237693396482
+Epoch 159, Average Loss: 1.1598566656762903
+Epoch 160, Average Loss: 1.150617011568763
+Epoch 161, Average Loss: 1.1551114580848
+Epoch 162, Average Loss: 1.1640103768218648
+Epoch 163, Average Loss: 1.160990835319866
+Epoch 164, Average Loss: 1.1596852134574542
+Epoch 165, Average Loss: 1.1487048609690234
+Epoch 166, Average Loss: 1.1591558082537217
+Epoch 167, Average Loss: 1.1607873385602778
+Epoch 168, Average Loss: 1.1556667615066876
+Epoch 169, Average Loss: 1.1585448243401266
+Epoch 170, Average Loss: 1.1581260957501152
+Epoch 171, Average Loss: 1.1559378802776337
+Epoch 172, Average Loss: 1.161676243760369
+Epoch 173, Average Loss: 1.158989368243651
+Epoch 174, Average Loss: 1.1545235828919844
+Epoch 175, Average Loss: 1.1571894456039775
+Epoch 176, Average Loss: 1.1542898205193606
+Epoch 177, Average Loss: 1.1522481392730366
+Epoch 178, Average Loss: 1.1551333757964048
+Epoch 179, Average Loss: 1.153004600243135
+Epoch 180, Average Loss: 1.1598306520418686
+Epoch 181, Average Loss: 1.162586285309358
+Epoch 182, Average Loss: 1.1609084183519536
+Epoch 183, Average Loss: 1.1571473636410452
+Epoch 184, Average Loss: 1.1611249522729354
+Epoch 185, Average Loss: 1.1568290174007416
+Epoch 186, Average Loss: 1.1532831658016551
+Epoch 187, Average Loss: 1.1452395493333989
+Epoch 188, Average Loss: 1.1520163557746195
+Epoch 189, Average Loss: 1.1546604254029014
+Epoch 190, Average Loss: 1.1602082713083788
+Epoch 191, Average Loss: 1.1623538266528737
+Epoch 192, Average Loss: 1.1638677071441303
+Epoch 193, Average Loss: 1.1488759859041735
+Epoch 194, Average Loss: 1.14711737036705
+Epoch 195, Average Loss: 1.1594428961927241
+Epoch 196, Average Loss: 1.1597402187910948
+Epoch 197, Average Loss: 1.1606087662956932
+Epoch 198, Average Loss: 1.1493876272981818
+Epoch 199, Average Loss: 1.1451929959383877
+Epoch 200, Average Loss: 1.1518649155443366
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed</span> <span class="o">=</span> <span class="s1">&#39;R&#39;</span>
-<span class="n">generated_name</span> <span class="o">=</span> <span class="n">generate_name</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">max_len</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Generated name: </span><span class="si">{</span><span class="n">generated_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">generated_name</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">start_str</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">generated_name</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 15ms/step
-1/1 [==============================] - 0s 38ms/step
-1/1 [==============================] - 0s 14ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 11ms/step
-1/1 [==============================] - 0s 12ms/step
-1/1 [==============================] - 0s 11ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 11ms/step
-1/1 [==============================] - 0s 11ms/step
-Generated name: Rãdmantas
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ritãperdas
+Rãlantas
+Rãtardas
+Ripõnas
+Rìlmiktẽras
+Rárvydas
+Rìnis
+Rarntìndas
+Rusktaugas
+Rĩšvas
 </pre></div>
 </div>
 </div>
@@ -672,128 +890,91 @@ Generated name: Rãdmantas
 <p>If we want the model to be more creative we can add temperature/creativity control.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_name</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">maxlen</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-    <span class="n">generated_name</span> <span class="o">=</span> <span class="n">seed</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxlen</span><span class="p">):</span>
-        <span class="n">sequence</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">([</span><span class="n">generated_name</span><span class="p">])</span>
-        <span class="n">padded_sequence</span> <span class="o">=</span> <span class="n">pad_sequences</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="n">max_len</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">)</span>
-        <span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">padded_sequence</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">start_str</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">temperature</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Temperature must be greater than 0&quot;</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>  <span class="c1"># Switch model to evaluation mode</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="c1"># Convert start string to tensor</span>
+        <span class="n">chars</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataset</span><span class="o">.</span><span class="n">char_to_int</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">start_str</span><span class="p">]</span>
+        <span class="n">input_seq</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Add batch dimension</span>
+        
+        <span class="n">output_name</span> <span class="o">=</span> <span class="n">start_str</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_length</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">start_str</span><span class="p">)):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_seq</span><span class="p">)</span>
+            
+            <span class="c1"># Apply temperature scaling</span>
+            <span class="n">logits</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">temperature</span>
+            <span class="n">probabilities</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            
+            <span class="c1"># Sample a character from the probability distribution</span>
+            <span class="n">next_char_idx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="n">probabilities</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="n">next_char</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">int_to_char</span><span class="p">[</span><span class="n">next_char_idx</span><span class="p">]</span>
+            
+            <span class="k">if</span> <span class="n">next_char</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>  <span class="c1"># Assume &#39; &#39; is your end-of-sequence character</span>
+                <span class="k">break</span>
+            
+            <span class="n">output_name</span> <span class="o">+=</span> <span class="n">next_char</span>
+            <span class="c1"># Update the input sequence for the next iteration</span>
+            <span class="n">input_seq</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">input_seq</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="n">next_char_idx</span><span class="p">]])],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">output_name</span>
 
-        <span class="c1"># Apply temperature to the probability distribution</span>
-        <span class="n">prediction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
-        <span class="n">prediction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span> <span class="o">/</span> <span class="n">temperature</span>
-        <span class="n">exp_preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>
-        <span class="n">prediction</span> <span class="o">=</span> <span class="n">exp_preds</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">exp_preds</span><span class="p">)</span>
+<span class="c1"># Example usage with different temperatures</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;More confident:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">sample</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">start_str</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.5</span><span class="p">))</span>  <span class="c1"># More confident</span>
 
-        <span class="c1"># Sample the next character from the adjusted probability distribution</span>
-        <span class="n">next_char_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">prediction</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="n">next_char</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">index_word</span><span class="p">[</span><span class="n">next_char_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">More diverse/creative:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">sample</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">start_str</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">1.5</span><span class="p">))</span>  <span class="c1"># More diverse</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>More confident:
+  Rìnartas
+  Rèntas
+  Rĩgis
+  Rùrìldas
+  Ròrijus
+  Rìnis
+  Rarìtas
+  Rėnas
+  Relinijus
+  Rìnijus
 
-        <span class="k">if</span> <span class="n">next_char</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
-            <span class="k">break</span>
-        <span class="n">generated_name</span> <span class="o">+=</span> <span class="n">next_char</span>
-    <span class="k">return</span> <span class="n">generated_name</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed</span> <span class="o">=</span> <span class="s1">&#39;R&#39;</span>
-<span class="n">generated_name</span> <span class="o">=</span> <span class="n">generate_name</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">max_len</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Generated name: </span><span class="si">{</span><span class="n">generated_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Name is new? </span><span class="si">{</span><span class="n">generated_name</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">names</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 19ms/step
-1/1 [==============================] - 0s 11ms/step
-1/1 [==============================] - 0s 9ms/step
-1/1 [==============================] - 0s 9ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 9ms/step
-Generated name: Rydẽnis
-Name is new? True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed</span> <span class="o">=</span> <span class="s1">&#39;R&#39;</span>
-<span class="n">generated_name</span> <span class="o">=</span> <span class="n">generate_name</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">max_len</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Generated name: </span><span class="si">{</span><span class="n">generated_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Name is new? </span><span class="si">{</span><span class="n">generated_name</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">names</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 11ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 12ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 10ms/step
-Generated name: Rìdmantas
-Name is new? True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span>
-<span class="n">generated_name</span> <span class="o">=</span> <span class="n">generate_name</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">max_len</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Generated name: </span><span class="si">{</span><span class="n">generated_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Name is new? </span><span class="si">{</span><span class="n">generated_name</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">names</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 14ms/step
-1/1 [==============================] - 0s 12ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 9ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 10ms/step
-Generated name: Tèlius
-Name is new? True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span>
-<span class="n">generated_name</span> <span class="o">=</span> <span class="n">generate_name</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">max_len</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Generated name: </span><span class="si">{</span><span class="n">generated_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Name is new? </span><span class="si">{</span><span class="n">generated_name</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">names</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 18ms/step
-1/1 [==============================] - 0s 12ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 9ms/step
-1/1 [==============================] - 0s 10ms/step
-1/1 [==============================] - 0s 10ms/step
-Generated name: Taũgis
-Name is new? True
+More diverse/creative:
+  Rūdrìmildas
+  Ratėnas
+  Revýdridas
+  Rõr̃mijus
+  Rýgmas
+  Ròtotrdas
+  Rãan
+  Riguòmas
+  Ridmistis
+  Rìrhez
 </pre></div>
 </div>
 </div>
 </div>
 <p>Here we go, we have a Lithuanian name generator!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;../namesformer_app/namesformer_model.pt&#39;</span><span class="p">)</span>
+    
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../namesformer_app/int_to_char.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">int_to_char</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../namesformer_app/char_to_int.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">char_to_int</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
 </div>
+</div>
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -807,7 +988,7 @@ Name is new? True
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -815,50 +996,90 @@ Name is new? True
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Attention.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Attention</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Attention.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Attention</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="Varia.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="Varia.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Varia</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By trokas<br/>
-  
-      &copy; Copyright MIF, 2023.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By trokas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright MIF, 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
