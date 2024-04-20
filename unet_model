@@ -1,0 +1,65 @@
+digraph {
+	graph [size="12,12"]
+	node [align=left fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	4342047392 [label="
+ (1, 1, 100)" fillcolor=darkolivegreen1]
+	4854135104 [label=SigmoidBackward0]
+	4860090432 -> 4854135104
+	4860090432 [label=ConvolutionBackward0]
+	4860096144 -> 4860090432
+	4860096144 [label=CatBackward0]
+	4860086400 -> 4860096144
+	4860086400 [label=ReluBackward0]
+	4860090336 -> 4860086400
+	4860090336 [label=ConvolutionBackward0]
+	4860090384 -> 4860090336
+	4860090384 [label=ReluBackward0]
+	4860086304 -> 4860090384
+	4860086304 [label=ConvolutionBackward0]
+	4860091872 -> 4860086304
+	4860091872 [label=ReluBackward0]
+	4860091248 -> 4860091872
+	4860091248 [label=ConvolutionBackward0]
+	4860094752 -> 4860091248
+	4865403904 [label="down1.0.weight
+ (16, 1, 3)" fillcolor=lightblue]
+	4865403904 -> 4860094752
+	4860094752 [label=AccumulateGrad]
+	4860094560 -> 4860091248
+	4865404304 [label="down1.0.bias
+ (16)" fillcolor=lightblue]
+	4865404304 -> 4860094560
+	4860094560 [label=AccumulateGrad]
+	4860090576 -> 4860086304
+	4842553808 [label="down2.0.weight
+ (32, 16, 3)" fillcolor=lightblue]
+	4842553808 -> 4860090576
+	4860090576 [label=AccumulateGrad]
+	4860092016 -> 4860086304
+	4869330304 [label="down2.0.bias
+ (32)" fillcolor=lightblue]
+	4869330304 -> 4860092016
+	4860092016 [label=AccumulateGrad]
+	4860091920 -> 4860090336
+	4865394544 [label="up1.0.weight
+ (32, 16, 3)" fillcolor=lightblue]
+	4865394544 -> 4860091920
+	4860091920 [label=AccumulateGrad]
+	4860086496 -> 4860090336
+	4865403104 [label="up1.0.bias
+ (16)" fillcolor=lightblue]
+	4865403104 -> 4860086496
+	4860086496 [label=AccumulateGrad]
+	4860091872 -> 4860096144
+	4860090288 -> 4860090432
+	4865402464 [label="out_conv.weight
+ (1, 32, 3)" fillcolor=lightblue]
+	4865402464 -> 4860090288
+	4860090288 [label=AccumulateGrad]
+	4860092208 -> 4860090432
+	4865403184 [label="out_conv.bias
+ (1)" fillcolor=lightblue]
+	4865403184 -> 4860092208
+	4860092208 [label=AccumulateGrad]
+	4854135104 -> 4342047392
+}
