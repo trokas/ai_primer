@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Welcome to AI primer course &#8212; AI primer</title>
+    <title>Flatland &#8212; AI primer</title>
   
   
   
@@ -57,10 +57,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'README';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Flatland';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="SVD (Singular Value Decomposition)" href="SVD.html" />
+    <link rel="prev" title="Bonus: Reinforcement Learning" href="RL.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +122,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -140,7 +138,7 @@
 
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="README.html">
   
   
   
@@ -165,13 +163,13 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
                     Welcome to AI primer course
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="SVD.html">SVD (Singular Value Decomposition)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RF.html">RF (Random Forest)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DNN.html">DNN (Deep Neural Networks)</a></li>
@@ -185,7 +183,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Flatland.html">Flatland</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Flatland</a></li>
 </ul>
 
     </div>
@@ -240,7 +238,7 @@
       
       
       
-      <li><a href="_sources/README.md" target="_blank"
+      <li><a href="_sources/Flatland.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -311,9 +309,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -324,20 +320,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Welcome to AI primer course</h1>
+    <h1>Flatland</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#launching-notebooks">Launching notebooks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-sources">(re)Sources</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -347,69 +334,55 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="welcome-to-ai-primer-course">
-<h1>Welcome to AI primer course<a class="headerlink" href="#welcome-to-ai-primer-course" title="Link to this heading">#</a></h1>
-<p><a class="reference external" href="https://trokas.github.io/ai_primer/README.html">INTERACTIVE BOOK LINK</a></p>
-<p>Main aim of this course is to give you enough information so that you can start exploring field of AI on your own and maybe even start searching for DS role.
-We have only 5 main chapters and one bonus lecture to cover.</p>
-<ul class="simple">
-<li><p>Unsupervised learning</p>
-<ul>
-<li><p>SVD (Singular Value Decomposition) - it’s a good tool to introduce both technical tools we will be working with as well as giving us a glimpse at unsupervised learning.</p></li>
-</ul>
-</li>
-<li><p>Supervised learning</p>
-<ul>
-<li><p>RF (Random Forests) - one of the first “silver bullets” out there. Our discussion will also cover Shannon’s work on entropy as it’s one of the key ingredients.</p></li>
-</ul>
-</li>
-<li><p>Deep learning</p>
-<ul>
-<li><p>DNN (Deep Neural Networks) - we will build our own Perceptron from scratch, thus focusing on gradient descent and backprop on the way. By changing activation function logistic regression will be introduced and finally we will explore what a stack of layers (deep NN) can offer.</p></li>
-<li><p>CNN (Convolutional Neural Networks) - even though different techniques come and go in deep learning world I strongly believe that CNN’s will be around for quite some time to come. We will use them not only for images, but also for time series prediction.</p></li>
-<li><p>Attention - powerful idea that stands behind Transformers and one of the enablers for GPT-3, DALL-E 2 and others.</p></li>
-</ul>
-</li>
-<li><p>Reinforcement Learning (bonus lecture)</p>
-<ul>
-<li><p>TD (Temporal Difference) - one of the core principles in reinforcement learning. We will apply it to play tic-tac-toe.</p></li>
-</ul>
-</li>
-</ul>
-<p>Also we will cover following toolset, which hopefully will be useful for your future projects:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://numpy.org/doc/stable/user/quickstart.html">numpy</a> (mainly in SVD and FCN lectures) - will help us store vectors, matrices and perform operations on them.</p></li>
-<li><p><a class="reference external" href="https://matplotlib.org/tutorials/introductory/pyplot.html">matplotlib</a> (in all lectures) - nice and simple plotting lib.</p></li>
-<li><p><a class="reference external" href="https://scikit-learn.org/stable/tutorial/basic/tutorial.html">scikit-learn</a> - ML library.</p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html">pandas</a> (mainly in RF lecture) - structured way of looking at tabular data.</p></li>
-<li><p><a class="reference external" href="https://pytorch.org/">PyTorch</a> (FCN and CNN lectures) - simple deep learning library based on tensorflow.</p></li>
-<li><p><a class="reference external" href="https://rogerdudler.github.io/git-guide/">git</a> (final project) - version control tool.</p></li>
-</ul>
-<p>Toolset will be presented only in lectures, thus it’s up to you to learn them on your own if you do not plan to attend. There are a lot of resources, but I highly suggest to read intros in corresponding docs.</p>
-<p>What to expect from a single lecture?</p>
-<ul class="simple">
-<li><p>There will be no clear distinction between theory and practice, thus you should have your PC ready for small assignments that you will encounter on the way.</p></li>
-<li><p>Most important material will be listed here, but during lectures you will hear and see a lot of complementary material.</p></li>
-<li><p>Each lecture will end with a list of resources (some of them mandatory). We will start a new lecture with a recap of what was done last time and discussion regarding mentioned resources in the hope to deepen understanding in the subject and inspire you to search for sources and publications yourself.</p></li>
-</ul>
-<section id="launching-notebooks">
-<h2>Launching notebooks<a class="headerlink" href="#launching-notebooks" title="Link to this heading">#</a></h2>
-<p>You can launch notebooks while in <a class="reference external" href="https://trokas.github.io/ai_primer/README.html">interactive book</a> by simply pressing the rocket logo and choosing <strong>Colab</strong>. To get faster run times click <em>Runtime</em> and <em>Change runtime type</em>, then select GPU or TPU. If necessary you can install missing packages by running <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">[package</span> <span class="pre">name]</span></code> directly in the notebook.</p>
-<p><strong>NOTE:</strong> <em>Colab</em> will not save your changes between sessions! Download the notebook or save a copy in Google Drive before closing the browser. If you want to open notebooks locally (for a quick preview) you might find <a class="reference external" href="https://nteract.io/">nteract</a> useful.</p>
-<p>As an alternative you can use non free, but cheap options like <a class="reference external" href="https://jarvislabs.ai/">Jarvislabs</a> or <a class="reference external" href="https://www.paperspace.com/">Paperspace</a>. Actually Paperspace has free GPU option, but often it is not available.</p>
-</section>
-<section id="re-sources">
-<h2>(re)Sources<a class="headerlink" href="#re-sources" title="Link to this heading">#</a></h2>
-<p>Each chapter will have a list of resources, but for now I highly recommend to start listening/watching following resources on your spare time:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://dataskeptic.com/podcasts/ai">Data Skeptic podcast</a></p></li>
-<li><p><a class="reference external" href="https://lexfridman.com/ai/">Artificial Intelligence podcast</a></p></li>
-<li><p><a class="reference external" href="https://www.youtube.com/user/keeroyz">Two Minute Papers youtube channel</a></p></li>
-</ul>
-<p>If I had to recommend a single book for beginner it will be this one - <a class="reference external" href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/">Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 2nd Edition</a>.</p>
-</section>
-<div class="toctree-wrapper compound">
+  <section id="flatland">
+<h1>Flatland<a class="headerlink" href="#flatland" title="Link to this heading">#</a></h1>
+<p>Task is slightly inspired by the book Flatland. You will have to classify images by ‘calculating’ a number of corners a figure in that image has using deep learning.</p>
+<img src="https://www.manhattanrarebooks.com/pictures/2038.jpg?v=1516738067" width="350"/>
+<p>Train set contains pictures of the following shapes: circles, triangles, squares, pentagons, and hexagons.</p>
+<p><img alt="Project train set sample" src="_images/flatland.png" /></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://github.com/trokas/ai_primer/blob/master/flatland_train.data">DOWNLOAD train set</a> and upload it to Colab. Don’t use <em>curl</em> since it manages to mess up zipped files!</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span><span class="o">,</span> <span class="nn">gzip</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path_to_flatland_train_data</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+</pre></div>
 </div>
+<ol class="arabic simple" start="2">
+<li><p>Train the model and do your magic.</p></li>
+<li><p>Create a new <a class="reference external" href="https://github.com/">github</a> repo and upload code/notebooks and the final model.</p></li>
+<li><p><a class="reference external" href="https://github.com/trokas/ai_primer/blob/master/flatland_test.data">DOWNLOAD test set</a> and run your model on it. Save the result as single long text using <code class="docutils literal notranslate"><span class="pre">''.join([str(round(p))</span> <span class="pre">for</span> <span class="pre">p</span> <span class="pre">in</span> <span class="pre">pred])</span></code>. So it should something like <code class="docutils literal notranslate"><span class="pre">6645533...</span></code> but have 10k integers.</p></li>
+<li><p>Finally go to <a class="reference external" href="https://flatland.streamlit.app/">evaluation app</a> and submit your test set results and github link. Your submitions will end in the leaderboard.</p></li>
+</ol>
+<p>Passing benchmarks:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Points (out of 4)</p></th>
+<th class="head"><p>Hint</p></th>
+<th class="head"><p>Test set</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>???</p></td>
+<td><p>&lt;80%</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>FNN</p></td>
+<td><p>&gt;80%</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>CNN</p></td>
+<td><p>&gt;90%</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>???</p></td>
+<td><p>&gt;95%</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Additional task:</em> extra 0.5 points are added if you manage to make a model that takes less than 500kb.</p>
+<p>For faster training you can use <a class="reference external" href="https://colab.research.google.com/">colab</a>, just change it to GPU mode by setting it at Edit -&gt; Notebook settings -&gt; Hardware accelerator.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -442,14 +415,14 @@ We have only 5 main chapters and one bonus lecture to cover.</p>
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="SVD.html"
-       title="next page">
+    <a class="left-prev"
+       href="RL.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">SVD (Singular Value Decomposition)</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bonus: Reinforcement Learning</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -458,21 +431,7 @@ We have only 5 main chapters and one bonus lecture to cover.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#launching-notebooks">Launching notebooks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-sources">(re)Sources</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
