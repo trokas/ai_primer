@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="296pt" height="195pt" viewBox="0.00 0.00 296.00 195.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 191)">
+<title>Tree</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-191 292,-191 292,4 -4,4"/>
+<!-- 0 -->
+<g id="node1" class="node">
+<title>0</title>
+<polygon fill="#ffffff" stroke="black" points="218.5,-187 59.5,-187 59.5,-104 218.5,-104 218.5,-187"/>
+<text text-anchor="middle" x="139" y="-171.8" font-family="Helvetica,sans-Serif" font-size="14.00">petal width (cm) &lt;= 0.8</text>
+<text text-anchor="middle" x="139" y="-156.8" font-family="Helvetica,sans-Serif" font-size="14.00">entropy = 1.58</text>
+<text text-anchor="middle" x="139" y="-141.8" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 105</text>
+<text text-anchor="middle" x="139" y="-126.8" font-family="Helvetica,sans-Serif" font-size="14.00">value = [31, 37, 37]</text>
+<text text-anchor="middle" x="139" y="-111.8" font-family="Helvetica,sans-Serif" font-size="14.00">class = 1 - versicolor</text>
+</g>
+<!-- 1 -->
+<g id="node2" class="node">
+<title>1</title>
+<polygon fill="#e58139" stroke="black" points="126,-68 0,-68 0,0 126,0 126,-68"/>
+<text text-anchor="middle" x="63" y="-52.8" font-family="Helvetica,sans-Serif" font-size="14.00">entropy = 0.0</text>
+<text text-anchor="middle" x="63" y="-37.8" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 31</text>
+<text text-anchor="middle" x="63" y="-22.8" font-family="Helvetica,sans-Serif" font-size="14.00">value = [31, 0, 0]</text>
+<text text-anchor="middle" x="63" y="-7.8" font-family="Helvetica,sans-Serif" font-size="14.00">class = 0 - setosa</text>
+</g>
+<!-- 0&#45;&gt;1 -->
+<g id="edge1" class="edge">
+<title>0-&gt;1</title>
+<path fill="none" stroke="black" d="M110.7,-103.73C104.56,-94.88 98.06,-85.51 91.89,-76.63"/>
+<polygon fill="black" stroke="black" points="94.69,-74.52 86.11,-68.3 88.94,-78.51 94.69,-74.52"/>
+<text text-anchor="middle" x="81.67" y="-89.2" font-family="Helvetica,sans-Serif" font-size="14.00">True</text>
+</g>
+<!-- 2 -->
+<g id="node3" class="node">
+<title>2</title>
+<polygon fill="#ffffff" stroke="black" points="288,-68 144,-68 144,0 288,0 288,-68"/>
+<text text-anchor="middle" x="216" y="-52.8" font-family="Helvetica,sans-Serif" font-size="14.00">entropy = 1.0</text>
+<text text-anchor="middle" x="216" y="-37.8" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 74</text>
+<text text-anchor="middle" x="216" y="-22.8" font-family="Helvetica,sans-Serif" font-size="14.00">value = [0, 37, 37]</text>
+<text text-anchor="middle" x="216" y="-7.8" font-family="Helvetica,sans-Serif" font-size="14.00">class = 1 - versicolor</text>
+</g>
+<!-- 0&#45;&gt;2 -->
+<g id="edge2" class="edge">
+<title>0-&gt;2</title>
+<path fill="none" stroke="black" d="M167.67,-103.73C173.89,-94.88 180.48,-85.51 186.73,-76.63"/>
+<polygon fill="black" stroke="black" points="189.69,-78.49 192.58,-68.3 183.97,-74.47 189.69,-78.49"/>
+<text text-anchor="middle" x="196.88" y="-89.23" font-family="Helvetica,sans-Serif" font-size="14.00">False</text>
+</g>
+</g>
+</svg>

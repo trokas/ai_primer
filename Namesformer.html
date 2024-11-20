@@ -1,167 +1,104 @@
 
 <!DOCTYPE html>
 
-
-<html lang="en" data-content_root="./" >
-
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Namesformer &#8212; AI primer</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
-  </script>
-  
+    
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
-  
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-  
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Namesformer';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Varia" href="Varia.html" />
     <link rel="prev" title="Attention" href="Attention.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
 
-  
-  
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    
+    <div class="container-fluid" id="banner"></div>
 
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
-  
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
-    </header>
-  
+    
 
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
-        
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-
-  
-
-<a class="navbar-brand logo" href="README.html">
-  
-  
-  
-  
-  
-  
-    <p class="title logo__title">AI primer</p>
-  
-</a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
+      <h1 class="site-logo" id="site-title">AI primer</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -171,205 +108,241 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="SVD.html">SVD (Singular Value Decomposition)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RF.html">RF (Random Forest)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DNN.html">DNN (Deep Neural Networks)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CNN.html">CNN (Convolutional Neural Networks)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Attention.html">Attention</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Namesformer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Varia.html">Varia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TD.html">Bonus: TD (Temporal Difference)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RL.html">Bonus: Reinforcement Learning</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="Project.html">Project: Flatland</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="SVD.html">
+   SVD (Singular Value Decomposition)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="RF.html">
+   RF (Random Forest)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DNN.html">
+   DNN (Deep Neural Networks)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CNN.html">
+   CNN (Convolutional Neural Networks)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Attention.html">
+   Attention
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Namesformer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Varia.html">
+   Varia
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TD.html">
+   Bonus: TD (Temporal Difference)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="RL.html">
+   Bonus: Reinforcement Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Flatland.html">
+   Flatland
+  </a>
+ </li>
 </ul>
 
     </div>
 </nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
     </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
+    <div id="rtd-footer-container"></div>
+</div>
 
 
-      </div>
-      
-      <main id="main-content" class="bd-main">
-        
-        
+          
 
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</label></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
 
 
 
-
-
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/Namesformer.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onColab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/trokas/ai_primer/master?urlpath=tree/Namesformer.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/trokas/ai_primer/blob/master/Namesformer.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="btn__text-container">Colab</span>
+<span class="headerbtn__text-container">Colab</span>
 </a>
-</li>
+
+      </li>
       
-  </ul>
+    </ul>
+  </div>
 </div>
-
-
-
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="_sources/Namesformer.ipynb" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-
-
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
   </button>
-`);
-</script>
-
-
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-
-</div></div>
-      
-    </div>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Namesformer.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
   
-</div>
-</div>
-              
-              
 
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>Namesformer</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
-            
-        </div>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
     </div>
 </div>
 
-              
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Namesformer</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-<div id="searchbox"></div>
-                <article class="bd-article">
-                  
-  <section id="namesformer">
-<h1>Namesformer<a class="headerlink" href="#namesformer" title="Link to this heading">#</a></h1>
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="namesformer">
+<h1>Namesformer<a class="headerlink" href="#namesformer" title="Permalink to this headline">#</a></h1>
 <p>Before we get into the lecture you can play with the trained model here: <a class="reference external" href="https://namesformer.streamlit.app/">Namesformer Streamlit app</a>.</p>
-<p>Inspired by Andrej Karpathy lecture <a class="reference external" href="https://www.youtube.com/watch?v=PaCmpygFfXo&amp;amp;t=131s">makemore</a> that contains english name generation.</p>
+<p>Inspired by Andrej Karpathy lecture <a class="reference external" href="https://www.youtube.com/watch?v=PaCmpygFfXo&amp;t=131s">makemore</a> that contains english name generation.</p>
 <p>The code was fully writen using ChatGPT with minimal corrections. My first query was:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">am</span> <span class="n">preparing</span> <span class="n">a</span> <span class="n">lecture</span> <span class="k">for</span> <span class="n">my</span> <span class="n">students</span> <span class="n">on</span> <span class="n">AI</span> <span class="n">basics</span><span class="o">.</span> <span class="n">They</span> <span class="n">already</span> <span class="n">know</span> <span class="n">how</span> <span class="n">to</span> <span class="n">use</span> <span class="n">attention</span> <span class="ow">in</span> <span class="n">PyTorch</span> <span class="n">to</span> <span class="n">create</span> <span class="bp">self</span><span class="o">-</span><span class="n">attention</span> <span class="n">layers</span><span class="o">.</span> <span class="n">What</span> <span class="n">I</span> <span class="n">want</span> <span class="n">to</span> <span class="n">explain</span> <span class="n">them</span> <span class="ow">is</span> <span class="n">how</span> <span class="n">to</span> <span class="n">make</span> <span class="n">a</span> <span class="n">simplest</span> <span class="n">possible</span> <span class="n">transformer</span> <span class="n">architecture</span> <span class="p">(</span><span class="k">with</span> <span class="n">minimal</span> <span class="n">amount</span> <span class="n">of</span> <span class="n">code</span><span class="p">)</span><span class="o">.</span>
  <span class="n">As</span> <span class="n">a</span> <span class="n">dataset</span> <span class="n">I</span> <span class="n">will</span> <span class="n">use</span> <span class="n">a</span> <span class="n">csv</span> <span class="k">with</span> <span class="n">names</span><span class="p">:</span>
@@ -382,21 +355,7 @@ document.write(`
 </pre></div>
 </div>
 <p>After that I had to ask for couple corrections, like avoiding using Transformer layer, adding comments, fixing a bug in token indexing. All were relatively easy to spot and in less than an hour this notebook was generating plausibly sounding names.</p>
-<p>I decided to replace original dataset since I found a list of Lithuanian names that are easy to extract from <a class="reference internal" href="#vardai.vlkk.lt"><span class="xref myst">vardai.vlkk.lt</span></a> using the following code snippet:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
-
-<span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;c-2&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;j&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;s-2&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;z-2&#39;</span><span class="p">]:</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://vardai.vlkk.lt/sarasas/</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">/&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
-    <span class="n">links</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;names_list__links names_list__links--man&#39;</span><span class="p">)</span>
-    <span class="n">names</span> <span class="o">+=</span> <span class="p">[</span><span class="n">name</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">links</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>If you want to play with english names download them from <a class="reference external" href="https://github.com/karpathy/makemore/blob/master/names.txt">here</a> and use <em>names.txt</em> instead of <em>vardai.txt</em>.</p>
+<p>I decided to replace original dataset since I found a list of Lithuanian names that are easy to extract from <span class="xref myst">vardai.vlkk.lt</span> using the following code snippet:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
@@ -413,82 +372,30 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;vardai.txt&#39;</span><span class="p">)[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">names</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;c-2&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;j&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;s-2&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;z-2&#39;</span><span class="p">]:</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://vardai.vlkk.lt/sarasas/</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">/&#39;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+    <span class="n">links</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;names_list__links names_list__links--man&#39;</span><span class="p">)</span>
+    <span class="n">names</span> <span class="o">+=</span> <span class="p">[</span><span class="n">name</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">links</span><span class="p">]</span>
+    
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;vardai.txt&#39;</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Ãbas&#39;, &#39;Ãbdijus&#39;, &#39;Abdònas&#39;, ..., &#39;Žilvynas&#39;, &#39;Žimantas&#39;,
-       &#39;Žydrunas&#39;], dtype=object)
-</pre></div>
 </div>
-</div>
-</div>
+<p>If you want to play with english names download them from <a class="reference external" href="https://github.com/karpathy/makemore/blob/master/names.txt">here</a> and use <em>names.txt</em> instead of <em>vardai.txt</em>.</p>
+<p>Let’s add a space at the end to mark the end of the name. We will need a dictionary that encodes characters to integers and back, thus let’s wrap that logic in a class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3495
-</pre></div>
-</div>
-</div>
-</div>
-<p>Let’s add a space at the end to mark the end of the name</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Ãbas &#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>Note that this dataset is not simple since it uses accentuation symbols and capital letters. Let’s intentionally keep it like this and see if the model can figure it out.</p>
-<p>Our transformer will be based on the self-attention.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">vocab_size</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>83
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">int_to_char</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>83
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adjusted NameDataset</span>
-<span class="k">class</span> <span class="nc">NameDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NameDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">csv_file</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;vardai.txt&#39;</span><span class="p">)[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">chars</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">)))</span>  <span class="c1"># Including a padding character</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">char_to_int</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chars</span><span class="p">)}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">int_to_char</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">char_to_int</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
@@ -501,16 +408,143 @@ document.write(`
         <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span>  <span class="c1"># Adding padding character at the end</span>
         <span class="n">encoded_name</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">char_to_int</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">encoded_name</span><span class="p">)</span>
-
-<span class="c1"># Custom collate function for padding</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">NameDataset</span><span class="p">(</span><span class="s1">&#39;vardai.txt&#39;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3850
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 1, 82, 24, 23, 40,  0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">dataset</span><span class="o">.</span><span class="n">int_to_char</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">char</span><span class="p">)]</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;A&#39;, &#39;̃&#39;, &#39;b&#39;, &#39;a&#39;, &#39;s&#39;, &#39; &#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that this dataset is not simple since it uses accentuation symbols and capital letters. Let’s intentionally keep it like this and see if the model can figure it out. When you do it yourself feel free to remove accentuation and use only lower case letters.</p>
+<p>We need a way to construct padded batches.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Custom collate function for padding</span>
 <span class="k">def</span> <span class="nf">pad_collate</span><span class="p">(</span><span class="n">batch</span><span class="p">):</span>
     <span class="n">padded_seqs</span> <span class="o">=</span> <span class="n">pad_sequence</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padding_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">input_seq</span> <span class="o">=</span> <span class="n">padded_seqs</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">target_seq</span> <span class="o">=</span> <span class="n">padded_seqs</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
     <span class="k">return</span> <span class="n">input_seq</span><span class="p">,</span> <span class="n">target_seq</span>
 
-<span class="c1"># Minimal Transformer Model</span>
-<span class="k">class</span> <span class="nc">MinimalTransformer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">pad_collate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make sure you understand what this generates and why.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dataloader</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[ 1, 75, 26, 31, 40,  0,  0,  0,  0,  0,  0,  0,  0],
+         [16, 23, 81, 42, 34, 31, 40,  0,  0,  0,  0,  0,  0],
+         [17, 23, 82, 40, 35, 23, 36, 41, 23, 40,  0,  0,  0],
+         [ 7, 31, 80, 36, 41, 23, 42, 41, 23, 40,  0,  0,  0],
+         [21, 31, 80, 33, 31, 40,  0,  0,  0,  0,  0,  0,  0],
+         [ 8, 23, 39, 37, 34, 26,  0,  0,  0,  0,  0,  0,  0],
+         [ 5, 80, 34, 31, 36, 29, 23, 40,  0,  0,  0,  0,  0],
+         [ 7, 37, 81, 41, 23, 39, 23, 40,  0,  0,  0,  0,  0],
+         [13, 37, 26, 27, 80, 40, 41, 23, 40,  0,  0,  0,  0],
+         [14, 37, 23, 30,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [ 1, 34, 27, 33, 40,  0,  0,  0,  0,  0,  0,  0,  0],
+         [ 5, 80, 26, 31, 40,  0,  0,  0,  0,  0,  0,  0,  0],
+         [ 4, 37, 80, 39, 23, 40,  0,  0,  0,  0,  0,  0,  0],
+         [16, 23, 82, 41, 39, 31, 40,  0,  0,  0,  0,  0,  0],
+         [ 5, 28, 29, 27, 36, 31, 32, 42, 40,  0,  0,  0,  0],
+         [ 2, 23, 34, 41, 39, 23, 35, 31, 27, 82, 32, 42, 40],
+         [21, 31, 25, 41, 37, 39, 23, 40,  0,  0,  0,  0,  0],
+         [ 7, 58, 39, 79, 23, 26, 23, 40,  0,  0,  0,  0,  0],
+         [18, 33, 23, 31, 82, 26, 39, 31, 42, 40,  0,  0,  0],
+         [ 5, 31, 82, 43, 23, 39, 26, 23, 40,  0,  0,  0,  0],
+         [22, 27, 28, 31, 39, 31, 80, 36, 23, 40,  0,  0,  0],
+         [ 5, 36, 26, 39, 31, 27, 32, 42, 40,  0,  0,  0,  0],
+         [18, 23, 43, 70, 34, 31, 32, 42, 40,  0,  0,  0,  0],
+         [16, 23, 39, 28, 31, 39, 31, 32, 42, 40,  0,  0,  0],
+         [17, 70, 82, 26, 23, 40,  0,  0,  0,  0,  0,  0,  0],
+         [17, 23, 35, 42, 36, 23, 40,  0,  0,  0,  0,  0,  0],
+         [14, 23, 39, 46, 35, 23, 36, 41, 23, 40,  0,  0,  0],
+         [ 7, 27, 82, 26, 35, 23, 36, 41, 23, 40,  0,  0,  0],
+         [ 1, 31, 82, 29, 31, 36, 41, 23, 40,  0,  0,  0,  0],
+         [16, 34, 23, 41, 37, 36,  0,  0,  0,  0,  0,  0,  0],
+         [ 7, 43, 31, 80, 26, 35, 23, 36, 41, 23, 40,  0,  0],
+         [18, 23, 81, 36, 29, 27, 26, 23, 40,  0,  0,  0,  0]]),
+ tensor([[75, 26, 31, 40,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [23, 81, 42, 34, 31, 40,  0,  0,  0,  0,  0,  0,  0],
+         [23, 82, 40, 35, 23, 36, 41, 23, 40,  0,  0,  0,  0],
+         [31, 80, 36, 41, 23, 42, 41, 23, 40,  0,  0,  0,  0],
+         [31, 80, 33, 31, 40,  0,  0,  0,  0,  0,  0,  0,  0],
+         [23, 39, 37, 34, 26,  0,  0,  0,  0,  0,  0,  0,  0],
+         [80, 34, 31, 36, 29, 23, 40,  0,  0,  0,  0,  0,  0],
+         [37, 81, 41, 23, 39, 23, 40,  0,  0,  0,  0,  0,  0],
+         [37, 26, 27, 80, 40, 41, 23, 40,  0,  0,  0,  0,  0],
+         [37, 23, 30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [34, 27, 33, 40,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [80, 26, 31, 40,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+         [37, 80, 39, 23, 40,  0,  0,  0,  0,  0,  0,  0,  0],
+         [23, 82, 41, 39, 31, 40,  0,  0,  0,  0,  0,  0,  0],
+         [28, 29, 27, 36, 31, 32, 42, 40,  0,  0,  0,  0,  0],
+         [23, 34, 41, 39, 23, 35, 31, 27, 82, 32, 42, 40,  0],
+         [31, 25, 41, 37, 39, 23, 40,  0,  0,  0,  0,  0,  0],
+         [58, 39, 79, 23, 26, 23, 40,  0,  0,  0,  0,  0,  0],
+         [33, 23, 31, 82, 26, 39, 31, 42, 40,  0,  0,  0,  0],
+         [31, 82, 43, 23, 39, 26, 23, 40,  0,  0,  0,  0,  0],
+         [27, 28, 31, 39, 31, 80, 36, 23, 40,  0,  0,  0,  0],
+         [36, 26, 39, 31, 27, 32, 42, 40,  0,  0,  0,  0,  0],
+         [23, 43, 70, 34, 31, 32, 42, 40,  0,  0,  0,  0,  0],
+         [23, 39, 28, 31, 39, 31, 32, 42, 40,  0,  0,  0,  0],
+         [70, 82, 26, 23, 40,  0,  0,  0,  0,  0,  0,  0,  0],
+         [23, 35, 42, 36, 23, 40,  0,  0,  0,  0,  0,  0,  0],
+         [23, 39, 46, 35, 23, 36, 41, 23, 40,  0,  0,  0,  0],
+         [27, 82, 26, 35, 23, 36, 41, 23, 40,  0,  0,  0,  0],
+         [31, 82, 29, 31, 36, 41, 23, 40,  0,  0,  0,  0,  0],
+         [34, 23, 41, 37, 36,  0,  0,  0,  0,  0,  0,  0,  0],
+         [43, 31, 80, 26, 35, 23, 36, 41, 23, 40,  0,  0,  0],
+         [23, 81, 36, 29, 27, 26, 23, 40,  0,  0,  0,  0,  0]]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our transformer will be based on the self-attention.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MinimalTransformer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">forward_expansion</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MinimalTransformer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">embed</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">)</span>
@@ -549,35 +583,27 @@ document.write(`
         <span class="n">average_loss</span> <span class="o">=</span> <span class="n">total_loss</span> <span class="o">/</span> <span class="n">batch_count</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">, Average Loss: </span><span class="si">{</span><span class="n">average_loss</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-
-<span class="n">csv_file</span> <span class="o">=</span> <span class="s1">&#39;vardai.txt&#39;</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">NameDataset</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
-<span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">pad_collate</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">MinimalTransformer</span><span class="p">(</span><span class="n">vocab_size</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">num_heads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">forward_expansion</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">train_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniforge/base/envs/torch/lib/python3.10/site-packages/torch/nn/modules/transformer.py:286: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference performance)
-  warnings.warn(f&quot;enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}&quot;)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1, Average Loss: 1.5661300399086693
-Epoch 2, Average Loss: 1.3030138059095904
-Epoch 3, Average Loss: 1.274652126160535
-Epoch 4, Average Loss: 1.2546222600069914
-Epoch 5, Average Loss: 1.2314461583440954
-Epoch 6, Average Loss: 1.22686504017223
-Epoch 7, Average Loss: 1.2192441631447186
-Epoch 8, Average Loss: 1.2121069810607217
-Epoch 9, Average Loss: 1.2129392515529285
-Epoch 10, Average Loss: 1.2083363023671236
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1, Average Loss: 1.560861560923994
+Epoch 2, Average Loss: 1.3083962241480174
+Epoch 3, Average Loss: 1.275466939634528
+Epoch 4, Average Loss: 1.2612562283011508
+Epoch 5, Average Loss: 1.2426953862521275
+Epoch 6, Average Loss: 1.2460837374048785
+Epoch 7, Average Loss: 1.2364239564611892
+Epoch 8, Average Loss: 1.2283017211709142
+Epoch 9, Average Loss: 1.226946584941927
+Epoch 10, Average Loss: 1.2349231972182093
 </pre></div>
 </div>
 </div>
 </div>
-<p>And generate a name by predicing the next letter.</p>
+<p>And generate a name by predicing the next letter. We will use the fact that model returns logits that can be turned into probabilities which can later be used to sample a character from the probability distribution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">start_str</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
@@ -614,16 +640,16 @@ Epoch 10, Average Loss: 1.2083363023671236
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Regontas
-Rongonis
-Rẽšvijus
-Ralijijus
-Rugaustinas
-Rámeñtas
-Raùcius
-Rigū̃sintas
-Rùntis
-Rorū́lis
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rãvelijovas
+Rãgmenas
+Retuvytinton
+Raĩnas
+Rĩtris
+Ranolìas
+Roanis
+Ranautontas
+Rõmicis
+Ralmas
 </pre></div>
 </div>
 </div>
@@ -636,7 +662,7 @@ Rorū́lis
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Rorū́lis&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Ralmas&#39;
 </pre></div>
 </div>
 </div>
@@ -661,206 +687,208 @@ Rorū́lis
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1, Average Loss: 1.2126153149388053
-Epoch 2, Average Loss: 1.2008646195585078
-Epoch 3, Average Loss: 1.2044431323354894
-Epoch 4, Average Loss: 1.2084777745333586
-Epoch 5, Average Loss: 1.2039412173357877
-Epoch 6, Average Loss: 1.2010385670445183
-Epoch 7, Average Loss: 1.2084186375141144
-Epoch 8, Average Loss: 1.2009209258989855
-Epoch 9, Average Loss: 1.1919255847280676
-Epoch 10, Average Loss: 1.196088556809859
-Epoch 11, Average Loss: 1.1934009887955406
-Epoch 12, Average Loss: 1.1910438266667454
-Epoch 13, Average Loss: 1.1883929929950021
-Epoch 14, Average Loss: 1.18849547884681
-Epoch 15, Average Loss: 1.1841346204280854
-Epoch 16, Average Loss: 1.1886381100524555
-Epoch 17, Average Loss: 1.1862260487946596
-Epoch 18, Average Loss: 1.1879008596593683
-Epoch 19, Average Loss: 1.1960965817624873
-Epoch 20, Average Loss: 1.182948770306327
-Epoch 21, Average Loss: 1.1842969905246388
-Epoch 22, Average Loss: 1.184790024432269
-Epoch 23, Average Loss: 1.181914219531146
-Epoch 24, Average Loss: 1.1763226807117462
-Epoch 25, Average Loss: 1.179220708391883
-Epoch 26, Average Loss: 1.1783306847919117
-Epoch 27, Average Loss: 1.1771398804404518
-Epoch 28, Average Loss: 1.1773126699707726
-Epoch 29, Average Loss: 1.176071114431728
-Epoch 30, Average Loss: 1.1774945611303502
-Epoch 31, Average Loss: 1.1753104345365004
-Epoch 32, Average Loss: 1.1693926020102068
-Epoch 33, Average Loss: 1.1799512798135932
-Epoch 34, Average Loss: 1.1740663609721445
-Epoch 35, Average Loss: 1.1694568932056426
-Epoch 36, Average Loss: 1.1811962263150648
-Epoch 37, Average Loss: 1.17307439067147
-Epoch 38, Average Loss: 1.176123644547029
-Epoch 39, Average Loss: 1.1735039640556681
-Epoch 40, Average Loss: 1.1717253424904563
-Epoch 41, Average Loss: 1.177093555168672
-Epoch 42, Average Loss: 1.171743896332654
-Epoch 43, Average Loss: 1.1714473003690893
-Epoch 44, Average Loss: 1.1676099918105385
-Epoch 45, Average Loss: 1.1768520918759433
-Epoch 46, Average Loss: 1.173742602630095
-Epoch 47, Average Loss: 1.180647957866842
-Epoch 48, Average Loss: 1.1670065533031118
-Epoch 49, Average Loss: 1.1708998994393782
-Epoch 50, Average Loss: 1.174356814406135
-Epoch 51, Average Loss: 1.171154983477159
-Epoch 52, Average Loss: 1.1716643262993205
-Epoch 53, Average Loss: 1.1670574442906814
-Epoch 54, Average Loss: 1.1785864970900797
-Epoch 55, Average Loss: 1.1648033169182863
-Epoch 56, Average Loss: 1.1688325421376662
-Epoch 57, Average Loss: 1.17388866760514
-Epoch 58, Average Loss: 1.1666124620220877
-Epoch 59, Average Loss: 1.172797761180184
-Epoch 60, Average Loss: 1.176192511211742
-Epoch 61, Average Loss: 1.169443035667593
-Epoch 62, Average Loss: 1.1800002092664892
-Epoch 63, Average Loss: 1.171481213244525
-Epoch 64, Average Loss: 1.1669982026923786
-Epoch 65, Average Loss: 1.1764582509344275
-Epoch 66, Average Loss: 1.163921559940685
-Epoch 67, Average Loss: 1.1642179787158966
-Epoch 68, Average Loss: 1.1651612466031855
-Epoch 69, Average Loss: 1.1650332786820152
-Epoch 70, Average Loss: 1.1688154946674
-Epoch 71, Average Loss: 1.1705795759504491
-Epoch 72, Average Loss: 1.1614629257809033
-Epoch 73, Average Loss: 1.1699370909820903
-Epoch 74, Average Loss: 1.1682413280010224
-Epoch 75, Average Loss: 1.1624731887470592
-Epoch 76, Average Loss: 1.1658373101191086
-Epoch 77, Average Loss: 1.1636967192996632
-Epoch 78, Average Loss: 1.1620631938630885
-Epoch 79, Average Loss: 1.1607454305345362
-Epoch 80, Average Loss: 1.1687679886817932
-Epoch 81, Average Loss: 1.1678154587745666
-Epoch 82, Average Loss: 1.1654754454439336
-Epoch 83, Average Loss: 1.155006990107623
-Epoch 84, Average Loss: 1.163443606008183
-Epoch 85, Average Loss: 1.1602861404418945
-Epoch 86, Average Loss: 1.167173838073557
-Epoch 87, Average Loss: 1.1719990968704224
-Epoch 88, Average Loss: 1.1669102771715685
-Epoch 89, Average Loss: 1.1618749781088396
-Epoch 90, Average Loss: 1.165453993732279
-Epoch 91, Average Loss: 1.1623399273915724
-Epoch 92, Average Loss: 1.1563565720211375
-Epoch 93, Average Loss: 1.163650984655727
-Epoch 94, Average Loss: 1.1724212256344881
-Epoch 95, Average Loss: 1.167005370421843
-Epoch 96, Average Loss: 1.1674671113491057
-Epoch 97, Average Loss: 1.1701534655961123
-Epoch 98, Average Loss: 1.1644188783385536
-Epoch 99, Average Loss: 1.1655203813856299
-Epoch 100, Average Loss: 1.1715436978773637
-Epoch 101, Average Loss: 1.1552146738225764
-Epoch 102, Average Loss: 1.1608184684406628
-Epoch 103, Average Loss: 1.159850030595606
-Epoch 104, Average Loss: 1.1684163879264484
-Epoch 105, Average Loss: 1.1663107931613923
-Epoch 106, Average Loss: 1.158122861927206
-Epoch 107, Average Loss: 1.1624844074249268
-Epoch 108, Average Loss: 1.1574821585958655
-Epoch 109, Average Loss: 1.1655770285563036
-Epoch 110, Average Loss: 1.1647455410523848
-Epoch 111, Average Loss: 1.1573507780378516
-Epoch 112, Average Loss: 1.1607191784815354
-Epoch 113, Average Loss: 1.1629504626447504
-Epoch 114, Average Loss: 1.1642750745469874
-Epoch 115, Average Loss: 1.1613674646074121
-Epoch 116, Average Loss: 1.166970002109354
-Epoch 117, Average Loss: 1.1576437251134353
-Epoch 118, Average Loss: 1.1650751937519421
-Epoch 119, Average Loss: 1.1617956735871056
-Epoch 120, Average Loss: 1.164371263439005
-Epoch 121, Average Loss: 1.1629116388884457
-Epoch 122, Average Loss: 1.1550310535864396
-Epoch 123, Average Loss: 1.1581492738290267
-Epoch 124, Average Loss: 1.158476221561432
-Epoch 125, Average Loss: 1.1614776307886296
-Epoch 126, Average Loss: 1.1575686704028736
-Epoch 127, Average Loss: 1.1618938050486824
-Epoch 128, Average Loss: 1.1620031795718453
-Epoch 129, Average Loss: 1.1597038236531345
-Epoch 130, Average Loss: 1.1628466026349502
-Epoch 131, Average Loss: 1.158760524337942
-Epoch 132, Average Loss: 1.1628416088494387
-Epoch 133, Average Loss: 1.1603023599494586
-Epoch 134, Average Loss: 1.1653292233293706
-Epoch 135, Average Loss: 1.1570394418456338
-Epoch 136, Average Loss: 1.159251956506209
-Epoch 137, Average Loss: 1.15108516107906
-Epoch 138, Average Loss: 1.157251045920632
-Epoch 139, Average Loss: 1.1605818797241558
-Epoch 140, Average Loss: 1.162669566002759
-Epoch 141, Average Loss: 1.1601114251396873
-Epoch 142, Average Loss: 1.16759164983576
-Epoch 143, Average Loss: 1.1619377488439733
-Epoch 144, Average Loss: 1.1621505347165195
-Epoch 145, Average Loss: 1.1543098693544214
-Epoch 146, Average Loss: 1.1532247613776814
-Epoch 147, Average Loss: 1.1500764911825008
-Epoch 148, Average Loss: 1.1602625012397767
-Epoch 149, Average Loss: 1.1586852783506567
-Epoch 150, Average Loss: 1.1529835099523718
-Epoch 151, Average Loss: 1.1618636467240073
-Epoch 152, Average Loss: 1.1549416943029924
-Epoch 153, Average Loss: 1.1662258408286355
-Epoch 154, Average Loss: 1.1571188888766548
-Epoch 155, Average Loss: 1.1591200124133716
-Epoch 156, Average Loss: 1.1585772801529277
-Epoch 157, Average Loss: 1.1559988807548176
-Epoch 158, Average Loss: 1.1582237693396482
-Epoch 159, Average Loss: 1.1598566656762903
-Epoch 160, Average Loss: 1.150617011568763
-Epoch 161, Average Loss: 1.1551114580848
-Epoch 162, Average Loss: 1.1640103768218648
-Epoch 163, Average Loss: 1.160990835319866
-Epoch 164, Average Loss: 1.1596852134574542
-Epoch 165, Average Loss: 1.1487048609690234
-Epoch 166, Average Loss: 1.1591558082537217
-Epoch 167, Average Loss: 1.1607873385602778
-Epoch 168, Average Loss: 1.1556667615066876
-Epoch 169, Average Loss: 1.1585448243401266
-Epoch 170, Average Loss: 1.1581260957501152
-Epoch 171, Average Loss: 1.1559378802776337
-Epoch 172, Average Loss: 1.161676243760369
-Epoch 173, Average Loss: 1.158989368243651
-Epoch 174, Average Loss: 1.1545235828919844
-Epoch 175, Average Loss: 1.1571894456039775
-Epoch 176, Average Loss: 1.1542898205193606
-Epoch 177, Average Loss: 1.1522481392730366
-Epoch 178, Average Loss: 1.1551333757964048
-Epoch 179, Average Loss: 1.153004600243135
-Epoch 180, Average Loss: 1.1598306520418686
-Epoch 181, Average Loss: 1.162586285309358
-Epoch 182, Average Loss: 1.1609084183519536
-Epoch 183, Average Loss: 1.1571473636410452
-Epoch 184, Average Loss: 1.1611249522729354
-Epoch 185, Average Loss: 1.1568290174007416
-Epoch 186, Average Loss: 1.1532831658016551
-Epoch 187, Average Loss: 1.1452395493333989
-Epoch 188, Average Loss: 1.1520163557746195
-Epoch 189, Average Loss: 1.1546604254029014
-Epoch 190, Average Loss: 1.1602082713083788
-Epoch 191, Average Loss: 1.1623538266528737
-Epoch 192, Average Loss: 1.1638677071441303
-Epoch 193, Average Loss: 1.1488759859041735
-Epoch 194, Average Loss: 1.14711737036705
-Epoch 195, Average Loss: 1.1594428961927241
-Epoch 196, Average Loss: 1.1597402187910948
-Epoch 197, Average Loss: 1.1606087662956932
-Epoch 198, Average Loss: 1.1493876272981818
-Epoch 199, Average Loss: 1.1451929959383877
-Epoch 200, Average Loss: 1.1518649155443366
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1, Average Loss: 1.2292306038958967
+Epoch 2, Average Loss: 1.2296753338545807
+Epoch 3, Average Loss: 1.2113789906186505
+Epoch 4, Average Loss: 1.2123224966782185
+Epoch 5, Average Loss: 1.2134187822499551
+Epoch 6, Average Loss: 1.2100671367211775
+Epoch 7, Average Loss: 1.2046438445729657
+Epoch 8, Average Loss: 1.216528780696806
+Epoch 9, Average Loss: 1.2090119542169178
+Epoch 10, Average Loss: 1.204182753385591
+Epoch 11, Average Loss: 1.19694076096716
+Epoch 12, Average Loss: 1.2097524177929586
+Epoch 13, Average Loss: 1.2037021379825497
+Epoch 14, Average Loss: 1.2041516210422043
+Epoch 15, Average Loss: 1.2032628212093321
+Epoch 16, Average Loss: 1.1915799916283158
+Epoch 17, Average Loss: 1.191510959105058
+Epoch 18, Average Loss: 1.204029481273052
+Epoch 19, Average Loss: 1.1954617096372873
+Epoch 20, Average Loss: 1.1981768662279302
+Epoch 21, Average Loss: 1.2015780131678937
+Epoch 22, Average Loss: 1.2011014198468737
+Epoch 23, Average Loss: 1.195754015248669
+Epoch 24, Average Loss: 1.1914489850525027
+Epoch 25, Average Loss: 1.1945332929122547
+Epoch 26, Average Loss: 1.1859642592343418
+Epoch 27, Average Loss: 1.1900481729468038
+Epoch 28, Average Loss: 1.1984371597116643
+Epoch 29, Average Loss: 1.1915138644620407
+Epoch 30, Average Loss: 1.1930926890412639
+Epoch 31, Average Loss: 1.1906916233133678
+Epoch 32, Average Loss: 1.1895758549043955
+Epoch 33, Average Loss: 1.1972257815116694
+Epoch 34, Average Loss: 1.1903804575116181
+Epoch 35, Average Loss: 1.1944811595372917
+Epoch 36, Average Loss: 1.1970710424352284
+Epoch 37, Average Loss: 1.1916139130749979
+Epoch 38, Average Loss: 1.1847474373076572
+Epoch 39, Average Loss: 1.1924392846990224
+Epoch 40, Average Loss: 1.197125053602802
+Epoch 41, Average Loss: 1.1875630809255868
+Epoch 42, Average Loss: 1.1958131982275277
+Epoch 43, Average Loss: 1.1888317726860362
+Epoch 44, Average Loss: 1.1850869113748723
+Epoch 45, Average Loss: 1.1943016303472282
+Epoch 46, Average Loss: 1.1864741745073932
+Epoch 47, Average Loss: 1.1840156661577461
+Epoch 48, Average Loss: 1.1876781114861985
+Epoch 49, Average Loss: 1.1812076967609815
+Epoch 50, Average Loss: 1.1807344807080986
+Epoch 51, Average Loss: 1.1867172599824007
+Epoch 52, Average Loss: 1.184158510905652
+Epoch 53, Average Loss: 1.1861653234347824
+Epoch 54, Average Loss: 1.18255559324233
+Epoch 55, Average Loss: 1.187564582864115
+Epoch 56, Average Loss: 1.1790710707341343
+Epoch 57, Average Loss: 1.1837314874672693
+Epoch 58, Average Loss: 1.1867934169848102
+Epoch 59, Average Loss: 1.186100725300056
+Epoch 60, Average Loss: 1.1863626276165986
+Epoch 61, Average Loss: 1.1842943878213237
+Epoch 62, Average Loss: 1.1788255060014645
+Epoch 63, Average Loss: 1.189123210335566
+Epoch 64, Average Loss: 1.1844587252159748
+Epoch 65, Average Loss: 1.183324110409445
+Epoch 66, Average Loss: 1.1821246408233959
+Epoch 67, Average Loss: 1.1777123020700186
+Epoch 68, Average Loss: 1.1788903292545603
+Epoch 69, Average Loss: 1.186970629967934
+Epoch 70, Average Loss: 1.1829478819508197
+Epoch 71, Average Loss: 1.1873527243117656
+Epoch 72, Average Loss: 1.1788276197496526
+Epoch 73, Average Loss: 1.180316432448458
+Epoch 74, Average Loss: 1.1803383127716947
+Epoch 75, Average Loss: 1.1891687940960087
+Epoch 76, Average Loss: 1.1843605652328366
+Epoch 77, Average Loss: 1.17897569837649
+Epoch 78, Average Loss: 1.1766234498378658
+Epoch 79, Average Loss: 1.175462582387215
+Epoch 80, Average Loss: 1.1749394437498297
+Epoch 81, Average Loss: 1.1846170775161302
+Epoch 82, Average Loss: 1.1909018454472882
+Epoch 83, Average Loss: 1.1792369213971226
+Epoch 84, Average Loss: 1.1763497935838936
+Epoch 85, Average Loss: 1.1755769646857395
+Epoch 86, Average Loss: 1.1799335519144358
+Epoch 87, Average Loss: 1.181434384554871
+Epoch 88, Average Loss: 1.1844923865696615
+Epoch 89, Average Loss: 1.1836248995843999
+Epoch 90, Average Loss: 1.1798809003238835
+Epoch 91, Average Loss: 1.178152390748016
+Epoch 92, Average Loss: 1.178901397984875
+Epoch 93, Average Loss: 1.1763924128753094
+Epoch 94, Average Loss: 1.1776803554582203
+Epoch 95, Average Loss: 1.1745359493681222
+Epoch 96, Average Loss: 1.190951465575163
+Epoch 97, Average Loss: 1.168050891111705
+Epoch 98, Average Loss: 1.180815726272331
+Epoch 99, Average Loss: 1.179542955288217
+Epoch 100, Average Loss: 1.1771875082953902
+Epoch 101, Average Loss: 1.169836976804024
+Epoch 102, Average Loss: 1.1732540869515788
+Epoch 103, Average Loss: 1.1739061696470277
+Epoch 104, Average Loss: 1.1792582514857457
+Epoch 105, Average Loss: 1.1752005519945758
+Epoch 106, Average Loss: 1.1760616937944712
+Epoch 107, Average Loss: 1.170486671865479
+Epoch 108, Average Loss: 1.1782956773584539
+Epoch 109, Average Loss: 1.1726476963886545
+Epoch 110, Average Loss: 1.1795510324564846
+Epoch 111, Average Loss: 1.1746162230318242
+Epoch 112, Average Loss: 1.1758471683037182
+Epoch 113, Average Loss: 1.1813066552493199
+Epoch 114, Average Loss: 1.172285570093423
+Epoch 115, Average Loss: 1.176815803385963
+Epoch 116, Average Loss: 1.1789336785797244
+Epoch 117, Average Loss: 1.1769179090980655
+Epoch 118, Average Loss: 1.1783951860814055
+Epoch 119, Average Loss: 1.1832648427033228
+Epoch 120, Average Loss: 1.1782682405030431
+Epoch 121, Average Loss: 1.17259880925013
+Epoch 122, Average Loss: 1.1715694592018757
+Epoch 123, Average Loss: 1.1720148526932583
+Epoch 124, Average Loss: 1.1784934568996273
+Epoch 125, Average Loss: 1.1775894431043263
+Epoch 126, Average Loss: 1.1746587122767425
+Epoch 127, Average Loss: 1.1776675808528239
+Epoch 128, Average Loss: 1.1725553574640888
+Epoch 129, Average Loss: 1.177438148782273
+Epoch 130, Average Loss: 1.176710447496619
+Epoch 131, Average Loss: 1.1731141327826444
+Epoch 132, Average Loss: 1.1767307495282702
+Epoch 133, Average Loss: 1.1693934473124417
+Epoch 134, Average Loss: 1.1733752405347904
+Epoch 135, Average Loss: 1.1659849537305595
+Epoch 136, Average Loss: 1.179626563363824
+Epoch 137, Average Loss: 1.1743027917609727
+Epoch 138, Average Loss: 1.1785855022343723
+Epoch 139, Average Loss: 1.1783450354229321
+Epoch 140, Average Loss: 1.1774260229315638
+Epoch 141, Average Loss: 1.1715978881544318
+Epoch 142, Average Loss: 1.172811331335178
+Epoch 143, Average Loss: 1.1768728031599818
+Epoch 144, Average Loss: 1.1773389183785306
+Epoch 145, Average Loss: 1.1743187510277615
+Epoch 146, Average Loss: 1.1694534598303234
+Epoch 147, Average Loss: 1.1702861293288302
+Epoch 148, Average Loss: 1.1727704543712711
+Epoch 149, Average Loss: 1.176124067838527
+Epoch 150, Average Loss: 1.1815643192322787
+Epoch 151, Average Loss: 1.1782729832594059
+Epoch 152, Average Loss: 1.1701082518278074
+Epoch 153, Average Loss: 1.1694987559121501
+Epoch 154, Average Loss: 1.1757246812513051
+Epoch 155, Average Loss: 1.1738169045487712
+Epoch 156, Average Loss: 1.1750259355080028
+Epoch 157, Average Loss: 1.1777134389916728
+Epoch 158, Average Loss: 1.1760852149695404
+Epoch 159, Average Loss: 1.1643548263005974
+Epoch 160, Average Loss: 1.1709187139164319
+Epoch 161, Average Loss: 1.1754598174213378
+Epoch 162, Average Loss: 1.1712363441128375
+Epoch 163, Average Loss: 1.1688077036014273
+Epoch 164, Average Loss: 1.171680351919379
+Epoch 165, Average Loss: 1.167231542512405
+Epoch 166, Average Loss: 1.1670489754558595
+Epoch 167, Average Loss: 1.170683554873979
+Epoch 168, Average Loss: 1.1787078419992747
+Epoch 169, Average Loss: 1.171857633373954
+Epoch 170, Average Loss: 1.1711103881686187
+Epoch 171, Average Loss: 1.1698308936820543
+Epoch 172, Average Loss: 1.1775098812481588
+Epoch 173, Average Loss: 1.1744549757192944
+Epoch 174, Average Loss: 1.17041007644874
+Epoch 175, Average Loss: 1.17597955760877
+Epoch 176, Average Loss: 1.18260009525236
+Epoch 177, Average Loss: 1.1756152614089084
+Epoch 178, Average Loss: 1.1773499137113903
+Epoch 179, Average Loss: 1.17570225709726
+Epoch 180, Average Loss: 1.1799813922771738
+Epoch 181, Average Loss: 1.1755351079396965
+Epoch 182, Average Loss: 1.1673592575325453
+Epoch 183, Average Loss: 1.1690961984563466
+Epoch 184, Average Loss: 1.1743551965587395
+Epoch 185, Average Loss: 1.1734651322207175
+Epoch 186, Average Loss: 1.1740981872416725
+Epoch 187, Average Loss: 1.1676894603681958
+Epoch 188, Average Loss: 1.1670344974383835
+Epoch 189, Average Loss: 1.1741712733733753
+Epoch 190, Average Loss: 1.1770059106763728
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 191, Average Loss: 1.1694683334058966
+Epoch 192, Average Loss: 1.167220690526253
+Epoch 193, Average Loss: 1.1743362151886807
+Epoch 194, Average Loss: 1.1695056434505242
+Epoch 195, Average Loss: 1.1659075292673977
+Epoch 196, Average Loss: 1.180610185319727
+Epoch 197, Average Loss: 1.1654542231362712
+Epoch 198, Average Loss: 1.1696561141447588
+Epoch 199, Average Loss: 1.1685029637715048
+Epoch 200, Average Loss: 1.1642742590470747
 </pre></div>
 </div>
 </div>
@@ -874,21 +902,22 @@ Epoch 200, Average Loss: 1.1518649155443366
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ritãperdas
-Rãlantas
-Rãtardas
-Ripõnas
-Rìlmiktẽras
-Rárvydas
-Rìnis
-Rarntìndas
-Rusktaugas
-Rĩšvas
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rãšmaus
+Ralionijus
+Raydòlonas
+Rãvijus
+Reonaldas
+Rijuas
+Ror
+Raĩslãkas
+Rìrmoldas
+Rõviudas
 </pre></div>
 </div>
 </div>
 </div>
 <p>If we want the model to be more creative we can add temperature/creativity control.</p>
+<p><strong>Question:</strong> does temparature increase or decrease model creativity? What is min/max value?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">start_str</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
@@ -933,49 +962,43 @@ Rĩšvas
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>More confident:
-  Rìnartas
-  Rèntas
-  Rĩgis
-  Rùrìldas
-  Ròrijus
-  Rìnis
-  Rarìtas
-  Rėnas
-  Relinijus
-  Rìnijus
+  Reraras
+  Raugìlas
+  Raũtas
+  Ravìmas
+  Rìlijus
+  Rãtas
+  Rìlius
+  Reris
+  Rãgas
+  Rìlijus
 
 More diverse/creative:
-  Rūdrìmildas
-  Ratėnas
-  Revýdridas
-  Rõr̃mijus
-  Rýgmas
-  Ròtotrdas
-  Rãan
-  Riguòmas
-  Ridmistis
-  Rìrhez
+  Rntemijus
+  Rimtžvaus
+  Romènis
+  Romūdiutas
+  Ruolienas
+  Rẽdỹjuis
+  Reapẽndas
+  Rū̃drans
+  Rivì
+  Rámìk
 </pre></div>
 </div>
 </div>
 </div>
 <p>Here we go, we have a Lithuanian name generator!</p>
+<p>Next we can save the model and with some help from ChatGPT build a simple <a class="reference external" href="https://streamlit.io/">Streamlit</a> app (https://namesformer.streamlit.app/).</p>
+<p><strong>TASK:</strong> add female names to the dataset, retrain the model (or make a 2nd one) and create your own Streamlit app (you do not need to have names leaderboard, that requires a database). Any improvement are welcome.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
-
-<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;../namesformer_app/namesformer_model.pt&#39;</span><span class="p">)</span>
-    
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../namesformer_app/int_to_char.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">int_to_char</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../namesformer_app/char_to_int.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">char_to_int</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;namesformer_model.pt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -989,7 +1012,7 @@ More diverse/creative:
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            kernelName: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -997,90 +1020,50 @@ More diverse/creative:
     </script>
     <script>kernelName = 'python3'</script>
 
-                </article>
+              </div>
               
-
-              
-              
-              
-              
-                <footer class="prev-next-footer">
-                  
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="Attention.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Attention</p>
-      </div>
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Attention.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Attention</p>
+        </div>
     </a>
-    <a class="right-next"
-       href="Varia.html"
-       title="next page">
-      <div class="prev-next-info">
+    <a class='right-next' id="next-link" href="Varia.html" title="next page">
+    <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Varia</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
-                </footer>
-              
-            </div>
-            
-            
-              
-                <div class="bd-sidebar-secondary bd-toc"></div>
-              
-            
-          </div>
-          <footer class="bd-footer-content">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-<p class="component-author">
-By trokas
-</p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-
-  <p class="copyright">
-    
-      © Copyright MIF, 2023.
-      <br/>
-    
-  </p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-</div>
-          </footer>
-        
-
-      </main>
+            </footer>
+        </div>
     </div>
-  </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By trokas<br/>
+  
+      &copy; Copyright MIF, 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <footer class="bd-footer">
-  </footer>
+
   </body>
 </html>
