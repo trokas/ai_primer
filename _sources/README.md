@@ -1,7 +1,5 @@
 # Welcome to AI primer course
 
-Last updated: 2024-10-04
-
 [INTERACTIVE BOOK LINK](https://trokas.github.io/ai_primer/README.html)
 
 Main aim of this course is to give you enough information so that you can start exploring field of AI on your own and maybe even start searching for DS role.

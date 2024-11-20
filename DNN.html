@@ -558,71 +558,9 @@ title="Print to PDF"
 <p>For regression task it is common to use MSE loss <span class="math notranslate nohighlight">\((\hat{y} - y)^2\)</span>. It’s derivative is just <span class="math notranslate nohighlight">\(2(\hat{y} - y)\)</span>, thus we get</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.        , 0.01010101, 0.02020202, 0.03030303, 0.04040404,
-       0.05050505, 0.06060606, 0.07070707, 0.08080808, 0.09090909,
-       0.1010101 , 0.11111111, 0.12121212, 0.13131313, 0.14141414,
-       0.15151515, 0.16161616, 0.17171717, 0.18181818, 0.19191919,
-       0.2020202 , 0.21212121, 0.22222222, 0.23232323, 0.24242424,
-       0.25252525, 0.26262626, 0.27272727, 0.28282828, 0.29292929,
-       0.3030303 , 0.31313131, 0.32323232, 0.33333333, 0.34343434,
-       0.35353535, 0.36363636, 0.37373737, 0.38383838, 0.39393939,
-       0.4040404 , 0.41414141, 0.42424242, 0.43434343, 0.44444444,
-       0.45454545, 0.46464646, 0.47474747, 0.48484848, 0.49494949,
-       0.50505051, 0.51515152, 0.52525253, 0.53535354, 0.54545455,
-       0.55555556, 0.56565657, 0.57575758, 0.58585859, 0.5959596 ,
-       0.60606061, 0.61616162, 0.62626263, 0.63636364, 0.64646465,
-       0.65656566, 0.66666667, 0.67676768, 0.68686869, 0.6969697 ,
-       0.70707071, 0.71717172, 0.72727273, 0.73737374, 0.74747475,
-       0.75757576, 0.76767677, 0.77777778, 0.78787879, 0.7979798 ,
-       0.80808081, 0.81818182, 0.82828283, 0.83838384, 0.84848485,
-       0.85858586, 0.86868687, 0.87878788, 0.88888889, 0.8989899 ,
-       0.90909091, 0.91919192, 0.92929293, 0.93939394, 0.94949495,
-       0.95959596, 0.96969697, 0.97979798, 0.98989899, 1.        ])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.        , 2.05050505, 2.1010101 , 2.15151515, 2.2020202 ,
-       2.25252525, 2.3030303 , 2.35353535, 2.4040404 , 2.45454545,
-       2.50505051, 2.55555556, 2.60606061, 2.65656566, 2.70707071,
-       2.75757576, 2.80808081, 2.85858586, 2.90909091, 2.95959596,
-       3.01010101, 3.06060606, 3.11111111, 3.16161616, 3.21212121,
-       3.26262626, 3.31313131, 3.36363636, 3.41414141, 3.46464646,
-       3.51515152, 3.56565657, 3.61616162, 3.66666667, 3.71717172,
-       3.76767677, 3.81818182, 3.86868687, 3.91919192, 3.96969697,
-       4.02020202, 4.07070707, 4.12121212, 4.17171717, 4.22222222,
-       4.27272727, 4.32323232, 4.37373737, 4.42424242, 4.47474747,
-       4.52525253, 4.57575758, 4.62626263, 4.67676768, 4.72727273,
-       4.77777778, 4.82828283, 4.87878788, 4.92929293, 4.97979798,
-       5.03030303, 5.08080808, 5.13131313, 5.18181818, 5.23232323,
-       5.28282828, 5.33333333, 5.38383838, 5.43434343, 5.48484848,
-       5.53535354, 5.58585859, 5.63636364, 5.68686869, 5.73737374,
-       5.78787879, 5.83838384, 5.88888889, 5.93939394, 5.98989899,
-       6.04040404, 6.09090909, 6.14141414, 6.19191919, 6.24242424,
-       6.29292929, 6.34343434, 6.39393939, 6.44444444, 6.49494949,
-       6.54545455, 6.5959596 , 6.64646465, 6.6969697 , 6.74747475,
-       6.7979798 , 6.84848485, 6.8989899 , 6.94949495, 7.        ])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>     <span class="c1"># initial values</span>
-<span class="n">epochs</span> <span class="o">=</span> <span class="mi">2000</span>
-<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.009</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
 
 <span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>   <span class="c1"># storage for k and b through training</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
@@ -641,7 +579,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_8_0.png" src="_images/DNN_8_0.png" />
+<img alt="_images/DNN_5_0.png" src="_images/DNN_5_0.png" />
 </div>
 </div>
 <p>Note, that gradient descent is sensitive to the step size. We will meet some solutions to this problem in the future.</p>
@@ -708,13 +646,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_15_0.png" src="_images/DNN_15_0.png" />
+<img alt="_images/DNN_12_0.png" src="_images/DNN_12_0.png" />
 </div>
 </div>
 <p>We will work only with two class case for now, thus let’s change the labels by leaving one class and treating all other points as a second class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CLASS</span> <span class="o">=</span> <span class="s1">&#39;versicolor&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CLASS</span> <span class="o">=</span> <span class="s1">&#39;setosa&#39;</span>
 
 <span class="c1"># Prepare data for 2 class test</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">CLASS</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
@@ -735,19 +673,11 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Now we are ready to try our Perceptron.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
 
 <span class="c1"># Initial weights between 0 and 1</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
@@ -767,7 +697,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hit rate (train set) - 34.29%, Hit rate (test set) - 35.56%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hit rate (train set) - 100.00%, Hit rate (test set) - 100.00%
 </pre></div>
 </div>
 </div>
@@ -818,42 +748,6 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(150, 5)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W_0</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5, 4)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W_1</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 1)
-</pre></div>
-</div>
-</div>
-</div>
 <p>Following code implements <strong>back propagation</strong> using gradient descent.</p>
 <img src="https://kratzert.github.io/images/bn_backpass/chainrule_example.PNG" style="width: 80%"/>
 <p>Note, that gradient shows how much the result will change if the input is increased by 1 unit, for example:</p>
@@ -879,7 +773,7 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hit rate (train set) - 97.14%, Hit rate (test set) - 95.56%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hit rate (train set) - 100.00%, Hit rate (test set) - 100.00%
 </pre></div>
 </div>
 </div>
@@ -904,6 +798,64 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+Failed to download (trying next):
+HTTP Error 403: Forbidden
+
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/train-images-idx3-ubyte.gz
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/train-images-idx3-ubyte.gz to ./data/MNIST/raw/train-images-idx3-ubyte.gz
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████| 9912422/9912422 [00:01&lt;00:00, 5868634.23it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./data/MNIST/raw/train-images-idx3-ubyte.gz to ./data/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+Failed to download (trying next):
+HTTP Error 403: Forbidden
+
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/train-labels-idx1-ubyte.gz
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/train-labels-idx1-ubyte.gz to ./data/MNIST/raw/train-labels-idx1-ubyte.gz
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████| 28881/28881 [00:00&lt;00:00, 246837.89it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./data/MNIST/raw/train-labels-idx1-ubyte.gz to ./data/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+Failed to download (trying next):
+HTTP Error 403: Forbidden
+
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-images-idx3-ubyte.gz
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw/t10k-images-idx3-ubyte.gz
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████| 1648877/1648877 [00:00&lt;00:00, 2335037.73it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./data/MNIST/raw/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+Failed to download (trying next):
+HTTP Error 403: Forbidden
+
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-labels-idx1-ubyte.gz
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████| 4542/4542 [00:00&lt;00:00, 1174580.97it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -934,7 +886,7 @@ It turns out that some of the limitations of Perceptrons can be eliminated by st
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_36_0.png" src="_images/DNN_36_0.png" />
+<img alt="_images/DNN_29_0.png" src="_images/DNN_29_0.png" />
 </div>
 </div>
 <p>Before jumping to PyTorch let’s see of how this would look like if we try to build it from scratch.</p>
@@ -1039,8 +991,8 @@ Running epoch 18
 Hit rate (train set) - 97.82%, Hit rate (test set) - 96.00%
 Running epoch 19
 Hit rate (train set) - 97.94%, Hit rate (test set) - 96.02%
-CPU times: user 2min 4s, sys: 20.7 s, total: 2min 25s
-Wall time: 20.2 s
+CPU times: user 2min 1s, sys: 7.75 s, total: 2min 9s
+Wall time: 17.9 s
 </pre></div>
 </div>
 </div>
@@ -1099,8 +1051,8 @@ Wall time: 20.2 s
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUDA is not available.
-Matrix multiplication on GPU took 0.0045 seconds.
-Matrix multiplication on CPU took 0.1868 seconds.
+Matrix multiplication on GPU took 0.0037 seconds.
+Matrix multiplication on CPU took 0.1748 seconds.
 </pre></div>
 </div>
 </div>
@@ -1217,8 +1169,8 @@ Running epoch 18
 Hit rate (train set) - 97.91%, Hit rate (test set) - 95.95%
 Running epoch 19
 Hit rate (train set) - 98.01%, Hit rate (test set) - 95.97%
-CPU times: user 2.61 s, sys: 984 ms, total: 3.59 s
-Wall time: 2.72 s
+CPU times: user 2.57 s, sys: 1.04 s, total: 3.61 s
+Wall time: 2.66 s
 </pre></div>
 </div>
 </div>
@@ -1243,28 +1195,16 @@ Wall time: 2.72 s
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Net</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
         
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">x</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="o">=</span> <span class="n">Net</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -1281,13 +1221,13 @@ Wall time: 2.72 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/71/2t6j6ytn1t3dfp5dxb9zhh6w0000gn/T/ipykernel_3232/2847555845.py:1: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/71/2t6j6ytn1t3dfp5dxb9zhh6w0000gn/T/ipykernel_2174/2847555845.py:1: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
   train_dataset = torch.utils.data.TensorDataset(torch.tensor(X_train, dtype=torch.float32),
-/var/folders/71/2t6j6ytn1t3dfp5dxb9zhh6w0000gn/T/ipykernel_3232/2847555845.py:2: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+/var/folders/71/2t6j6ytn1t3dfp5dxb9zhh6w0000gn/T/ipykernel_2174/2847555845.py:2: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
   torch.tensor(y_train, dtype=torch.int64))
-/var/folders/71/2t6j6ytn1t3dfp5dxb9zhh6w0000gn/T/ipykernel_3232/2847555845.py:4: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+/var/folders/71/2t6j6ytn1t3dfp5dxb9zhh6w0000gn/T/ipykernel_2174/2847555845.py:4: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
   test_dataset = torch.utils.data.TensorDataset(torch.tensor(X_test, dtype=torch.float32),
-/var/folders/71/2t6j6ytn1t3dfp5dxb9zhh6w0000gn/T/ipykernel_3232/2847555845.py:5: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+/var/folders/71/2t6j6ytn1t3dfp5dxb9zhh6w0000gn/T/ipykernel_2174/2847555845.py:5: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
   torch.tensor(y_test, dtype=torch.int64))
 </pre></div>
 </div>
@@ -1320,26 +1260,26 @@ Wall time: 2.72 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 0 loss 2.2455
-Epoch 1 loss 2.0814
-Epoch 2 loss 1.8348
-Epoch 3 loss 1.5478
-Epoch 4 loss 1.3011
-Epoch 5 loss 1.1163
-Epoch 6 loss 0.9803
-Epoch 7 loss 0.8773
-Epoch 8 loss 0.7973
-Epoch 9 loss 0.7335
-Epoch 10 loss 0.6816
-Epoch 11 loss 0.6392
-Epoch 12 loss 0.6031
-Epoch 13 loss 0.5728
-Epoch 14 loss 0.5466
-Epoch 15 loss 0.5243
-Epoch 16 loss 0.5046
-Epoch 17 loss 0.4878
-Epoch 18 loss 0.4727
-Epoch 19 loss 0.4585
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 0 loss 2.1960
+Epoch 1 loss 1.3783
+Epoch 2 loss 0.6811
+Epoch 3 loss 0.5033
+Epoch 4 loss 0.4295
+Epoch 5 loss 0.3898
+Epoch 6 loss 0.3658
+Epoch 7 loss 0.3479
+Epoch 8 loss 0.3339
+Epoch 9 loss 0.3225
+Epoch 10 loss 0.3124
+Epoch 11 loss 0.3024
+Epoch 12 loss 0.2933
+Epoch 13 loss 0.2848
+Epoch 14 loss 0.2772
+Epoch 15 loss 0.2702
+Epoch 16 loss 0.2630
+Epoch 17 loss 0.2564
+Epoch 18 loss 0.2497
+Epoch 19 loss 0.2437
 </pre></div>
 </div>
 </div>
@@ -1368,8 +1308,8 @@ Epoch 19 loss 0.4585
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hit rate train - 88.60%
-Hit rate test - 89.10%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hit rate train - 93.17%
+Hit rate test - 93.15%
 </pre></div>
 </div>
 </div>
@@ -1395,7 +1335,7 @@ Hit rate test - 89.10%
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_57_0.png" src="_images/DNN_57_0.png" />
+<img alt="_images/DNN_48_0.png" src="_images/DNN_48_0.png" />
 </div>
 </div>
 <p>Let’s look only at misclassifiesd cases.</p>
@@ -1414,7 +1354,7 @@ Hit rate test - 89.10%
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/DNN_59_0.png" src="_images/DNN_59_0.png" />
+<img alt="_images/DNN_50_0.png" src="_images/DNN_50_0.png" />
 </div>
 </div>
 <p>As you might remember Random Forest achieved similar accuracy so why do we need NN then? Well, let’s try to increse number of parameters in our network.</p>
@@ -1431,23 +1371,11 @@ Hit rate test - 89.10%
         
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc4</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">x</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1073741824
 </pre></div>
 </div>
 </div>
@@ -1516,65 +1444,65 @@ Hit rate test - 89.10%
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 0, Loss: 2.2736, Training Accuracy: 35.30%
-Validation Loss: 2.2207, Validation Accuracy: 58.30%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 0, Loss: 2.2732, Training Accuracy: 37.59%
+Validation Loss: 2.2198, Validation Accuracy: 56.37%
 
-Epoch 1, Loss: 1.9658, Training Accuracy: 61.32%
-Validation Loss: 1.4096, Validation Accuracy: 67.55%
+Epoch 1, Loss: 1.9510, Training Accuracy: 62.12%
+Validation Loss: 1.3691, Validation Accuracy: 70.38%
 
-Epoch 2, Loss: 0.9266, Training Accuracy: 76.43%
-Validation Loss: 0.6412, Validation Accuracy: 81.65%
+Epoch 2, Loss: 0.9060, Training Accuracy: 77.11%
+Validation Loss: 0.6266, Validation Accuracy: 82.52%
 
-Epoch 3, Loss: 0.5516, Training Accuracy: 84.47%
-Validation Loss: 0.4663, Validation Accuracy: 86.38%
+Epoch 3, Loss: 0.5425, Training Accuracy: 85.06%
+Validation Loss: 0.4530, Validation Accuracy: 86.88%
 
-Epoch 4, Loss: 0.4372, Training Accuracy: 87.66%
-Validation Loss: 0.3900, Validation Accuracy: 88.41%
+Epoch 4, Loss: 0.4291, Training Accuracy: 87.86%
+Validation Loss: 0.3920, Validation Accuracy: 88.36%
 
-Epoch 5, Loss: 0.3816, Training Accuracy: 89.09%
-Validation Loss: 0.3520, Validation Accuracy: 89.64%
+Epoch 5, Loss: 0.3785, Training Accuracy: 89.25%
+Validation Loss: 0.3495, Validation Accuracy: 89.78%
 
-Epoch 6, Loss: 0.3482, Training Accuracy: 90.13%
-Validation Loss: 0.3363, Validation Accuracy: 90.27%
+Epoch 6, Loss: 0.3481, Training Accuracy: 90.11%
+Validation Loss: 0.3280, Validation Accuracy: 90.64%
 
-Epoch 7, Loss: 0.3234, Training Accuracy: 90.75%
-Validation Loss: 0.2993, Validation Accuracy: 91.12%
+Epoch 7, Loss: 0.3263, Training Accuracy: 90.80%
+Validation Loss: 0.3109, Validation Accuracy: 90.88%
 
-Epoch 8, Loss: 0.3036, Training Accuracy: 91.36%
-Validation Loss: 0.2819, Validation Accuracy: 91.56%
+Epoch 8, Loss: 0.3068, Training Accuracy: 91.32%
+Validation Loss: 0.2898, Validation Accuracy: 91.76%
 
-Epoch 9, Loss: 0.2858, Training Accuracy: 91.81%
-Validation Loss: 0.2666, Validation Accuracy: 92.02%
+Epoch 9, Loss: 0.2904, Training Accuracy: 91.84%
+Validation Loss: 0.2758, Validation Accuracy: 91.98%
 
-Epoch 10, Loss: 0.2704, Training Accuracy: 92.25%
-Validation Loss: 0.2558, Validation Accuracy: 92.54%
+Epoch 10, Loss: 0.2750, Training Accuracy: 92.17%
+Validation Loss: 0.2614, Validation Accuracy: 92.61%
 
-Epoch 11, Loss: 0.2561, Training Accuracy: 92.73%
-Validation Loss: 0.2395, Validation Accuracy: 93.15%
+Epoch 11, Loss: 0.2611, Training Accuracy: 92.63%
+Validation Loss: 0.2493, Validation Accuracy: 92.98%
 
-Epoch 12, Loss: 0.2436, Training Accuracy: 93.08%
-Validation Loss: 0.2423, Validation Accuracy: 92.81%
+Epoch 12, Loss: 0.2477, Training Accuracy: 93.01%
+Validation Loss: 0.2386, Validation Accuracy: 92.94%
 
-Epoch 13, Loss: 0.2312, Training Accuracy: 93.42%
-Validation Loss: 0.2204, Validation Accuracy: 93.69%
+Epoch 13, Loss: 0.2350, Training Accuracy: 93.31%
+Validation Loss: 0.2307, Validation Accuracy: 93.13%
 
-Epoch 14, Loss: 0.2196, Training Accuracy: 93.73%
-Validation Loss: 0.2076, Validation Accuracy: 93.94%
+Epoch 14, Loss: 0.2230, Training Accuracy: 93.65%
+Validation Loss: 0.2169, Validation Accuracy: 93.61%
 
-Epoch 15, Loss: 0.2092, Training Accuracy: 94.02%
-Validation Loss: 0.1980, Validation Accuracy: 94.14%
+Epoch 15, Loss: 0.2120, Training Accuracy: 93.97%
+Validation Loss: 0.2025, Validation Accuracy: 94.01%
 
-Epoch 16, Loss: 0.1990, Training Accuracy: 94.38%
-Validation Loss: 0.1894, Validation Accuracy: 94.28%
+Epoch 16, Loss: 0.2016, Training Accuracy: 94.24%
+Validation Loss: 0.1947, Validation Accuracy: 94.19%
 
-Epoch 17, Loss: 0.1896, Training Accuracy: 94.59%
-Validation Loss: 0.1799, Validation Accuracy: 94.70%
+Epoch 17, Loss: 0.1924, Training Accuracy: 94.53%
+Validation Loss: 0.1867, Validation Accuracy: 94.47%
 
-Epoch 18, Loss: 0.1811, Training Accuracy: 94.79%
-Validation Loss: 0.1780, Validation Accuracy: 94.79%
+Epoch 18, Loss: 0.1834, Training Accuracy: 94.83%
+Validation Loss: 0.1784, Validation Accuracy: 94.74%
 
-Epoch 19, Loss: 0.1725, Training Accuracy: 95.07%
-Validation Loss: 0.1656, Validation Accuracy: 95.08%
+Epoch 19, Loss: 0.1754, Training Accuracy: 95.04%
+Validation Loss: 0.1722, Validation Accuracy: 94.87%
 </pre></div>
 </div>
 </div>
@@ -1655,7 +1583,7 @@ N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1747708b0&gt;
 </pre></div>
 </div>
-<img alt="_images/DNN_67_1.png" src="_images/DNN_67_1.png" />
+<img alt="_images/DNN_57_1.png" src="_images/DNN_57_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1680,7 +1608,7 @@ N_a(x, A) = &amp; \sum_{j=0}^{n-1} (f_j - f_{j+1}) \sigma \left( \frac{-2Ax}{x_{
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x3068d50d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/DNN_68_1.png" src="_images/DNN_68_1.png" />
+<img alt="_images/DNN_58_1.png" src="_images/DNN_58_1.png" />
 </div>
 </div>
 </div>

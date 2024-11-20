@@ -557,7 +557,7 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100  9217  100  9217    0     0  16147      0 --:--:-- --:--:-- --:--:--     0:--:-- --:--:-- 16141
+100  9217  100  9217    0     0  33602      0 --:--:-- --:--:-- --:--:-- 33638
 </pre></div>
 </div>
 </div>
@@ -586,20 +586,12 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="o">/</span> <span class="mi">25</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">apply_filter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">F</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.04 0.04 0.04 0.04 0.04]
- [0.04 0.04 0.04 0.04 0.04]
- [0.04 0.04 0.04 0.04 0.04]
- [0.04 0.04 0.04 0.04 0.04]
- [0.04 0.04 0.04 0.04 0.04]]
-</pre></div>
-</div>
-<img alt="_images/CNN_6_1.png" src="_images/CNN_6_1.png" />
+<img alt="_images/CNN_6_0.png" src="_images/CNN_6_0.png" />
 </div>
 </div>
 </div>
@@ -673,74 +665,14 @@ title="Print to PDF"
 <p>CNN’s in PyTorch do exactly the same thing as we did above, for example let’s replicate line detection filter. First let’s inititialize convolutional layer and pass input just to make sure that it works with random weights. Note that we need to add some axes to make it work.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">X_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">X_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">conv</span><span class="p">(</span><span class="n">X_tensor</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(torch.Size([1, 312, 198]), torch.Size([10, 310, 196]))
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conv</span><span class="o">.</span><span class="n">weight</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
-tensor([[[[-0.1508, -0.0464, -0.1354],
-          [-0.1364, -0.2361,  0.0743],
-          [-0.0529, -0.2670,  0.0117]]],
-
-
-        [[[ 0.2436,  0.2759, -0.0394],
-          [-0.1646,  0.0078, -0.2532],
-          [-0.1980, -0.2158, -0.1192]]],
-
-
-        [[[ 0.2487, -0.1921, -0.1824],
-          [ 0.1712,  0.1333,  0.2521],
-          [ 0.2487,  0.2421, -0.0135]]],
-
-
-        [[[-0.1914, -0.1077,  0.1180],
-          [-0.2315,  0.2364,  0.2931],
-          [ 0.0320, -0.1036, -0.1810]]],
-
-
-        [[[ 0.0436,  0.1452, -0.2886],
-          [ 0.0277,  0.1534,  0.1859],
-          [-0.1660, -0.1428,  0.0566]]],
-
-
-        [[[-0.0977,  0.2159, -0.0009],
-          [-0.2093, -0.0161, -0.3230],
-          [-0.2472,  0.2128, -0.2956]]],
-
-
-        [[[-0.0464, -0.1098, -0.2199],
-          [ 0.2786, -0.2222, -0.2046],
-          [-0.3178,  0.0072,  0.2969]]],
-
-
-        [[[-0.1137,  0.2458, -0.1020],
-          [-0.2607,  0.3000, -0.1036],
-          [-0.1834, -0.2743,  0.1842]]],
-
-
-        [[[ 0.3141, -0.0553, -0.0741],
-          [ 0.2399,  0.1454,  0.2185],
-          [-0.1679, -0.3031, -0.0151]]],
-
-
-        [[[ 0.1809,  0.2500,  0.2039],
-          [-0.0437,  0.0701,  0.2265],
-          [ 0.3121, -0.2858,  0.1196]]]], requires_grad=True)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(torch.Size([1, 312, 198]), torch.Size([1, 310, 196]))
 </pre></div>
 </div>
 </div>
@@ -768,7 +700,7 @@ tensor([[[[-0.1508, -0.0464, -0.1354],
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_20_0.png" src="_images/CNN_20_0.png" />
+<img alt="_images/CNN_19_0.png" src="_images/CNN_19_0.png" />
 </div>
 </div>
 </div>
@@ -851,16 +783,16 @@ tensor([[[[-0.1508, -0.0464, -0.1354],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1, Loss: 0.6482619126833705
-Epoch 2, Loss: 0.28690067095670113
-Epoch 3, Loss: 0.22519314378849478
-Epoch 4, Loss: 0.184173308003114
-Epoch 5, Loss: 0.15617873830033707
-Epoch 6, Loss: 0.13419466763774532
-Epoch 7, Loss: 0.11694671276873395
-Epoch 8, Loss: 0.10290440029180697
-Epoch 9, Loss: 0.09305142814210102
-Epoch 10, Loss: 0.08319734508044589
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1, Loss: 0.6591604269866241
+Epoch 2, Loss: 0.2890638561883588
+Epoch 3, Loss: 0.2289492787439813
+Epoch 4, Loss: 0.18390724537119682
+Epoch 5, Loss: 0.15293520742229053
+Epoch 6, Loss: 0.1306728734148305
+Epoch 7, Loss: 0.11406803670635166
+Epoch 8, Loss: 0.10008440609735403
+Epoch 9, Loss: 0.08983678015163427
+Epoch 10, Loss: 0.0814937459620665
 </pre></div>
 </div>
 </div>
@@ -876,7 +808,7 @@ Epoch 10, Loss: 0.08319734508044589
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_27_0.png" src="_images/CNN_27_0.png" />
+<img alt="_images/CNN_26_0.png" src="_images/CNN_26_0.png" />
 </div>
 </div>
 <p><em>Reminder:</em> using FCN we had 96.36% on test set.</p>
@@ -958,7 +890,7 @@ Epoch 10, Loss: 0.08319734508044589
 
 <span class="c1"># Loss function and optimizer</span>
 <span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">3e-4</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adadelta</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1138,7 +1070,7 @@ Epoch 10, Loss: 0.08319734508044589
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_39_0.png" src="_images/CNN_39_0.png" />
+<img alt="_images/CNN_38_0.png" src="_images/CNN_38_0.png" />
 </div>
 </div>
 <p>As you can see task can not be solved by a trivial thresholding. It would require some clever tricks to come up with an algorithm to achieve the desired result. Let’s instead try to achieve that using a model.</p>
@@ -1286,7 +1218,7 @@ Epoch 20, Loss: 0.07364819198846817
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/CNN_46_0.png" src="_images/CNN_46_0.png" />
+<img alt="_images/CNN_45_0.png" src="_images/CNN_45_0.png" />
 </div>
 </div>
 <p>U-Nets are known to work pretty well with limites datasets and as you can see it worked out really nicely here.</p>

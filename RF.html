@@ -726,7 +726,10 @@ When we transmit one bit of information we reduce recipients uncertainty by the 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>PCA(n_components=2)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">PCA</label><div class="sk-toggleable__content"><pre>PCA(n_components=2)</pre></div></div></div></div></div></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA(n_components=2)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -764,172 +767,6 @@ When we transmit one bit of information we reduce recipients uncertainty by the 
 <li><p>Decision Trees can easily over-fit if there is high number of columns!</p></li>
 </ul>
 <p>Let’s try this out on iris dataset. First we will need to make train/test split.</p>
-<p>Let’s fit entropy based tree on iris dataset.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal length (cm)&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal width (cm)&#39;</span><span class="p">]</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal length (cm)&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal width (cm)&#39;</span><span class="p">]</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal area&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal area&#39;</span><span class="p">]</span>
-<span class="n">df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>sepal length (cm)</th>
-      <th>sepal width (cm)</th>
-      <th>petal length (cm)</th>
-      <th>petal width (cm)</th>
-      <th>class</th>
-      <th>sepal area</th>
-      <th>petal area</th>
-      <th>rate</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>5.1</td>
-      <td>3.5</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
-      <td>17.85</td>
-      <td>0.28</td>
-      <td>63.750000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4.9</td>
-      <td>3.0</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
-      <td>14.70</td>
-      <td>0.28</td>
-      <td>52.500000</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>4.7</td>
-      <td>3.2</td>
-      <td>1.3</td>
-      <td>0.2</td>
-      <td>setosa</td>
-      <td>15.04</td>
-      <td>0.26</td>
-      <td>57.846154</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4.6</td>
-      <td>3.1</td>
-      <td>1.5</td>
-      <td>0.2</td>
-      <td>setosa</td>
-      <td>14.26</td>
-      <td>0.30</td>
-      <td>47.533333</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5.0</td>
-      <td>3.6</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
-      <td>18.00</td>
-      <td>0.28</td>
-      <td>64.285714</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>145</th>
-      <td>6.7</td>
-      <td>3.0</td>
-      <td>5.2</td>
-      <td>2.3</td>
-      <td>virginica</td>
-      <td>20.10</td>
-      <td>11.96</td>
-      <td>1.680602</td>
-    </tr>
-    <tr>
-      <th>146</th>
-      <td>6.3</td>
-      <td>2.5</td>
-      <td>5.0</td>
-      <td>1.9</td>
-      <td>virginica</td>
-      <td>15.75</td>
-      <td>9.50</td>
-      <td>1.657895</td>
-    </tr>
-    <tr>
-      <th>147</th>
-      <td>6.5</td>
-      <td>3.0</td>
-      <td>5.2</td>
-      <td>2.0</td>
-      <td>virginica</td>
-      <td>19.50</td>
-      <td>10.40</td>
-      <td>1.875000</td>
-    </tr>
-    <tr>
-      <th>148</th>
-      <td>6.2</td>
-      <td>3.4</td>
-      <td>5.4</td>
-      <td>2.3</td>
-      <td>virginica</td>
-      <td>21.08</td>
-      <td>12.42</td>
-      <td>1.697262</td>
-    </tr>
-    <tr>
-      <th>149</th>
-      <td>5.9</td>
-      <td>3.0</td>
-      <td>5.1</td>
-      <td>1.8</td>
-      <td>virginica</td>
-      <td>17.70</td>
-      <td>9.18</td>
-      <td>1.928105</td>
-    </tr>
-  </tbody>
-</table>
-<p>150 rows × 8 columns</p>
-</div></div></div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -941,6 +778,7 @@ When we transmit one bit of information we reduce recipients uncertainty by the 
 </div>
 </div>
 </div>
+<p>Let’s fit entropy based tree on iris dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">max_depth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
@@ -971,19 +809,19 @@ Tree for max_dept = 1
 Correctly identified on train set - 64.76%, on test set - 71.11%
 </pre></div>
 </div>
-<img alt="_images/RF_14_1.svg" src="_images/RF_14_1.svg" /><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
+<img alt="_images/RF_13_1.svg" src="_images/RF_13_1.svg" /><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
 Tree for max_dept = 2
 
-Correctly identified on train set - 97.14%, on test set - 97.78%
+Correctly identified on train set - 94.29%, on test set - 100.00%
 </pre></div>
 </div>
-<img alt="_images/RF_14_3.svg" src="_images/RF_14_3.svg" /><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
+<img alt="_images/RF_13_3.svg" src="_images/RF_13_3.svg" /><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------
 Tree for max_dept = 3
 
-Correctly identified on train set - 97.14%, on test set - 97.78%
+Correctly identified on train set - 95.24%, on test set - 97.78%
 </pre></div>
 </div>
-<img alt="_images/RF_14_5.svg" src="_images/RF_14_5.svg" /></div>
+<img alt="_images/RF_13_5.svg" src="_images/RF_13_5.svg" /></div>
 </div>
 <p>As we can see simple decision tree works quite good for iris dataset.</p>
 <div class="section" id="larger-dataset-and-overfit-example">
@@ -1005,324 +843,6 @@ Correctly identified on train set - 97.14%, on test set - 97.78%
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>mean radius</th>
-      <th>mean texture</th>
-      <th>mean perimeter</th>
-      <th>mean area</th>
-      <th>mean smoothness</th>
-      <th>mean compactness</th>
-      <th>mean concavity</th>
-      <th>mean concave points</th>
-      <th>mean symmetry</th>
-      <th>mean fractal dimension</th>
-      <th>...</th>
-      <th>worst texture</th>
-      <th>worst perimeter</th>
-      <th>worst area</th>
-      <th>worst smoothness</th>
-      <th>worst compactness</th>
-      <th>worst concavity</th>
-      <th>worst concave points</th>
-      <th>worst symmetry</th>
-      <th>worst fractal dimension</th>
-      <th>class</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>17.99</td>
-      <td>10.38</td>
-      <td>122.80</td>
-      <td>1001.0</td>
-      <td>0.11840</td>
-      <td>0.27760</td>
-      <td>0.30010</td>
-      <td>0.14710</td>
-      <td>0.2419</td>
-      <td>0.07871</td>
-      <td>...</td>
-      <td>17.33</td>
-      <td>184.60</td>
-      <td>2019.0</td>
-      <td>0.16220</td>
-      <td>0.66560</td>
-      <td>0.7119</td>
-      <td>0.2654</td>
-      <td>0.4601</td>
-      <td>0.11890</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>20.57</td>
-      <td>17.77</td>
-      <td>132.90</td>
-      <td>1326.0</td>
-      <td>0.08474</td>
-      <td>0.07864</td>
-      <td>0.08690</td>
-      <td>0.07017</td>
-      <td>0.1812</td>
-      <td>0.05667</td>
-      <td>...</td>
-      <td>23.41</td>
-      <td>158.80</td>
-      <td>1956.0</td>
-      <td>0.12380</td>
-      <td>0.18660</td>
-      <td>0.2416</td>
-      <td>0.1860</td>
-      <td>0.2750</td>
-      <td>0.08902</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>19.69</td>
-      <td>21.25</td>
-      <td>130.00</td>
-      <td>1203.0</td>
-      <td>0.10960</td>
-      <td>0.15990</td>
-      <td>0.19740</td>
-      <td>0.12790</td>
-      <td>0.2069</td>
-      <td>0.05999</td>
-      <td>...</td>
-      <td>25.53</td>
-      <td>152.50</td>
-      <td>1709.0</td>
-      <td>0.14440</td>
-      <td>0.42450</td>
-      <td>0.4504</td>
-      <td>0.2430</td>
-      <td>0.3613</td>
-      <td>0.08758</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>11.42</td>
-      <td>20.38</td>
-      <td>77.58</td>
-      <td>386.1</td>
-      <td>0.14250</td>
-      <td>0.28390</td>
-      <td>0.24140</td>
-      <td>0.10520</td>
-      <td>0.2597</td>
-      <td>0.09744</td>
-      <td>...</td>
-      <td>26.50</td>
-      <td>98.87</td>
-      <td>567.7</td>
-      <td>0.20980</td>
-      <td>0.86630</td>
-      <td>0.6869</td>
-      <td>0.2575</td>
-      <td>0.6638</td>
-      <td>0.17300</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>20.29</td>
-      <td>14.34</td>
-      <td>135.10</td>
-      <td>1297.0</td>
-      <td>0.10030</td>
-      <td>0.13280</td>
-      <td>0.19800</td>
-      <td>0.10430</td>
-      <td>0.1809</td>
-      <td>0.05883</td>
-      <td>...</td>
-      <td>16.67</td>
-      <td>152.20</td>
-      <td>1575.0</td>
-      <td>0.13740</td>
-      <td>0.20500</td>
-      <td>0.4000</td>
-      <td>0.1625</td>
-      <td>0.2364</td>
-      <td>0.07678</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>564</th>
-      <td>21.56</td>
-      <td>22.39</td>
-      <td>142.00</td>
-      <td>1479.0</td>
-      <td>0.11100</td>
-      <td>0.11590</td>
-      <td>0.24390</td>
-      <td>0.13890</td>
-      <td>0.1726</td>
-      <td>0.05623</td>
-      <td>...</td>
-      <td>26.40</td>
-      <td>166.10</td>
-      <td>2027.0</td>
-      <td>0.14100</td>
-      <td>0.21130</td>
-      <td>0.4107</td>
-      <td>0.2216</td>
-      <td>0.2060</td>
-      <td>0.07115</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>565</th>
-      <td>20.13</td>
-      <td>28.25</td>
-      <td>131.20</td>
-      <td>1261.0</td>
-      <td>0.09780</td>
-      <td>0.10340</td>
-      <td>0.14400</td>
-      <td>0.09791</td>
-      <td>0.1752</td>
-      <td>0.05533</td>
-      <td>...</td>
-      <td>38.25</td>
-      <td>155.00</td>
-      <td>1731.0</td>
-      <td>0.11660</td>
-      <td>0.19220</td>
-      <td>0.3215</td>
-      <td>0.1628</td>
-      <td>0.2572</td>
-      <td>0.06637</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>566</th>
-      <td>16.60</td>
-      <td>28.08</td>
-      <td>108.30</td>
-      <td>858.1</td>
-      <td>0.08455</td>
-      <td>0.10230</td>
-      <td>0.09251</td>
-      <td>0.05302</td>
-      <td>0.1590</td>
-      <td>0.05648</td>
-      <td>...</td>
-      <td>34.12</td>
-      <td>126.70</td>
-      <td>1124.0</td>
-      <td>0.11390</td>
-      <td>0.30940</td>
-      <td>0.3403</td>
-      <td>0.1418</td>
-      <td>0.2218</td>
-      <td>0.07820</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>567</th>
-      <td>20.60</td>
-      <td>29.33</td>
-      <td>140.10</td>
-      <td>1265.0</td>
-      <td>0.11780</td>
-      <td>0.27700</td>
-      <td>0.35140</td>
-      <td>0.15200</td>
-      <td>0.2397</td>
-      <td>0.07016</td>
-      <td>...</td>
-      <td>39.42</td>
-      <td>184.60</td>
-      <td>1821.0</td>
-      <td>0.16500</td>
-      <td>0.86810</td>
-      <td>0.9387</td>
-      <td>0.2650</td>
-      <td>0.4087</td>
-      <td>0.12400</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>568</th>
-      <td>7.76</td>
-      <td>24.54</td>
-      <td>47.92</td>
-      <td>181.0</td>
-      <td>0.05263</td>
-      <td>0.04362</td>
-      <td>0.00000</td>
-      <td>0.00000</td>
-      <td>0.1587</td>
-      <td>0.05884</td>
-      <td>...</td>
-      <td>30.37</td>
-      <td>59.16</td>
-      <td>268.6</td>
-      <td>0.08996</td>
-      <td>0.06444</td>
-      <td>0.0000</td>
-      <td>0.0000</td>
-      <td>0.2871</td>
-      <td>0.07039</td>
-      <td>benign</td>
-    </tr>
-  </tbody>
-</table>
-<p>569 rows × 31 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1363,7 +883,7 @@ dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Accuracy for different max_depth values&#39;}&gt;
 </pre></div>
 </div>
-<img alt="_images/RF_26_1.png" src="_images/RF_26_1.png" />
+<img alt="_images/RF_19_1.png" src="_images/RF_19_1.png" />
 </div>
 </div>
 <p>Notice that as the depth increases, we tend to get very strangely shaped classification regions. Such overfitting turns out to be a general property of decision trees: it is very easy to go too deep in the tree, and thus to fit details of the particular data rather than the overall properties of the distributions they are drawn from. Another way to see this overfitting is to look at models trained on different subsets of the data.</p>
@@ -1413,14 +933,10 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniforge/base/envs/ai_primer/lib/python3.9/site-packages/sklearn/ensemble/_base.py:166: FutureWarning: `base_estimator` was renamed to `estimator` in version 1.2 and will be removed in 1.4.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 99.41%, on test set - 97.37%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 99.71%, on test set - 96.93%
 
-CPU times: user 925 ms, sys: 8.32 ms, total: 933 ms
-Wall time: 932 ms
+CPU times: user 1.19 s, sys: 311 ms, total: 1.5 s
+Wall time: 830 ms
 </pre></div>
 </div>
 </div>
@@ -1444,8 +960,7 @@ Wall time: 932 ms
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">pred_train</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">pred_test</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
@@ -1457,10 +972,10 @@ Wall time: 932 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 99.71%, on test set - 98.25%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correctly identified on train set - 100.00%, on test set - 97.81%
 
-CPU times: user 808 ms, sys: 6.52 ms, total: 815 ms
-Wall time: 815 ms
+CPU times: user 736 ms, sys: 11.6 ms, total: 747 ms
+Wall time: 753 ms
 </pre></div>
 </div>
 </div>
@@ -1597,13 +1112,9 @@ Wall time: 815 ms
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">]</span>
-
-<span class="c1"># df[&#39;sepal area&#39;] = df[&#39;sepal length (cm)&#39;] * df[&#39;sepal width (cm)&#39;]</span>
-<span class="c1"># df[&#39;petal area&#39;] = df[&#39;petal length (cm)&#39;] * df[&#39;petal width (cm)&#39;]</span>
-<span class="c1"># df[&#39;simetry&#39;] = df[&#39;sepal area&#39;] / df[&#39;petal area&#39;]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal length (cm)&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal width (cm)&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal length (cm)&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal width (cm)&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;simetry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal area&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal area&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1624,19 +1135,12 @@ Wall time: 815 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-4 {color: black;background-color: white;}#sk-container-id-4 pre{padding: 0;}#sk-container-id-4 div.sk-toggleable {background-color: white;}#sk-container-id-4 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-4 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-4 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-4 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-4 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-4 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-4 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-4 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-4 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-4 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-4 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-4 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-4 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-4 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-4 div.sk-item {position: relative;z-index: 1;}#sk-container-id-4 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-4 div.sk-item::before, #sk-container-id-4 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-4 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-4 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-4 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-4 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-4 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-4 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-4 div.sk-label-container {text-align: center;}#sk-container-id-4 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-4 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>RandomForestClassifier(max_depth=2, n_estimators=1000)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" checked><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">RandomForestClassifier</label><div class="sk-toggleable__content"><pre>RandomForestClassifier(max_depth=2, n_estimators=1000)</pre></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s1">.02%</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy 98.67%
 </pre></div>
 </div>
 </div>
@@ -1658,51 +1162,11 @@ Wall time: 815 ms
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prob</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;malignant&#39;</span> <span class="k">if</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="mf">0.2</span> <span class="k">else</span> <span class="s1">&#39;benign&#39;</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prob</span><span class="p">])),</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">),</span>
              <span class="n">columns</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style type="text/css">
-#T_60740_row0_col0, #T_60740_row1_col1 {
-  background-color: #023858;
-  color: #f1f1f1;
-}
-#T_60740_row0_col1, #T_60740_row1_col0 {
-  background-color: #fff7fb;
-  color: #000000;
-}
-</style>
-<table id="T_60740_">
-  <thead>
-    <tr>
-      <th class="blank level0" >&nbsp;</th>
-      <th class="col_heading level0 col0" >benign</th>
-      <th class="col_heading level0 col1" >malignant</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_60740_level0_row0" class="row_heading level0 row0" >benign</th>
-      <td id="T_60740_row0_col0" class="data row0 col0" >133</td>
-      <td id="T_60740_row0_col1" class="data row0 col1" >15</td>
-    </tr>
-    <tr>
-      <th id="T_60740_level0_row1" class="row_heading level0 row1" >malignant</th>
-      <td id="T_60740_row1_col0" class="data row1 col0" >0</td>
-      <td id="T_60740_row1_col1" class="data row1 col1" >80</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
 </div>
 </div>
 <div class="section" id="feature-importance">
@@ -1710,555 +1174,11 @@ Wall time: 815 ms
 <p>It is easy to check which features are most important - ones which were used in most trees or/and gave highest information gain overall.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>mean radius</th>
-      <th>mean texture</th>
-      <th>mean perimeter</th>
-      <th>mean area</th>
-      <th>mean smoothness</th>
-      <th>mean compactness</th>
-      <th>mean concavity</th>
-      <th>mean concave points</th>
-      <th>mean symmetry</th>
-      <th>mean fractal dimension</th>
-      <th>...</th>
-      <th>worst texture</th>
-      <th>worst perimeter</th>
-      <th>worst area</th>
-      <th>worst smoothness</th>
-      <th>worst compactness</th>
-      <th>worst concavity</th>
-      <th>worst concave points</th>
-      <th>worst symmetry</th>
-      <th>worst fractal dimension</th>
-      <th>class</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>17.99</td>
-      <td>10.38</td>
-      <td>122.80</td>
-      <td>1001.0</td>
-      <td>0.11840</td>
-      <td>0.27760</td>
-      <td>0.30010</td>
-      <td>0.14710</td>
-      <td>0.2419</td>
-      <td>0.07871</td>
-      <td>...</td>
-      <td>17.33</td>
-      <td>184.60</td>
-      <td>2019.0</td>
-      <td>0.16220</td>
-      <td>0.66560</td>
-      <td>0.7119</td>
-      <td>0.2654</td>
-      <td>0.4601</td>
-      <td>0.11890</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>20.57</td>
-      <td>17.77</td>
-      <td>132.90</td>
-      <td>1326.0</td>
-      <td>0.08474</td>
-      <td>0.07864</td>
-      <td>0.08690</td>
-      <td>0.07017</td>
-      <td>0.1812</td>
-      <td>0.05667</td>
-      <td>...</td>
-      <td>23.41</td>
-      <td>158.80</td>
-      <td>1956.0</td>
-      <td>0.12380</td>
-      <td>0.18660</td>
-      <td>0.2416</td>
-      <td>0.1860</td>
-      <td>0.2750</td>
-      <td>0.08902</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>19.69</td>
-      <td>21.25</td>
-      <td>130.00</td>
-      <td>1203.0</td>
-      <td>0.10960</td>
-      <td>0.15990</td>
-      <td>0.19740</td>
-      <td>0.12790</td>
-      <td>0.2069</td>
-      <td>0.05999</td>
-      <td>...</td>
-      <td>25.53</td>
-      <td>152.50</td>
-      <td>1709.0</td>
-      <td>0.14440</td>
-      <td>0.42450</td>
-      <td>0.4504</td>
-      <td>0.2430</td>
-      <td>0.3613</td>
-      <td>0.08758</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>11.42</td>
-      <td>20.38</td>
-      <td>77.58</td>
-      <td>386.1</td>
-      <td>0.14250</td>
-      <td>0.28390</td>
-      <td>0.24140</td>
-      <td>0.10520</td>
-      <td>0.2597</td>
-      <td>0.09744</td>
-      <td>...</td>
-      <td>26.50</td>
-      <td>98.87</td>
-      <td>567.7</td>
-      <td>0.20980</td>
-      <td>0.86630</td>
-      <td>0.6869</td>
-      <td>0.2575</td>
-      <td>0.6638</td>
-      <td>0.17300</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>20.29</td>
-      <td>14.34</td>
-      <td>135.10</td>
-      <td>1297.0</td>
-      <td>0.10030</td>
-      <td>0.13280</td>
-      <td>0.19800</td>
-      <td>0.10430</td>
-      <td>0.1809</td>
-      <td>0.05883</td>
-      <td>...</td>
-      <td>16.67</td>
-      <td>152.20</td>
-      <td>1575.0</td>
-      <td>0.13740</td>
-      <td>0.20500</td>
-      <td>0.4000</td>
-      <td>0.1625</td>
-      <td>0.2364</td>
-      <td>0.07678</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>564</th>
-      <td>21.56</td>
-      <td>22.39</td>
-      <td>142.00</td>
-      <td>1479.0</td>
-      <td>0.11100</td>
-      <td>0.11590</td>
-      <td>0.24390</td>
-      <td>0.13890</td>
-      <td>0.1726</td>
-      <td>0.05623</td>
-      <td>...</td>
-      <td>26.40</td>
-      <td>166.10</td>
-      <td>2027.0</td>
-      <td>0.14100</td>
-      <td>0.21130</td>
-      <td>0.4107</td>
-      <td>0.2216</td>
-      <td>0.2060</td>
-      <td>0.07115</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>565</th>
-      <td>20.13</td>
-      <td>28.25</td>
-      <td>131.20</td>
-      <td>1261.0</td>
-      <td>0.09780</td>
-      <td>0.10340</td>
-      <td>0.14400</td>
-      <td>0.09791</td>
-      <td>0.1752</td>
-      <td>0.05533</td>
-      <td>...</td>
-      <td>38.25</td>
-      <td>155.00</td>
-      <td>1731.0</td>
-      <td>0.11660</td>
-      <td>0.19220</td>
-      <td>0.3215</td>
-      <td>0.1628</td>
-      <td>0.2572</td>
-      <td>0.06637</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>566</th>
-      <td>16.60</td>
-      <td>28.08</td>
-      <td>108.30</td>
-      <td>858.1</td>
-      <td>0.08455</td>
-      <td>0.10230</td>
-      <td>0.09251</td>
-      <td>0.05302</td>
-      <td>0.1590</td>
-      <td>0.05648</td>
-      <td>...</td>
-      <td>34.12</td>
-      <td>126.70</td>
-      <td>1124.0</td>
-      <td>0.11390</td>
-      <td>0.30940</td>
-      <td>0.3403</td>
-      <td>0.1418</td>
-      <td>0.2218</td>
-      <td>0.07820</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>567</th>
-      <td>20.60</td>
-      <td>29.33</td>
-      <td>140.10</td>
-      <td>1265.0</td>
-      <td>0.11780</td>
-      <td>0.27700</td>
-      <td>0.35140</td>
-      <td>0.15200</td>
-      <td>0.2397</td>
-      <td>0.07016</td>
-      <td>...</td>
-      <td>39.42</td>
-      <td>184.60</td>
-      <td>1821.0</td>
-      <td>0.16500</td>
-      <td>0.86810</td>
-      <td>0.9387</td>
-      <td>0.2650</td>
-      <td>0.4087</td>
-      <td>0.12400</td>
-      <td>malignant</td>
-    </tr>
-    <tr>
-      <th>568</th>
-      <td>7.76</td>
-      <td>24.54</td>
-      <td>47.92</td>
-      <td>181.0</td>
-      <td>0.05263</td>
-      <td>0.04362</td>
-      <td>0.00000</td>
-      <td>0.00000</td>
-      <td>0.1587</td>
-      <td>0.05884</td>
-      <td>...</td>
-      <td>30.37</td>
-      <td>59.16</td>
-      <td>268.6</td>
-      <td>0.08996</td>
-      <td>0.06444</td>
-      <td>0.0000</td>
-      <td>0.0000</td>
-      <td>0.2871</td>
-      <td>0.07039</td>
-      <td>benign</td>
-    </tr>
-  </tbody>
-</table>
-<p>569 rows × 31 columns</p>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span>
-             <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">()</span>
+             <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style type="text/css">
-#T_7c805_row0_col0 {
-  background-color: #fff7fb;
-  color: #000000;
-}
-#T_7c805_row1_col0 {
-  background-color: #fef6fb;
-  color: #000000;
-}
-#T_7c805_row2_col0, #T_7c805_row3_col0, #T_7c805_row4_col0 {
-  background-color: #fef6fa;
-  color: #000000;
-}
-#T_7c805_row5_col0, #T_7c805_row6_col0, #T_7c805_row7_col0, #T_7c805_row8_col0 {
-  background-color: #fdf5fa;
-  color: #000000;
-}
-#T_7c805_row9_col0, #T_7c805_row10_col0 {
-  background-color: #fcf4fa;
-  color: #000000;
-}
-#T_7c805_row11_col0 {
-  background-color: #f7f0f7;
-  color: #000000;
-}
-#T_7c805_row12_col0 {
-  background-color: #f6eff7;
-  color: #000000;
-}
-#T_7c805_row13_col0 {
-  background-color: #f5eef6;
-  color: #000000;
-}
-#T_7c805_row14_col0 {
-  background-color: #f4edf6;
-  color: #000000;
-}
-#T_7c805_row15_col0 {
-  background-color: #f3edf5;
-  color: #000000;
-}
-#T_7c805_row16_col0 {
-  background-color: #f2ecf5;
-  color: #000000;
-}
-#T_7c805_row17_col0 {
-  background-color: #ece7f2;
-  color: #000000;
-}
-#T_7c805_row18_col0 {
-  background-color: #e5e1ef;
-  color: #000000;
-}
-#T_7c805_row19_col0 {
-  background-color: #dedcec;
-  color: #000000;
-}
-#T_7c805_row20_col0, #T_7c805_row21_col0 {
-  background-color: #d6d6e9;
-  color: #000000;
-}
-#T_7c805_row22_col0 {
-  background-color: #c4cbe3;
-  color: #000000;
-}
-#T_7c805_row23_col0 {
-  background-color: #a4bcda;
-  color: #000000;
-}
-#T_7c805_row24_col0 {
-  background-color: #83afd3;
-  color: #f1f1f1;
-}
-#T_7c805_row25_col0 {
-  background-color: #75a9cf;
-  color: #f1f1f1;
-}
-#T_7c805_row26_col0 {
-  background-color: #1b7eb7;
-  color: #f1f1f1;
-}
-#T_7c805_row27_col0 {
-  background-color: #056aa6;
-  color: #f1f1f1;
-}
-#T_7c805_row28_col0 {
-  background-color: #0568a3;
-  color: #f1f1f1;
-}
-#T_7c805_row29_col0 {
-  background-color: #023858;
-  color: #f1f1f1;
-}
-</style>
-<table id="T_7c805_">
-  <thead>
-    <tr>
-      <th class="blank level0" >&nbsp;</th>
-      <th class="col_heading level0 col0" >0</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_7c805_level0_row0" class="row_heading level0 row0" >mean symmetry</th>
-      <td id="T_7c805_row0_col0" class="data row0 col0" >0.004099</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row1" class="row_heading level0 row1" >texture error</th>
-      <td id="T_7c805_row1_col0" class="data row1 col0" >0.004999</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row2" class="row_heading level0 row2" >compactness error</th>
-      <td id="T_7c805_row2_col0" class="data row2 col0" >0.005220</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row3" class="row_heading level0 row3" >concave points error</th>
-      <td id="T_7c805_row3_col0" class="data row3 col0" >0.005524</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row4" class="row_heading level0 row4" >symmetry error</th>
-      <td id="T_7c805_row4_col0" class="data row4 col0" >0.005584</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row5" class="row_heading level0 row5" >smoothness error</th>
-      <td id="T_7c805_row5_col0" class="data row5 col0" >0.005736</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row6" class="row_heading level0 row6" >mean fractal dimension</th>
-      <td id="T_7c805_row6_col0" class="data row6 col0" >0.005930</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row7" class="row_heading level0 row7" >mean smoothness</th>
-      <td id="T_7c805_row7_col0" class="data row7 col0" >0.005989</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row8" class="row_heading level0 row8" >fractal dimension error</th>
-      <td id="T_7c805_row8_col0" class="data row8 col0" >0.006762</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row9" class="row_heading level0 row9" >concavity error</th>
-      <td id="T_7c805_row9_col0" class="data row9 col0" >0.006817</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row10" class="row_heading level0 row10" >worst fractal dimension</th>
-      <td id="T_7c805_row10_col0" class="data row10 col0" >0.006862</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row11" class="row_heading level0 row11" >perimeter error</th>
-      <td id="T_7c805_row11_col0" class="data row11 col0" >0.011101</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row12" class="row_heading level0 row12" >mean compactness</th>
-      <td id="T_7c805_row12_col0" class="data row12 col0" >0.012267</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row13" class="row_heading level0 row13" >worst smoothness</th>
-      <td id="T_7c805_row13_col0" class="data row13 col0" >0.013437</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row14" class="row_heading level0 row14" >worst compactness</th>
-      <td id="T_7c805_row14_col0" class="data row14 col0" >0.014669</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row15" class="row_heading level0 row15" >radius error</th>
-      <td id="T_7c805_row15_col0" class="data row15 col0" >0.015062</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row16" class="row_heading level0 row16" >worst symmetry</th>
-      <td id="T_7c805_row16_col0" class="data row16 col0" >0.016293</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row17" class="row_heading level0 row17" >mean texture</th>
-      <td id="T_7c805_row17_col0" class="data row17 col0" >0.021525</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row18" class="row_heading level0 row18" >worst texture</th>
-      <td id="T_7c805_row18_col0" class="data row18 col0" >0.025601</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row19" class="row_heading level0 row19" >area error</th>
-      <td id="T_7c805_row19_col0" class="data row19 col0" >0.030142</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row20" class="row_heading level0 row20" >mean radius</th>
-      <td id="T_7c805_row20_col0" class="data row20 col0" >0.034787</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row21" class="row_heading level0 row21" >mean area</th>
-      <td id="T_7c805_row21_col0" class="data row21 col0" >0.035171</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row22" class="row_heading level0 row22" >mean perimeter</th>
-      <td id="T_7c805_row22_col0" class="data row22 col0" >0.043348</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row23" class="row_heading level0 row23" >worst concavity</th>
-      <td id="T_7c805_row23_col0" class="data row23 col0" >0.056380</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row24" class="row_heading level0 row24" >mean concavity</th>
-      <td id="T_7c805_row24_col0" class="data row24 col0" >0.067655</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row25" class="row_heading level0 row25" >worst radius</th>
-      <td id="T_7c805_row25_col0" class="data row25 col0" >0.072547</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row26" class="row_heading level0 row26" >worst area</th>
-      <td id="T_7c805_row26_col0" class="data row26 col0" >0.099347</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row27" class="row_heading level0 row27" >worst perimeter</th>
-      <td id="T_7c805_row27_col0" class="data row27 col0" >0.112028</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row28" class="row_heading level0 row28" >mean concave points</th>
-      <td id="T_7c805_row28_col0" class="data row28 col0" >0.113489</td>
-    </tr>
-    <tr>
-      <th id="T_7c805_level0_row29" class="row_heading level0 row29" >worst concave points</th>
-      <td id="T_7c805_row29_col0" class="data row29 col0" >0.141629</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
 </div>
 </div>
 </div>
@@ -2282,8 +1202,6 @@ Wall time: 815 ms
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-9 {color: black;background-color: white;}#sk-container-id-9 pre{padding: 0;}#sk-container-id-9 div.sk-toggleable {background-color: white;}#sk-container-id-9 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-9 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-9 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-9 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-9 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-9 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-9 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-9 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-9 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-9 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-9 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-9 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-9 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-9 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-9 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-9 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-9 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-9 div.sk-item {position: relative;z-index: 1;}#sk-container-id-9 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-9 div.sk-item::before, #sk-container-id-9 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-9 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-9 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-9 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-9 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-9 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-9 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-9 div.sk-label-container {text-align: center;}#sk-container-id-9 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-9 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-9" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>RandomForestClassifier(max_depth=2, n_estimators=500)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-9" type="checkbox" checked><label for="sk-estimator-id-9" class="sk-toggleable__label sk-toggleable__label-arrow">RandomForestClassifier</label><div class="sk-toggleable__content"><pre>RandomForestClassifier(max_depth=2, n_estimators=500)</pre></div></div></div></div></div></div></div>
 </div>
 <p>Look at overfitting here, make decision boundary plots.</p>
 <div class="cell docutils container">
@@ -2303,9 +1221,6 @@ Wall time: 815 ms
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/RF_59_0.png" src="_images/RF_59_0.png" />
 </div>
 </div>
 <p>Make sure that you understand why those decision boundaries look this way.</p>
@@ -2336,101 +1251,12 @@ Wall time: 815 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">71</span><span class="o">/</span><span class="mi">2</span><span class="n">t6j6ytn1t3dfp5dxb9zhh6w0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_69305</span><span class="o">/</span><span class="mf">2822534398.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Normalize</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span> <span class="o">/</span> <span class="mi">255</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">Caskroom</span><span class="o">/</span><span class="n">miniforge</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ai_primer</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="n">_tf2</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span> 
-<span class="ne">---&gt; </span><span class="mi">48</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2</span> <span class="kn">import</span> <span class="n">__internal__</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2</span> <span class="kn">import</span> <span class="n">__operators__</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2</span> <span class="kn">import</span> <span class="n">audio</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">Caskroom</span><span class="o">/</span><span class="n">miniforge</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ai_primer</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">__internal__</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.__internal__</span> <span class="kn">import</span> <span class="n">autograph</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.__internal__</span> <span class="kn">import</span> <span class="n">decorator</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.__internal__</span> <span class="kn">import</span> <span class="n">dispatch</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">Caskroom</span><span class="o">/</span><span class="n">miniforge</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ai_primer</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">__internal__</span><span class="o">/</span><span class="n">autograph</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">tensorflow.python.autograph.core.ag_ctx</span> <span class="kn">import</span> <span class="n">control_status_ctx</span> <span class="c1"># line: 34</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">tensorflow.python.autograph.impl.api</span> <span class="kn">import</span> <span class="n">tf_convert</span> <span class="c1"># line: 493</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">Caskroom</span><span class="o">/</span><span class="n">miniforge</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ai_primer</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">autograph</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">ag_ctx</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="kn">import</span> <span class="nn">threading</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> 
-<span class="ne">---&gt; </span><span class="mi">21</span> <span class="kn">from</span> <span class="nn">tensorflow.python.autograph.utils</span> <span class="kn">import</span> <span class="n">ag_logging</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="kn">import</span> <span class="n">tf_export</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> 
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">Caskroom</span><span class="o">/</span><span class="n">miniforge</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ai_primer</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">autograph</span><span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Utility module that contains APIs usable in the generated code.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> 
-<span class="ne">---&gt; </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">tensorflow.python.autograph.utils.context_managers</span> <span class="kn">import</span> <span class="n">control_dependency_on_returns</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">tensorflow.python.autograph.utils.misc</span> <span class="kn">import</span> <span class="n">alias_tensors</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">tensorflow.python.autograph.utils.tensor_list</span> <span class="kn">import</span> <span class="n">dynamic_list_append</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">Caskroom</span><span class="o">/</span><span class="n">miniforge</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ai_primer</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">autograph</span><span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">context_managers</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">import</span> <span class="nn">contextlib</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> 
-<span class="ne">---&gt; </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="kn">import</span> <span class="n">ops</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="kn">import</span> <span class="n">tensor_array_ops</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> 
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">Caskroom</span><span class="o">/</span><span class="n">miniforge</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ai_primer</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">framework</span><span class="o">/</span><span class="n">ops</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span> 
-<span class="ne">---&gt; </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">tensorflow.core.framework</span> <span class="kn">import</span> <span class="n">attr_value_pb2</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="kn">from</span> <span class="nn">tensorflow.core.framework</span> <span class="kn">import</span> <span class="n">full_type_pb2</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="kn">from</span> <span class="nn">tensorflow.core.framework</span> <span class="kn">import</span> <span class="n">function_pb2</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">Caskroom</span><span class="o">/</span><span class="n">miniforge</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ai_primer</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">framework</span><span class="o">/</span><span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># source: tensorflow/core/framework/attr_value.proto</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Generated protocol buffer code.&quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">google.protobuf.internal</span> <span class="kn">import</span> <span class="n">builder</span> <span class="k">as</span> <span class="n">_builder</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">descriptor</span> <span class="k">as</span> <span class="n">_descriptor</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">descriptor_pool</span> <span class="k">as</span> <span class="n">_descriptor_pool</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">Caskroom</span><span class="o">/</span><span class="n">miniforge</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ai_primer</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">google</span><span class="o">/</span><span class="n">protobuf</span><span class="o">/</span><span class="n">internal</span><span class="o">/</span><span class="n">builder</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> 
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">google.protobuf.internal</span> <span class="kn">import</span> <span class="n">enum_type_wrapper</span>
-<span class="ne">---&gt; </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">google.protobuf.internal</span> <span class="kn">import</span> <span class="n">python_message</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">message</span> <span class="k">as</span> <span class="n">_message</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">reflection</span> <span class="k">as</span> <span class="n">_reflection</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">Caskroom</span><span class="o">/</span><span class="n">miniforge</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ai_primer</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">google</span><span class="o">/</span><span class="n">protobuf</span><span class="o">/</span><span class="n">internal</span><span class="o">/</span><span class="n">python_message</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="kn">import</span> <span class="nn">weakref</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> 
-<span class="ne">---&gt; </span><span class="mi">36</span> <span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">descriptor</span> <span class="k">as</span> <span class="n">descriptor_mod</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">message</span> <span class="k">as</span> <span class="n">message_mod</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">text_format</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">Caskroom</span><span class="o">/</span><span class="n">miniforge</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ai_primer</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">google</span><span class="o">/</span><span class="n">protobuf</span><span class="o">/</span><span class="n">descriptor</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">import</span> <span class="nn">warnings</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> 
-<span class="ne">---&gt; </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">google.protobuf.internal</span> <span class="kn">import</span> <span class="n">api_implementation</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> 
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">_USE_C_DESCRIPTORS</span> <span class="o">=</span> <span class="kc">False</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">Caskroom</span><span class="o">/</span><span class="n">miniforge</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ai_primer</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">google</span><span class="o">/</span><span class="n">protobuf</span><span class="o">/</span><span class="n">internal</span><span class="o">/</span><span class="n">api_implementation</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">79</span>   <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span>     <span class="c1"># pylint: disable=g-import-not-at-top</span>
-<span class="ne">---&gt; </span><span class="mi">81</span>     <span class="kn">from</span> <span class="nn">google.protobuf.pyext</span> <span class="kn">import</span> <span class="n">_message</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span>     <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;google3.net.proto2.python.internal.cpp._message&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_message</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span>     <span class="n">_c_module</span> <span class="o">=</span> <span class="n">_message</span>
-
-<span class="ne">TypeError</span>: bases must be types
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Init Plugin
+Init Graph Optimizer
+Init Kernel
 </pre></div>
 </div>
+<img alt="_images/RF_53_1.png" src="_images/RF_53_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2668,7 +1494,7 @@ Wall time: 815 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/RF_67_0.png" src="_images/RF_67_0.png" />
+<img alt="_images/RF_58_0.png" src="_images/RF_58_0.png" />
 </div>
 </div>
 <p>True labels are on the left and predicted ones on the top. Quick glimpse gives you insightes like - RF makes most mistakes while identifying actual 7 as 2 and actual 4 as 9. What other insights can you give?</p>
